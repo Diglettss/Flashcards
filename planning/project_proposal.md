@@ -1,6 +1,6 @@
 # Project Proposal
 
-Pod Members: **Add Pod Members Names**
+Pod Members: **Osaru Elaiho, Daniel Jonas, & Hayley Simmons**
 
 ## Problem Statement
 
