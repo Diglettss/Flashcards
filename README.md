@@ -6,7 +6,7 @@ SITE Course Year: **2022**
 
 Cohort: **Workday**
 
-Team Member Names:**Osaru Elaiho, Daniel Jonas, & Hayley Simmons**
+Team Member Names: **Osaru Elaiho, Daniel Jonas, & Hayley Simmons**
 
 Mentors Names: **Jenny Tang & Michael Walsh**
 
