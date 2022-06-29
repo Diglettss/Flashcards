@@ -2,13 +2,13 @@
 
 # SITE Capstone Project
 
-SITE Course Year: **20__**
+SITE Course Year: **2022**
 
-Cohort: **Add Company Sponsor Name**
+Cohort: **Workday**
 
-Team Member Names:**Insert Team Member Names**
+Team Member Names:**Osaru Elaiho, Daniel Jonas, & Hayley Simmons**
 
-Mentors Names: **Insert Professional Mentor Names**
+Mentors Names: **Jenny Tang & Michael Walsh**
 
 Project Code Repository Links
 
