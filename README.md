@@ -1,10 +1,8 @@
-📝 `NOTE` Use this template repo to initialize the contents of your group's capstone repo project. As you work on your assignment over the course of the week, update the appropriate repo deliverables. All project planning should be included in the planning directory. (🚫 Remove this paragraph before submitting your assignment.)
-
 # SITE Capstone Project
 
 SITE Course Year: **2022**
 
-Cohort: **Workday**
+Cohort: **Workday ~ Group 12**
 
 Team Member Names: **Osaru Elaiho, Daniel Jonas, & Hayley Simmons**
 
@@ -17,7 +15,7 @@ Project Code Repository Links
 
 ## Project Overview
 
-Add a quick summary of what your project theme and objectives are. 
+The purpose of this project is to provide a simple learning tool for students to use while studying. The key feature is the student being able to create digital flashcards in order to memorize & learn their material in an easy way. They can be saved for later, & accessed anytime.
 
 Deployment Website: **Add Link to Deployed Project**
 
