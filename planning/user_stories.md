@@ -2,24 +2,41 @@
 
 Pod Members: **Osaru Elaiho, Daniel Jonas, & Hayley Simmons**
 
+
 ## Problem Statement
 
-Insert your groups problem statement and target audience.
+Students who want to study, but don't know how or where to start, need a simple way to do so while effectively learning the material.
+
 
 ## User Roles
 
-Include at least at least 1, but no more than 3, user roles
+- **The Student** 
+  * *a user who is seeking help with their studying*
+
+- **The Instructor**
+  * *a user who wants to help guide their student's studying, in & out of class*
+
 
 ## User Personas
 
-Include at least 2 personas per User Role
+**2 Student Personas:**
+ * *I*
+ * *II*
+
+**2 Instructor Personas:**
+ * *I*
+ * *II*
+
 
 ## User Stories
 
-Include at least 10 user stories.
+**5 Student Stories:**
+   1. *As a **student**, I want to [what], so that [why].*
+ 
+**5 Instructor Stories:**
+   1. *As an **instructor**, I want to [what], so that [why].*
 
-1. **As a [user role], I want to [what], so that [why]**
 
-## Wireframe (Bonus)
+## Wireframe
 
-Insert link or image to your group's wireframe. 
+[coming soon] 
