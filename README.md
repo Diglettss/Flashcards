@@ -2,7 +2,7 @@
 
 SITE Course Year: **2022**
 
-Cohort: **Workday ~ Group 12**
+Cohort: **Workday ~ Group 11**
 
 Team Member Names: **Osaru Elaiho, Daniel Jonas, & Hayley Simmons**
 
