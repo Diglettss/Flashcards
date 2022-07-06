@@ -23,21 +23,25 @@ The purpose is to provide a simple learning tool for students to use while study
       - *User has to create a title for their set, but adding a description will be optional.* 
       - *User can save their progress in case they don't finish a set all at once.*
   - User can view their set of flashcards after saving them.
-      - *Default mode: individually card-by-card (like a slideshow)*
+      - *The default view: viewing each card individually (like a slideshow)*
           - *Cards can be viewed:* 
-              - *term --> definition (term --> flip --> definition)* 
+              - *term --> definition (term --> **flip** --> definition)* 
               - *definition --> term*  
   
 ##### **Stretch features:**
   - Website is responsive.
-  - User can search for a subject, class, school, other users, etc., & view other flashcards matching the results.
-  - User can make their folders/flashcards public, allowing others to view them, or private, not allowing others to view them.
-      - User can create a shareable link for their folder/flashcards while set to private.
+  - User can search for a subject, class, school, other users, etc.
+  - User can view other people's flashcards.
+      - *User can make their folders/flashcards public or private.
+          - *Public allows others to search & view them* 
+          - *Private doesn't allow others to view them.*
+          - *User can create a shareable link for their folder/flashcards while set to private.*
   - User can choose a mode of studying their flashcards, such as:
-      - Viewing them in the default mode (as described above);
+      - *The default mode (as described above);*
     - Or matching the correct term & definition.
-       - *Matching mode can be timed or untimed.
-          - time limit range: 10-60 sec.; 5 sec. increases*
+       - *Matching mode can be timed or untimed.*
+          - *time limit range: 10-60 sec. w/ 5 sec. increases*
+          - *optional field to input their own time*
        - *Cards can be matched:*
           - *term --> definition* 
           - *definition --> term*
@@ -52,7 +56,7 @@ The purpose is to provide a simple learning tool for students to use while study
 
 ## Related Work
 
-Quizlet is the main inspiration for this project. We want ours to stand out by: 
+[Quizlet](https://quizlet.com/latest) is the main inspiration for this project. We want ours to stand out by: 
   - Offering every single feature for free (Quizlet wants users to pay for the card-customizing & highlighting features); 
   - & having a simpler UI for things like:
       - Creating multiple flashcards at once (Quizlet makes users create one at a time);
