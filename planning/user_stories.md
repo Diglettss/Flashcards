@@ -33,13 +33,17 @@ Students who want to study, but don't know how or where to start, need a simple 
 **5 Student Stories:**
    1. As a student, I want to create flashcards so that and I can share them with my friends.
    2. As a student, I want to be able to create lots of flashcard sets so that I can keep up with all of my coursework.
-   3. As a student, I want to try to match flashcards to their definition, so that I can use ddifferent studying apporaches.
+   3. As a student, I want to try to match flashcards to their definition, so that I can use different studying approaches.
    4. As a student, I want to be quizzed on my flashcards, so that I can figure out what I understand.
-   5. *As a **student**, I want to [what], so that [why].*
+   5. As a student, I want to be able to import my notes into flashcards, so that I can spend more time studing instead of tranferring one by one.
+   6. As an student, I want to custimize the color and font of my flash cards, so that I can
+   7. As an student, I want to search for flashcards, so that I won't have to create my own if one already exist.
+   8. As an student, I want to highlight specific cards, so that they can be distinct when studying. 
  
 **5 Instructor Stories:**
    1. As an instructor, I want to group my flashcards, so that my cards are organized.
-   4. *As an **instructor**, I want to [what], so that [why].*
+   2. As an instructor, I want to be able to private my flashcard sets, so that my students still have to take notes and only those who need them have access.
+
 
 
 ## Wireframe
