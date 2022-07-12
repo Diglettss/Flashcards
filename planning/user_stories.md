@@ -31,10 +31,15 @@ Students who want to study, but don't know how or where to start, need a simple 
 ## User Stories
 
 **5 Student Stories:**
-   1. *As a **student**, I want to [what], so that [why].*
+   1. As a student, I want to create flashcards so that and I can share them with my friends.
+   2. As a student, I want to be able to create lots of flashcard sets so that I can keep up with all of my coursework.
+   3. As a student, I want to try to match flashcards to their definition, so that I can use ddifferent studying apporaches.
+   4. As a student, I want to be quizzed on my flashcards, so that I can figure out what I understand.
+   5. *As a **student**, I want to [what], so that [why].*
  
 **5 Instructor Stories:**
-   1. *As an **instructor**, I want to [what], so that [why].*
+   1. As an instructor, I want to group my flashcards, so that my cards are organized.
+   4. *As an **instructor**, I want to [what], so that [why].*
 
 
 ## Wireframe
