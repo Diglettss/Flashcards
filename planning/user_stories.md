@@ -11,10 +11,10 @@ Students who want to study, but don't know how or where to start, need a simple 
 ## User Roles
 
 - **"The Student"** 
-  * *a user who is seeking help with their studying*
+  * *a user who plans to use the app as an additional study tool to reinforce learning*
 
 - **"The Instructor"**
-  * *a user who wants to help guide their student's studying, in & out of class*
+  * *a user who wants to help students by creating material on the app to supplement lesson topics covered in a classroom setting*
 
 
 ## User Personas
