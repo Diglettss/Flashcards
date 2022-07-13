@@ -52,9 +52,9 @@ Describe your app's data model using diagrams or tables
 | ---           | ----          | ---                             |
 | id            | integer       | primary key                     |
 | user_id       | integer       | refrences the owner of the set  |
+| flashcard_id  | integer ARRAY | points to flashcard tables      |
 | public        | boolean       | is the set public               |
 | description   | text          | describes the set               |
-| flashcard_id  | integer ARRAY | points to flashcard tables      |
 
 ## Endpoints
 
