@@ -32,14 +32,14 @@ Describe your app's data model using diagrams or tables
 | column name     | type          | description                       |
 | ---             | ----          | ---                               |
 | id              | integer       | primary key                       |
+| set_id          | integer ARRAY | sets the user owns/has access to  |
 | user_name       | Text          | username                          |
 | first_name      | Text          | first name                        |
 | last_name       | Text          | last name                         |
 | email           | Text          | email address                     |
 | password        | Text          | hashed password                   |
-| set_id          | integer ARRAY | sets the user owns/has access to  |
 
-### flashcard
+### flashcard table
 
 | column name | type    | description             |
 | ---         | ----    | ---                     |
@@ -47,7 +47,7 @@ Describe your app's data model using diagrams or tables
 | term        | Text    | text on the flashcard   |
 | definition  | Text    | definition for the term |
 
-### set
+### set table
 | column name   | type          | description                     |
 | ---           | ----          | ---                             |
 | id            | integer       | primary key                     |
@@ -59,6 +59,18 @@ Describe your app's data model using diagrams or tables
 ## Endpoints
 
 List the API endpoints you will need to implement.
+
+### user table
+
+| CRUD        | HTTP Verb     | description                       | User stories |
+| ---         | ----          | ---                               |              |
+| Create      | POST          |                                   |              |
+| Read        | GET           |                                   |              |
+| Read        | GET           |                                   |              |
+| Create      | POST          |                                   |              |
+| Update      | PUT           |                                   |              |
+
+
 
 
 ***Don't forget to set up your Issues, Milestones, and Project Board!***
