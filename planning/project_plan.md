@@ -64,11 +64,13 @@ List the API endpoints you will need to implement.
 
 | CRUD        | HTTP Verb     | description                       | User stories |
 | ---         | ----          | ---                               | ---          |
-| Create      | POST          |                                   |              |
-| Read        | GET           |                                   |              |
-| Read        | GET           |                                   |              |
-| Create      | POST          |                                   |              |
-| Update      | PUT           |                                   |              |
+| Create      | POST          | create user                       |              |
+| Read        | GET           | get user                          |              |
+| Read        | GET           | get all flashcards user ows       |              |
+| Delete      | DELETE        | delete flashcard set              |              |
+| Update      | PUT           | update flashcard set              |              |
+| Create      | POST          | create flashcard set              |              |
+|             |               |                                   |              |
 
 
 
