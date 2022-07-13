@@ -63,7 +63,7 @@ List the API endpoints you will need to implement.
 ### user table
 
 | CRUD        | HTTP Verb     | description                       | User stories |
-| ---         | ----          | ---                               |              |
+| ---         | ----          | ---                               | ---          |
 | Create      | POST          |                                   |              |
 | Read        | GET           |                                   |              |
 | Read        | GET           |                                   |              |
