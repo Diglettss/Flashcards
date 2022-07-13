@@ -4,8 +4,7 @@ Pod Members: **Osaru Elaiho, Daniel Jonas, & Hayley Simmons**
 
 
 ## Problem Statement
-
-According to an article from [Education World](https://www.educationworld.com/teachers/fundamental-gap-surprising-number-students-don't-know-how-to-study-effecively), there are many students in high school & college who don't know how to study; either lacking study skills or studying inefficiently.
+One of the biggest difficulties for education in the past two years has been the COIVD-19 pandemic which saw many teaching institutions struggle to navigate balancing campus safety and choosing whether or not to hold in-person classes. As a direct result of this disruption, many studies have shown a significant drop in lecture material retention and overall assessment scores for students. Essentially, the pandemic has created a large influx of students who are unable to perform at their highest level largely due to their inability to properly study and retain information.
 
 
 ## Description
