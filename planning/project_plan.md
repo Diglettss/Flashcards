@@ -27,14 +27,34 @@ List all the pages and screens in the app. Include wireframes for at least 3 of 
 
 Describe your app's data model using diagrams or tables
 
-users
+### user table
 
-| column name | type  | description |
-| ---         | ----  | ---         |
-| id          | Title | Title       |
-| name        | Text  | Text        |
+| column name     | type          | description                       |
+| ---             | ----          | ---                               |
+| id              | integer       | primary key                       |
+| user_name       | Text          | username                          |
+| first_name      | Text          | first name                        |
+| last_name       | Text          | last name                         |
+| email           | Text          | email address                     |
+| password        | Text          | hashed password                   |
+| set_id          | integer ARRAY | sets the user owns/has access to  |
 
+### flashcard
 
+| column name | type    | description             |
+| ---         | ----    | ---                     |
+| id          | integer | primary key             |
+| term        | Text    | text on the flashcard   |
+| definition  | Text    | definition for the term |
+
+### set
+| column name   | type          | description                     |
+| ---           | ----          | ---                             |
+| id            | integer       | primary key                     |
+| user_id       | integer       | refrences the owner of the set  |
+| public        | boolean       | is the set public               |
+| description   | text          | describes the set               |
+| flashcard_id  | integer ARRAY | points to flashcard tables      |
 
 ## Endpoints
 
