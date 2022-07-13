@@ -53,24 +53,24 @@ Describe your app's data model using diagrams or tables
 | id            | integer       | primary key                     |
 | user_id       | integer       | refrences the owner of the set  |
 | flashcard_id  | integer ARRAY | points to flashcard tables      |
-| public        | boolean       | is the set public               |
+| is_public     | boolean       | is the set public               |
 | description   | text          | describes the set               |
+| group         | text          | what group the set is in        |
 
 ## Endpoints
 
 List the API endpoints you will need to implement.
 
-### user table
-
 | CRUD        | HTTP Verb     | description                       | User stories |
 | ---         | ----          | ---                               | ---          |
 | Create      | POST          | create user                       |              |
 | Read        | GET           | get user                          |              |
-| Read        | GET           | get all flashcards user ows       |              |
+| Read        | GET           | get all flashcard sets for a user |              |
+| Read        | GET           | Search through public sets        | 7,           |
 | Delete      | DELETE        | delete flashcard set              |              |
 | Update      | PUT           | update flashcard set              |              |
-| Create      | POST          | create flashcard set              |              |
-|             |               |                                   |              |
+| Create      | POST          | create flashcard set              | 1,2          |
+
 
 
 
