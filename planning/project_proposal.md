@@ -1,14 +1,13 @@
-# Project Proposal
+# **Project Proposal**
 
 Pod Members: **Osaru Elaiho, Daniel Jonas, & Hayley Simmons**
 
 
-## Problem Statement
+## **Problem Statement**
 According to an article from [The Washington Post](https://www.washingtonpost.com/lifestyle/2019/04/15/many-students-dont-know-how-study-heres-how-parents-can-help/), there are many students in high school & college who don't know how to study; they either lack good study habits/skills, or rely on strategies that don't work.
 
 
-## Description
-
+## **Description**
 The purpose of this project is to provide a simple learning tool that is completely free to use, while helping to provide one of the best methods of studying: information retrieval.
 
 Information retrieval, as described by [Cornell University](https://lsc.cornell.edu/how-to-study/studying-for-and-taking-exams/effective-study-strategies/), means to actively recall information from memory: an effective practice for long-term learning. It's considered one of the best methods of study because it helps identify what someone does or doesn't understand.
@@ -16,9 +15,8 @@ Information retrieval, as described by [Cornell University](https://lsc.cornell.
 This project will help users practice their information retrieval by making the user take their time in recalling the information before flipping a card over. Users will be able to sign up, create a profile, & create sets of digital flashcards based on any subject they choose. The flashcards can be then reviewed based on the mode the user chooses. The website will be searchable by anyone for other sets of flashcards or other user profiles.
 
 
-## Expected Features List
-
-##### **Terms Used:**
+## **Expected Features List**
+##### Terms Used:
 - **Inverse View (Included in all modes by default)**
     - *term --> **flip** --> definition*
     - *definition --> **flip** --> term*
@@ -45,7 +43,7 @@ This project will help users practice their information retrieval by making the 
     - only viewable by creating a shareable link (anyone can see)
 __________________________________________________________________________
 
-##### **Key features:**
+##### Key features:
 - User can create an account/make a profile.
 - **Registered** users can:
     - Create sets
@@ -57,7 +55,7 @@ __________________________________________________________________________
 - **Unregistered** users will only be able to view the landing page.
  __________________________________________________________________________
  
-##### **Stretch features:**
+##### Stretch features:
 - Website is responsive.
 - **Unregistered** users can:
     - Search the site for **public** sets & other users
@@ -78,8 +76,7 @@ __________________________________________________________________________
         - *Quiz*
 
 
-## Related Work
-
+## **Related Work**
 [Quizlet](https://quizlet.com/latest) is the main inspiration for this project. We want ours to stand out by: 
   - Offering every single feature for free (Quizlet wants users to pay for the card-customizing & highlighting features);
   - Making the user set a time limit between flipping the cards (Quizlet doesn't have this feature);
@@ -89,6 +86,6 @@ __________________________________________________________________________
       - & simplifying the user profile interface to only include profile info in one tab, & the user's folders/flashcards in                           another (if the user made their stuff public; otherwise that section will be empty). 
 
 
-## Open Questions
+## **Open Questions**
 
 We will need to research many things, such as: how to save the user's progress if they need to finish their flashcards later, & how to create folders for organizing. For the stretch features, we will need to research how to implement timers, the customizing options, & basically everything else there.
