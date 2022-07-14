@@ -97,6 +97,7 @@ Our "Instructors":
 | Delete      | DELETE        | delete flashcard set              |              |
 | Update      | PUT           | update flashcard set              |              |
 | Create      | POST          | create flashcard set              | 1,2          |
+| Create      | POST          | submit an issue                   |              |
 
 
 ***Don't forget to set up your Issues, Milestones, and Project Board!***
