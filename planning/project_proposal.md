@@ -60,6 +60,7 @@ This project will help users practice their information retrieval by making the 
     - Do the above tasks
     - Create sets
         - *Can hide the cards while in the creation process (adds the convenience of less scrolling when there's many cards)*
+        - *Can import notes from other platforms (ex. Google Docs) into a set
     - Highlight items in their finished sets
     - Customize their sets:
         - *Card colors*
