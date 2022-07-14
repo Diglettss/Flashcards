@@ -92,6 +92,7 @@ Our "Instructors":
 | ---         | ----          | ---                               | ---          |
 | Create      | POST          | create user                       |              |
 | Read        | GET           | get user                          |              |
+| Update      | PUT           | update user                       |              |
 | Read        | GET           | get all flashcard sets for a user |              |
 | Read        | GET           | Search through public sets        | 7,           |
 | Delete      | DELETE        | delete flashcard set              |              |
