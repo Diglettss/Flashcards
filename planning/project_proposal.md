@@ -41,8 +41,6 @@ This project will help users practice their information retrieval by making the 
 - **Private**
     - when a set/folder is NOT searchable or viewable by others
     - only viewable by creating a shareable link (anyone can see)
-__________________________________________________________________________
-
 ##### Key features:
 - User can create an account/make a profile.
 - **Registered** users can:
@@ -53,8 +51,6 @@ __________________________________________________________________________
         - *Can create folders for organization*
         - *Can view their sets (in the default mode) after saving them*
 - **Unregistered** users will only be able to view the landing page.
- __________________________________________________________________________
- 
 ##### Stretch features:
 - Website is responsive.
 - **Unregistered** users can:
