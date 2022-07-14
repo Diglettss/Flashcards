@@ -17,18 +17,18 @@ This project will help users practice their information retrieval by making the 
 
 ## **About the Users**
 ##### Roles
-- **"The Student"** 
+The "Student" 
   * *a user who plans to use the app as an additional study tool to reinforce learning*
 
-- **"The Instructor"**
-  * *a user who wants to help students by creating material on the app to supplement lesson topics covered in a classroom setting*
+The "Instructor"
+  * *a user who wants to help their students by creating material on the app to supplement lesson topics covered in a classroom setting*
 
 ##### Personas
-- **The Students:**
+Our "Students":
   * ***Steve*** is a high school junior who lives in a small town north of Dallas, Texas. Since Steve was a kid, he has had great aspirations of attending an Ivy league school & studying Computer Science. However, his dreams largely depend on his performance on his upcoming SAT. Despite his lacking in preparation, Steve is determined to succeed & prepare himself for the future.
   * ***Bailey*** is a rising junior at the University of Texas, majoring in Biology. She hopes to take her MCAT this upcoming fall. Though Bailey has always had trouble focusing on her work due to her ADHD, she recently sought out a psychiatrist who officially diagonosed her; Bailey is forturnately now on medication in order to help her focus. As her MCAT approches, she's ready to take advantage of her newfound attentiveness & study well.
 
-- **The Instructors:**
+Our "Instructors":
   * ***Francine*** is a new middle school teacher in Santa Fe, New Mexico. Recent studies showed that [New Mexico ranks last in the U.S. in K-12 education](https://www.usnews.com/news/best-states/rankings/education/prek-12). Francine is quite familiar with technology, & is also aware of the positive effects it can have on young minds as they're developing. She aims to introduce her students to better methods of studying.
   * ***Stan*** has been an elementary teacher for over 25 years in Jersey City, New Jersey. He has been praised for his innovative teaching style & approach to students who struggle with different concepts. Stan is not that tech savvy, often opting for a more hands-on approach to the reinforcement of topics. However, after attending a teaching conference, he has had a change of heart & wants to employ the use of beginner-friendly technology that will ensure a smooth transition into online learning.
 
