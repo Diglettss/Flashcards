@@ -4,8 +4,7 @@ Pod Members: **Osaru Elaiho, Daniel Jones, Hayley Simmons**
 
 
 ## **Problem Statement**
-
-According to an article from [The Washington Post](https://www.washingtonpost.com/lifestyle/2019/04/15/many-students-dont-know-how-study-heres-how-parents-can-help/), there are many students in high school & college who don't know how to study; they either lack good study habits/skills, or rely on strategies that don't work.
+One of the biggest difficulties for education in the past two years has been the COIVD-19 pandemic which saw many teaching institutions struggle to navigate balancing campus safety and choosing whether or not to hold in-person classes. As a direct result of this disruption, many studies have shown a significant drop in lecture material retention and overall assessment scores for students. Essentially, the pandemic has created a large influx of students who are unable to perform at their highest level largely due to their inability to properly study and retain information [(source)](https://www.washingtonpost.com/lifestyle/2019/04/15/many-students-dont-know-how-study-heres-how-parents-can-help/).
 
 ## **Description**
 The purpose of this project is to provide a simple learning tool that is completely free to use, while helping to provide one of the best methods of studying: information retrieval.
