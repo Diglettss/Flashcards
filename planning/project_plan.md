@@ -32,18 +32,21 @@ Our "Instructors":
   * ***Francine*** is a new middle school teacher in Santa Fe, New Mexico. Recent studies showed that [New Mexico ranks last in the U.S. in K-12 education](https://www.usnews.com/news/best-states/rankings/education/prek-12). Francine is quite familiar with technology, & is also aware of the positive effects it can have on young minds as they're developing. She aims to introduce her students to better methods of studying.
   * ***Stan*** has been an elementary teacher for over 25 years in Jersey City, New Jersey. He has been praised for his innovative teaching style & approach to students who struggle with different concepts. Stan is not that tech savvy, often opting for a more hands-on approach to the reinforcement of topics. However, after attending a teaching conference, he has had a change of heart & wants to employ the use of beginner-friendly technology that will ensure a smooth transition into online learning.
 
-##### Stories
-   1. As a ***student***, I want to create flashcards so that I can share them & study with my classmates.
-   2. As a ***student***, I want to be able to create as many flashcard sets as I need so that I can study all of my coursework.
-   3. As a ***student***, I want to try to match the correct term to their definition as a fun study approach.
-   4. As a ***student***, I want to be quizzed on my knowledge in order to figure out what I do & don't understand.
-   5. As a ***student***, I want to be able to import data from my notes into my flashcard sets so that I have more time to study.
-   6. As a ***student***, I want to customize my flashcard sets so I can add a personal touch to my notes.
-   7. As a ***student***, I want to search for other flashcards so that I won't have to create my own if one already exists.
-   8. As a ***student***, I want to highlight items in my cards so as to point out key items. 
-   9. As an ***instructor***, I want to organize my flashcards into folders so that my cards are organized by class.
-   10. As an ***instructor***, I want to be able to make my flashcard sets publicly available so that my students can search for them & study on their own.
 
+##### Stories
+   1. As a ***user***, I want to be able to create my own profile that will allow me to create and save my own flashcard sets.
+   2. As a ***user***, I want to be able to login to a profile that only I have access to.
+   3. As a ***user***, I want to be able to update any information on my profile that pertains to me.
+   4. As a ***student***, I want to create flashcards so that I can share them & study with my classmates.
+   5. As a ***student***, I want to be able to create as many flashcard sets as I need so that I can study all of my coursework.
+   10. As a ***student***, I want to search for other flashcards so that I won't have to create my own if one already exists.
+   11. As a ***user***, I want to be able to update my sets and delete the as I see fit to do so.
+   12. As a ***user***, I want to be able to submit an issue if I run into any trouble on the app.
+   13. As a ***student***, I want to highlight items in my cards so as to point out key items. 
+   14. As an ***instructor***, I want to organize my flashcards into folders so that my cards are organized by class.
+   15. As an ***instructor***, I want to be able to make my flashcard sets publicly available so that my students can search for them & study on their own.
+   16. As a ***student***, I want to customize my flashcard sets so I can add a personal touch to my notes.
+   17. As a ***student***, I want a study mode that lets me match the correct term to its corresponding definition under a time limit.
 
 ## **Pages/Screens**
 ***reminder: need to insert at least 3 wireframes***
@@ -58,7 +61,7 @@ Our "Instructors":
 
 
 ## **Data Models**
-##### User table
+#### User table
 | column name     | type          | description                       |
 | ---             | ----          | ---                               |
 | id              | integer       | primary key                       |
@@ -69,14 +72,14 @@ Our "Instructors":
 | email           | Text          | email address                     |
 | password        | Text          | hashed password                   |
 
-##### Flashcard table
+#### Flashcard table
 | column name | type    | description             |
 | ---         | ----    | ---                     |
 | id          | integer | primary key             |
 | term        | Text    | text on the flashcard   |
 | definition  | Text    | definition for the term |
 
-##### Set table
+#### Set table
 | column name   | type          | description                     |
 | ---           | ----          | ---                             |
 | id            | integer       | primary key                     |
@@ -90,15 +93,15 @@ Our "Instructors":
 ## **API Endpoints**
 | CRUD        | HTTP Verb     | description                       | User stories |
 | ---         | ----          | ---                               | ---          |
-| Create      | POST          | create user                       |              |
-| Read        | GET           | get user                          |              |
-| Update      | PUT           | update user                       |              |
-| Read        | GET           | get all flashcard sets for a user |              |
-| Read        | GET           | Search through public sets        | 7,           |
-| Delete      | DELETE        | delete flashcard set              |              |
-| Update      | PUT           | update flashcard set              |              |
-| Create      | POST          | create flashcard set              | 1,2          |
-| Create      | POST          | submit an issue                   |              |
+| Create      | POST          | create user                       | 1            |
+| Read        | GET           | get user                          | 2            |
+| Update      | PUT           | update user                       | 3            |
+| Read        | GET           | get all flashcard sets for a user | 5            |
+| Read        | GET           | Search through public sets        | 6            |
+| Delete      | DELETE        | delete flashcard set              | 7            |
+| Update      | PUT           | update flashcard set              | 7            |
+| Create      | POST          | create flashcard set              | 5            |
+| Create      | POST          | submit an issue                   | 8            |
 
 
 ***Don't forget to set up your Issues, Milestones, and Project Board!***
