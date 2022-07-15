@@ -87,7 +87,7 @@ Our "Instructors":
 | flashcard_id  | integer ARRAY | points to flashcard tables      |
 | is_public     | boolean       | is the set public               |
 | description   | text          | describes the set               |
-| category      | text          | what group the set is in        |
+| folder        | text          | which folder the set belongs to |
 
 
 ## **API Endpoints**
