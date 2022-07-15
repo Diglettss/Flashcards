@@ -71,13 +71,6 @@ Our "Instructors":
 | email           | Text          | email address                     |
 | password        | Text          | hashed password                   |
 
-#### Flashcard table
-| column name | type    | description             |
-| ---         | ----    | ---                     |
-| id          | integer | primary key             |
-| term        | Text    | text on the flashcard   |
-| definition  | Text    | definition for the term |
-
 #### Set table
 | column name   | type          | description                     |
 | ---           | ----          | ---                             |
@@ -89,6 +82,15 @@ Our "Instructors":
 | folder        | text          | which folder the set belongs to |
 
 
+#### Flashcard table
+| column name | type    | description             |
+| ---         | ----    | ---                     |
+| id          | integer | primary key             |
+| term        | Text    | text on the flashcard   |
+| definition  | Text    | definition for the term |
+
+
+
 ## **API Endpoints**
 | CRUD        | HTTP Verb     | description                       | User stories |
 | ---         | ----          | ---                               | ---          |
@@ -96,10 +98,10 @@ Our "Instructors":
 | Read        | GET           | get user                          | 2            |
 | Update      | PUT           | update user                       | 3            |
 | Read        | GET           | get all flashcard sets for a user | 5            |
-| Read        | GET           | Search through public sets        | 6            |
-| Delete      | DELETE        | delete flashcard set              | 7            |
-| Update      | PUT           | update flashcard set              | 7            |
-| Create      | POST          | create flashcard set              | 5            |
+| Read        | GET           | get sets                          | 6            |
+| Delete      | DELETE        | delete a set              | 7            |
+| Update      | PUT           | update a set              | 7            |
+| Create      | POST          | create a set              | 5            |
 | Create      | POST          | submit an issue                   | 8            |
 
 
