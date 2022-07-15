@@ -64,7 +64,7 @@ Our "Instructors":
 | column name     | type          | description                       |
 | ---             | ----          | ---                               |
 | id              | integer       | primary key                       |
-| set_id          | integer ARRAY | sets the user owns/has access to  |
+| set_id          | integer ARRAY | sets the user has access to       |
 | user_name       | Text          | username                          |
 | first_name      | Text          | first name                        |
 | last_name       | Text          | last name                         |
