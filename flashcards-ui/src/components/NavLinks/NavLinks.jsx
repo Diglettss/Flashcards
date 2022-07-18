@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+import "./NavLinks.css";
 
-export default function NavLinks() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+export default function NavLinks({isLoggedIn}) {
 
     return (
-        <div className="nav-links">
+        <span className="nav-links">
             <Link to="/">HOME</Link>
             <Link to={isLoggedIn ? "/mysets" : "/login"}>
                 {isLoggedIn ? "MY SETS" : "LOGIN"}
@@ -13,6 +14,6 @@ export default function NavLinks() {
             <Link to={isLoggedIn ? "create" : "/register"}>
                 {isLoggedIn ? "CREATE" : "REGISTER"}
             </Link>
-        </div>
+        </span>
     );
 }
