@@ -5,6 +5,16 @@ import LoginPage from "../LoginPage/LoginPage";
 import RegistrationPage from "../RegistrationPage/RegistrationPage";
 import NotFound from "../NotFound/NotFound.jsx";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { AuthContextProvider, useAuthContext } from "../contexts/Auth";
+
+export default function AppContainer() {
+  return (
+      <AuthContextProvider>
+                  <App />
+      </AuthContextProvider>
+  );
+}
+
 
 function App() {
     return (
@@ -21,5 +31,3 @@ function App() {
         </div>
     );
 }
-
-export default App;

@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import NavLinks from "../NavLinks/NavLinks.jsx";
 import "./Navbar.css";
+import { useAuthContext } from "../contexts/Auth";
+
 
 function Navbar() {
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const {isLoggedIn, setIsLoggedIn} = useAuthContext();
 
     console.log(`The profile image should have "className={isLoggedIn ? "" : "hidden"}`)
     return (
