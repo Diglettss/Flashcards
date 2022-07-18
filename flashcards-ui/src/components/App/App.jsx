@@ -6,8 +6,8 @@ import RegistrationPage from "../RegistrationPage/RegistrationPage";
 import MySetPage from "../MySetPage/MySetPage.jsx";
 import CreateSetPage from "../CreateSetPage/CreateSetPage.jsx";
 import NotFound from "../NotFound/NotFound.jsx";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { AuthContextProvider, useAuthContext } from "../contexts/Auth";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthContextProvider } from "../contexts/Auth";
 
 export default function AppContainer() {
   return (

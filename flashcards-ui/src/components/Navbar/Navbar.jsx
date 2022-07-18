@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import NavLinks from "../NavLinks/NavLinks.jsx";
+import Searchbar from "../Searchbar/Searchbar.jsx";
 import "./Navbar.css";
 import { useAuthContext } from "../contexts/Auth";
 
@@ -15,27 +16,22 @@ function Navbar() {
                 <Link to="/" className="logo">
                     <img
                         src="https://via.placeholder.com/150"
-                        width="60px"
                         alt="website logo"
+                        className="logo"
                     />
                 </Link>
                 <NavLinks isLoggedIn={isLoggedIn} />
             </span>
             <span className="search-and-profile">
-                <input
-                    type="search"
-                    id="site-search"
-                    name="q"
-                    placeholder="Seach..."
-                    style={{ width: "440px" }}
-                />
+                <Searchbar/>
                 <span>
                     <img
                         src="https://via.placeholder.com/150"
                         width="50px"
                         alt="profile image"
                         // className={isLoggedIn ? "" : "hidden"}
-                        onClick={()=>{
+                    className="profile-image"
+                    onClick={()=>{
                             setIsLoggedIn(!isLoggedIn)
                         }}
                     />

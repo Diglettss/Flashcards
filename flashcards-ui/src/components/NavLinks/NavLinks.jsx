@@ -4,9 +4,8 @@ import "./NavLinks.css";
 
 
 export default function NavLinks({isLoggedIn}) {
-
     return (
-        <span className="nav-links">
+        <>
             <Link to="/">HOME</Link>
             <Link to={isLoggedIn ? "/mysets" : "/login"}>
                 {isLoggedIn ? "MY SETS" : "LOGIN"}
@@ -14,6 +13,6 @@ export default function NavLinks({isLoggedIn}) {
             <Link to={isLoggedIn ? "create" : "/register"}>
                 {isLoggedIn ? "CREATE" : "REGISTER"}
             </Link>
-        </span>
+        </>
     );
 }
