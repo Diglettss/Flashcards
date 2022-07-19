@@ -11,6 +11,8 @@ import NotFound from '../NotFound/NotFound'
 import apiClient from "../../../services/apiClient"
 import { AuthContextProvider, useAuthContext } from "../../../contexts/auth"
 import { useEffect,  } from 'react'
+import Flashcard from "../Flashcard/Flashcard.jsx";
+
 
 export default function AppContainer () {
   return (
@@ -47,9 +49,12 @@ function App() {
                     <Route path="/register" element={<RegistrationPage />} />
                     <Route path="/mysets" element={<MySetPage />} />
                     <Route path="/create" element={<CreateSetPage />} />
+                    <Route path="/flashcard" element={<Flashcard />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </BrowserRouter>
     </div>
   )
 }
+
+export default App

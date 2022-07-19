@@ -1,0 +1,11 @@
+.Flashcard{
+    background-color: green;
+}
+
+.Flashcard .title, .Flashcard .description {
+    text-align: center;
+}
+
+.Flashcard .start-button{
+    margin: auto;
+}
