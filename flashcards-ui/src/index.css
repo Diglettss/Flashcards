@@ -1,3 +1,6 @@
 .hidden{
     display: none!important;
 }
+div{
+    display: inline-block;
+}

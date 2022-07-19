@@ -26,9 +26,10 @@
     width: 100%;
 }
 
-label {
+.login-form label {
     margin-bottom: 5px;
     color: black;
+    background-color: green;
 }
 
 div {
