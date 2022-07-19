@@ -1,8 +1,8 @@
 import React from "react";
 import FlashcardRow from "../FlashcardRow/FlashcardRow.jsx";
-import "./Flashcard.css"
+import "./FlashcardOverviewPage.css"
 
-export default function Flashcard() {
+export default function FlashcardOverviewPage() {
     const info = {
         title: "Title of set",
         description: "description of set",
@@ -33,7 +33,7 @@ export default function Flashcard() {
         ],
     };
     return (
-        <div className="Flashcard">
+        <div className="FlashcardOverviewPage">
             <h1 className="title">{info.title}</h1>
             <h3 className="description">{info.description}</h3>
             <div className="flashcards">

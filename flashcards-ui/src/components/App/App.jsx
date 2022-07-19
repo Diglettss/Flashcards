@@ -11,7 +11,7 @@ import NotFound from '../NotFound/NotFound'
 import apiClient from "../../../services/apiClient"
 import { AuthContextProvider, useAuthContext } from "../../../contexts/auth"
 import { useEffect,  } from 'react'
-import Flashcard from "../Flashcard/Flashcard.jsx";
+import FlashcardOverviewPage from "../FlashcardOverviewPage/FlashcardOverviewPage.jsx";
 
 
 export default function AppContainer () {
@@ -49,7 +49,8 @@ function App() {
                     <Route path="/register" element={<RegistrationPage />} />
                     <Route path="/mysets" element={<MySetPage />} />
                     <Route path="/create" element={<CreateSetPage />} />
-                    <Route path="/flashcard" element={<Flashcard />} />
+                    <Route path="/flashcard" element={<FlashcardOverviewPage />} />
+                    <Route path="/flashcard/:setId" element={<NotFound />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </BrowserRouter>

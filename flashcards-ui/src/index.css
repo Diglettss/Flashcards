@@ -2,6 +2,10 @@
     display: none!important;
 }
 
+.App{
+    padding-top: 64px;
+}
+
 /* div{
     display: inline-block;
 } */
