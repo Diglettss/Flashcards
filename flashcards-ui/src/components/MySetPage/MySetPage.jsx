@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useAuthContext } from "../contexts/Auth";
+import { useAuthContext } from "../../../contexts/auth";
 import { useNavigate } from "react-router-dom";
 
 export default function MySetPage() {

@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { useAuthContext } from "../contexts/Auth";
+import React, { useEffect } from "react";
+import { useAuthContext } from "../../../contexts/auth";
 import { useNavigate } from "react-router-dom";
 
 export default function CreateSetPage() {
@@ -11,7 +11,5 @@ export default function CreateSetPage() {
             navigate("/login");
         }
     }, [isLoggedIn]);
-  return (
-    <div>CreateSetPage</div>
-  )
+    return <div>CreateSetPage</div>;
 }
