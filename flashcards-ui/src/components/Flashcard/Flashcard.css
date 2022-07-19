@@ -1,11 +1,36 @@
-.Flashcard{
-    background-color: green;
+.Flashcard {
+  background-color: green;
+}
+.Flashcard .title,
+.Flashcard .description {
+  text-align: center;
+}
+.Flashcard .start-button {
+  margin: auto;
+}
+.Flashcard .flashcards {
+  display: flex;
+  flex-direction: column;
+}
+.Flashcard .flashcards .flashcard-row {
+  display: flex;
+  margin-top: 100px;
+}
+.Flashcard .flashcards .card {
+  margin: 0 auto;
+  width: 30%;
+  text-align: center;
+  display: inline-block;
+  padding: 20px 50px;
+}
+.Flashcard .flashcards .term-card {
+  background-color: aqua;
+}
+.Flashcard .flashcards .term-card .term {
+  margin: auto 0;
+}
+.Flashcard .flashcards .definition-card {
+  background-color: aquamarine;
 }
 
-.Flashcard .title, .Flashcard .description {
-    text-align: center;
-}
-
-.Flashcard .start-button{
-    margin: auto;
-}
+/*# sourceMappingURL=Flashcard.css.map */
