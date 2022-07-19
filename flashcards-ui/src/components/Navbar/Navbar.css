@@ -1,0 +1,32 @@
+.Navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 64px;
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+}
+
+.Navbar .links,.Navbar .search-and-profile{
+    height: 64px;
+    align-items: center;
+}
+
+.Navbar a{
+    margin-right: 100px;
+    text-decoration:none;
+}
+
+.Navbar .logo{
+    width: 60px;
+}
+
+.Navbar .profile-image{
+    width: 50px;
+}
+
+.Navbar .searchbar{
+    width: 440px;
+}
