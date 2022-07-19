@@ -3,13 +3,10 @@ import { Link } from "react-router-dom";
 import NavLinks from "../NavLinks/NavLinks.jsx";
 import Searchbar from "../Searchbar/Searchbar.jsx";
 import "./Navbar.css";
-import { useAuthContext } from "../contexts/Auth";
-
+import { useAuthContext } from "../../../contexts/auth";
 
 function Navbar() {
-    const {isLoggedIn, setIsLoggedIn} = useAuthContext();
-
-    console.log(`The profile image should have "className={isLoggedIn ? "" : "hidden"}`)
+    const { isLoggedIn } = useAuthContext();
     return (
         <nav className="Navbar">
             <span className="links">
@@ -23,17 +20,17 @@ function Navbar() {
                 <NavLinks isLoggedIn={isLoggedIn} />
             </span>
             <span className="search-and-profile">
-                <Searchbar/>
+                <Searchbar />
                 <span>
                     <img
                         src="https://via.placeholder.com/150"
                         width="50px"
                         alt="profile image"
-                        // className={isLoggedIn ? "" : "hidden"}
-                    className="profile-image"
-                    onClick={()=>{
-                            setIsLoggedIn(!isLoggedIn)
-                        }}
+                        className={
+                            isLoggedIn
+                                ? "profile-image"
+                                : "profile-image hidden"
+                        }
                     />
                 </span>
             </span>
