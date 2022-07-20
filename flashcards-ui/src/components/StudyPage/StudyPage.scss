@@ -1,9 +1,32 @@
 .study-page {
+    padding-top: 20px;
+    margin-top: 40px;
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #b5b5b5;
+    .title {
+        margin-left: 500px;
+        margin-right: 500px;
+        margin-bottom: 60px;
+        margin-top: 0px;
+
+        background-color: black;
+        border-radius: 20px;
+        color: white;
+        text-align: center;
+        padding: 10px;
+    }
+    .description {
+        color: white;
+    }
+
     .flashcard {
+        margin: auto;
         background-color: bisque;
         display: inline-block;
         width: 800px;
-        height: 400px;
+        height: 480px;
 
         display: flex;
         justify-content: space-around;
@@ -15,32 +38,17 @@
             max-width: 400px;
         }
     }
+    .prev-next-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
     button {
         display: inline-block;
-    }
-    .settings-modal{
-        .overlay{
-            z-index: 1;
-            position: fixed;
-            background-color: rgba(255, 235, 205, .3);
-            width: 100vw;
-            height: 100vh;
-            top: 0;
-            cursor: pointer;
-        }
-        .settings-box{
-            border-radius: 4px;
-            z-index: 2;
-            position: fixed;
-            left: 50vw;
-            top: 50vh;
-            transform: translate(-50%, -50%);
-            background-color: black;
-            width: 200px;
-            height: 200px;
-            color: white;
-        }
+        margin: 10px;
     }
 
-
+    .settings {
+        color: blue;
+    }
 }

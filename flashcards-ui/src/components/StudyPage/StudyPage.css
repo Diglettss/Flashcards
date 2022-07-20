@@ -1,8 +1,31 @@
+.study-page {
+  padding-top: 20px;
+  margin-top: 40px;
+  width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #b5b5b5;
+}
+.study-page .title {
+  margin-left: 500px;
+  margin-right: 500px;
+  margin-bottom: 60px;
+  margin-top: 0px;
+  background-color: black;
+  border-radius: 20px;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+.study-page .description {
+  color: white;
+}
 .study-page .flashcard {
+  margin: auto;
   background-color: bisque;
   display: inline-block;
   width: 800px;
-  height: 400px;
+  height: 480px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -12,29 +35,17 @@
   margin: auto;
   max-width: 400px;
 }
+.study-page .prev-next-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 .study-page button {
   display: inline-block;
+  margin: 10px;
 }
-.study-page .settings-modal .overlay {
-  z-index: 1;
-  position: fixed;
-  background-color: rgba(255, 235, 205, 0.3);
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  cursor: pointer;
-}
-.study-page .settings-modal .settings-box {
-  border-radius: 4px;
-  z-index: 2;
-  position: fixed;
-  left: 50vw;
-  top: 50vh;
-  transform: translate(-50%, -50%);
-  background-color: black;
-  width: 200px;
-  height: 200px;
-  color: white;
+.study-page .settings {
+  color: blue;
 }
 
 /*# sourceMappingURL=StudyPage.css.map */

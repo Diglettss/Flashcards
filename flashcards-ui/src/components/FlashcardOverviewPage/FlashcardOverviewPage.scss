@@ -11,7 +11,7 @@
     .flashcards {
         display: flex;
         flex-direction: column;
-        .flashcard-row{
+        .flashcard-row {
             display: flex;
             margin-top: 100px;
         }
@@ -26,7 +26,7 @@
 
         .term-card {
             background-color: aqua;
-            .term{
+            .term {
                 margin: auto 0;
             }
         }
