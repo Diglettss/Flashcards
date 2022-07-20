@@ -6,7 +6,8 @@
   height: 100vh;
   min-height: calc(100vh - 100px);
   overflow-x: hidden;
-  background: green;
+  background: white;
+  background-color: green;
 }
 .landing-page .hero {
   height: 500px;
@@ -15,16 +16,9 @@
   position: relative;
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  background-color: red;
 }
-.landing-page .hero img {
-  position: absolute;
-}
-.landing-page .hero h1, .landing-page .hero p {
-  color: white;
-  position: relative;
-  z-index: 10;
-}
-.landing-page .hero p {
-  font-size: 24px;
+.landing-page .hero div {
+  display: block;
 }/*# sourceMappingURL=Landing.css.map */
