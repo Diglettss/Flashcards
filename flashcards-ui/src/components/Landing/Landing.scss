@@ -11,47 +11,51 @@
     background-color: green;
 
     .hero {
-        // // height: 500px;
-        // height: 100vh;
-        // align-items: center;
-        // justify-content: center;
-        // position: relative;
-        // width: 100vw;
-        // // width: 100%;
-        // display: flex;
-        // flex-direction: row;
-        // background-color: red;
+        // height: 500px;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        width: 100vw;
+        // width: 100%;
+        display: flex;
+        flex-direction: row;
+        background-color: white;
+        *{margin: auto;}
 
-        
-            color: white;
-            width: 90%;
-            bottom: 256px;
-            display: flex;
-            padding: 32px;
-            position: relative;
-            flex-flow: row nowrap;
-            text-align: center;
-            align-items: center;
-            justify-content: space-between;
-        
-    
-        .hero-img{
+        .hero-img {
             height: 600px;
             width: 600px;
             margin: 16px;
+            align-content: center;
+
+            .study-img {
+                width: 100%;
+            }
         }
 
-        .message{
-            margin-top: 20px;
-            font-weight: 800;
-            text-shadow: none;
-            letter-spacing: 0.05em;
+        .message {
+            h1 {
+                font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+                margin-top: 20px;
+                font-weight: 800;
+                text-shadow: none;
+                letter-spacing: 0.05em;
+            }
+
+            p {
+                font-size: 2.125rem;
+                font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+                font-weight: 400;
+                line-height: 1.235;
+                letter-spacing: 0.00735em;
+            }
         }
 
         div {
             display: block;
         }
-        
+
     }
 
 
