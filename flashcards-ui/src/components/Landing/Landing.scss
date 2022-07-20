@@ -11,40 +11,42 @@
     background-color: green;
 
     .hero {
-        height: 500px;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        background-color: red;
-    
-    // color: white;
-    // width: 90%;
-    // bottom: 256px;
-    // display: flex;
-    // padding: 32px;
-    // position: relative;
-    // flex-flow: row nowrap;
-    // text-align: center;
-    // align-items: center;
-    // justify-content: space-between;
+        // // height: 500px;
+        // height: 100vh;
+        // align-items: center;
+        // justify-content: center;
+        // position: relative;
+        // width: 100vw;
+        // // width: 100%;
+        // display: flex;
+        // flex-direction: row;
+        // background-color: red;
 
         
-        // img {
-        //     position: absolute;
-        // }
+            color: white;
+            width: 90%;
+            bottom: 256px;
+            display: flex;
+            padding: 32px;
+            position: relative;
+            flex-flow: row nowrap;
+            text-align: center;
+            align-items: center;
+            justify-content: space-between;
+        
+    
+        .hero-img{
+            height: 600px;
+            width: 600px;
+            margin: 16px;
+        }
 
-        // h1, p {
-        //     color: white;
-        // position: relative;
-        // z-index: 10;
-        // }
-
-        // p {
-        //     font-size: 24px;
-        // }
+        .message{
+            margin-top: 20px;
+            font-weight: 800;
+            text-shadow: none;
+            letter-spacing: 0.05em;
+        }
 
         div {
             display: block;
