@@ -4,6 +4,9 @@ import apiClient from "../services/apiClient";
 const AuthContext = createContext(null);
 
 export const AuthContextProvider = ({ children }) => {
+    //TODO put this in its own context file
+    const [showSettingsModal, setShowSettingsModal] = useState(false);
+
     const [user, setUser] = useState({});
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -117,6 +120,8 @@ export const AuthContextProvider = ({ children }) => {
         logoutUser,
         isLoggedIn,
         setIsLoggedIn,
+        showSettingsModal,
+        setShowSettingsModal,
     };
 
     return (

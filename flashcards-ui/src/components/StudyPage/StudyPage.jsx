@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./StudyPage.css";
 import ModalSettings from "../ModalSettings/ModalSettings.jsx";
+import { useAuthContext } from "../../../contexts/auth";
 
 function Flashcard({ flashcard, onClick }) {
     return (
@@ -23,6 +24,7 @@ function Flashcard({ flashcard, onClick }) {
 }
 
 export default function StudyPage() {
+    const {showSettingsModal, setShowSettingsModal} = useAuthContext()
     //fake data
     const [info, setInfo] = useState({
         title: "Title of set",
@@ -80,11 +82,10 @@ export default function StudyPage() {
     //Which flashcard the user is on
     const [flashcardNumber, setFlashcardNumber] = useState(0);
 
-    const [showSettingsModal, setShowSettingsModal] = useState(false);
 
     return (
         <div className="study-page">
-            <ModalSettings showSettingsModal={showSettingsModal} />
+            <ModalSettings />
             {info.title}
             <br />
             {info.description}
