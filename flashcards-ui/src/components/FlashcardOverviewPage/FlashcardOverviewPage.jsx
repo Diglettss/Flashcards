@@ -1,15 +1,16 @@
-import React from "react";
+import React, {useRef, useState} from "react";
 import FlashcardRow from "../FlashcardRow/FlashcardRow.jsx";
 import "./FlashcardOverviewPage.css"
 
 export default function FlashcardOverviewPage() {
-    const info = {
+    const [info, setInfo] = useState({
         title: "Title of set",
         description: "description of set",
         flashcard: [
             {
                 term: "term1",
                 definition: "Lorem ipsum dolor.",
+                selected: true
             },
             {
                 term: "term2",
@@ -31,18 +32,24 @@ export default function FlashcardOverviewPage() {
                     "Lorem ipsum  vel aliquam ante. Aenean quis suscipit neque, id maximus risus. Donec a enim vel turpis tincidunt porta a vitae nulla. Nulla in urna efficitur, fringilla felis eu, euismod ligula. Suspendisse bibendum orci vitae finibus lobortis. Phasellus sed sollicitudin tellus. Ut imperdiet mauris quis tempus venenatis. Ut vel rutrum velit.",
             },
         ],
-    };
+    })
+    info.flashcard.forEach(e=>{e.selected=true})
     return (
         <div className="FlashcardOverviewPage">
             <h1 className="title">{info.title}</h1>
             <h3 className="description">{info.description}</h3>
             <div className="flashcards">
-                {info.flashcard.map((e) => (
-                    <FlashcardRow term={e.term} definition={e.definition} />
+                {info.flashcard.map((e, idx) => (
+                    <FlashcardRow key={idx} term={e.term} definition={e.definition} selected={e.selected} setInfo={setInfo} info={info} />
                 ))}
             </div>
             <div className="start-button">
-            <button >START STUDYING</button>
+            <button onClick={()=>{
+
+                const t = info.flashcard.filter(e=>(e.selected==true))
+                console.log(t)
+
+            }}>START STUDYING</button>
             </div>
         </div>
     );
