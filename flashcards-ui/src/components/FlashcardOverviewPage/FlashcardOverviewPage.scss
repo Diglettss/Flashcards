@@ -5,8 +5,13 @@
         text-align: center;
     }
     .start-button {
-        margin: auto;
+        color: blueviolet;
+        button{
+            margin: 40px auto;
+        }
+        padding-bottom: 40px;
     }
+
 
     .flashcards {
         display: flex;

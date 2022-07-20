@@ -39,6 +39,12 @@ export const AuthContextProvider = ({ children }) => {
     info.flashcard.forEach((e) => {
         e.selected = true; //Math.random() < 0.5;
     });
+
+        //This is to be changeable by the user
+        const [defaultFlashcardState, setDefaultFlashcardState] = useState(true);
+
+
+
     const [user, setUser] = useState({});
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -155,7 +161,7 @@ export const AuthContextProvider = ({ children }) => {
         showSettingsModal,
         setShowSettingsModal,
         info,
-        setInfo,
+        setInfo,defaultFlashcardState, setDefaultFlashcardState
     };
 
     return (

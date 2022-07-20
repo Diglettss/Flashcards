@@ -6,10 +6,10 @@ import { useAuthContext } from "../../../contexts/auth.jsx";
 
 export default function FlashcardOverviewPage() {
     const navigate = useNavigate();
-    useAuthContext;
     const { info, setInfo } = useAuthContext();
     return (
         <div className="FlashcardOverviewPage">
+            <button className="update-button">Update</button>
             <h1 className="title">{info.title}</h1>
             <h3 className="description">{info.description}</h3>
             <div className="flashcards">
@@ -28,12 +28,18 @@ export default function FlashcardOverviewPage() {
             <div className="start-button">
                 <button
                     onClick={() => {
-                        const t = info.flashcard.filter((e) => {
+                        const filteredFlashcard = info.flashcard.filter((e) => {
                             if (e.selected == true) {
                                 return e;
                             }
                         });
-                        navigate("/flashcard/1");
+                        if (filteredFlashcard.length < 2) {
+                            console.error(
+                                "Please have at least two flashcards"
+                            );
+                        } else {
+                            navigate("/flashcard/1");
+                        }
                     }}
                 >
                     START STUDYING

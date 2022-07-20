@@ -20,5 +20,9 @@
   height: 200px;
   color: white;
 }
+.settings-modal .settings-box .submit-button-setting {
+  background-color: white;
+  color: black;
+}
 
 /*# sourceMappingURL=ModalSettings.css.map */

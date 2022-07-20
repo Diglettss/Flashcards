@@ -6,7 +6,11 @@
   text-align: center;
 }
 .FlashcardOverviewPage .start-button {
-  margin: auto;
+  color: blueviolet;
+  padding-bottom: 40px;
+}
+.FlashcardOverviewPage .start-button button {
+  margin: 40px auto;
 }
 .FlashcardOverviewPage .flashcards {
   display: flex;

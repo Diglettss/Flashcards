@@ -23,12 +23,29 @@ function Flashcard({ flashcard, onClick }) {
 }
 
 export default function StudyPage() {
-    const { showSettingsModal, setShowSettingsModal } = useAuthContext();
+    const { showSettingsModal, setShowSettingsModal, defaultFlashcardState, setDefaultFlashcardState } = useAuthContext();
     //fake data
     const { info, setInfo } = useAuthContext();
+    let filteredFlashcard=info.flashcard.filter(e=>{
+        if(e.selected ==true){
+            return e
+        }
+        console.log(e)
+    })
+    // console.log("filteredFlashcard")
+    // console.log(filteredFlashcard)
+
+    if (filteredFlashcard.length < 2) {
+        console.error(
+            `I don't know how but less than two flashcards are inside of filteredFlashcard, all flashcards will be used`
+        );
+        filteredFlashcard=info.flashcard
+    }
 
     const handleButtonClick = () => {
         //This will allow for the settings button to configure what the default state of flashcards is i.e. if term or definition is up by default
+        console.log("defaultFlashcardState")
+        console.log(defaultFlashcardState)
         if (defaultFlashcardState === true) {
             setFlashcardOnTerm(true);
         } else if (defaultFlashcardState === false) {
@@ -41,8 +58,6 @@ export default function StudyPage() {
         }
     };
 
-    //This is to be changeable by the user
-    const [defaultFlashcardState, setDefaultFlashcardState] = useState(true);
 
     //Which side of the flashcard is facing up, if null pick randomly
     const [flashcardOnTerm, setFlashcardOnTerm] = useState(
@@ -69,7 +84,7 @@ export default function StudyPage() {
             </div>
             <Flashcard
                 flashcard={
-                    info.flashcard[flashcardNumber][
+                    filteredFlashcard[flashcardNumber][
                         flashcardOnTerm ? "term" : "definition"
                     ]
                 }
@@ -84,7 +99,7 @@ export default function StudyPage() {
                         if (flashcardNumber > 0) {
                             setFlashcardNumber(flashcardNumber - 1);
                         } else {
-                            setFlashcardNumber(info.flashcard.length - 1);
+                            setFlashcardNumber(filteredFlashcard.length - 1);
                         }
                         handleButtonClick();
                     }}
@@ -93,8 +108,7 @@ export default function StudyPage() {
                 </button>
                 <button
                     onClick={() => {
-                        console.log(info.flashcard.length);
-                        if (flashcardNumber == info.flashcard.length - 1) {
+                        if (flashcardNumber == filteredFlashcard.length - 1) {
                             setFlashcardNumber(0);
                         } else {
                             setFlashcardNumber(flashcardNumber + 1);
