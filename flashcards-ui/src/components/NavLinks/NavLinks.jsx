@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import "./NavLinks.css";
 
-
-export default function NavLinks({isLoggedIn}) {
+export default function NavLinks({ isLoggedIn }) {
     return (
         <>
             <Link to="/">HOME</Link>

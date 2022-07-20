@@ -23,10 +23,17 @@
     width: 60px;
 }
 
+.Navbar .search-and-profile{
+    max-width: 33%;
+}
+
 .Navbar .profile-image{
     width: 50px;
+    max-width: 13%;
 }
 
 .Navbar .searchbar{
     width: 440px;
+    max-width: 100%;
+
 }
