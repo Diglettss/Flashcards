@@ -1,0 +1,19 @@
+.study-page .flashcard {
+  background-color: bisque;
+  display: inline-block;
+  width: 800px;
+  height: 400px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: space-around;
+}
+.study-page .flashcard div {
+  margin: auto;
+  max-width: 400px;
+}
+.study-page button {
+  display: inline-block;
+}
+
+/*# sourceMappingURL=StudyPage.css.map */
