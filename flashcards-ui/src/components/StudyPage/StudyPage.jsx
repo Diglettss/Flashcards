@@ -1,13 +1,23 @@
 import React, { useState } from "react";
 import "./StudyPage.css";
+import ModalSettings from "../ModalSettings/ModalSettings.jsx";
 
 function Flashcard({ flashcard, onClick }) {
-    console.log(flashcard);
     return (
-        <div className="flashcard" onClick={onClick}>
-            <div>
-            {flashcard}
-            </div>
+        <div
+            className="flashcard"
+            onClick={onClick}
+
+            //This is for accessibility
+            //The user can use tab to navigate to this element and pressing enter mimics a click
+            tabIndex={0}
+            onKeyDown={(e) => {
+                if (e.code == "Enter") {
+                    onClick();
+                }
+            }}
+        >
+            <div>{flashcard}</div>
         </div>
     );
 }
@@ -70,11 +80,23 @@ export default function StudyPage() {
     //Which flashcard the user is on
     const [flashcardNumber, setFlashcardNumber] = useState(0);
 
+    const [showSettingsModal, setShowSettingsModal] = useState(false);
+
     return (
         <div className="study-page">
+            <ModalSettings showSettingsModal={showSettingsModal} />
             {info.title}
             <br />
             {info.description}
+            <br />
+            <button
+                onClick={() => {
+                    setShowSettingsModal(!showSettingsModal);
+                    console.log(showSettingsModal);
+                }}
+            >
+                Settings
+            </button>
             <br />
             <Flashcard
                 flashcard={
