@@ -1,5 +1,7 @@
 .FlashcardOverviewPage {
-    background-color: green;
+    background-color: #725AC1;
+    position: relative;
+    top: -10px;
     .title,
     .description {
         text-align: center;
@@ -11,8 +13,7 @@
         }
         padding-bottom: 40px;
     }
-
-
+    
     .flashcards {
         display: flex;
         flex-direction: column;
@@ -30,13 +31,13 @@
         }
 
         .term-card {
-            background-color: aqua;
+            background-color: #00ffff;
             .term {
                 margin: auto 0;
             }
         }
         .definition-card {
-            background-color: aquamarine;
+            background-color: #7fffd4;
         }
     }
 }

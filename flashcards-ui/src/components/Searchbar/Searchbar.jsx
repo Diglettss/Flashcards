@@ -9,7 +9,7 @@ export default function Searchbar() {
             id="site-search"
             name="q"
             placeholder="Seach..."
-            className="searchbar"
+            className="searchbar search-and-profile"
             onChange={(e) => {
                 setSearchbarValue(e);
             }}

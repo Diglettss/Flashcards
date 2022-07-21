@@ -1,5 +1,7 @@
 .FlashcardOverviewPage {
-  background-color: green;
+  background-color: #725AC1;
+  position: relative;
+  top: -10px;
 }
 .FlashcardOverviewPage .title,
 .FlashcardOverviewPage .description {
@@ -28,13 +30,13 @@
   padding: 20px 50px;
 }
 .FlashcardOverviewPage .flashcards .term-card {
-  background-color: aqua;
+  background-color: #00ffff;
 }
 .FlashcardOverviewPage .flashcards .term-card .term {
   margin: auto 0;
 }
 .FlashcardOverviewPage .flashcards .definition-card {
-  background-color: aquamarine;
+  background-color: #7fffd4;
 }
 
 /*# sourceMappingURL=FlashcardOverviewPage.css.map */
