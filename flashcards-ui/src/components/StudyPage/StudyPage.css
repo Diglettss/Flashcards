@@ -8,8 +8,9 @@
 }
 
 .study-page .title {
-  margin-left: 500px;
-  margin-right: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
   margin-bottom: 60px;
   margin-top: 0px;
   background-color: black;
@@ -28,6 +29,8 @@
   background-color: bisque;
   display: inline-block;
   width: 800px;
+  max-width: 90vw;
+  aspect-ratio: 3/5;
   height: 480px;
   display: -webkit-box;
   display: -ms-flexbox;
