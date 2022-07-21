@@ -5,7 +5,6 @@ import { LoremIpsum } from "lorem-ipsum";
 const FlashcardContext = createContext(null);
 
 export const FlashcardContextProvider = ({ children }) => {
-    //TODO put this in its own context file
     const [showSettingsModal, setShowSettingsModal] = useState(false);
     const [info, setInfo] = useState({
         title: "Title of set",

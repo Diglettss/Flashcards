@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useFlashcardContext } from "../../../contexts/flashcard.jsx";
 
 function FlashcardOverviewPageContent({ info, setInfo }) {
-    const navigate = useFlashcardContext();
+    const navigate = useNavigate();
     return (
         <div className="FlashcardOverviewPage">
             <button className="update-button">Update</button>
@@ -28,7 +28,8 @@ function FlashcardOverviewPageContent({ info, setInfo }) {
             </div>
             <div className="start-button">
                 <button
-                    onClick={() => {
+                    id={info.setId}
+                    onClick={e => {
                         const filteredFlashcard = info.flashcard.filter((e) => {
                             if (e.selected == true) {
                                 return e;
@@ -39,7 +40,7 @@ function FlashcardOverviewPageContent({ info, setInfo }) {
                                 "Please have at least two flashcards"
                             );
                         } else {
-                            navigate("/flashcard/studymode/1");
+                            navigate(`/mysets/studymode/${e.target.id}`);
                         }
                     }}
                 >
@@ -56,7 +57,7 @@ export default function FlashcardOverviewPage() {
     const { setId } = useParams();
     const [info, setInfo] = useState(mySets[setId]);
 
-    //if a set doesn't have the setId send the user to the shadow realm
+    //if the params setId doesn't exist in mySets send the user to the shadow realm
     useEffect(() => {
         if (setId < 0 || setId >= mySets.length) {
             console.log("sending you to the shadow realm");

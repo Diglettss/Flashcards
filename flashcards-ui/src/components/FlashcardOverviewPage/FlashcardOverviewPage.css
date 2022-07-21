@@ -1,10 +1,16 @@
 .FlashcardOverviewPage {
-  background-color: green;
+  background-color: #8914ff;
+  position: relative;
+  top: 64px;
 }
 
 .FlashcardOverviewPage .title,
 .FlashcardOverviewPage .description {
   text-align: center;
+}
+
+.FlashcardOverviewPage .update-button {
+  z-index: 9;
 }
 
 .FlashcardOverviewPage .start-button {

@@ -39,7 +39,6 @@ div {
 }
 
 .submit-login, button {
-    margin-top: 10px;
     background: transparent;
     border: 1px solid transparent;
     display: flex;

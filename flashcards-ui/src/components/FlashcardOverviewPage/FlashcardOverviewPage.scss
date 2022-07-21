@@ -1,17 +1,22 @@
 .FlashcardOverviewPage {
-    background-color: green;
+    background-color:rgb(137, 20, 255);
+    position: relative;
+    top: 64px;
     .title,
     .description {
         text-align: center;
     }
+    .update-button{
+        z-index: 9;
+        // height: 50vh;
+    }
     .start-button {
         color: blueviolet;
-        button{
+        button {
             margin: 40px auto;
         }
         padding-bottom: 40px;
     }
-
 
     .flashcards {
         display: flex;

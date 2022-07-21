@@ -60,7 +60,7 @@ function App() {
                         element={<FlashcardOverviewPage />}
                     />
                     <Route
-                        path="/flashcard/studymode/:setId"
+                        path="/mySets/studymode/:setId"
                         element={<StudyPage />}
                     />
                     <Route path="*" element={<NotFound />} />
