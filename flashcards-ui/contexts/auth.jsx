@@ -58,7 +58,6 @@ export const AuthContextProvider = ({ children }) => {
 
     //This is to be changeable by the user
     const [defaultFlashcardState, setDefaultFlashcardState] = useState(true);
-
     const [user, setUser] = useState({});
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
