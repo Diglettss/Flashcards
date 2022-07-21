@@ -4,6 +4,47 @@ import apiClient from "../services/apiClient";
 const AuthContext = createContext(null);
 
 export const AuthContextProvider = ({ children }) => {
+    //TODO put this in its own context file
+    const [showSettingsModal, setShowSettingsModal] = useState(false);
+    const [info, setInfo] = useState({
+        title: "Title of set",
+        description: "description of set",
+        flashcard: [
+            {
+                term: "term1",
+                definition: "Lorem ipsum dolor.",
+                selected: true,
+            },
+            {
+                term: "term2",
+                definition: "Lorem ipsum consectetur sint dolores consequatur!",
+            },
+            {
+                term: "term3",
+                definition:
+                    "Lorem ipsum condimentum leo in libero pulvinar pellentesque ac eget risus. Aenean rutrum molestie elit, vitae ultricies est facilisis sed. Fusce vitae massa tortor!",
+            },
+            {
+                term: "term4",
+                definition:
+                    "Lorem ipsum odio et sodales. Curabitur malesuada luctus dolor ac eleifend. Aliquam erat volutpat. Vivamus tincidunt eu odio at efficitur. Pellentesque lacinia eleifend..",
+            },
+            {
+                term: "term5",
+                definition:
+                    "Lorem ipsum  vel aliquam ante. Aenean quis suscipit neque, id maximus risus. Donec a enim vel turpis tincidunt porta a vitae nulla. Nulla in urna efficitur, fringilla felis eu, euismod ligula. Suspendisse bibendum orci vitae finibus lobortis. Phasellus sed sollicitudin tellus. Ut imperdiet mauris quis tempus venenatis. Ut vel rutrum velit.",
+            },
+        ],
+    });
+    info.flashcard.forEach((e) => {
+        e.selected = true; //Math.random() < 0.5;
+    });
+
+        //This is to be changeable by the user
+        const [defaultFlashcardState, setDefaultFlashcardState] = useState(true);
+
+
+
     const [user, setUser] = useState({});
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -117,6 +158,10 @@ export const AuthContextProvider = ({ children }) => {
         logoutUser,
         isLoggedIn,
         setIsLoggedIn,
+        showSettingsModal,
+        setShowSettingsModal,
+        info,
+        setInfo,defaultFlashcardState, setDefaultFlashcardState
     };
 
     return (

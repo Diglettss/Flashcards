@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "start":  "concurrently --kill-others \"npm run dev1\" \"npm run dev2\"",
-    "dev":  "concurrently --kill-others \"npm run dev1\" \"npm run dev2\"",
+    "dev":  "npm start",
     "dev1": "vite",
     "dev2": "sass --watch src/",
     "build": "vite build",
     "preview": "vite preview"
+
   },
   "dependencies": {
     "axios": "^0.27.2",
