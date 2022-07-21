@@ -1,5 +1,6 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import apiClient from "../services/apiClient";
+import { LoremIpsum } from "lorem-ipsum";
 
 const AuthContext = createContext(null);
 
@@ -39,11 +40,24 @@ export const AuthContextProvider = ({ children }) => {
     info.flashcard.forEach((e) => {
         e.selected = true; //Math.random() < 0.5;
     });
+    const lorem = new LoremIpsum({
+        sentencesPerParagraph: {
+            max: 8,
+            min: 4,
+        },
+        wordsPerSentence: {
+            max: 16,
+            min: 4,
+        },
+    });
+    lorem.generateWords(71);
 
-        //This is to be changeable by the user
-        const [defaultFlashcardState, setDefaultFlashcardState] = useState(true);
+    const [mysets, setMysets] = useState([
+        {...info},{...info},{...info},{...info},{...info},{...info},{...info},{...info},{...info}
+    ]);
 
-
+    //This is to be changeable by the user
+    const [defaultFlashcardState, setDefaultFlashcardState] = useState(true);
 
     const [user, setUser] = useState({});
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -161,7 +175,10 @@ export const AuthContextProvider = ({ children }) => {
         showSettingsModal,
         setShowSettingsModal,
         info,
-        setInfo,defaultFlashcardState, setDefaultFlashcardState
+        setInfo,
+        defaultFlashcardState,
+        setDefaultFlashcardState,
+        mysets
     };
 
     return (

@@ -1,15 +1,20 @@
 import React, { useEffect } from "react";
+import { LoremIpsum } from "lorem-ipsum";
+
 import { useAuthContext } from "../../../contexts/auth";
 import { useNavigate } from "react-router-dom";
 
 export default function MySetPage() {
-    const { isLoggedIn } = useAuthContext();
-    const navigate = useNavigate();
+    const { mysets } = useAuthContext();
+    console.log(mysets)
+    // const navigate = useNavigate();
 
-    useEffect(() => {
-        if (!isLoggedIn) {
-            navigate("/login");
-        }
-    }, [isLoggedIn]);
+    // useEffect(() => {
+    //     if (!isLoggedIn) {
+    //         navigate("/login");
+    //     }
+    // }, [isLoggedIn]);
+
+
     return <div>MySetPage</div>;
 }
