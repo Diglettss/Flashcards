@@ -1,0 +1,55 @@
+.FlashcardOverviewPage {
+  background-color: green;
+}
+
+.FlashcardOverviewPage .title,
+.FlashcardOverviewPage .description {
+  text-align: center;
+}
+
+.FlashcardOverviewPage .start-button {
+  color: blueviolet;
+  padding-bottom: 40px;
+}
+
+.FlashcardOverviewPage .start-button button {
+  margin: 40px auto;
+}
+
+.FlashcardOverviewPage .flashcards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.FlashcardOverviewPage .flashcards .flashcard-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 100px;
+}
+
+.FlashcardOverviewPage .flashcards .card {
+  margin: 0 auto;
+  width: 30%;
+  text-align: center;
+  display: inline-block;
+  padding: 20px 50px;
+}
+
+.FlashcardOverviewPage .flashcards .term-card {
+  background-color: aqua;
+}
+
+.FlashcardOverviewPage .flashcards .term-card .term {
+  margin: auto 0;
+}
+
+.FlashcardOverviewPage .flashcards .definition-card {
+  background-color: aquamarine;
+}
+/*# sourceMappingURL=FlashcardOverviewPage.css.map */
