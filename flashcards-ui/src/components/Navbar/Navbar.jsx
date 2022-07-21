@@ -9,19 +9,19 @@ function Navbar() {
     const { isLoggedIn } = useAuthContext();
     return (
         <nav className="Navbar">
-            <span className="links">
+            <div className="links">
                 <Link to="/" className="logo">
                     <img
-                        src="https://via.placeholder.com/150"
+                        src="https://via.placeholder.com/64"
                         alt="website logo"
                         className="logo"
                     />
                 </Link>
                 <NavLinks isLoggedIn={isLoggedIn} />
-            </span>
-            <span className="search-and-profile">
-                <Searchbar />
-                <span>
+            </div>
+            {/* <div className="search-and-profile"> */}
+            <Searchbar />
+            {/* <div>
                     <img
                         src="https://via.placeholder.com/150"
                         width="50px"
@@ -32,8 +32,8 @@ function Navbar() {
                                 : "profile-image hidden"
                         }
                     />
-                </span>
-            </span>
+                </div>
+            </div> */}
         </nav>
     );
 }
