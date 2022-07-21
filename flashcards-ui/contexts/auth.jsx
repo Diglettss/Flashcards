@@ -61,21 +61,21 @@ export const AuthContextProvider = ({ children }) => {
     const randomSet = (numOfSet) => {
         let set = [];
 
-        const create= ()=>{
+        const create = () => {
             let flashcardss = [];
-            let randomInt = Math.floor(Math.random() * 13) + 5;    
-        for (let k = 0; k < randomInt; k++) {
-            flashcardss.push({
-                term: `term${k}`,
-                id: k,
-                definition: lorem.generateWords(
-                    Math.floor(Math.random() * 22) + 10
-                ),
-                selected: true,
-            });
-        }
-        return flashcardss
-        }
+            let randomInt = Math.floor(Math.random() * 13) + 5;
+            for (let k = 0; k < randomInt; k++) {
+                flashcardss.push({
+                    term: `term${k}`,
+                    id: k,
+                    definition: lorem.generateWords(
+                        Math.floor(Math.random() * 22) + 10
+                    ),
+                    selected: true,
+                });
+            }
+            return flashcardss;
+        };
 
         for (let i = 0; i < numOfSet; i++) {
             set.push({
@@ -90,8 +90,8 @@ export const AuthContextProvider = ({ children }) => {
         return set;
     };
 
-    const [mysets, setMysets] = useState(randomSet(3));
-    console.log(mysets)
+    const [mySets, setmySets] = useState(randomSet(3));
+    console.log(mySets);
 
     //This is to be changeable by the user
     const [defaultFlashcardState, setDefaultFlashcardState] = useState(true);
@@ -214,7 +214,7 @@ export const AuthContextProvider = ({ children }) => {
         setInfo,
         defaultFlashcardState,
         setDefaultFlashcardState,
-        mysets,
+        mySets,
     };
 
     return (

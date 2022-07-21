@@ -23,15 +23,20 @@ function Flashcard({ flashcard, onClick }) {
 }
 
 export default function StudyPage() {
-    const { showSettingsModal, setShowSettingsModal, defaultFlashcardState, setDefaultFlashcardState } = useAuthContext();
+    const {
+        showSettingsModal,
+        setShowSettingsModal,
+        defaultFlashcardState,
+        setDefaultFlashcardState,
+    } = useAuthContext();
     //fake data
-    const { info, setInfo } = useAuthContext();
-    let filteredFlashcard=info.flashcard.filter(e=>{
-        if(e.selected ==true){
-            return e
+    const { info, setInfo, mySets } = useAuthContext();
+    let filteredFlashcard = info.flashcard.filter((e) => {
+        if (e.selected == true) {
+            return e;
         }
-        console.log(e)
-    })
+        console.log(e);
+    });
     // console.log("filteredFlashcard")
     // console.log(filteredFlashcard)
 
@@ -39,13 +44,13 @@ export default function StudyPage() {
         console.error(
             `I don't know how but less than two flashcards are inside of filteredFlashcard, all flashcards will be used`
         );
-        filteredFlashcard=info.flashcard
+        filteredFlashcard = info.flashcard;
     }
 
     const handleButtonClick = () => {
         //This will allow for the settings button to configure what the default state of flashcards is i.e. if term or definition is up by default
-        console.log("defaultFlashcardState")
-        console.log(defaultFlashcardState)
+        console.log("defaultFlashcardState");
+        console.log(defaultFlashcardState);
         if (defaultFlashcardState === true) {
             setFlashcardOnTerm(true);
         } else if (defaultFlashcardState === false) {
@@ -57,7 +62,6 @@ export default function StudyPage() {
             setFlashcardOnTerm(randomBoolean);
         }
     };
-
 
     //Which side of the flashcard is facing up, if null pick randomly
     const [flashcardOnTerm, setFlashcardOnTerm] = useState(

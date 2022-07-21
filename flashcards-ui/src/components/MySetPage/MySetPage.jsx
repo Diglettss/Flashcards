@@ -6,14 +6,14 @@ import "./MySetPage.css";
 import { useNavigate } from "react-router-dom";
 
 function Set({ info }) {
-    console.log(info.setId);
-    console.log("info");
+    const navigate = useNavigate();
     return (
         <div
             className="set-container"
             id={info.setId}
             onClick={(e) => {
-                console.log(e.target);
+                console.log(e.target.id);
+                // navigate(`/flashcard/`);
             }}
         >
             <div className="name-and-term-num">
@@ -32,7 +32,7 @@ function Set({ info }) {
 }
 
 export default function MySetPage() {
-    const { mysets } = useAuthContext();
+    const { mySets } = useAuthContext();
 
     // const navigate = useNavigate();
 
@@ -62,7 +62,7 @@ export default function MySetPage() {
                 <option>Z-A</option>
                 <option># of flashcards</option>
             </select>
-            {mysets.map((e, idx) => (
+            {mySets.map((e, idx) => (
                 <Set info={e} key={idx} />
             ))}
         </div>

@@ -1,17 +1,18 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import FlashcardRow from "../FlashcardRow/FlashcardRow.jsx";
 import "./FlashcardOverviewPage.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAuthContext } from "../../../contexts/auth.jsx";
 
-export default function FlashcardOverviewPage() {
+function FlashcardOverviewPageContent({ info, setInfo }) {
     const navigate = useNavigate();
-    const { info, setInfo } = useAuthContext();
     return (
         <div className="FlashcardOverviewPage">
             <button className="update-button">Update</button>
-            <h1 className="title">{info.title}</h1>
-            <h3 className="description">{info.description}</h3>
+            <h1 className="title">{info.title || "You should be here"}</h1>
+            <h3 className="description">
+                {info.description || "You should be here"}
+            </h3>
             <div className="flashcards">
                 {info.flashcard.map((e, idx) => (
                     <FlashcardRow
@@ -38,7 +39,7 @@ export default function FlashcardOverviewPage() {
                                 "Please have at least two flashcards"
                             );
                         } else {
-                            navigate("/flashcard/1");
+                            navigate("/flashcard/studymode/1");
                         }
                     }}
                 >
@@ -48,4 +49,28 @@ export default function FlashcardOverviewPage() {
         </div>
     );
 }
-	
+
+export default function FlashcardOverviewPage() {
+    const navigate = useNavigate();
+    const { mySets } = useAuthContext();
+    const { setId } = useParams();
+    const [info, setInfo] = useState(mySets[setId]);
+
+    //if a set doesn't have the setId send the user to the shadow realm
+    useEffect(() => {
+        if (setId < 0 || setId >= mySets.length) {
+            console.log("sending you to the shadow realm");
+            navigate("/notfound");
+        }
+    });
+
+    return (
+        <>
+            {info ? (
+                <FlashcardOverviewPageContent info={info} setInfo={setInfo} />
+            ) : (
+                <div />
+            )}
+        </>
+    );
+}
