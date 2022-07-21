@@ -7,23 +7,23 @@ class User{
     static async makePublicUser(user){
         return{
             id: user.id,
-            email: user.email,
+            set_id: user.set_id,
             username: user.username,
             firstName: user.first_name,
             lastName: user.last_name,
-            createdAt: user.created_at,
-            
+            email: user.email,
+            createdAt: user.created_at
         }
     }
 
     static async login(credentials){
-        const requiredFields = ["email", "password"]
+        const requiredFields = ["username", "password"]
         requiredFields.forEach(field => {
             if (!credentials.hasOwnProperty(field)){
                 throw new BadRequestError(`Missing ${field} in request body.`)
             }
         })
-        const user = await User.fetchUserByEmail(credentials.email)
+        const user = await User.fetchUserByUsername(credentials.username)
         if(user){
             const isValid = await bcrypt.compare(credentials.password, user.password)
             if(isValid){
@@ -63,7 +63,7 @@ class User{
                 last_name
                 )
             VALUES ($1, $2, $3, $4, $5)
-            RETURNING id, username, first_name, last_name, email, created_at, updated_at
+            RETURNING id, username, first_name, last_name, email, created_at
             `,
             [lowercasedEmail, credentials.username, hashedPassword, credentials.firstName, credentials.lastName]
         )
@@ -71,6 +71,18 @@ class User{
         const user = result.rows[0]
         return User.makePublicUser(user)
         
+    }
+
+    static async fetchUserByUsername(username) {
+        if(!username){
+            throw new BadRequestError("No username provided")
+        }
+        const query = `SELECT * FROM users WHERE username = $1`
+        const result = await db.query( query, [username])
+    
+        const user = result.rows[0]
+    
+        return user
     }
 
     static async fetchUserByEmail(email) {

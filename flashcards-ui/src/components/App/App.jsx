@@ -4,7 +4,7 @@ import MySetPage from "../MySetPage/MySetPage.jsx";
 import CreateSetPage from "../CreateSetPage/CreateSetPage.jsx";
 import * as React from "react"
 import './App.css'
-import { BrowserRouter, Routes, Route} from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom"
 import LoginPage from '../LoginPage/LoginPage'
 import RegistrationPage from '../RegistrationPage/RegistrationPage'
 import NotFound from '../NotFound/NotFound'

@@ -1,6 +1,6 @@
 CREATE TABLE users( 
     id          SERIAL PRIMARY KEY,
-    set_id      INTEGER[] NOT NULL,
+    -- set_id      INTEGER[] NOT NULL,
     username    TEXT NOT NULL,
     password    TEXT NOT NULL,
     first_name  TEXT NOT NULL,
