@@ -10,6 +10,10 @@ import RegistrationPage from "../RegistrationPage/RegistrationPage";
 import NotFound from "../NotFound/NotFound";
 import apiClient from "../../../services/apiClient";
 import { AuthContextProvider, useAuthContext } from "../../../contexts/auth";
+import {
+    FlashcardContextProvider,
+    useFlashcardContext,
+} from "../../../contexts/flashcard.jsx";
 import { useEffect } from "react";
 import FlashcardOverviewPage from "../FlashcardOverviewPage/FlashcardOverviewPage.jsx";
 import StudyPage from "../StudyPage/StudyPage.jsx";
@@ -17,7 +21,9 @@ import StudyPage from "../StudyPage/StudyPage.jsx";
 export default function AppContainer() {
     return (
         <AuthContextProvider>
-            <App />
+            <FlashcardContextProvider>
+                <App />
+            </FlashcardContextProvider>
         </AuthContextProvider>
     );
 }
@@ -50,10 +56,13 @@ function App() {
                     <Route path="/mySets" element={<MySetPage />} />
                     <Route path="/create" element={<CreateSetPage />} />
                     <Route
-                        path="/flashcard/:setId"
+                        path="/mySets/:setId"
                         element={<FlashcardOverviewPage />}
                     />
-                    <Route path="/flashcard/studymode/:setId" element={<StudyPage />} />
+                    <Route
+                        path="/flashcard/studymode/:setId"
+                        element={<StudyPage />}
+                    />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </BrowserRouter>

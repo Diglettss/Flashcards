@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { useAuthContext } from "../../../contexts/auth";
 import { useNavigate } from "react-router-dom";
+import { useFlashcardContext } from "../../../contexts/flashcard";
 
 export default function CreateSetPage() {
-    const { isLoggedIn } = useAuthContext();
+    const { isLoggedIn } = useFlashcardContext();
     const navigate = useNavigate();
 
     useEffect(() => {

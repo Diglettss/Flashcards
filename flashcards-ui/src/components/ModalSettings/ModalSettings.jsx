@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useAuthContext } from "../../../contexts/auth";
+import { useFlashcardContext } from "../../../contexts/flashcard";
 import "./ModalSettings.css";
 
 export default function ModalSettings({}) {
@@ -9,7 +9,7 @@ export default function ModalSettings({}) {
         setShowSettingsModal,
         setDefaultFlashcardState,
         defaultFlashcardState
-    } = useAuthContext();
+    } = useFlashcardContext();
     return (
         <div
             className={`settings-modal container ${

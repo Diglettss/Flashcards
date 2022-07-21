@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./StudyPage.css";
 import ModalSettings from "../ModalSettings/ModalSettings.jsx";
-import { useAuthContext } from "../../../contexts/auth";
+import { useFlashcardContext } from "../../../contexts/flashcard";
 
 function Flashcard({ flashcard, onClick }) {
     return (
@@ -28,9 +28,9 @@ export default function StudyPage() {
         setShowSettingsModal,
         defaultFlashcardState,
         setDefaultFlashcardState,
-    } = useAuthContext();
+    } = useFlashcardContext();
     //fake data
-    const { info, setInfo, mySets } = useAuthContext();
+    const { info, setInfo, mySets } = useFlashcardContext();
     let filteredFlashcard = info.flashcard.filter((e) => {
         if (e.selected == true) {
             return e;

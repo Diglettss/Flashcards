@@ -2,10 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import FlashcardRow from "../FlashcardRow/FlashcardRow.jsx";
 import "./FlashcardOverviewPage.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { useAuthContext } from "../../../contexts/auth.jsx";
+import { useFlashcardContext } from "../../../contexts/flashcard.jsx";
 
 function FlashcardOverviewPageContent({ info, setInfo }) {
-    const navigate = useNavigate();
+    const navigate = useFlashcardContext();
     return (
         <div className="FlashcardOverviewPage">
             <button className="update-button">Update</button>
@@ -52,7 +52,7 @@ function FlashcardOverviewPageContent({ info, setInfo }) {
 
 export default function FlashcardOverviewPage() {
     const navigate = useNavigate();
-    const { mySets } = useAuthContext();
+    const { mySets } = useFlashcardContext();
     const { setId } = useParams();
     const [info, setInfo] = useState(mySets[setId]);
 

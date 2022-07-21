@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import { LoremIpsum } from "lorem-ipsum";
-
-import { useAuthContext } from "../../../contexts/auth";
 import "./MySetPage.css";
 import { useNavigate } from "react-router-dom";
+import { useFlashcardContext } from "../../../contexts/flashcard";
 
 function Set({ info }) {
     const navigate = useNavigate();
@@ -12,8 +11,7 @@ function Set({ info }) {
             className="set-container"
             id={info.setId}
             onClick={(e) => {
-                console.log(e.target.id);
-                // navigate(`/flashcard/`);
+                navigate(`/mysets/${e.target.id}`);
             }}
         >
             <div className="name-and-term-num">
@@ -32,7 +30,7 @@ function Set({ info }) {
 }
 
 export default function MySetPage() {
-    const { mySets } = useAuthContext();
+    const { mySets } = useFlashcardContext();
 
     // const navigate = useNavigate();
 
