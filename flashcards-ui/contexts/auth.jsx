@@ -80,20 +80,17 @@ export const AuthContextProvider = ({ children }) => {
         for (let i = 0; i < numOfSet; i++) {
             set.push({
                 title: "Title of set",
-                description: "description of set",
+                description: lorem.generateWords(
+                    Math.floor(Math.random() * 22) + 10
+                ),
                 setId: i,
                 flashcard: create(),
             });
-            console.log(i);
         }
         return set;
     };
 
-    const [mysets, setMysets] = useState({
-        setId: 1,
-        flashcards: randomSet(3),
-    });
-    console.log("mysets")
+    const [mysets, setMysets] = useState(randomSet(3));
     console.log(mysets)
 
     //This is to be changeable by the user

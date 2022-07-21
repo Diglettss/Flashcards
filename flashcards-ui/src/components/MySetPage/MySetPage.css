@@ -1,4 +1,6 @@
 .my-sets-page {
+  padding: 10px;
+  margin-top: 80px;
   background-color: aliceblue;
   width: 90vw;
   margin-left: auto;
@@ -10,12 +12,29 @@
 }
 
 .my-sets-page .set-container {
-  width: 85vw;
+  width: 80vw;
+  padding: 10px;
   margin-left: auto;
   margin-right: auto;
   border-radius: 10px;
   margin-bottom: 20px;
   height: 100px;
   background-color: antiquewhite;
+}
+
+.my-sets-page .set-container div {
+  display: inline-block;
+}
+
+.my-sets-page .set-container .name-and-term-num {
+  width: 100px;
+}
+
+.my-sets-page .set-container * {
+  overflow-wrap: break-word;
+}
+
+.my-sets-page .set-container .set-name {
+  font-weight: bold;
 }
 /*# sourceMappingURL=MySetPage.css.map */
