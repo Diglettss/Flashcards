@@ -3,13 +3,14 @@ import { useAuthContext } from "../../../contexts/auth";
 import { useNavigate } from "react-router-dom";
 
 export default function CreateSetPage() {
-    const { isLoggedIn } = useAuthContext();
-    const navigate = useNavigate();
+  const { user } = useAuthContext();
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        if (!isLoggedIn) {
-            navigate("/login");
-        }
-    }, [isLoggedIn]);
-    return <div>CreateSetPage</div>;
+  useEffect(() => {
+    if (!user.email) {
+      navigate("/login");
+    }
+  }, [user]);
+  
+  return <div>CreateSetPage</div>;
 }
