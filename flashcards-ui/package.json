@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start":  "concurrently --kill-others \"npm run dev1\" \"npm run dev2\"",
+    "start":  "vite",
     "dev":  "concurrently --kill-others \"npm run dev1\" \"npm run dev2\"",
     "dev1": "vite",
     "dev2": "sass --watch src/",

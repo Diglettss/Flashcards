@@ -5,7 +5,7 @@ import { useAuthContext } from "../../../contexts/auth"
 
 
 export default function LoginForm(props) {
-  const {error, setError, isProcessing,loginUser} = useAuthContext();
+  const {error, isProcessing, loginUser} = useAuthContext();
   const navigate = useNavigate()
   const [form, setForm] = React.useState({
     username: "",
