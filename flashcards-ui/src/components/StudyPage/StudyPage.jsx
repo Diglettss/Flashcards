@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./StudyPage.css";
 import ModalSettings from "../ModalSettings/ModalSettings.jsx";
 import { useFlashcardContext } from "../../../contexts/flashcard";
+import { useNavigate, useParams } from "react-router-dom";
 
 function Flashcard({ flashcard, onClick }) {
     return (
@@ -29,22 +30,26 @@ export default function StudyPage() {
         defaultFlashcardState,
         setDefaultFlashcardState,
     } = useFlashcardContext();
+
+    const {setId} = useParams();
+    const navigate = useNavigate()
+
+
     //fake data
-    const { info, setInfo, mySets } = useFlashcardContext();
-    let filteredFlashcard = info.flashcard.filter((e) => {
+    const { mySets } = useFlashcardContext();
+    const set = mySets[setId]
+    let filteredFlashcard = set.flashcard.filter((e) => {
         if (e.selected == true) {
             return e;
         }
         console.log(e);
     });
-    // console.log("filteredFlashcard")
-    // console.log(filteredFlashcard)
 
     if (filteredFlashcard.length < 2) {
         console.error(
             `I don't know how but less than two flashcards are inside of filteredFlashcard, all flashcards will be used`
         );
-        filteredFlashcard = info.flashcard;
+        filteredFlashcard = set.flashcard;
     }
 
     const handleButtonClick = () => {
@@ -74,6 +79,7 @@ export default function StudyPage() {
     return (
         <div className="study-page">
             <ModalSettings />
+            <div className="button-container">
             <button
                 className="settings"
                 onClick={() => {
@@ -83,8 +89,12 @@ export default function StudyPage() {
             >
                 Settings
             </button>
+            <button className="back-button" id={setId} onClick={e=>{
+                navigate(`/mysets/${e.target.id}`)
+            }}>Back</button>
+            </div>
             <div className="title">
-                <h1>{info.title}</h1>
+                <h1>{set.title}</h1>
             </div>
             <Flashcard
                 flashcard={

@@ -3,27 +3,28 @@ import { LoremIpsum } from "lorem-ipsum";
 import "./MySetPage.css";
 import { useNavigate } from "react-router-dom";
 import { useFlashcardContext } from "../../../contexts/flashcard";
+import { useParams } from "react-router-dom";
 
-function Set({ info }) {
+function Set({ set }) {
     const navigate = useNavigate();
     return (
         <div
             className="set-container"
-            id={info.setId}
+            id={set.setId}
             onClick={(e) => {
-                navigate(`/mysets/${e.target.id}`);
+                    navigate(`/mysets/${e.target.id}`);
             }}
         >
             <div className="name-and-term-num">
-                <div className="set-name" id={info.setId}>
-                    {info.title}
+                <div className="set-name" id={set.setId}>
+                    {set.title}
                 </div>
-                <div className="set-length" id={info.setId}>
-                    {info.flashcard.length}
+                <div className="set-length" id={set.setId}>
+                    {set.flashcard.length}
                 </div>
             </div>
-            <span className="set-description" id={info.setId}>
-                {info.description}
+            <span className="set-description" id={set.setId}>
+                {set.description}
             </span>
         </div>
     );
@@ -61,7 +62,7 @@ export default function MySetPage() {
                 <option># of flashcards</option>
             </select>
             {mySets.map((e, idx) => (
-                <Set info={e} key={idx} />
+                <Set set={e} key={idx} />
             ))}
         </div>
     );

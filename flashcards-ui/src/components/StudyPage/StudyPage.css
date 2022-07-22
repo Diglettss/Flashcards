@@ -60,8 +60,21 @@
           justify-content: center;
 }
 
+.study-page .button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
 .study-page button {
   display: inline-block;
   margin: 10px;
+}
+
+.study-page .back-button {
+  right: 100px;
 }
 /*# sourceMappingURL=StudyPage.css.map */

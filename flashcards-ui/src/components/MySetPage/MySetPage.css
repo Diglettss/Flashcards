@@ -12,6 +12,7 @@
 }
 
 .my-sets-page .set-container {
+  cursor: pointer;
   width: 80vw;
   padding: 10px;
   margin-left: auto;
