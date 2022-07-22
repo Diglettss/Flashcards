@@ -10,7 +10,8 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background-color: black;
+  background-color: rgb(3, 6, 75);
+  border-bottom: 3.7px double rgb(218, 128, 11);
 }
 
 .Navbar .links {
@@ -24,7 +25,11 @@
 .Navbar a {
   margin-right: 100px;
   text-decoration: none;
-  color: white;
+  color: rgb(5, 213, 240);
+}
+
+.Navbar a:hover {
+  color: rgb(218, 128, 11);
 }
 
 .Navbar .text {
@@ -48,5 +53,14 @@
   margin-right: 50px;
   margin-top: auto;
   margin-bottom: auto;
+  border-radius: 20px;
+  border: 3px inset rgb(5, 213, 240);
+  color: white;
+  text-align: center;
+  background-color: rgb(7, 2, 34);
+}
+
+.Navbar .searchbar:hover {
+  border-color: rgb(218, 128, 11);
 }
 /*# sourceMappingURL=Navbar.css.map */
