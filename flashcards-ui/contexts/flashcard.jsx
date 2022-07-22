@@ -89,7 +89,7 @@ export const FlashcardContextProvider = ({ children }) => {
         return set;
     };
 
-    const [mySets, setmySets] = useState(randomSet(3));
+    const [mySets, setmySets] = useState(randomSet(Math.floor(Math.random() * 22) + 2));
     console.log(mySets);
 
     //This is to be changeable by the user

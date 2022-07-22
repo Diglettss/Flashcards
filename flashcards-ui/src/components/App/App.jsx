@@ -53,8 +53,8 @@ function App() {
                     <Route path="/" element={<Landing />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegistrationPage />} />
-                    <Route path="/mySets" element={<MySetPage />} />
                     <Route path="/create" element={<CreateSetPage />} />
+                    <Route path="/mySets" element={<MySetPage />} />
                     <Route
                         path="/mySets/:setId"
                         element={<FlashcardOverviewPage />}
