@@ -1,23 +1,22 @@
-.FlashcardOverviewPage {
+.flashcard-overview-page {
   background-color: #8914ff;
-  margin-top: 64px;
   padding-top: 50px;
 }
 
-.FlashcardOverviewPage .title {
+.flashcard-overview-page .title {
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
   width: 400px;
 }
 
-.FlashcardOverviewPage .description {
+.flashcard-overview-page .description {
   margin-left: auto;
   margin-right: auto;
   width: 50vw;
 }
 
-.FlashcardOverviewPage .title, .FlashcardOverviewPage .description {
+.flashcard-overview-page .title, .flashcard-overview-page .description {
   text-align: center;
   padding: 12px 18px;
   color: white;
@@ -25,22 +24,22 @@
   background: #000000;
 }
 
-.FlashcardOverviewPage .update-button {
+.flashcard-overview-page .update-button {
   z-index: 0;
   position: absolute;
   margin-left: 10px;
 }
 
-.FlashcardOverviewPage .start-button {
+.flashcard-overview-page .start-button {
   color: blueviolet;
   padding-bottom: 40px;
 }
 
-.FlashcardOverviewPage .start-button button {
+.flashcard-overview-page .start-button button {
   margin: 40px auto;
 }
 
-.FlashcardOverviewPage .flashcards {
+.flashcard-overview-page .flashcards {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -50,14 +49,14 @@
           flex-direction: column;
 }
 
-.FlashcardOverviewPage .flashcards .flashcard-row {
+.flashcard-overview-page .flashcards .flashcard-row {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   margin-top: 100px;
 }
 
-.FlashcardOverviewPage .flashcards .card {
+.flashcard-overview-page .flashcards .card {
   margin: 0 auto;
   width: 30%;
   text-align: center;
@@ -65,15 +64,15 @@
   padding: 20px 50px;
 }
 
-.FlashcardOverviewPage .flashcards .term-card {
+.flashcard-overview-page .flashcards .term-card {
   background-color: aqua;
 }
 
-.FlashcardOverviewPage .flashcards .term-card .term {
+.flashcard-overview-page .flashcards .term-card .term {
   margin: auto 0;
 }
 
-.FlashcardOverviewPage .flashcards .definition-card {
+.flashcard-overview-page .flashcards .definition-card {
   background-color: aquamarine;
 }
 /*# sourceMappingURL=FlashcardOverviewPage.css.map */

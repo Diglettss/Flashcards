@@ -7,7 +7,7 @@ import { useFlashcardContext } from "../../../contexts/flashcard.jsx";
 function FlashcardOverviewPageContent({ set, setSet, setId }) {
     const navigate = useNavigate();
     return (
-        <div className="FlashcardOverviewPage">
+        <div className="flashcard-overview-page">
             <button
                 className="update-button"
                 id={setId}

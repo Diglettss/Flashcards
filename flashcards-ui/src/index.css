@@ -4,5 +4,7 @@
 
 body{
     margin: 0;
-    /* top: 0; */
+}
+.App{
+    margin-top: 64px;
 }
