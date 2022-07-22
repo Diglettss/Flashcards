@@ -1,6 +1,7 @@
 import Navbar from "../Navbar/Navbar";
 import Landing from "../Landing/Landing";
 import MySetPage from "../MySetPage/MySetPage.jsx";
+import UpdateMySetPage from "../UpdateMySetPage/UpdateMySetPage.jsx";
 import CreateSetPage from "../CreateSetPage/CreateSetPage.jsx";
 import * as React from "react";
 import "./App.css";
@@ -54,7 +55,8 @@ function App() {
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegistrationPage />} />
                     <Route path="/create" element={<CreateSetPage />} />
-                    <Route path="/mySets" element={<MySetPage />} />
+                    <Route path="/mysets" element={<MySetPage />} />
+                    <Route path="/mysets/update/:setId" element={<UpdateMySetPage />} />
                     <Route
                         path="/mySets/:setId"
                         element={<FlashcardOverviewPage />}

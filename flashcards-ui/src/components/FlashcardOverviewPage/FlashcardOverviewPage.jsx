@@ -4,33 +4,41 @@ import "./FlashcardOverviewPage.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useFlashcardContext } from "../../../contexts/flashcard.jsx";
 
-function FlashcardOverviewPageContent({ info, setInfo }) {
+function FlashcardOverviewPageContent({ set, setSet, setId }) {
     const navigate = useNavigate();
     return (
         <div className="FlashcardOverviewPage">
-            <button className="update-button">Update</button>
-            <h1 className="title">{info.title || "You should be here"}</h1>
+            <button
+                className="update-button"
+                id={setId}
+                onClick={(e) => {
+                    navigate(`/mysets/update/${e.target.id}`);
+                }}
+            >
+                Update
+            </button>
+            <h1 className="title">{set.title}</h1>
             <h3 className="description">
-                {info.description || "You should be here"}
+                {set.description}
             </h3>
             <div className="flashcards">
-                {info.flashcard.map((e, idx) => (
+                {set.flashcard.map((e, idx) => (
                     <FlashcardRow
                         key={idx}
                         idx={idx}
                         term={e.term}
                         definition={e.definition}
                         selected={e.selected}
-                        setInfo={setInfo}
-                        info={info}
+                        setSet={setSet}
+                        set={set}
                     />
                 ))}
             </div>
             <div className="start-button">
                 <button
-                    id={info.setId}
-                    onClick={e => {
-                        const filteredFlashcard = info.flashcard.filter((e) => {
+                    id={set.setId}
+                    onClick={(e) => {
+                        const filteredFlashcard = set.flashcard.filter((e) => {
                             if (e.selected == true) {
                                 return e;
                             }
@@ -55,7 +63,7 @@ export default function FlashcardOverviewPage() {
     const navigate = useNavigate();
     const { mySets } = useFlashcardContext();
     const { setId } = useParams();
-    const [info, setInfo] = useState(mySets[setId]);
+    const [set, setSet] = useState(mySets[setId]);
 
     //if the params setId doesn't exist in mySets send the user to the shadow realm
     useEffect(() => {
@@ -67,8 +75,12 @@ export default function FlashcardOverviewPage() {
 
     return (
         <>
-            {info ? (
-                <FlashcardOverviewPageContent info={info} setInfo={setInfo} />
+            {set ? (
+                <FlashcardOverviewPageContent
+                    setId={setId}
+                    set={set}
+                    setSet={setSet}
+                />
             ) : (
                 <div />
             )}

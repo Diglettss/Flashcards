@@ -1,12 +1,13 @@
 .FlashcardOverviewPage {
   background-color: #8914ff;
-  position: relative;
-  top: 64px;
+  margin-top: 64px;
+  padding-top: 50px;
 }
 
 .FlashcardOverviewPage .title {
   margin-left: auto;
   margin-right: auto;
+  margin-top: 20px;
   width: 400px;
 }
 
@@ -25,7 +26,9 @@
 }
 
 .FlashcardOverviewPage .update-button {
-  z-index: 9;
+  z-index: 0;
+  position: absolute;
+  margin-left: 10px;
 }
 
 .FlashcardOverviewPage .start-button {
