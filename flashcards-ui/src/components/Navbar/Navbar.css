@@ -4,43 +4,31 @@
   left: 0;
   width: 100vw;
   height: 64px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   background-color: black;
 }
-
 .Navbar .links {
   height: 64px;
   font-size: 20pt;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 .Navbar a {
   margin-right: 100px;
   text-decoration: none;
   color: white;
 }
-
 .Navbar .text {
   position: relative;
   bottom: 20px;
 }
-
 .Navbar .search-and-profile {
   max-width: 33%;
 }
-
 .Navbar .profile-image {
   width: 50px;
   max-width: 13%;
 }
-
 .Navbar .searchbar {
   width: 440px;
   max-width: 100%;
@@ -48,5 +36,4 @@
   margin-right: 50px;
   margin-top: auto;
   margin-bottom: auto;
-}
-/*# sourceMappingURL=Navbar.css.map */
+}/*# sourceMappingURL=Navbar.css.map */
