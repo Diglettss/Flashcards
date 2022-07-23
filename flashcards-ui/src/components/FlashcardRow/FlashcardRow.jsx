@@ -1,37 +1,52 @@
-import React from "react";
+import React, { useRef } from "react";
 
-function CreateRows({ idx, term, definition, set }) {
+export default function FlashcardRow({
+    idx, //The location of the flashcard in the set
+    term,
+    definition,
+    chosenSet, //The set this flashcard is in
+    checkBox, //Is the checkbox for selecting for trash or visibility
+}) {
+    const checkBoxInput = useRef(null);
+    ("I pass in choosenSet because this is how I got selected to work");
     return (
         <div className="flashcard-row">
-            <div className="term-card card">
+            <div
+                className="term-card card"
+                onClick={(e) => {
+                    checkBoxInput.current.checked =
+                        !checkBoxInput.current.checked;
+                    chosenSet.flashcard[idx].visibility =
+                        checkBoxInput.current.checked;
+                }}
+            >
                 <span className="term">{term}</span>
             </div>
             <input
-                defaultChecked={set.flashcard[idx].selected}
+                ref={checkBoxInput}
+                title={
+                    checkBox == "visibility"
+                        ? "Flashcard visibility"
+                        : "Select for trash"
+                }
+                defaultChecked={chosenSet.flashcard[idx][checkBox]}
                 type="checkbox"
-                id={idx}
-                className="myCheck"
+                className={`myCheck ${checkBox || "hidden"}`}
                 onClick={(e) => {
-                    set.flashcard[e.target.id].selected = e.target.checked;
+                    chosenSet.flashcard[idx].visibility = e.target[checkBox];
                 }}
             ></input>
-            <div className="definition-card card">
+            <div
+                className="definition-card card"
+                onClick={(e) => {
+                    checkBoxInput.current.checked =
+                        !checkBoxInput.current.checked;
+                    chosenSet.flashcard[idx].visibility =
+                        checkBoxInput.current.checked;
+                }}
+            >
                 <span className="definition">{definition}</span>
             </div>
         </div>
-    );
-}
-
-export default function FlashcardRow({ idx, term, definition, set }) {
-    return (
-        <>
-            <CreateRows
-                key={idx}
-                idx={idx}
-                term={term}
-                definition={definition}
-                set={set}
-            />
-        </>
     );
 }

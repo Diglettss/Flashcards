@@ -36,7 +36,7 @@ export const FlashcardContextProvider = ({ children }) => {
                     definition: lorem.generateWords(
                         Math.floor(Math.random() * 22) + 10
                     ),
-                    selected: true,
+                    visibility: true,
                     selectedForTrash: false,
                 });
             }

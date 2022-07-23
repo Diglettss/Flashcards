@@ -4,49 +4,50 @@ import "./FlashcardOverviewPage.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useFlashcardContext } from "../../../contexts/flashcard.jsx";
 
-function FlashcardOverviewPageContent({ set, setId }) {
+function FlashcardOverviewPageContent({ chosenSet }) {
     const navigate = useNavigate();
     return (
         <div className="flashcard-overview-page">
             <button
                 className="update-button"
-                id={setId}
                 onClick={(e) => {
-                    navigate(`/mysets/update/${e.target.id}`);
+                    console.log(chosenSet.setId);
+                    navigate(`/mysets/update/${chosenSet.setId}`);
                 }}
             >
                 Update
             </button>
-            <h1 className="title">{set.title}</h1>
-            <h3 className="description">
-                {set.description}
-            </h3>
+            <h1 className="title">{chosenSet.title}</h1>
+            <h3 className="description">{chosenSet.description}</h3>
             <div className="flashcards">
-                {set.flashcard.map((e, idx) => (
+                {chosenSet.flashcard.map((e, idx) => (
                     <FlashcardRow
+                        e={e}
                         key={idx}
                         idx={idx}
                         term={e.term}
+                        checkBox={"visibility"}
                         definition={e.definition}
-                        set={set}
+                        chosenSet={chosenSet}
                     />
                 ))}
             </div>
             <div className="start-button">
                 <button
-                    id={set.setId}
                     onClick={(e) => {
-                        const filteredFlashcard = set.flashcard.filter((e) => {
-                            if (e.selected == true) {
-                                return e;
+                        const filteredFlashcard = chosenSet.flashcard.filter(
+                            (e) => {
+                                if (e.visibility == true) {
+                                    return e;
+                                }
                             }
-                        });
+                        );
                         if (filteredFlashcard.length < 2) {
                             console.error(
                                 "Please have at least two flashcards"
                             );
                         } else {
-                            navigate(`/mysets/studymode/${e.target.id}`);
+                            navigate(`/mysets/studymode/${chosenSet.setId}`);
                         }
                     }}
                 >
@@ -61,11 +62,12 @@ export default function FlashcardOverviewPage() {
     const navigate = useNavigate();
     const { mySets } = useFlashcardContext();
     const { setId } = useParams();
-    const [set, setSet] = useState(mySets[setId]);
+    const chosenSet = mySets[setId];
 
+    console.log(chosenSet);
     //if the params setId doesn't exist in mySets send the user to the shadow realm
     useEffect(() => {
-        if (setId < 0 || setId >= mySets.length) {
+        if (!chosenSet) {
             console.log("sending you to the shadow realm");
             navigate("/notfound");
         }
@@ -73,14 +75,7 @@ export default function FlashcardOverviewPage() {
 
     return (
         <>
-            {set ? (
-                <FlashcardOverviewPageContent
-                    setId={setId}
-                    set={set}
-                />
-            ) : (
-                <div />
-            )}
+            <FlashcardOverviewPageContent setId={setId} chosenSet={chosenSet} />
         </>
     );
 }

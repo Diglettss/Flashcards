@@ -30,7 +30,9 @@ export default function AppContainer() {
 }
 
 function App() {
-    //TODO get rid of turn index.css into a index.scss
+    //TODO turn index.css into a index.scss
+    //TODO keep the sets in a query that's in the users cookies and will trye to send the sets if it returns an error
+    //TODO remove id from buttons
     const { user, setUser, error, setError } = useAuthContext();
 
     useEffect(() => {
@@ -57,10 +59,13 @@ function App() {
                     <Route path="/register" element={<RegistrationPage />} />
                     <Route path="/create" element={<CreateSetPage />} />
                     <Route path="/mysets" element={<MySetPage />} />
-                    <Route path="/mysets/update/:setId" element={<UpdateMySetPage />} />
                     <Route
                         path="/mySets/:setId"
                         element={<FlashcardOverviewPage />}
+                    />
+                    <Route
+                        path="/mysets/update/:setId"
+                        element={<UpdateMySetPage />}
                     />
                     <Route
                         path="/mySets/studymode/:setId"

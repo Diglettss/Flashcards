@@ -31,15 +31,14 @@ export default function StudyPage() {
         setDefaultFlashcardState,
     } = useFlashcardContext();
 
-    const {setId} = useParams();
-    const navigate = useNavigate()
-
+    const { setId } = useParams();
+    const navigate = useNavigate();
 
     //fake data
     const { mySets } = useFlashcardContext();
-    const set = mySets[setId]
+    const set = mySets[setId];
     let filteredFlashcard = set.flashcard.filter((e) => {
-        if (e.selected == true) {
+        if (e.visibility == true) {
             return e;
         }
         console.log(e);
@@ -80,18 +79,23 @@ export default function StudyPage() {
         <div className="study-page">
             <ModalSettings />
             <div className="button-container">
-            <button
-                className="settings"
-                onClick={() => {
-                    setShowSettingsModal(!showSettingsModal);
-                    console.log(showSettingsModal);
-                }}
-            >
-                Settings
-            </button>
-            <button className="back-button" id={setId} onClick={e=>{
-                navigate(`/mysets/${e.target.id}`)
-            }}>Back</button>
+                <button
+                    className="settings"
+                    onClick={() => {
+                        setShowSettingsModal(!showSettingsModal);
+                        console.log(showSettingsModal);
+                    }}
+                >
+                    Settings
+                </button>
+                <button
+                    className="back-button"
+                    onClick={(e) => {
+                        navigate(`/mysets/${chosenSet.setId}`);
+                    }}
+                >
+                    Back
+                </button>
             </div>
             <div className="title">
                 <h1>{set.title}</h1>

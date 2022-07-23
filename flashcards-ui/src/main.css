@@ -27,7 +27,13 @@ body {
   margin-top: 100px;
 }
 
-.flashcards .card {
+.flashcards .flashcard-row input {
+  width: 40px;
+  cursor: pointer;
+}
+
+.flashcards .flashcard-row .card {
+  cursor: pointer;
   margin: 0 auto;
   width: 30%;
   text-align: center;
@@ -35,15 +41,15 @@ body {
   padding: 20px 50px;
 }
 
-.flashcards .term-card {
+.flashcards .flashcard-row .term-card {
   background-color: #a1fbfb;
 }
 
-.flashcards .term-card .term {
+.flashcards .flashcard-row .term-card .term {
   margin: auto 0;
 }
 
-.flashcards .definition-card {
+.flashcards .flashcard-row .definition-card {
   background-color: #a9f7dd;
 }
 /*# sourceMappingURL=main.css.map */

@@ -1,36 +1,10 @@
 import React, { useEffect } from "react";
-import { LoremIpsum } from "lorem-ipsum";
 import "./MySetPage.css";
-import { useNavigate } from "react-router-dom";
 import { useFlashcardContext } from "../../../contexts/flashcard";
-import { useParams } from "react-router-dom";
-
-function Set({ set }) {
-    const navigate = useNavigate();
-    return (
-        <div
-            className="set-container"
-            id={set.setId}
-            onClick={(e) => {
-                    navigate(`/mysets/${e.target.id}`);
-            }}
-        >
-            <div className="name-and-term-num">
-                <div className="set-name" id={set.setId}>
-                    {set.title}
-                </div>
-                <div className="set-length" id={set.setId}>
-                    {set.flashcard.length}
-                </div>
-            </div>
-            <span className="set-description" id={set.setId}>
-                {set.description}
-            </span>
-        </div>
-    );
-}
+import Set from "../FlashcardComponents/Set/Set";
 
 export default function MySetPage() {
+    "This takes the varibale mySets fron contexts/flashcard and loops it through the Set component";
     const { mySets } = useFlashcardContext();
 
     // const navigate = useNavigate();

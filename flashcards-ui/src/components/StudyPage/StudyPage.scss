@@ -24,6 +24,7 @@
     .flashcard {
         margin: auto;
         background-color: bisque;
+        cursor: pointer;
         display: inline-block;
         width: 800px;
         max-width: 90vw;
@@ -45,7 +46,7 @@
         flex-wrap: wrap;
         justify-content: center;
     }
-    .button-container{
+    .button-container {
         display: flex;
         justify-content: space-between;
     }
@@ -53,7 +54,7 @@
         display: inline-block;
         margin: 10px;
     }
-    .back-button{
+    .back-button {
         right: 100px;
     }
 }

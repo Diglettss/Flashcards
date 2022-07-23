@@ -27,6 +27,7 @@
 .study-page .flashcard {
   margin: auto;
   background-color: bisque;
+  cursor: pointer;
   display: inline-block;
   width: 800px;
   max-width: 90vw;

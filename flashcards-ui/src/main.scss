@@ -15,23 +15,27 @@ body {
     .flashcard-row {
         display: flex;
         margin-top: 100px;
-    }
-
-    .card {
-        margin: 0 auto;
-        width: 30%;
-        text-align: center;
-        display: inline-block;
-        padding: 20px 50px;
-    }
-
-    .term-card {
-        background-color: rgb(161, 251, 251);
-        .term {
-            margin: auto 0;
+        input {
+            width: 40px;
+            cursor: pointer;
         }
-    }
-    .definition-card {
-        background-color: rgb(169, 247, 221);
+        .card {
+            cursor: pointer;
+            margin: 0 auto;
+            width: 30%;
+            text-align: center;
+            display: inline-block;
+            padding: 20px 50px;
+        }
+
+        .term-card {
+            background-color: rgb(161, 251, 251);
+            .term {
+                margin: auto 0;
+            }
+        }
+        .definition-card {
+            background-color: rgb(169, 247, 221);
+        }
     }
 }
