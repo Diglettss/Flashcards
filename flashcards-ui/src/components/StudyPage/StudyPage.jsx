@@ -56,19 +56,19 @@ export default function StudyPage() {
         console.log("defaultFlashcardState");
         console.log(defaultFlashcardState);
         if (defaultFlashcardState === true) {
-            setFlashcardOnTerm(true);
+            setFlashcardOnSide(true);
         } else if (defaultFlashcardState === false) {
-            setFlashcardOnTerm(false);
+            setFlashcardOnSide(false);
         } else {
             //this will let the default state of flashcards to be random
             //to reach this else statement set defaultFlashcardState to null
             const randomBoolean = Math.random() < 0.5;
-            setFlashcardOnTerm(randomBoolean);
+            setFlashcardOnSide(randomBoolean);
         }
     };
 
     //Which side of the flashcard is facing up, if null pick randomly
-    const [flashcardOnTerm, setFlashcardOnTerm] = useState(
+    const [flashcardOnSide, setFlashcardOnSide] = useState(
         defaultFlashcardState || Math.random() < 0.5
     );
 
@@ -103,11 +103,11 @@ export default function StudyPage() {
             <Flashcard
                 flashcard={
                     filteredFlashcard[flashcardNumber][
-                        flashcardOnTerm ? "term" : "definition"
+                        flashcardOnSide ? "term" : "definition"
                     ]
                 }
                 onClick={() => {
-                    setFlashcardOnTerm(!flashcardOnTerm);
+                    setFlashcardOnSide(!flashcardOnSide);
                 }}
             />
             <br />
