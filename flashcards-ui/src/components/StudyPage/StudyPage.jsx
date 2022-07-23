@@ -36,8 +36,8 @@ export default function StudyPage() {
 
     //fake data
     const { mySets } = useFlashcardContext();
-    const set = mySets[setId];
-    let filteredFlashcard = set.flashcard.filter((e) => {
+    const chosenSet = mySets[setId];
+    let filteredFlashcard = chosenSet.flashcard.filter((e) => {
         if (e.visibility == true) {
             return e;
         }
@@ -48,7 +48,7 @@ export default function StudyPage() {
         console.error(
             `I don't know how but less than two flashcards are inside of filteredFlashcard, all flashcards will be used`
         );
-        filteredFlashcard = set.flashcard;
+        filteredFlashcard = chosenSet.flashcard;
     }
 
     const handleButtonClick = () => {
@@ -98,7 +98,7 @@ export default function StudyPage() {
                 </button>
             </div>
             <div className="title">
-                <h1>{set.title}</h1>
+                <h1>{chosenSet.title}</h1>
             </div>
             <Flashcard
                 flashcard={
