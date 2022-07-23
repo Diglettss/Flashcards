@@ -4,8 +4,21 @@ import "./FlashcardOverviewPage.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useFlashcardContext } from "../../../contexts/flashcard.jsx";
 
-function FlashcardOverviewPageContent({ chosenSet }) {
+export default function FlashcardOverviewPage() {
     const navigate = useNavigate();
+    const { mySets } = useFlashcardContext();
+    const { setId } = useParams();
+    const chosenSet = mySets[setId];
+
+    console.log(chosenSet);
+    //if the params setId doesn't exist in mySets send the user to the shadow realm
+    useEffect(() => {
+        if (!chosenSet) {
+            console.log("sending you to the shadow realm");
+            navigate("/notfound");
+        }
+    });
+
     return (
         <div className="flashcard-overview-page">
             <button
@@ -55,27 +68,5 @@ function FlashcardOverviewPageContent({ chosenSet }) {
                 </button>
             </div>
         </div>
-    );
-}
-
-export default function FlashcardOverviewPage() {
-    const navigate = useNavigate();
-    const { mySets } = useFlashcardContext();
-    const { setId } = useParams();
-    const chosenSet = mySets[setId];
-
-    console.log(chosenSet);
-    //if the params setId doesn't exist in mySets send the user to the shadow realm
-    useEffect(() => {
-        if (!chosenSet) {
-            console.log("sending you to the shadow realm");
-            navigate("/notfound");
-        }
-    });
-
-    return (
-        <>
-            <FlashcardOverviewPageContent setId={setId} chosenSet={chosenSet} />
-        </>
     );
 }

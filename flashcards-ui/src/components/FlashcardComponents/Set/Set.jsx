@@ -15,6 +15,7 @@ export default function Set({ set }) {
                 <div className="set-length">{set.flashcard.length}</div>
             </div>
             <span className="set-description">{set.description}</span>
+            <span className="set-date"><br/>{JSON.stringify(set.date)}</span>
         </div>
     );
 }
