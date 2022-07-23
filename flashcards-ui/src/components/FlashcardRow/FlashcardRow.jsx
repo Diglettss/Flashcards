@@ -1,13 +1,6 @@
 import React from "react";
 
-export default function FlashcardRow({
-    idx,
-    term,
-    definition,
-    selected,
-    setSet,
-    set,
-}) {
+function CreateRows({ idx, term, definition, set }) {
     return (
         <div className="flashcard-row">
             <div className="term-card card">
@@ -28,4 +21,17 @@ export default function FlashcardRow({
         </div>
     );
 }
-	
+
+export default function FlashcardRow({ idx, term, definition, set }) {
+    return (
+        <>
+            <CreateRows
+                key={idx}
+                idx={idx}
+                term={term}
+                definition={definition}
+                set={set}
+            />
+        </>
+    );
+}

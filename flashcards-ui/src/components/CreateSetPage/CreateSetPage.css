@@ -1,0 +1,99 @@
+.create-set {
+  background-color: antiquewhite;
+  margin-top: 100px;
+}
+
+.create-set .title {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 2em;
+  margin-bottom: 0.67em;
+  font-weight: 700;
+  border: 0px;
+}
+
+.create-set .description {
+  font-size: 1.17em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50vw;
+  font-weight: bold;
+}
+
+.create-set .title,
+.create-set .description {
+  display: block;
+  text-align: center;
+  padding: 12px 18px;
+  color: white;
+  border-radius: 4px;
+  background: #000000;
+}
+
+.create-set .add-buttons {
+  margin-top: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.create-set .add-buttons button {
+  display: inline-block;
+}
+
+.create-set .add-buttons .add-cards {
+  background-color: blue;
+}
+
+.create-set .add-buttons .add-cards-text {
+  background-color: blue;
+}
+
+.create-set .flashcard-row-empty {
+  min-height: 35vh;
+}
+
+.create-set .add-card-as-text {
+  background-color: aquamarine;
+}
+
+.create-set .add-card-as-text .delimiter-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin-bottom: 50px;
+}
+
+.create-set .add-card-as-text .delimiter-row .text-delimiter-input,
+.create-set .add-card-as-text .delimiter-row .flashcard-delimiter-input {
+  width: 2rem;
+  text-align: center;
+  margin-left: 10px;
+}
+
+.create-set .add-card-as-text .card-text-input {
+  display: block;
+  margin: auto;
+  width: 80vw;
+  height: 50vh;
+  margin-bottom: 50px;
+}
+
+.create-set .button-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+/*# sourceMappingURL=CreateSetPage.css.map */

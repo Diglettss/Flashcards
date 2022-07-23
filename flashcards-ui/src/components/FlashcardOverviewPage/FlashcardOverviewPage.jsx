@@ -4,7 +4,7 @@ import "./FlashcardOverviewPage.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useFlashcardContext } from "../../../contexts/flashcard.jsx";
 
-function FlashcardOverviewPageContent({ set, setSet, setId }) {
+function FlashcardOverviewPageContent({ set, setId }) {
     const navigate = useNavigate();
     return (
         <div className="flashcard-overview-page">
@@ -28,8 +28,6 @@ function FlashcardOverviewPageContent({ set, setSet, setId }) {
                         idx={idx}
                         term={e.term}
                         definition={e.definition}
-                        selected={e.selected}
-                        setSet={setSet}
                         set={set}
                     />
                 ))}
@@ -79,7 +77,6 @@ export default function FlashcardOverviewPage() {
                 <FlashcardOverviewPageContent
                     setId={setId}
                     set={set}
-                    setSet={setSet}
                 />
             ) : (
                 <div />

@@ -6,6 +6,11 @@ const FlashcardContext = createContext(null);
 
 export const FlashcardContextProvider = ({ children }) => {
     const [showSettingsModal, setShowSettingsModal] = useState(false);
+    const [userCreatedSet, setUserCreatedSet] = useState({
+        title: null,
+        description: null,
+        flashcard: null
+    })
     const lorem = new LoremIpsum({
         sentencesPerParagraph: {
             max: 8,
@@ -50,7 +55,7 @@ export const FlashcardContextProvider = ({ children }) => {
         return set;
     };
 
-    const [mySets, setmySets] = useState(randomSet(Math.floor(Math.random() * 22) + 2));
+    const [mySets, setmySets] = useState(randomSet(Math.floor(Math.random() * 5) + 2));
     console.log(mySets);
 
     //This is to be changeable by the user
@@ -72,6 +77,9 @@ export const FlashcardContextProvider = ({ children }) => {
         defaultFlashcardState,
         setDefaultFlashcardState,
         mySets,
+        userCreatedSet,
+        setUserCreatedSet,
+        setmySets
     };
 
     return (

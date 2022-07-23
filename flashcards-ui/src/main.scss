@@ -1,0 +1,37 @@
+.hidden {
+    display: none !important;
+}
+
+body {
+    margin: 0;
+}
+.App {
+    margin-top: 64px;
+}
+
+.flashcards {
+    display: flex;
+    flex-direction: column;
+    .flashcard-row {
+        display: flex;
+        margin-top: 100px;
+    }
+
+    .card {
+        margin: 0 auto;
+        width: 30%;
+        text-align: center;
+        display: inline-block;
+        padding: 20px 50px;
+    }
+
+    .term-card {
+        background-color: rgb(161, 251, 251);
+        .term {
+            margin: auto 0;
+        }
+    }
+    .definition-card {
+        background-color: rgb(169, 247, 221);
+    }
+}

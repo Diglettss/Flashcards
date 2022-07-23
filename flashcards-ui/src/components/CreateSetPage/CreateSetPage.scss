@@ -1,0 +1,75 @@
+.create-set {
+    background-color: antiquewhite;
+    margin-top: 100px;
+    .title {
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 2em;
+        margin-bottom: 0.67em;
+        font-weight: 700;
+        // padding: 0;
+        border: 0px;
+    }
+    .description {
+        font-size: 1.17em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        font-weight: bold;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50vw;
+        font-weight: bold;
+    }
+    .title,
+    .description {
+        display: block;
+        text-align: center;
+        padding: 12px 18px;
+        color: white;
+        border-radius: 4px;
+        background: #000000;
+    }
+
+    .add-buttons {
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-evenly;
+        button {
+            display: inline-block;
+        }
+        .add-cards {
+            background-color: blue;
+        }
+        .add-cards-text {
+            background-color: blue;
+        }
+    }
+    .flashcard-row-empty {
+        min-height: 35vh;
+    }
+    .add-card-as-text {
+        background-color: aquamarine;
+        .delimiter-row {
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 50px;
+            .text-delimiter-input,
+            .flashcard-delimiter-input {
+                width: 2rem;
+                text-align: center;
+                margin-left: 10px;
+            }
+        }
+        .card-text-input{
+            display: block;
+            margin: auto;
+            width: 80vw;
+            height: 50vh;
+            margin-bottom: 50px;
+        }
+    }
+    .button-container{
+        display: flex;
+        justify-content: space-evenly;
+    }
+}

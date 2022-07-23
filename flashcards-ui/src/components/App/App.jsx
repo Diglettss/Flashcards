@@ -30,6 +30,7 @@ export default function AppContainer() {
 }
 
 function App() {
+    //TODO get rid of turn index.css into a index.scss
     const { user, setUser, error, setError } = useAuthContext();
 
     useEffect(() => {

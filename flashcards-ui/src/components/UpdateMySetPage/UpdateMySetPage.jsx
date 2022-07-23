@@ -29,8 +29,6 @@ export default function UpdateMySetPage() {
                         idx={idx}
                         term={e.term}
                         definition={e.definition}
-                        selected={e.selected}
-                        setSet={setSet}
                         set={set}
                     />
                 ))}
