@@ -8,7 +8,7 @@ import NotFound from "../NotFound/NotFound";
 
 export default function MySetsPage() {
     return (
-        <div>
+        <div className="mysets-page">
             <Routes>
                 <Route path="/" element={<MySetsOverview />} />
                 <Route path="/:setId" element={<FlashcardOverviewPage />} />

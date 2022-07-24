@@ -41,41 +41,23 @@ export default function MySetsOverview() {
 
     //TODO bug with useEffect, the sort only takes effect after changing the valu
     useEffect(() => {
-        // console.log(JSON.stringify(mySets[0].title.includes(searchValue)))
-        // console.log(JSON.stringify(mySets[0].title))
         //if searchValue is in the title or description set it to a variable
         const fillteredSetByTitleDescription = mySets.filter((e) => {
-            if (e.title.includes(searchValue)) {
+            if (e.title.toLowerCase().includes(searchValue.toLowerCase())) {
                 return true;
             }
-            if (e.description.includes(searchValue)) {
+            if (
+                e.description.toLowerCase().includes(searchValue.toLowerCase())
+            ) {
                 return true;
             }
-            console.log(e.title, e.description, "false")
+            console.log(e.title, e.description, "false");
             return false;
         });
 
-        // if the searchValue is empty set the variable to the full mySets
-        // if (searchValue == "") {
-        //     fillteredSetByTitleDescription = mySets;
-        // }
+        //set that filtered variable into filteredMySets
+        setFilteredMySets(fillteredSetByTitleDescription);
 
-        //set that filtered variable in a useState value
-        setFilteredMySets(
-            mySets.filter((e) => {
-                if (e.title.includes(searchValue)) {
-                    return true;
-                }
-                // if (e.description.includes(searchValue)) {
-                //     return true;
-                // }
-                console.log(e.title, e.description, "false")
-                return false;
-            })
-        );
-        console.log(filteredMySets.length, mySets.length, fillteredSetByTitleDescription.length)
-
-        
         //sorts the sets
         if (sortBy == "Newest") {
             sortByNewestDate(fillteredSetByTitleDescription);
@@ -91,14 +73,15 @@ export default function MySetsOverview() {
         //This is needed to rerender the sets
         setFilteredMySets([...fillteredSetByTitleDescription]);
     }, [sortBy, searchValue]);
+
     return (
         <div className="my-sets-page">
             <div>
                 <label htmlFor="search-input">User's sets</label>
             </div>
-            {sortBy}
             <input
                 className="search-input"
+                name="search-input"
                 type="text"
                 value={searchValue}
                 onChange={(e) => {
