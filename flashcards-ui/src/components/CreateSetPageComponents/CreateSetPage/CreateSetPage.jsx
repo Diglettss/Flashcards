@@ -120,6 +120,8 @@ function AddCardAsText({ setBodyView }) {
 }
 
 export default function CreateSetPage() {
+    //!Create Page cuts off the last letter(s) of title and description
+
     const navigate = useNavigate();
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");

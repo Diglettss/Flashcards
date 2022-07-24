@@ -7,8 +7,31 @@
   margin-right: auto;
 }
 
-.my-sets-page .search-input {
+.my-sets-page .label-search-input {
+  margin-left: 5vw;
+}
+
+.my-sets-page .filter-container {
+  width: 80vw;
+  margin-left: auto;
+  margin-right: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 10px;
+}
+
+.my-sets-page .filter-container .search-input {
   margin-bottom: 20px;
+}
+
+.my-sets-page .filter-container .drop-down {
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
 }
 
 .my-sets-page .set-container {
