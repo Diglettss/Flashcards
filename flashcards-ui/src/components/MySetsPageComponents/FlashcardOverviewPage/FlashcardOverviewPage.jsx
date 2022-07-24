@@ -4,21 +4,7 @@ import "./FlashcardOverviewPage.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useFlashcardContext } from "../../../../contexts/flashcard.jsx";
 
-export default function FlashcardOverviewPage() {
-    const navigate = useNavigate();
-    const { mySets } = useFlashcardContext();
-    const { setId } = useParams();
-    const chosenSet = mySets[setId];
-
-    console.log(chosenSet);
-    //if the params setId doesn't exist in mySets send the user to the shadow realm
-    useEffect(() => {
-        if (!chosenSet) {
-            console.log("sending you to the shadow realm");
-            navigate("/notfound");
-        }
-    });
-
+function FlashcardOverviewPageContent({ chosenSet }) {
     return (
         <div className="flashcard-overview-page">
             <button
@@ -68,5 +54,34 @@ export default function FlashcardOverviewPage() {
                 </button>
             </div>
         </div>
+    );
+}
+
+export default function FlashcardOverviewPage() {
+    const navigate = useNavigate();
+    const { mySets } = useFlashcardContext();
+    const { setId } = useParams();
+    const chosenSet = mySets[setId];
+
+    console.log(chosenSet);
+    //if the params setId doesn't exist in mySets send the user to the shadow realm
+    useEffect(() => {
+        console.log("mounted");
+        if (!chosenSet || chosenSet == undefined) {
+            console.log("sending you to the shadow realm");
+            navigate("/notfound");
+        }
+    }, []);
+
+    //The return statement is written like this, because an undefined chosenSet would cause an error and stop the useEffect from running
+    return (
+        <>
+            {chosenSet ? (
+                <FlashcardOverviewPageContent chosenSet={chosenSet} />
+            ) : (
+                <div />
+                // test()
+            )}
+        </>
     );
 }
