@@ -10,46 +10,8 @@ body {
   margin-top: 64px;
 }
 
-.flashcards {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.flashcards .flashcard-row {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 100px;
-}
-
-.flashcards .flashcard-row input {
-  width: 40px;
-  cursor: pointer;
-}
-
-.flashcards .flashcard-row .card {
-  cursor: pointer;
-  margin: 0 auto;
-  width: 30%;
-  text-align: center;
-  display: inline-block;
-  padding: 20px 50px;
-}
-
-.flashcards .flashcard-row .term-card {
-  background-color: #a1fbfb;
-}
-
-.flashcards .flashcard-row .term-card .term {
-  margin: auto 0;
-}
-
-.flashcards .flashcard-row .definition-card {
-  background-color: #a9f7dd;
+.middle-div {
+  margin-left: auto;
+  margin-right: auto;
 }
 /*# sourceMappingURL=main.css.map */

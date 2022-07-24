@@ -6,7 +6,6 @@ export default function Searchbar() {
     return (
         <input
             type="search"
-            id="site-search"
             name="q"
             placeholder="Seach..."
             className="searchbar"

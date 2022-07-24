@@ -42,14 +42,14 @@ export default function CreateSetBody({
 
             {/* <FlashcardRow chosenSet={chosenSet} /> */}
             <div className="add-buttons">
-                <button
+                {/* <button
                     className="add-cards"
                     onClick={(e) => {
                         setBodyView("text");
                     }}
                 >
                     Add cards
-                </button>
+                </button> */}
                 <button
                     className="add-cards-text"
                     onClick={(e) => {
@@ -59,7 +59,7 @@ export default function CreateSetBody({
                     Add cards as text
                 </button>
             </div>
-            <button onClick={()=>{
+            <button className="middle-div save-button" onClick={()=>{
                 mySets.push(userCreatedSet)
                 console.log(mySets)
                 navigate("/mysets")

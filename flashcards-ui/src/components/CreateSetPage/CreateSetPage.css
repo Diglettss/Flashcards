@@ -1,6 +1,7 @@
 .create-set {
   background-color: antiquewhite;
-  margin-top: 100px;
+  padding-top: 80px;
+  padding-bottom: 20px;
 }
 
 .create-set .title {
@@ -53,6 +54,10 @@
 
 .create-set .add-buttons .add-cards-text {
   background-color: blue;
+}
+
+.create-set .save-button {
+  margin: 20px auto;
 }
 
 .create-set .flashcard-row-empty {

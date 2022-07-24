@@ -30,8 +30,13 @@ export default function AppContainer() {
 
 function App() {
     //TODO turn index.css into a index.scss
-    //TODO keep the sets in a query that's in the users cookies and will trye to send the sets if it returns an error
-    //TODO remove id from buttons
+    //TODO keep the UserCreatedSets in a query (that's in the users local storage) that will try to send the sets until successful
+    //TODO merge the flashcard branch before working on the mysets/update/*
+    //TODO style settings modal
+    //TODO make a better settings modal
+
+    //! Finish the create page's add button as text, add comments, better folder structures and then merge
+
     const { user, setUser, error, setError } = useAuthContext();
 
     useEffect(() => {

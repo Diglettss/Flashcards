@@ -39,7 +39,7 @@ export default function MySetsOverview() {
         array.sort((a, b) => b.flashcard.length - a.flashcard.length);
     };
 
-    //TODO bug with useEffect, the sort only takes effect after changing the valu
+
     useEffect(() => {
         //if searchValue is in the title or description set it to a variable
         const fillteredSetByTitleDescription = mySets.filter((e) => {
@@ -70,8 +70,8 @@ export default function MySetsOverview() {
         } else {
             sortByNumOfFlashcards(fillteredSetByTitleDescription);
         }
-        //This is needed to rerender the sets
-        setFilteredMySets([...fillteredSetByTitleDescription]);
+        //This is needed to rerender the sets, I think
+        // setFilteredMySets([...fillteredSetByTitleDescription]);
     }, [sortBy, searchValue]);
 
     return (
