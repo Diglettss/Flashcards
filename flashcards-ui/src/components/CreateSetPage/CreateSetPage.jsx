@@ -25,7 +25,6 @@ function AddCardAsText({ setBodyView }) {
             if(splitTexts.length%2!==0){
                 console.log("Length not good")
                 userError=true
-                // return
             }
 
             splitTexts.forEach((e, idx) => {
@@ -146,7 +145,7 @@ export default function CreateSetPage() {
                     description={description}
                     setDescription={setDescription}
                     setBodyView={setBodyView}
-                    set={userCreatedSet}
+                    chosenSet={userCreatedSet}
                 />
             ) : (
                 <AddCardAsText setBodyView={setBodyView} />

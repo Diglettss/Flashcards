@@ -7,9 +7,9 @@ export default function CreateSetBody({
     description,
     setDescription,
     setBodyView,
-    set
+    chosenSet
 }) {
-    const {setmySets, mySets, userCreatedSet} = useFlashcardContext()
+    const { mySets, userCreatedSet} = useFlashcardContext()
     console.log(mySets)
     const navigate = useNavigate()
     return (
@@ -27,20 +27,20 @@ export default function CreateSetBody({
                 }}
             />
             <div className="flashcards">
-            {set.flashcard?
-            set.flashcard.map((e, idx) => (
+            {chosenSet.flashcard?
+            chosenSet.flashcard.map((e, idx) => (
                 <FlashcardRow
                     key={idx}
                     idx={idx}
                     term={e.term}
                     definition={e.definition}
-                    set={set}
+                    chosenSet={chosenSet}
                 />
             )):<div className="flashcard-row-empty"/>
         }
         </div>
 
-            {/* <FlashcardRow set={set} /> */}
+            {/* <FlashcardRow chosenSet={chosenSet} /> */}
             <div className="add-buttons">
                 <button
                     className="add-cards"
