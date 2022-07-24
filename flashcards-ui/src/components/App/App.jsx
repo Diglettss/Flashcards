@@ -1,7 +1,8 @@
 import Navbar from "../Navbar/Navbar";
 import Landing from "../Landing/Landing";
-import MySetPage from "../MySetPage/MySetPage.jsx";
+import MySetsOverview from "../MySetsOverview/MySetsOverview.jsx";
 import UpdateMySetPage from "../UpdateMySetPage/UpdateMySetPage.jsx";
+import MySetsPage from "../MySetsPage/MySetsPage.jsx";
 import CreateSetPage from "../CreateSetPage/CreateSetPage.jsx";
 import * as React from "react";
 import "./App.css";
@@ -16,8 +17,6 @@ import {
     useFlashcardContext,
 } from "../../../contexts/flashcard.jsx";
 import { useEffect } from "react";
-import FlashcardOverviewPage from "../FlashcardOverviewPage/FlashcardOverviewPage.jsx";
-import StudyPage from "../StudyPage/StudyPage.jsx";
 
 export default function AppContainer() {
     return (
@@ -58,19 +57,7 @@ function App() {
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegistrationPage />} />
                     <Route path="/create" element={<CreateSetPage />} />
-                    <Route path="/mysets" element={<MySetPage />} />
-                    <Route
-                        path="/mySets/:setId"
-                        element={<FlashcardOverviewPage />}
-                    />
-                    <Route
-                        path="/mysets/update/:setId"
-                        element={<UpdateMySetPage />}
-                    />
-                    <Route
-                        path="/mySets/studymode/:setId"
-                        element={<StudyPage />}
-                    />
+                    <Route path="/mysets/*" element={<MySetsPage />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </BrowserRouter>

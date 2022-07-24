@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFlashcardContext } from "../../../contexts/flashcard";
 import "./CreateSetPage.css";
-import FlashcardRow from "../FlashcardRow/FlashcardRow";
+import FlashcardRow from "../FlashcardComponents/FlashcardRow/FlashcardRow";
 import CreateSetBody from "../CreateSetBody/CreateSetBody.jsx";
 
 function AddCardAsText({ setBodyView }) {

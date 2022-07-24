@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import FlashcardRow from "../FlashcardRow/FlashcardRow.jsx";
+import FlashcardRow from "../FlashcardComponents/FlashcardRow/FlashcardRow.jsx";
 import "./FlashcardOverviewPage.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useFlashcardContext } from "../../../contexts/flashcard.jsx";
@@ -32,7 +32,7 @@ export default function FlashcardOverviewPage() {
             </button>
             <h1 className="title">{chosenSet.title}</h1>
             <h3 className="description">{chosenSet.description}</h3>
-            <div className="flashcards">
+            <div className="flashcard-row-container">
                 {chosenSet.flashcard.map((e, idx) => (
                     <FlashcardRow
                         e={e}

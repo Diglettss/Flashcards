@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFlashcardContext } from "../../../contexts/flashcard";
-import FlashcardRow from "../FlashcardRow/FlashcardRow";
+import FlashcardRow from "../FlashcardComponents/FlashcardRow/FlashcardRow";
 
 export default function CreateSetBody({
     description,
@@ -26,7 +26,7 @@ export default function CreateSetBody({
                     console.log(userCreatedSet)
                 }}
             />
-            <div className="flashcards">
+            <div className="flashcard-row-container">
             {chosenSet.flashcard?
             chosenSet.flashcard.map((e, idx) => (
                 <FlashcardRow

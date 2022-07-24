@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "./MySetPage.css";
+import "./MySetsOverview.css";
 import { useFlashcardContext } from "../../../contexts/flashcard";
 import Set from "../FlashcardComponents/Set/Set";
 
-export default function MySetPage() {
+export default function MySetsOverview() {
     "This takes the varibale mySets fron contexts/flashcard and loops it through the Set component";
     const { mySets } = useFlashcardContext();
     const [sortBy, setSortBy] = useState("Newest");

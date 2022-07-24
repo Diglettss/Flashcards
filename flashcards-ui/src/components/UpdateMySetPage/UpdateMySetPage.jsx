@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useFlashcardContext } from "../../../contexts/flashcard";
-import FlashcardRow from "../FlashcardRow/FlashcardRow.jsx";
+import FlashcardRow from "../FlashcardComponents/FlashcardRow/FlashcardRow.jsx";
 
 export default function UpdateMySetPage() {
     const { mySets } = useFlashcardContext();
@@ -12,7 +12,7 @@ export default function UpdateMySetPage() {
         <div className="flashcard-overview-page">
             <h1 className="title">{chosenSet.title}</h1>
             <h3 className="description">{chosenSet.description}</h3>
-            <div className="flashcards">
+            <div className="flashcard-row-container">
                 {chosenSet.flashcard.map((e, idx) => (
                     <FlashcardRow
                         key={idx}

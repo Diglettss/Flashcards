@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import "./FlashcardRow.scss"
 
 export default function FlashcardRow({
     idx, //The location of the flashcard in the set
