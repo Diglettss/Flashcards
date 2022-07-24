@@ -36,6 +36,8 @@
         margin-top: 40px;
         display: flex;
         justify-content: space-evenly;
+        flex-wrap: wrap;
+
         button {
             display: inline-block;
         }
@@ -46,7 +48,7 @@
             background-color: blue;
         }
     }
-    .save-button{
+    .save-button {
         margin: 20px auto;
     }
     .flashcard-row-empty {
@@ -57,6 +59,7 @@
         .delimiter-row {
             display: flex;
             justify-content: space-evenly;
+            flex-wrap: wrap;
             margin-bottom: 50px;
             .text-delimiter-input,
             .flashcard-delimiter-input {
@@ -65,7 +68,7 @@
                 margin-left: 10px;
             }
         }
-        .card-text-input{
+        .card-text-input {
             display: block;
             margin: auto;
             width: 80vw;
@@ -73,8 +76,9 @@
             margin-bottom: 50px;
         }
     }
-    .button-container{
+    .button-container {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-evenly;
     }
 }

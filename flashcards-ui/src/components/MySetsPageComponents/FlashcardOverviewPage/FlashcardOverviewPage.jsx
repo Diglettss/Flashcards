@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useFlashcardContext } from "../../../../contexts/flashcard.jsx";
 
 function FlashcardOverviewPageContent({ chosenSet }) {
+    const navigate = useNavigate()
     return (
         <div className="flashcard-overview-page">
             <button
