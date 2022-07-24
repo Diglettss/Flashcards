@@ -1,9 +1,7 @@
 import Navbar from "../Navbar/Navbar";
 import Landing from "../Landing/Landing";
-import MySetsOverview from "../MySetsOverview/MySetsOverview.jsx";
-import UpdateMySetPage from "../UpdateMySetPage/UpdateMySetPage.jsx";
-import MySetsPage from "../MySetsPage/MySetsPage.jsx";
-import CreateSetPage from "../CreateSetPage/CreateSetPage.jsx";
+import MySetsPage from "../MySetsPageComponents/MySetsPages.jsx";
+import CreateSetPage from "../CreateSetPageComponents/CreateSetPage/CreateSetPage.jsx";
 import * as React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -12,10 +10,7 @@ import RegistrationPage from "../RegistrationPage/RegistrationPage";
 import NotFound from "../NotFound/NotFound";
 import apiClient from "../../../services/apiClient";
 import { AuthContextProvider, useAuthContext } from "../../../contexts/auth";
-import {
-    FlashcardContextProvider,
-    useFlashcardContext,
-} from "../../../contexts/flashcard.jsx";
+import { FlashcardContextProvider } from "../../../contexts/flashcard.jsx";
 import { useEffect } from "react";
 
 export default function AppContainer() {
@@ -35,7 +30,8 @@ function App() {
     //TODO style settings modal
     //TODO make a better settings modal
 
-    //! Finish the create page's add button as text, add comments, better folder structures and then merge
+    //TODO Finish the create page's add button as text, add comments, and then merge
+    //!Create Page cuts off the last letter(s) of title and description
 
     const { user, setUser, error, setError } = useAuthContext();
 

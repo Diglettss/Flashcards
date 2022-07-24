@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./StudyPage.css";
-import ModalSettings from "../ModalSettings/ModalSettings.jsx";
+import ModalSettings from "./ModalSettings/ModalSettings.jsx";
 import { useFlashcardContext } from "../../../contexts/flashcard";
 import { useNavigate, useParams } from "react-router-dom";
 

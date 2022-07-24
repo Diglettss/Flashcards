@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useFlashcardContext } from "../../../contexts/flashcard";
+import { useFlashcardContext } from "../../../../contexts/flashcard";
 import "./CreateSetPage.css";
-import FlashcardRow from "../FlashcardComponents/FlashcardRow/FlashcardRow";
-import CreateSetBody from "../CreateSetBody/CreateSetBody.jsx";
+import FlashcardRow from "../../FlashcardComponents/FlashcardRow/FlashcardRow";
+import CreateSetBody from "./../CreateSetBody/CreateSetBody.jsx";
 
 function AddCardAsText({ setBodyView }) {
     const [textDelimiter, setTextDelimiter] = useState(",");

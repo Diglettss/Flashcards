@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useFlashcardContext } from "../../../contexts/flashcard";
-import FlashcardRow from "../FlashcardComponents/FlashcardRow/FlashcardRow.jsx";
+import { useFlashcardContext } from "../../../../contexts/flashcard";
+import FlashcardRow from "../../FlashcardComponents/FlashcardRow/FlashcardRow.jsx";
 
 export default function UpdateMySetPage() {
     const { mySets } = useFlashcardContext();

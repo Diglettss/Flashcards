@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import MySetsOverview from "../MySetsOverview/MySetsOverview.jsx";
-import UpdateMySetPage from "../UpdateMySetPage/UpdateMySetPage.jsx";
-import FlashcardOverviewPage from "../FlashcardOverviewPage/FlashcardOverviewPage.jsx";
+import MySetsOverview from "./MySetsOverview/MySetsOverview.jsx";
+import UpdateMySetPage from "./UpdateMySetPage/UpdateMySetPage.jsx";
+import FlashcardOverviewPage from "./FlashcardOverviewPage/FlashcardOverviewPage.jsx";
 import StudyPage from "../StudyPage/StudyPage.jsx";
 import NotFound from "../NotFound/NotFound";
 

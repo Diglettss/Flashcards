@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useFlashcardContext } from "../../../contexts/flashcard";
-import FlashcardRow from "../FlashcardComponents/FlashcardRow/FlashcardRow";
+import { useFlashcardContext } from "../../../../contexts/flashcard";
+import FlashcardRow from "../../FlashcardComponents/FlashcardRow/FlashcardRow";
 
 export default function CreateSetBody({
     description,

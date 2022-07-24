@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import FlashcardRow from "../FlashcardComponents/FlashcardRow/FlashcardRow.jsx";
+import FlashcardRow from "../../FlashcardComponents/FlashcardRow/FlashcardRow.jsx";
 import "./FlashcardOverviewPage.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { useFlashcardContext } from "../../../contexts/flashcard.jsx";
+import { useFlashcardContext } from "../../../../contexts/flashcard.jsx";
 
 export default function FlashcardOverviewPage() {
     const navigate = useNavigate();
