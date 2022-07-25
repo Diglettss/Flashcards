@@ -1,19 +1,21 @@
 .flashcard-overview-page {
-    background-color:aliceblue;
+    background-color: aliceblue;
     padding-top: 50px;
+    padding-bottom: 100px;
     .title {
         margin-left: auto;
         margin-right: auto;
         margin-top: 20px;
         width: 400px;
     }
-    .description{
+    .description {
         margin-left: auto;
         margin-right: auto;
         width: 50vw;
     }
 
-    .title, .description{
+    .title,
+    .description {
         text-align: center;
         padding: 12px 18px;
         color: white;
@@ -21,17 +23,17 @@
         background: #000000;
     }
 
-    .update-button{
+    .update-button {
         z-index: 0;
         position: absolute;
         margin-left: 10px;
         // height: 50vh;
     }
     .start-button {
-        color: blueviolet;
-        button {
-            margin: 40px auto;
-        }
-        padding-bottom: 40px;
+        display: block;
+        position: fixed;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }

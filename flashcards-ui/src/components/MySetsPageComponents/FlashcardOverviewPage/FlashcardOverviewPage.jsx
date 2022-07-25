@@ -32,8 +32,9 @@ function FlashcardOverviewPageContent({ chosenSet }) {
                     />
                 ))}
             </div>
-            <div className="start-button">
+            {/* <div className="start-button"> */}
                 <button
+                className="start-button"
                     onClick={(e) => {
                         const filteredFlashcard = chosenSet.flashcard.filter(
                             (e) => {
@@ -53,7 +54,7 @@ function FlashcardOverviewPageContent({ chosenSet }) {
                 >
                     START STUDYING
                 </button>
-            </div>
+            {/* </div> */}
         </div>
     );
 }

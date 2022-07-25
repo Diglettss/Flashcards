@@ -129,29 +129,31 @@ export default function CreateSetPage() {
     const {userCreatedSet, setUserCreatedSet} = useFlashcardContext()
 
     return (
-        <div className="create-set">
-            <input
-                className="title"
-                type="text"
-                name="title"
-                placeholder="enter a title"
-                value={title}
-                onChange={(e) => {
-                    setTitle(e.target.value);
-                    userCreatedSet.title=title
+        <div children={"This page is under construction"}/>
 
-                }}
-            />
-            {bodyView == "create" ? (
-                <CreateSetBody
-                    description={description}
-                    setDescription={setDescription}
-                    setBodyView={setBodyView}
-                    chosenSet={userCreatedSet}
-                />
-            ) : (
-                <AddCardAsText setBodyView={setBodyView} />
-            )}
-        </div>
+        // <div className="create-set">
+        //     <input
+        //         className="title"
+        //         type="text"
+        //         name="title"
+        //         placeholder="enter a title"
+        //         value={title}
+        //         onChange={(e) => {
+        //             setTitle(e.target.value);
+        //             userCreatedSet.title=title
+
+        //         }}
+        //     />
+        //     {bodyView == "create" ? (
+        //         <CreateSetBody
+        //             description={description}
+        //             setDescription={setDescription}
+        //             setBodyView={setBodyView}
+        //             chosenSet={userCreatedSet}
+        //         />
+        //     ) : (
+        //         <AddCardAsText setBodyView={setBodyView} />
+        //     )}
+        // </div>
     );
 }

@@ -24,8 +24,9 @@ export default function UpdateMySetPage() {
                     />
                 ))}
             </div>
-            <div className="start-button">
+            {/* <div className="start-button"> */}
                 <button
+                className="start-button"
                     onClick={(e) => {
                         const filteredFlashcard = chosenSet.flashcard.filter(
                             (e) => {
@@ -46,6 +47,6 @@ export default function UpdateMySetPage() {
                     Add more cards
                 </button>
             </div>
-        </div>
+        // </div>
     );
 }

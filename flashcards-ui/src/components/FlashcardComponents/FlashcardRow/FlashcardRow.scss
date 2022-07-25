@@ -2,6 +2,10 @@
 .flashcard-row-container {
     display: flex;
     flex-direction: column;
+    // display: flex;
+    // flex-wrap: nowrap;
+    // justify-content: start;
+    // align-content: start;
     .flashcard-row {
         display: flex;
         margin-top: 100px;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./StudyPage.css";
-import ModalSettings from "./ModalSettings/ModalSettings.jsx";
+import ModalSettings from "./ModalSettings/ModalSettings";
 import { useFlashcardContext } from "../../../contexts/flashcard";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -56,19 +56,19 @@ export default function StudyPage() {
         console.log("defaultFlashcardState");
         console.log(defaultFlashcardState);
         if (defaultFlashcardState === true) {
-            setFlashcardOnSide(true);
+            setFlashcardOnTerm(true);
         } else if (defaultFlashcardState === false) {
-            setFlashcardOnSide(false);
+            setFlashcardOnTerm(false);
         } else {
             //this will let the default state of flashcards to be random
             //to reach this else statement set defaultFlashcardState to null
             const randomBoolean = Math.random() < 0.5;
-            setFlashcardOnSide(randomBoolean);
+            setFlashcardOnTerm(randomBoolean);
         }
     };
 
     //Which side of the flashcard is facing up, if null pick randomly
-    const [flashcardOnSide, setFlashcardOnSide] = useState(
+    const [flashcardOnTerm, setFlashcardOnTerm] = useState(
         defaultFlashcardState || Math.random() < 0.5
     );
 
@@ -103,11 +103,11 @@ export default function StudyPage() {
             <Flashcard
                 flashcard={
                     filteredFlashcard[flashcardNumber][
-                        flashcardOnSide ? "term" : "definition"
+                        flashcardOnTerm ? "term" : "definition"
                     ]
                 }
                 onClick={() => {
-                    setFlashcardOnSide(!flashcardOnSide);
+                    setFlashcardOnTerm(!flashcardOnTerm);
                 }}
             />
             <br />

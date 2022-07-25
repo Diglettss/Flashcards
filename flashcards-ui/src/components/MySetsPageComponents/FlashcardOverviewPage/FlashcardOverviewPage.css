@@ -1,6 +1,7 @@
 .flashcard-overview-page {
   background-color: aliceblue;
   padding-top: 50px;
+  padding-bottom: 100px;
 }
 
 .flashcard-overview-page .title {
@@ -16,7 +17,8 @@
   width: 50vw;
 }
 
-.flashcard-overview-page .title, .flashcard-overview-page .description {
+.flashcard-overview-page .title,
+.flashcard-overview-page .description {
   text-align: center;
   padding: 12px 18px;
   color: white;
@@ -31,11 +33,11 @@
 }
 
 .flashcard-overview-page .start-button {
-  color: blueviolet;
-  padding-bottom: 40px;
-}
-
-.flashcard-overview-page .start-button button {
-  margin: 40px auto;
+  display: block;
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
 }
 /*# sourceMappingURL=FlashcardOverviewPage.css.map */
