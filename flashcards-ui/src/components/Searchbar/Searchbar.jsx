@@ -6,7 +6,6 @@ export default function Searchbar() {
     return (
         <input
             type="search"
-            id="site-search"
             name="q"
             placeholder="Seach..."
             className="searchbar"
@@ -15,7 +14,7 @@ export default function Searchbar() {
             }}
             onKeyDown={(e) => {
                 if (e.code == "Enter") {
-                    console.log("API Request goes here");
+                    console.warn("API Request goes here");
                     //TODO set up API Request
                 }
             }}
