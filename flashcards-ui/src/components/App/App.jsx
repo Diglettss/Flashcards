@@ -4,7 +4,7 @@ import MySetsPage from "../MySetsPageComponents/MySetsPages.jsx";
 import CreateSetPage from "../CreateSetPageComponents/CreateSetPage/CreateSetPage.jsx";
 import * as React from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom"
 import LoginPage from "../LoginPage/LoginPage";
 import RegistrationPage from "../RegistrationPage/RegistrationPage";
 import NotFound from "../NotFound/NotFound";
@@ -12,6 +12,8 @@ import apiClient from "../../../services/apiClient";
 import { AuthContextProvider, useAuthContext } from "../../../contexts/auth";
 import { FlashcardContextProvider } from "../../../contexts/flashcard.jsx";
 import { useEffect } from "react";
+
+
 
 export default function AppContainer() {
     return (

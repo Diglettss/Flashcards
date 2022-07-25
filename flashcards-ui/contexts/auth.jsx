@@ -22,7 +22,7 @@ export const AuthContextProvider = ({ children }) => {
         setError((e) => ({ ...e, form: null }));
 
         const { data, error } = await apiClient.loginUser({
-            email: credentials.email,
+            username: credentials.username,
             password: credentials.password,
         });
         if (error) {
