@@ -48,7 +48,7 @@ export const FlashcardContextProvider = ({ children }) => {
         };
         for (let i = 0; i < numOfSet; i++) {
             set.push({
-                title: `${lorem.generateWords(1)}`,
+                title: `Title`,
                 description: lorem.generateWords(
                     Math.floor(Math.random() * 22) + 10
                 ),

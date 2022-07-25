@@ -83,7 +83,6 @@ export default function MySetsSearch({
                 className="drop-down"
                 onChange={(e) => {
                     setSortBy(e.target.value);
-                    console.log(e.target.value);
                 }}
                 value={sortBy}
             >

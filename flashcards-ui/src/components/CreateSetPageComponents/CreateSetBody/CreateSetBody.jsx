@@ -10,7 +10,6 @@ export default function CreateSetBody({
     chosenSet
 }) {
     const { mySets, userCreatedSet} = useFlashcardContext()
-    console.log(mySets)
     const navigate = useNavigate()
     return (
         <>
@@ -23,7 +22,6 @@ export default function CreateSetBody({
                 onChange={(e) => {
                     setDescription(e.target.value);
                     userCreatedSet.description=description
-                    console.log(userCreatedSet)
                 }}
             />
             <div className="flashcard-row-container">
@@ -61,7 +59,6 @@ export default function CreateSetBody({
             </div>
             <button className="middle-div save-button" onClick={()=>{
                 mySets.push(userCreatedSet)
-                console.log(mySets)
                 navigate("/mysets")
 
             }}>

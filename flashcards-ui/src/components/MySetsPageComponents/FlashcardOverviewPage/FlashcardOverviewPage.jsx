@@ -11,7 +11,6 @@ function FlashcardOverviewPageContent({ chosenSet }) {
             <button
                 className="update-button"
                 onClick={(e) => {
-                    console.log(chosenSet.setId);
                     navigate(`/mysets/update/${chosenSet.setId}`);
                 }}
             >
@@ -65,12 +64,10 @@ export default function FlashcardOverviewPage() {
     const { setId } = useParams();
     const chosenSet = mySets[setId];
 
-    console.log(chosenSet);
     //if the params setId doesn't exist in mySets send the user to the shadow realm
     useEffect(() => {
-        console.log("mounted");
         if (!chosenSet || chosenSet == undefined) {
-            console.log("sending you to the shadow realm");
+            console.error("sending you to the shadow realm");
             navigate("/notfound");
         }
     }, []);

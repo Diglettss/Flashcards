@@ -13,7 +13,6 @@ function AddCardAsText({ setBodyView }) {
         "Term1, definition1_ Term2, definition2_ term3, definition 3"
     );
     const {userCreatedSet, setUserCreatedSet} = useFlashcardContext()
-    console.log(userCreatedSet)
 
     const turnIntoFlashcards = () => {
         let createdSets = [];
@@ -23,7 +22,6 @@ function AddCardAsText({ setBodyView }) {
             let singleFlashcardAsOBJ={};
 
             if(splitTexts.length%2!==0){
-                console.log("Length not good")
                 userError=true
             }
 
@@ -42,7 +40,6 @@ function AddCardAsText({ setBodyView }) {
                 let singleFlashcard = e.split(textDelimiter);
                 if(singleFlashcard[0]===undefined||singleFlashcard[1]===undefined){
                     //TODO send an error message to user
-                    console.log("user is missing a term or definition")
                     userError = true
                 }
                 let singleFlashcardAsOBJ = {
@@ -55,7 +52,6 @@ function AddCardAsText({ setBodyView }) {
         if(userError){
             alert("You are missing a term or definition")
         }else{
-            console.log({flashcard: createdSets})
             userCreatedSet.flashcard=createdSets
             setUserCreatedSet({...userCreatedSet})
             setBodyView("create")

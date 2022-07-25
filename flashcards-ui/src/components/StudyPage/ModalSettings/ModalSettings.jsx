@@ -34,21 +34,14 @@ export default function ModalSettings({}) {
 
                         onChange={(e) => {
                             e.preventDefault
-                            console.log("Changing")
-                            console.log(defaultFlashcardState)
                             //setDefaultFlashcardState
                             if (e.target.value == "normal") {
-                                console.log("inside of normal")
                                 setDefaultFlashcardState(true);
                             } else if (e.target.value == "inverse") {
-                                console.log("inside of inverse")
                                 setDefaultFlashcardState(false);
                             } else if (e.target.value == "random") {
-                                console.log("inside of random")
                                 setDefaultFlashcardState(null);
                             }
-                            console.log("Changed to")
-                            console.log(defaultFlashcardState)
                         }}
                     >
                         <option value="normal">Normal</option>

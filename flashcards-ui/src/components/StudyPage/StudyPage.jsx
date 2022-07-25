@@ -41,7 +41,6 @@ export default function StudyPage() {
         if (e.visibility == true) {
             return e;
         }
-        console.log(e);
     });
 
     if (filteredFlashcard.length < 2) {
@@ -53,8 +52,6 @@ export default function StudyPage() {
 
     const handleButtonClick = () => {
         //This will allow for the settings button to configure what the default state of flashcards is i.e. if term or definition is up by default
-        console.log("defaultFlashcardState");
-        console.log(defaultFlashcardState);
         if (defaultFlashcardState === true) {
             setFlashcardOnTerm(true);
         } else if (defaultFlashcardState === false) {
@@ -83,7 +80,6 @@ export default function StudyPage() {
                     className="settings"
                     onClick={() => {
                         setShowSettingsModal(!showSettingsModal);
-                        console.log(showSettingsModal);
                     }}
                 >
                     Settings
