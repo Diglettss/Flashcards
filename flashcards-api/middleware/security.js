@@ -12,11 +12,21 @@ const jwtFrom = ({ headers }) => {
   return undefined
 }
 
+const updateLastServerPing = (req, res, next) => {
+  try {
+    return true;
+    // console.log(req, res, next)
+  }catch{
+
+  }
+}
+
 const extractUserFromJwt = (req, res, next) => {
   try {
     const token = jwtFrom(req)
     if (token){
       res.locals.user = jwt.verify(token, SECRET_KEY)
+      updateLastServerPing()
     }
     return next()
   } catch(error) {
@@ -38,6 +48,7 @@ const requireAuthenticatedUser = (req, res, next) => {
 }
   
 module.exports = {
+  updateLastServerPing,
   extractUserFromJwt,
   requireAuthenticatedUser,
 }

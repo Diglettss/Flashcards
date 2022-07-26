@@ -35,7 +35,7 @@ class User {
         } else {
             await bcrypt.compare(
                 "$2b$13$YFcwwKjaYhqqEuGHFlH.vO2I85GC2SSAEw5d5ATpAWvFi4haHGsyq",
-                user.password
+                credentials.password
             );
         }
         throw new UnauthorizedError("Invalid email or password");
