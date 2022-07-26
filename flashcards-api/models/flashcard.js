@@ -119,7 +119,7 @@ class Flashcard {
     }
 
     static async updateSets(email, set){
-        console.log({email, set})
+        // console.log({email, set})
         return {email, set};
     }
 }

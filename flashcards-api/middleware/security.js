@@ -14,7 +14,8 @@ const jwtFrom = ({ headers }) => {
 
 const updateLastServerPing = (req, res, next) => {
   try {
-    console.log(req, res, next)
+    return true;
+    // console.log(req, res, next)
   }catch{
 
   }
