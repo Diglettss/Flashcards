@@ -80,6 +80,7 @@ class Flashcard {
                 email,
             ]
         );
+
         return Flashcard.makeSetPublic(result.rows[0]);
     }
 
