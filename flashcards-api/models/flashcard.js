@@ -34,7 +34,7 @@ class Flashcard {
             requiredFiled.forEach((field) => {
                 if (!e.hasOwnProperty(field)) {
                     throw new BadRequestError(
-                        `Missing ${field} in request body`
+                        `Missing a ${field} for at least one flashcard`
                     );
                 }
             });
@@ -83,6 +83,7 @@ class Flashcard {
         return Flashcard.makeSetPublic(result.rows[0]);
     }
 
+    //Function for what fetchFlashcardById should look like
     static async fetchNutritionById(nutritionId) {
         const result = await db.query(
             `SELECT f.id
