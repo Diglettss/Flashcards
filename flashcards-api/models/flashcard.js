@@ -5,15 +5,15 @@ const { BCRYPT_WORK_FACTOR } = require("../config");
 const { json } = require("express");
 
 class Flashcard {
-    static async makePublicFlashcard(flashcard) {
+    static async makeSetPublic(set) {
         return {
-            id: flashcard.id,
-            title: flashcard.title,
-            owner: flashcard.user_id,
-            isPublic: flashcard.is_public,
-            description: flashcard.description,
-            createdAt: flashcard.created_at,
-            flashcards: JSON.parse(flashcard.flashcards),
+            id: set.id,
+            owner: set.userId,
+            isPublic: set.isPublic,
+            createdAt: set.createdAt,
+            title: set.title,
+            description: set.description,
+            flashcards: JSON.parse(set.flashcards),
         };
     }
 
@@ -42,7 +42,7 @@ class Flashcard {
         return JSON.stringify(flashcards);
     }
 
-    static async createFlashcard(email, data) {
+    static async createSets(email, data) {
         const requiredFiled = ["flashcards", "title"];
         requiredFiled.forEach((field) => {
             if (!data.hasOwnProperty(field)) {
@@ -80,16 +80,16 @@ class Flashcard {
                 email,
             ]
         );
-        return Flashcard.makePublicFlashcard(result.rows[0]);
+        return Flashcard.makeSetPublic(result.rows[0]);
     }
 
     static async fetchNutritionById(nutritionId) {
         const result = await db.query(
-            `SELECT n.id
-            FROM nutrition as n
-                JOIN users AS u ON u.id = b.user_id
+            `SELECT f.id
+            FROM FlashcardSets as f
+                JOIN users AS u ON u.id = f.user_id
             WHERE id = $1`,
-            [nutritionId]
+            [flashcardId]
         );
         if (result.rows.length == 0) {
             throw new NotFoundError();
@@ -97,12 +97,29 @@ class Flashcard {
         return result.rows;
     }
 
-    static async listNutritionForUser(email) {
+    static async listSetsForUser(email) {
         const result = await db.query(
-            `SELECT nutrition.id, nutrition.name, nutrition.category, nutrition.calories, nutrition.quantity, nutrition.image_url AS "imageUrl", nutrition.user_id  AS "userId", nutrition.created_at AS "createdAt" FROM nutrition WHERE user_id = (select id from users where email = $1)`,
+            `SELECT 
+                id, 
+                user_id AS "userId", 
+                is_public AS "isPublic", 
+                created_at as "createdAt",
+                title, 
+                description, 
+                flashcards
+            FROM FlashcardSets WHERE user_id = (select id from users where email = $1)`,
             [email]
         );
-        return result.rows;
+        const userSets= []
+        result.rows.forEach(async (e)=>{
+            userSets.push(await Flashcard.makeSetPublic(e))
+        })
+        return userSets
+    }
+
+    static async updateSets(email, set){
+        console.log({email, set})
+        return {email, set};
     }
 }
 
