@@ -60,9 +60,20 @@ class ApiClient{
         return await this.request({ endpoint: `auth/me`, method: `GET` })
     }
     
+    // method to logout user
     async logoutUser() {
         this.setToken(null);
         localStorage.setItem(this.tokenName, "");
+    }
+
+    // method to create a user's set
+    async createUserSet(credentials) {
+        return await this.request({endpoint: `flashcard/mysets`, method: `POST`, data: credentials})
+    }
+
+    // method to fetch a user's sets 
+    async fetchUserSets() {
+        return await this.request({endpoint: `flashcard/mysets`, method: `GET`})
     }
 
 }
