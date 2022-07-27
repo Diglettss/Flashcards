@@ -115,6 +115,7 @@ class Flashcard {
         result.rows.forEach(async (e)=>{
             userSets.push(await Flashcard.makeSetPublic(e))
         })
+        console.log("Flashcard model reached")
         return userSets
     }
 

@@ -11,17 +11,13 @@ export const FlashcardContextProvider = ({ children }) => {
         description: null,
         flashcard: null,
     });
-    const [mySets, setmySets] = useState(
-        randomSet(Math.floor(Math.random() * 15) + 12)
-    );
-    console.log("mySets", mySets)
     //This is to be changeable by the user
     const [defaultFlashcardState, setDefaultFlashcardState] = useState(true);
 
     const [initialized, setInitialized] = useState();
     const [isProcessing, setIsProcessing] = useState(false);
     const [error, setError] = useState();
-    const [userSet, setUserSet] = useState([]);
+    const [userSets, setUserSets] = useState([]);
     const lorem = new LoremIpsum({
         sentencesPerParagraph: {
             max: 8,
@@ -33,6 +29,7 @@ export const FlashcardContextProvider = ({ children }) => {
         },
     });
 
+
     useEffect(() => {
         // should make a `GET` request to the `/mysets` endpoint
         // If there is an error with the request, it should set a message as the `error` state variable
@@ -40,7 +37,7 @@ export const FlashcardContextProvider = ({ children }) => {
             const {data, err} = await apiClient.fetchUserSets();
             // If all goes well, should set the data as the `userSet` state variable
             if (data){
-                setUserSet(data.mySets);
+                setUserSets(data.mySets);
             } 
             // If there is an error with the request, it should set a message as the `error` state variable
             if (err){
@@ -113,7 +110,12 @@ export const FlashcardContextProvider = ({ children }) => {
         return set;
     };
 
-  
+    const [mySets, setmySets] = useState(
+        randomSet(Math.floor(Math.random() * 15) + 12)
+    );
+
+    console.log("mySets", mySets)
+
 
     const flashcardValue = {
         initialized,
@@ -130,6 +132,7 @@ export const FlashcardContextProvider = ({ children }) => {
         userCreatedSet,
         setUserCreatedSet,
         setmySets,
+        userSets,
     };
 
     return (

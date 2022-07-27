@@ -43,6 +43,7 @@ router.get(
     security.requireAuthenticatedUser,
     async (req, res, next) => {
         //get all mysets
+        console.log("Flashcard route reached")
         try {
             const mySets = await Flashcard.listSetsForUser(
                 res.locals.user.email

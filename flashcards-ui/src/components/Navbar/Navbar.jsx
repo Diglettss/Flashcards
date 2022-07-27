@@ -5,6 +5,7 @@ import Searchbar from "../Searchbar/Searchbar.jsx";
 import "./Navbar.css";
 import { useAuthContext } from "../../../contexts/auth";
 
+
 function Navbar() {
     const  isLoggedIn  = true;
     return (
