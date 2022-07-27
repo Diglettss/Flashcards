@@ -22,10 +22,6 @@ class Flashcard {
         };
     }
 
-    static async search({string, }){
-
-    }
-
     static validateFlashcards(flashcards) {
         //Checks to see if the flashcards are set up properly
         if (!Array.isArray(flashcards)) {
@@ -185,7 +181,6 @@ class Flashcard {
     static async deleteMySet(email, data) {
         const result = await db.query(
             `
-
         DELETE FROM FlashcardSets
         WHERE 
         id = $1 AND user_id = (select id from users where email = $2)
@@ -198,6 +193,39 @@ class Flashcard {
             throw new BadRequestError(`The set can not be deleted`);
         }
         return await Flashcard.makeSetPublic(result.rows[0]);
+    }
+
+    static async fetchPublicSetsBySearch({ searchQuery }) {
+        //This somehow takes the words in a string and turns them into an array of those words
+        const searchQueryArray = searchQuery.match(/[-\w]+/g);
+
+        const searchQueryString = searchQueryArray.join(" & ");
+
+        const result = await db.query(
+            `
+            select
+            FlashcardSets.id, 
+            FlashcardSets.user_id AS "userId", 
+            FlashcardSets.is_public AS "isPublic", 
+            FlashcardSets.created_at as "createdAt",
+            FlashcardSets.title, 
+            FlashcardSets.description, 
+            FlashcardSets.flashcards
+        from FlashcardSets
+        where to_tsvector(title || ' ' || description || ' ') @@ to_tsquery($1) AND is_public = True;
+                `,
+            [searchQueryString]
+        );
+        if (result.rows.length == 0) {
+            throw new NotFoundError(
+                "No sets were found with that description or title"
+            );
+        }
+        const userSets = [];
+        result.rows.forEach(async (e) => {
+            userSets.push(await Flashcard.makeSetPublic(e));
+        });
+        return userSets;
     }
 }
 
