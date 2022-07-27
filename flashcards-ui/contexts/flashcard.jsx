@@ -45,12 +45,12 @@ export const FlashcardContextProvider = ({ children }) => {
         //     }
         // }
 
-        const pingClient = async () => {
-            console.log(await apiClient.ping());
+        const getPublicSet = async () => {
+            console.log(await apiClient.getAPublicSet(2));
         };
 
-        pingClient();
-        
+        getPublicSet();
+
         setIsProcessing(false);
         setInitialized(true);
     }, []);

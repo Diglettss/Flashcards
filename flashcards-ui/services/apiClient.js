@@ -40,17 +40,18 @@ class ApiClient {
         }
     }
 
-    async ping(){
+    async ping() {
         return await this.request({
             endpoint: `flashcard/ping`,
             method: `GET`,
         });
     }
 
-    async getAllPublic(){
+    async getAPublicSet(setId) {
         return await this.request({
-            endpoint: `flashcard/ping`,
+            endpoint: `flashcard/`,
             method: `GET`,
+            data: { id: setId },
         });
     }
 

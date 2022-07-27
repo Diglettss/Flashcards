@@ -176,6 +176,7 @@ class Flashcard {
                 `,
             [id]
         );
+        console.log(result.rows[0])
         if (result.rows.length == 0) {
             throw new NotFoundError("The provided set is not found");
         }
