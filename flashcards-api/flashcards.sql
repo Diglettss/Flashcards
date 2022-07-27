@@ -3,4 +3,8 @@ DROP DATABASE flashcards;
 
 CREATE DATABASE flashcards;
 
-\connect flashcards \i flashcards_schema.sql
+\connect flashcards
+
+\i flashcards_schema.sql
+
+\i flashcards-seed.sql
