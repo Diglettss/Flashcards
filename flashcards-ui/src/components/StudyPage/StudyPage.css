@@ -6,7 +6,6 @@
   margin-right: auto;
   background-color: #b5b5b5;
 }
-
 .study-page .title {
   margin-left: auto;
   margin-right: auto;
@@ -19,11 +18,9 @@
   text-align: center;
   padding: 10px;
 }
-
 .study-page .description {
   color: white;
 }
-
 .study-page .flashcard {
   margin: auto;
   background-color: bisque;
@@ -34,51 +31,29 @@
   max-width: 90vw;
   max-height: 54vw;
   aspect-ratio: 3/5;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-line-pack: distribute;
-      align-content: space-around;
+  justify-content: space-around;
+  align-items: center;
+  align-content: space-around;
 }
-
 .study-page .flashcard div {
   margin: auto;
   max-width: 400px;
 }
-
 .study-page .prev-next-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-
 .study-page .button-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
-
 .study-page button {
   display: inline-block;
   margin: 10px;
 }
-
 .study-page .back-button {
   right: 100px;
-}
-/*# sourceMappingURL=StudyPage.css.map */
+}/*# sourceMappingURL=StudyPage.css.map */
