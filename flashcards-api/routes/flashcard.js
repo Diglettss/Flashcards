@@ -73,9 +73,13 @@ router.put(
 );
 
 //delete your own sets
-router.delete("/", security.requireAuthenticatedUser, (req, res, next) => {
+router.delete("/mysets", security.requireAuthenticatedUser, async (req, res, next) => {
     try {
-        return res.status(200).json({ ping: "pong" });
+        const mySet = await Flashcard.deleteMySet(
+            res.locals.user.email,
+            req.body
+        );
+        return res.status(200).json({ mySet });
     } catch (err) {
         next(err);
     }

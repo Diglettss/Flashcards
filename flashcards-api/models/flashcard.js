@@ -7,7 +7,7 @@ const {
 } = require("../utils/errors");
 const { BCRYPT_WORK_FACTOR } = require("../config");
 const { json } = require("express");
-const User = require("./user")
+const User = require("./user");
 
 class Flashcard {
     static async makeSetPublic(set) {
@@ -79,7 +79,7 @@ class Flashcard {
 
         //validate flashcards
         const flashcards = Flashcard.validateFlashcards(data.flashcards);
-        
+
         const result = await db.query(
             `
         INSERT INTO FlashcardSets (
@@ -124,7 +124,8 @@ class Flashcard {
 
         //query the database for the setID and then update it
 
-        const result = await db.query(`
+        const result = await db.query(
+            `
         UPDATE FlashcardSets
         SET
         title=$1,
@@ -142,21 +143,20 @@ class Flashcard {
         user_id AS "userId",
         created_at AS "createdAt"
         `,
-        [
-            data.title,
-            data.description,
-            data.isPublic || false,
-            flashcards,
-            data.id,
-            email
-        ]
-        )
-        
+            [
+                data.title,
+                data.description,
+                data.isPublic || false,
+                flashcards,
+                data.id,
+                email,
+            ]
+        );
 
         return await Flashcard.makeSetPublic(result.rows[0]);
     }
 
-    static async fetchPublicSetById({id}) {
+    static async fetchPublicSetById({ id }) {
         const result = await db.query(
             `
                 SELECT 
@@ -175,6 +175,24 @@ class Flashcard {
         );
         if (result.rows.length == 0) {
             throw new NotFoundError("The provided set is not found");
+        }
+        return await Flashcard.makeSetPublic(result.rows[0]);
+    }
+
+    static async deleteMySet(email, data) {
+        const result = await db.query(
+            `
+
+        DELETE FROM FlashcardSets
+        WHERE 
+        id = $1 AND user_id = (select id from users where email = $2)
+        RETURNING *
+
+        `,
+            [data.id, email]
+        );
+        if (!result.rows[0]) {
+            throw new BadRequestError(`Set not deleted`);
         }
         return await Flashcard.makeSetPublic(result.rows[0]);
     }
