@@ -79,7 +79,6 @@ export const FlashcardContextProvider = ({ children }) => {
 
     const randomSet = (numOfSet) => {
         let set = [];
-
         const create = () => {
             let flashcardss = [];
             let randomInt = Math.floor(Math.random() * 13) + 5;
