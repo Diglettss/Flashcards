@@ -12,69 +12,74 @@ router.get("/ping", (req, res, next) => {
     }
 });
 
-router.get("/", (req, res, next) => {
-    //get public sets
+//get a public sets
+router.get("/", async (req, res, next) => {
     try {
-        return res.status(200).json({ ping: "pong" });
+        const set = await Flashcard.fetchPublicSetById(req.body);
+        return res.status(201).json({ set });
     } catch (err) {
         next(err);
     }
 });
 
+//create your own set
 router.post(
     "/mysets",
     security.requireAuthenticatedUser,
     async (req, res, next) => {
-        //create your own set
         try {
             const set = await Flashcard.createSets(
                 res.locals.user.email,
                 req.body
             );
-            res.json({ set });
+            return res.status(201).json({ set });
         } catch (err) {
             next(err);
         }
     }
 );
 
+//get all mysets
 router.get(
     "/mysets",
     security.requireAuthenticatedUser,
     async (req, res, next) => {
-        //get all mysets
         try {
             const mySets = await Flashcard.listSetsForUser(
                 res.locals.user.email
             );
-            res.json({ mySets });
+            return res.status(200).json({ mySets });
         } catch (err) {
             next(err);
         }
     }
 );
 
+//update your own sets
 router.put(
     "/mysets",
     security.requireAuthenticatedUser,
     async (req, res, next) => {
-        //update your own sets
         try {
             const mySet = await Flashcard.updateSets(
                 res.locals.user.email,
                 req.body
             );
-            res.json({ mySet });
+            return res.status(201).json({ mySet });
         } catch (err) {
             next(err);
         }
     }
 );
 
-router.delete("/", security.requireAuthenticatedUser, (req, res, next) => {
-    //delete your own sets
+//delete your own sets
+router.delete("/mysets", security.requireAuthenticatedUser, async (req, res, next) => {
     try {
-        return res.status(200).json({ ping: "pong" });
+        const mySet = await Flashcard.deleteMySet(
+            res.locals.user.email,
+            req.body
+        );
+        return res.status(200).json({ mySet });
     } catch (err) {
         next(err);
     }

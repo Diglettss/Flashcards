@@ -15,6 +15,8 @@ const jwtFrom = ({ headers }) => {
 const updateLastServerPing = (req, res, next) => {
   try {
     return true;
+    // to_timestamp(${Date.now()} / 1000.0
+    
     // console.log(req, res, next)
   }catch{
 

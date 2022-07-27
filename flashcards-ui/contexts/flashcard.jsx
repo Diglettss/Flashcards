@@ -29,7 +29,6 @@ export const FlashcardContextProvider = ({ children }) => {
 
     const randomSet = (numOfSet) => {
         let set = [];
-
         const create = () => {
             let flashcardss = [];
             let randomInt = Math.floor(Math.random() * 13) + 5;
@@ -63,6 +62,7 @@ export const FlashcardContextProvider = ({ children }) => {
     const [mySets, setmySets] = useState(
         randomSet(Math.floor(Math.random() * 15) + 12)
     );
+    
     //This is to be changeable by the user
     const [defaultFlashcardState, setDefaultFlashcardState] = useState(true);
 
