@@ -26,7 +26,6 @@ class ApiClient {
             "Content-Type": "application/json",
         };
 
-        console.log(this.token)
         if (this.token) {
             headers["Authorization"] = `Bearer ${this.token}`;
         }
@@ -41,14 +40,30 @@ class ApiClient {
         }
     }
 
+    async ping(){
+        return await this.request({
+            endpoint: `flashcard/ping`,
+            method: `GET`,
+        });
+    }
+
+    async getAllPublic(){
+        return await this.request({
+            endpoint: `flashcard/ping`,
+            method: `GET`,
+        });
+    }
+
     // Add a `login` method that uses the `request` method to send an
     // HTTP request to the `auth/login` endpoint
     async loginUser(credentials) {
-        return await this.request({
+        const response = await this.request({
             endpoint: `auth/login`,
             method: `POST`,
             data: credentials,
         });
+        this.setToken(response.data?.token);
+        return response;
     }
 
     // Add a `signup` method that uses the `request` method to send an HTTP

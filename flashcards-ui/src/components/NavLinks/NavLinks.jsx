@@ -4,12 +4,8 @@ import { useAuthContext } from "../../../contexts/auth";
 import "./NavLinks.css";
 
 export default function NavLinks(props) {
-    const { user, logoutUser } = useAuthContext();
-    const navigate = useNavigate();
-    const handleOnLogout = async () => {
-        logoutUser();
-        navigate("/");
-    };
+    const { user,} = useAuthContext();
+  
     return (
         <>
             <Link className="text" to="/">

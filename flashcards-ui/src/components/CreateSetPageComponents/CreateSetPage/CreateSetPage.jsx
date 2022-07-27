@@ -14,14 +14,8 @@ function AddCardAsText({ setBodyView }) {
         "Term1, definition1_ Term2, definition2_ term3, definition 3"
     );
     const { userCreatedSet, setUserCreatedSet } = useFlashcardContext();
-    const { user } = useAuthContext();
-    const navigate = useNavigate();
 
-    useEffect(() => {
-        if (!user.email) {
-            navigate("/login");
-        }
-    }, [user]);
+
 
     const turnIntoFlashcards = () => {
         let createdSets = [];
@@ -129,39 +123,46 @@ function AddCardAsText({ setBodyView }) {
 
 export default function CreateSetPage() {
     //!Create Page cuts off the last letter(s) of title and description
-
-    const navigate = useNavigate();
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [bodyView, setBodyView] = useState("create");
     const { userCreatedSet, setUserCreatedSet } = useFlashcardContext();
 
+    const { user } = useAuthContext();
+    const navigate = useNavigate();
+    
+    useEffect(() => {
+        if (!user.email) {
+            navigate("/login");
+        }
+    }, [user]);
+
     return (
-        <div children={"This page is under construction"} />
+        // <div children={"This page is under construction"} />
 
-        // <div className="create-set">
-        //     <input
-        //         className="title"
-        //         type="text"
-        //         name="title"
-        //         placeholder="enter a title"
-        //         value={title}
-        //         onChange={(e) => {
-        //             setTitle(e.target.value);
-        //             userCreatedSet.title=title
+        <div className="create-set">
+            <input
+                className="title"
+                type="text"
+                name="title"
+                placeholder="enter a title"
+                value={title}
+                onChange={(e) => {
+                    setTitle(e.target.value);
+                    userCreatedSet.title=title
 
-        //         }}
-        //     />
-        //     {bodyView == "create" ? (
-        //         <CreateSetBody
-        //             description={description}
-        //             setDescription={setDescription}
-        //             setBodyView={setBodyView}
-        //             chosenSet={userCreatedSet}
-        //         />
-        //     ) : (
-        //         <AddCardAsText setBodyView={setBodyView} />
-        //     )}
-        // </div>
+                }}
+            />
+            {bodyView == "create" ? (
+                <CreateSetBody
+                    description={description}
+                    setDescription={setDescription}
+                    setBodyView={setBodyView}
+                    chosenSet={userCreatedSet}
+                />
+            ) : (
+                <AddCardAsText setBodyView={setBodyView} />
+            )}
+        </div>
     );
 }

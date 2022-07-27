@@ -29,47 +29,50 @@ export const FlashcardContextProvider = ({ children }) => {
         },
     });
 
-
     useEffect(() => {
         // should make a `GET` request to the `/mysets` endpoint
         // If there is an error with the request, it should set a message as the `error` state variable
-        const fetchMySets = async () => {
-            const {data, err} = await apiClient.fetchUserSets();
-            // If all goes well, should set the data as the `userSet` state variable
-            if (data){
-                setUserSets(data.mySets);
-            } 
-            // If there is an error with the request, it should set a message as the `error` state variable
-            if (err){
-                setError(err);
-            } 
-        }
-    
-        fetchMySets();
+        // const fetchMySets = async () => {
+        //     const {data, err} = await apiClient.fetchUserSets();
+        //     // If all goes well, should set the data as the `userSet` state variable
+
+        //     if (data){
+        //         setUserSets(data.mySets);
+        //     }
+        //     // If there is an error with the request, it should set a message as the `error` state variable
+        //     if (err){
+        //         setError(err);
+        //     }
+        // }
+
+        const pingClient = async () => {
+            console.log(await apiClient.ping());
+        };
+
+        pingClient();
         
-        setIsProcessing(false)
-        setInitialized(true)
-    }, [])
+        setIsProcessing(false);
+        setInitialized(true);
+    }, []);
 
     // user's sets are created
     async function createSet(credentials) {
-        console.log("createSet reached")
-        setIsProcessing(true)
-        setError((e) => ({ ...e, credentials: null }))
+        console.log("createSet reached");
+        setIsProcessing(true);
+        setError((e) => ({ ...e, credentials: null }));
         const create = async () => {
-        const {data, err} = await apiClient.createUserSet(credentials);
-        if (data) {
-            console.log("data recieved")
-            return true;
-        } else if (err) {
-            return false;
-        }
-        }
+            const { data, err } = await apiClient.createUserSet(credentials);
+            if (data) {
+                console.log("data recieved");
+                return true;
+            } else if (err) {
+                return false;
+            }
+        };
         const valid = await create();
-        setIsProcessing(false)
+        setIsProcessing(false);
         return valid;
     }
-
 
     function randomDate(start, end) {
         return new Date(
@@ -114,8 +117,7 @@ export const FlashcardContextProvider = ({ children }) => {
         randomSet(Math.floor(Math.random() * 15) + 12)
     );
 
-    console.log("mySets", mySets)
-
+    console.log("mySets", mySets);
 
     const flashcardValue = {
         initialized,
