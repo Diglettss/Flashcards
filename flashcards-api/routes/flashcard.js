@@ -12,26 +12,21 @@ router.get("/ping", (req, res, next) => {
     }
 });
 
-router.get("/", (req, res, next) => {
-    //get a public sets
-    async (req, res, next) => {
-        //create your own set
-        try {
-            const set = await Flashcard.fetchPublicSetById(
-                req.body
-            );
-            return res.status(201).json({ set });
-        } catch (err) {
-            next(err);
-        }
+//get a public sets
+router.get("/", async (req, res, next) => {
+    try {
+        const set = await Flashcard.fetchPublicSetById(req.body);
+        return res.status(201).json({ set });
+    } catch (err) {
+        next(err);
     }
 });
 
+//create your own set
 router.post(
     "/mysets",
     security.requireAuthenticatedUser,
     async (req, res, next) => {
-        //create your own set
         try {
             const set = await Flashcard.createSets(
                 res.locals.user.email,
@@ -44,11 +39,11 @@ router.post(
     }
 );
 
+//get all mysets
 router.get(
     "/mysets",
     security.requireAuthenticatedUser,
     async (req, res, next) => {
-        //get all mysets
         try {
             const mySets = await Flashcard.listSetsForUser(
                 res.locals.user.email
@@ -60,11 +55,11 @@ router.get(
     }
 );
 
+//update your own sets
 router.put(
     "/mysets",
     security.requireAuthenticatedUser,
     async (req, res, next) => {
-        //update your own sets
         try {
             const mySet = await Flashcard.updateSets(
                 res.locals.user.email,
@@ -77,8 +72,8 @@ router.put(
     }
 );
 
+//delete your own sets
 router.delete("/", security.requireAuthenticatedUser, (req, res, next) => {
-    //delete your own sets
     try {
         return res.status(200).json({ ping: "pong" });
     } catch (err) {

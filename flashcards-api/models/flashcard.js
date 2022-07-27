@@ -7,6 +7,7 @@ const {
 } = require("../utils/errors");
 const { BCRYPT_WORK_FACTOR } = require("../config");
 const { json } = require("express");
+const User = require("./user")
 
 class Flashcard {
     static async makeSetPublic(set) {
@@ -78,7 +79,7 @@ class Flashcard {
 
         //validate flashcards
         const flashcards = Flashcard.validateFlashcards(data.flashcards);
-
+        
         const result = await db.query(
             `
         INSERT INTO FlashcardSets (
@@ -110,28 +111,52 @@ class Flashcard {
         return await Flashcard.makeSetPublic(result.rows[0]);
     }
 
-    static async updateSets(email, set) {
-        const requiredFiled = ["flashcards", "description", "id"];
+    static async updateSets(email, data) {
+        const requiredFiled = ["flashcards", "title", "id"];
         requiredFiled.forEach((field) => {
-            if (!set.hasOwnProperty(field)) {
+            if (!data.hasOwnProperty(field)) {
                 throw new BadRequestError(`Missing ${field} in request body`);
             }
         });
+
+        //validate flashcards
+        const flashcards = Flashcard.validateFlashcards(data.flashcards);
+
+        //query the database for the setID and then update it
+
+        const result = await db.query(`
+        UPDATE FlashcardSets
+        SET
+        title=$1,
+        description=$2,
+        is_public=$3,
+        flashcards=$4
+        WHERE 
+        id = $5 AND user_id = (select id from users where email = $6)
+        RETURNING 
+        id,
+        title,
+        description,
+        is_public AS "isPublic",
+        flashcards,
+        user_id AS "userId",
+        created_at AS "createdAt"
+        `,
+        [
+            data.title,
+            data.description,
+            data.isPublic || false,
+            flashcards,
+            data.id,
+            email
+        ]
+        )
         
-        Flashcard.validateFlashcards(set.flashcards);
 
-
-        //checks to see if the database has this id
-        //then updates the database with the user given info
-
-
-        const dataBaseSet = await Flashcard.fetchPublicSetById(set.id);
-
-        return dataBaseSet;
+        return await Flashcard.makeSetPublic(result.rows[0]);
     }
 
-    //Function for what fetchFlashcardById should look like
-    static async fetchPublicSetById(flashcardId) {
+    static async fetchPublicSetById({id}) {
         const result = await db.query(
             `
                 SELECT 
@@ -146,12 +171,11 @@ class Flashcard {
                 FROM FlashcardSets
                 WHERE FlashcardSets.id = $1 AND is_public = True
                 `,
-            [flashcardId]
+            [id]
         );
         if (result.rows.length == 0) {
             throw new NotFoundError("The provided set is not found");
         }
-
         return await Flashcard.makeSetPublic(result.rows[0]);
     }
 }
