@@ -4,6 +4,7 @@ import { useFlashcardContext } from "../../../../contexts/flashcard";
 import "./CreateSetPage.css";
 import FlashcardRow from "../../FlashcardComponents/FlashcardRow/FlashcardRow";
 import CreateSetBody from "./../CreateSetBody/CreateSetBody.jsx";
+import { useAuthContext } from "../../../../contexts/auth";
 
 function AddCardAsText({ setBodyView }) {
     const [textDelimiter, setTextDelimiter] = useState(",");
@@ -12,35 +13,46 @@ function AddCardAsText({ setBodyView }) {
     const [textInput, setTextinput] = useState(
         "Term1, definition1_ Term2, definition2_ term3, definition 3"
     );
-    const {userCreatedSet, setUserCreatedSet} = useFlashcardContext()
+    const { userCreatedSet, setUserCreatedSet } = useFlashcardContext();
+    const { user } = useAuthContext();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!user.email) {
+            navigate("/login");
+        }
+    }, [user]);
 
     const turnIntoFlashcards = () => {
         let createdSets = [];
         let userError = false;
         if (textDelimiter == flashcardDelimiter) {
             let splitTexts = textInput.split(flashcardDelimiter);
-            let singleFlashcardAsOBJ={};
+            let singleFlashcardAsOBJ = {};
 
-            if(splitTexts.length%2!==0){
-                userError=true
+            if (splitTexts.length % 2 !== 0) {
+                userError = true;
             }
 
             splitTexts.forEach((e, idx) => {
-                if(!(idx%2)){
-                    singleFlashcardAsOBJ.term=e
-                }else{
-                    singleFlashcardAsOBJ.definition=e
+                if (!(idx % 2)) {
+                    singleFlashcardAsOBJ.term = e;
+                } else {
+                    singleFlashcardAsOBJ.definition = e;
                     createdSets.push(singleFlashcardAsOBJ);
-                    singleFlashcardAsOBJ={}
+                    singleFlashcardAsOBJ = {};
                 }
             });
         } else {
             let flashcardsPairs = textInput.split(flashcardDelimiter);
             flashcardsPairs.forEach((e) => {
                 let singleFlashcard = e.split(textDelimiter);
-                if(singleFlashcard[0]===undefined||singleFlashcard[1]===undefined){
+                if (
+                    singleFlashcard[0] === undefined ||
+                    singleFlashcard[1] === undefined
+                ) {
                     //TODO send an error message to user
-                    userError = true
+                    userError = true;
                 }
                 let singleFlashcardAsOBJ = {
                     term: singleFlashcard[0],
@@ -49,12 +61,12 @@ function AddCardAsText({ setBodyView }) {
                 createdSets.push(singleFlashcardAsOBJ);
             });
         }
-        if(userError){
-            alert("You are missing a term or definition")
-        }else{
-            userCreatedSet.flashcard=createdSets
-            setUserCreatedSet({...userCreatedSet})
-            setBodyView("create")
+        if (userError) {
+            alert("You are missing a term or definition");
+        } else {
+            userCreatedSet.flashcard = createdSets;
+            setUserCreatedSet({ ...userCreatedSet });
+            setBodyView("create");
         }
     };
 
@@ -122,10 +134,10 @@ export default function CreateSetPage() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [bodyView, setBodyView] = useState("create");
-    const {userCreatedSet, setUserCreatedSet} = useFlashcardContext()
+    const { userCreatedSet, setUserCreatedSet } = useFlashcardContext();
 
     return (
-        <div children={"This page is under construction"}/>
+        <div children={"This page is under construction"} />
 
         // <div className="create-set">
         //     <input

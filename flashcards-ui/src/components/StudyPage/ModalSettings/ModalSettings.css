@@ -8,23 +8,19 @@
   left: 0;
   cursor: pointer;
 }
-
 .settings-modal .settings-box {
   border-radius: 4px;
   z-index: 2;
   position: fixed;
   left: 50vw;
   top: 50vh;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   background-color: black;
   width: 200px;
   height: 200px;
   color: white;
 }
-
 .settings-modal .settings-box .submit-button-setting {
   background-color: white;
   color: black;
-}
-/*# sourceMappingURL=ModalSettings.css.map */
+}/*# sourceMappingURL=ModalSettings.css.map */

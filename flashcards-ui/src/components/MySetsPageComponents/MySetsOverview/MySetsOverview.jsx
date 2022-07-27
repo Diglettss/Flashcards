@@ -6,10 +6,11 @@ import MySetsSearch from "./MySetsSearch";
 
 export default function MySetsOverview() {
     "This takes the varibale mySets fron contexts/flashcard and loops it through the Set component";
-    const { mySets } = useFlashcardContext();
+    const { mySets, userSets } = useFlashcardContext();
     const [sortBy, setSortBy] = useState("Newest");
     const [searchValue, setSearchValue] = useState("");
     const [filteredMySets, setFilteredMySets] = useState([...mySets]);
+    // const [filteredMySets, setFilteredMySets] = useState([...userSets]);
 
     return (
         <div className="my-sets-page">

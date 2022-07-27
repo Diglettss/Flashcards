@@ -11,6 +11,13 @@ export const FlashcardContextProvider = ({ children }) => {
         description: null,
         flashcard: null,
     });
+    //This is to be changeable by the user
+    const [defaultFlashcardState, setDefaultFlashcardState] = useState(true);
+
+    const [initialized, setInitialized] = useState();
+    const [isProcessing, setIsProcessing] = useState(false);
+    const [error, setError] = useState();
+    const [userSets, setUserSets] = useState([]);
     const lorem = new LoremIpsum({
         sentencesPerParagraph: {
             max: 8,
@@ -21,6 +28,49 @@ export const FlashcardContextProvider = ({ children }) => {
             min: 4,
         },
     });
+
+
+    useEffect(() => {
+        // should make a `GET` request to the `/mysets` endpoint
+        // If there is an error with the request, it should set a message as the `error` state variable
+        const fetchMySets = async () => {
+            const {data, err} = await apiClient.fetchUserSets();
+            // If all goes well, should set the data as the `userSet` state variable
+            if (data){
+                setUserSets(data.mySets);
+            } 
+            // If there is an error with the request, it should set a message as the `error` state variable
+            if (err){
+                setError(err);
+            } 
+        }
+    
+        fetchMySets();
+        
+        setIsProcessing(false)
+        setInitialized(true)
+    }, [])
+
+    // user's sets are created
+    async function createSet(credentials) {
+        console.log("createSet reached")
+        setIsProcessing(true)
+        setError((e) => ({ ...e, credentials: null }))
+        const create = async () => {
+        const {data, err} = await apiClient.createUserSet(credentials);
+        if (data) {
+            console.log("data recieved")
+            return true;
+        } else if (err) {
+            return false;
+        }
+        }
+        const valid = await create();
+        setIsProcessing(false)
+        return valid;
+    }
+
+
     function randomDate(start, end) {
         return new Date(
             start.getTime() + Math.random() * (end.getTime() - start.getTime())
@@ -62,13 +112,9 @@ export const FlashcardContextProvider = ({ children }) => {
     const [mySets, setmySets] = useState(
         randomSet(Math.floor(Math.random() * 15) + 12)
     );
-    
-    //This is to be changeable by the user
-    const [defaultFlashcardState, setDefaultFlashcardState] = useState(true);
 
-    const [initialized, setInitialized] = useState();
-    const [isProcessing, setIsProcessing] = useState(false);
-    const [error, setError] = useState();
+    console.log("mySets", mySets)
+
 
     const flashcardValue = {
         initialized,
@@ -85,6 +131,7 @@ export const FlashcardContextProvider = ({ children }) => {
         userCreatedSet,
         setUserCreatedSet,
         setmySets,
+        userSets,
     };
 
     return (

@@ -1,12 +1,22 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
+import React, { useEffect }  from "react";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import MySetsOverview from "./MySetsOverview/MySetsOverview.jsx";
 import UpdateMySetPage from "./UpdateMySetPage/UpdateMySetPage.jsx";
 import FlashcardOverviewPage from "./FlashcardOverviewPage/FlashcardOverviewPage.jsx";
 import StudyPage from "../StudyPage/StudyPage.jsx";
 import NotFound from "../NotFound/NotFound";
+import { useAuthContext } from "../../../contexts/auth";
 
 export default function MySetsPage() {
+    const { user } = useAuthContext();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!user.email) {
+            navigate("/login");
+        }
+    }, [user]);
+
     return (
         <div className="mysets-page">
             <Routes>

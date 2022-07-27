@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import NavLinks from "../NavLinks/NavLinks.jsx";
 import Searchbar from "../Searchbar/Searchbar.jsx";
+import UserProfile from "../UserProfile/UserProfile.jsx";
 import "./Navbar.css";
 import { useAuthContext } from "../../../contexts/auth";
 
 function Navbar() {
-    const  isLoggedIn  = true;
+    const { user } = useAuthContext();
+    const [isProfileOpen, setIsProfileOpen] = useState(false);
     return (
         <nav className="Navbar">
             <div className="links">
@@ -17,23 +19,25 @@ function Navbar() {
                         className="logo"
                     />
                 </Link>
-                <NavLinks isLoggedIn={isLoggedIn} />
+                <NavLinks />
             </div>
-            {/* <div className="search-and-profile"> */}
             <Searchbar />
-            {/* <div>
-                    <img
-                        src="https://via.placeholder.com/150"
-                        width="50px"
-                        alt="profile image"
-                        className={
-                            isLoggedIn
-                                ? "profile-image"
-                                : "profile-image hidden"
-                        }
-                    />
-                </div>
-            </div> */}
+            <div className="user-profile-img">
+                <img
+                    src="https://via.placeholder.com/600x600"
+                    alt="profile image"
+                    className={
+                        user.email ? "profile-image" : "profile-image hidden"
+                    }
+                    onClick={() => {
+                        console.log("change");
+                        setIsProfileOpen(!isProfileOpen);
+                    }}
+                />
+            </div>
+            <div className="user-modal">
+                {isProfileOpen ? <UserProfile /> : null}
+            </div>
         </nav>
     );
 }

@@ -6,34 +6,25 @@
   margin-left: auto;
   margin-right: auto;
 }
-
 .my-sets-page .label-search-input {
   margin-left: 5vw;
 }
-
 .my-sets-page .filter-container {
   width: 80vw;
   margin-left: auto;
   margin-right: auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   padding: 10px;
 }
-
 .my-sets-page .filter-container .search-input {
   margin-bottom: 20px;
 }
-
 .my-sets-page .filter-container .drop-down {
   height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
 }
-
 .my-sets-page .set-container {
   cursor: pointer;
   width: 80vw;
@@ -45,20 +36,15 @@
   height: 100px;
   background-color: antiquewhite;
 }
-
 .my-sets-page .set-container div {
   display: inline-block;
 }
-
 .my-sets-page .set-container .name-and-term-num {
   width: 100px;
 }
-
 .my-sets-page .set-container * {
   overflow-wrap: break-word;
 }
-
 .my-sets-page .set-container .set-name {
   font-weight: bold;
-}
-/*# sourceMappingURL=MySetsOverview.css.map */
+}/*# sourceMappingURL=MySetsOverview.css.map */
