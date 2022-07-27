@@ -17,6 +17,6 @@ CREATE TABLE FlashcardSets(
     description	    TEXT,
     title	        TEXT NOT NULL,
     flashcards	    TEXT NOT NULL,
-    created_at      TIMESTAMP NOT NULL DEFAULT NOW()
+    created_at      TIMESTAMP NOT NULL DEFAULT NOW(),
     updated_at      TIMESTAMP NOT NULL DEFAULT NOW()
 );
