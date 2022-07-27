@@ -11,7 +11,6 @@ const User = require("./user");
 
 class Flashcard {
     static async makeSetPublic(set) {
-        console.log(set);
         return {
             id: set.id,
             owner: set.userId,
@@ -21,6 +20,10 @@ class Flashcard {
             description: set.description,
             flashcards: JSON.parse(set.flashcards),
         };
+    }
+
+    static async search({string, }){
+
     }
 
     static validateFlashcards(flashcards) {
@@ -192,7 +195,7 @@ class Flashcard {
             [data.id, email]
         );
         if (!result.rows[0]) {
-            throw new BadRequestError(`Set not deleted`);
+            throw new BadRequestError(`The set can not be deleted`);
         }
         return await Flashcard.makeSetPublic(result.rows[0]);
     }
