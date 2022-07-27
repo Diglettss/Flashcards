@@ -1,3 +1,4 @@
+-- To log into these you must use not a SECRET_KEY in your .env
 INSERT INTO users ( email, username, first_name, last_name,     password )
 VALUES (             '2@',     '2',       '2',       '2',       '$2b$13$QDyZl0byBhW82nrhB0xaP.y0i3EWFGK57KpJp39/6SC2qeK0IMYmu');
 

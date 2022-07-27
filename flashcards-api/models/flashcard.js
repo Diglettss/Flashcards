@@ -1,11 +1,16 @@
 const db = require("../db");
 const bcrypt = require("bcrypt");
-const { UnauthorizedError, BadRequestError } = require("../utils/errors");
+const {
+    UnauthorizedError,
+    BadRequestError,
+    NotFoundError,
+} = require("../utils/errors");
 const { BCRYPT_WORK_FACTOR } = require("../config");
 const { json } = require("express");
 
 class Flashcard {
     static async makeSetPublic(set) {
+        console.log(set);
         return {
             id: set.id,
             owner: set.userId,
@@ -18,6 +23,7 @@ class Flashcard {
     }
 
     static validateFlashcards(flashcards) {
+        //Checks to see if the flashcards are set up properly
         if (!Array.isArray(flashcards)) {
             throw new BadRequestError(
                 `flashcards should be an array of objects`
@@ -40,6 +46,26 @@ class Flashcard {
             });
         });
         return JSON.stringify(flashcards);
+    }
+
+    static async listSetsForUser(email) {
+        const result = await db.query(
+            `SELECT 
+                id, 
+                user_id AS "userId", 
+                is_public AS "isPublic", 
+                created_at as "createdAt",
+                title, 
+                description, 
+                flashcards
+            FROM FlashcardSets WHERE user_id = (select id from users where email = $1)`,
+            [email]
+        );
+        const userSets = [];
+        result.rows.forEach(async (e) => {
+            userSets.push(await Flashcard.makeSetPublic(e));
+        });
+        return userSets;
     }
 
     static async createSets(email, data) {
@@ -81,47 +107,52 @@ class Flashcard {
             ]
         );
 
-        return Flashcard.makeSetPublic(result.rows[0]);
+        return await Flashcard.makeSetPublic(result.rows[0]);
+    }
+
+    static async updateSets(email, set) {
+        const requiredFiled = ["flashcards", "description", "id"];
+        requiredFiled.forEach((field) => {
+            if (!set.hasOwnProperty(field)) {
+                throw new BadRequestError(`Missing ${field} in request body`);
+            }
+        });
+        
+        Flashcard.validateFlashcards(set.flashcards);
+
+
+        //checks to see if the database has this id
+        //then updates the database with the user given info
+
+
+        const dataBaseSet = await Flashcard.fetchPublicSetById(set.id);
+
+        return dataBaseSet;
     }
 
     //Function for what fetchFlashcardById should look like
-    static async fetchNutritionById(nutritionId) {
+    static async fetchPublicSetById(flashcardId) {
         const result = await db.query(
-            `SELECT f.id
-            FROM FlashcardSets as f
-                JOIN users AS u ON u.id = f.user_id
-            WHERE id = $1`,
+            `
+                SELECT 
+                FlashcardSets.id, 
+                FlashcardSets.user_id AS "userId", 
+                FlashcardSets.is_public AS "isPublic", 
+                FlashcardSets.created_at as "createdAt",
+                FlashcardSets.title, 
+                FlashcardSets.description, 
+                FlashcardSets.flashcards
+                
+                FROM FlashcardSets
+                WHERE FlashcardSets.id = $1 AND is_public = True
+                `,
             [flashcardId]
         );
         if (result.rows.length == 0) {
-            throw new NotFoundError();
+            throw new NotFoundError("The provided set is not found");
         }
-        return result.rows;
-    }
 
-    static async listSetsForUser(email) {
-        const result = await db.query(
-            `SELECT 
-                id, 
-                user_id AS "userId", 
-                is_public AS "isPublic", 
-                created_at as "createdAt",
-                title, 
-                description, 
-                flashcards
-            FROM FlashcardSets WHERE user_id = (select id from users where email = $1)`,
-            [email]
-        );
-        const userSets= []
-        result.rows.forEach(async (e)=>{
-            userSets.push(await Flashcard.makeSetPublic(e))
-        })
-        return userSets
-    }
-
-    static async updateSets(email, set){
-        // console.log({email, set})
-        return {email, set};
+        return await Flashcard.makeSetPublic(result.rows[0]);
     }
 }
 
