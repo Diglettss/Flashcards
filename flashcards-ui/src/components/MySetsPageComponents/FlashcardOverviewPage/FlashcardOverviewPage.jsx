@@ -8,14 +8,14 @@ function FlashcardOverviewPageContent({ chosenSet }) {
     const navigate = useNavigate()
     return (
         <div className="flashcard-overview-page">
-            <button
+            {/* <button
                 className="update-button"
                 onClick={(e) => {
                     navigate(`/mysets/update/${chosenSet.setId}`);
                 }}
             >
                 Update
-            </button>
+            </button> */}
             <h1 className="title">{chosenSet.title}</h1>
             <h3 className="description">{chosenSet.description}</h3>
             <div className="flashcard-row-container">

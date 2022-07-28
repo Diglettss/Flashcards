@@ -49,7 +49,7 @@ export const FlashcardContextProvider = ({ children }) => {
             set.push({
                 title: `Title`,
                 description: lorem.generateWords(
-                    Math.floor(Math.random() * 22) + 10
+                    Math.floor(Math.random() * 8) + 5
                 ),
                 setId: i,
                 flashcard: create(),
@@ -60,7 +60,7 @@ export const FlashcardContextProvider = ({ children }) => {
     };
 
     const [mySets, setmySets] = useState(
-        randomSet(Math.floor(Math.random() * 15) + 12)
+        randomSet(Math.floor(Math.random() * 5) + 2)
     );
     
     //This is to be changeable by the user
