@@ -73,7 +73,9 @@ export default function MySetsSearch({
                     className="search-input"
                     name="search-input"
                     type="text"
+                    alt="text input, search through my sets"
                     value={searchValue}
+                    placeholder="Search..."
                     onChange={(e) => {
                         setSearchValue(e.target.value);
                     }}

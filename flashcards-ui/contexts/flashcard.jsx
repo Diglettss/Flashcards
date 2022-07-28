@@ -109,11 +109,12 @@ export const FlashcardContextProvider = ({ children }) => {
             set.push({
                 title: `Title`,
                 description: lorem.generateWords(
-                    Math.floor(Math.random() * 22) + 10
+                    Math.floor(Math.random() * 8) + 5
+
                 ),
                 setId: i,
                 flashcard: create(),
-                date: randomDate(new Date(2012, 0, 1), new Date()),
+                date: randomDate(new Date(2012, 0, 1), new Date()).toDateString(),
             });
         }
         return set;
@@ -134,8 +135,6 @@ export const FlashcardContextProvider = ({ children }) => {
         defaultFlashcardState,
         setDefaultFlashcardState,
         mySets,
-        userCreatedSet,
-        setUserCreatedSet,
         setmySets,
     };
 

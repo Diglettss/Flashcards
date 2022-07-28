@@ -12,6 +12,16 @@ router.get("/ping", (req, res, next) => {
     }
 });
 
+//get a search public sets
+router.post("/search", async (req, res, next) => {
+    try {
+        const set = await Flashcard.fetchPublicSetsBySearch(req.body);
+        return res.status(201).json({ set });
+    } catch (err) {
+        next(err);
+    }
+});
+
 //get a public sets
 router.post("/", async (req, res, next) => {
     try {
@@ -74,16 +84,20 @@ router.put(
 );
 
 //delete your own sets
-router.delete("/mysets", security.requireAuthenticatedUser, async (req, res, next) => {
-    try {
-        const mySet = await Flashcard.deleteMySet(
-            res.locals.user.email,
-            req.body
-        );
-        return res.status(200).json({ mySet });
-    } catch (err) {
-        next(err);
+router.delete(
+    "/mysets",
+    security.requireAuthenticatedUser,
+    async (req, res, next) => {
+        try {
+            const mySet = await Flashcard.deleteMySet(
+                res.locals.user.email,
+                req.body
+            );
+            return res.status(200).json({ mySet });
+        } catch (err) {
+            next(err);
+        }
     }
-});
+);
 
 module.exports = router;
