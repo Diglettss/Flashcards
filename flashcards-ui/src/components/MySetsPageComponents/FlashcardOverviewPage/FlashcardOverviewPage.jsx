@@ -6,6 +6,7 @@ import { useFlashcardContext } from "../../../../contexts/flashcard.jsx";
 
 function FlashcardOverviewPageContent({ chosenSet }) {
     const navigate = useNavigate()
+    
     return (
         <div className="flashcard-overview-page">
             <button
@@ -79,7 +80,6 @@ export default function FlashcardOverviewPage() {
                 <FlashcardOverviewPageContent chosenSet={chosenSet} />
             ) : (
                 <div />
-                // test()
             )}
         </>
     );
