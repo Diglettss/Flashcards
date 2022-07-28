@@ -29,7 +29,6 @@ class ApiClient {
         if (this.token) {
             headers["Authorization"] = `Bearer ${this.token}`;
         }
-
         try {
             const res = await axios({ url, method, data, headers });
             return { data: res.data, error: null };
@@ -50,8 +49,8 @@ class ApiClient {
     async getAPublicSet(setId) {
         return await this.request({
             endpoint: `flashcard/`,
-            method: `GET`,
-            data: { id: setId },
+            method: `POST`,
+            data:  { id: setId} ,
         });
     }
 
@@ -100,7 +99,6 @@ class ApiClient {
 
     // method to fetch a user's sets
     async fetchUserSets() {
-        console.log("apiClient reached");
         return await this.request({
             endpoint: `flashcard/mysets`,
             method: `GET`,

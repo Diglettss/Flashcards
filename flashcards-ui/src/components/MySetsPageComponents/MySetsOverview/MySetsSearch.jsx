@@ -8,7 +8,8 @@ export default function MySetsSearch({
     setSearchValue,
     setSortBy,
 }) {
-    const { mySets, userSets } = useFlashcardContext();
+    const { mySets } = useFlashcardContext();
+    console.log("MySetsSearch", mySets);
 
     const sortByNewestDate = (array) => {
         array.sort((a, b) => b.date - a.date);
@@ -31,19 +32,7 @@ export default function MySetsSearch({
     };
 
     useEffect(() => {
-        //if searchValue is in the title or description set it to a variable
-        // const fillteredSetByTitleDescription = mySets.filter((e) => {
-        //     if (e.title.toLowerCase().includes(searchValue.toLowerCase())) {
-        //         return true;
-        //     } else if (
-        //         e.description.toLowerCase().includes(searchValue.toLowerCase())
-        //     ) {
-        //         return true;
-        //     } else {
-        //         return false;
-        //     }
-        // });
-        const fillteredSetByTitleDescription = userSets.filter((e) => {
+        const fillteredSetByTitleDescription = mySets.filter((e) => {
             if (e.title.toLowerCase().includes(searchValue.toLowerCase())) {
                 return true;
             } else if (
@@ -80,31 +69,29 @@ export default function MySetsSearch({
                 <label htmlFor="search-input">My Sets</label>
             </div>
             <div className="filter-container">
-
-            <input
-                className="search-input"
-                name="search-input"
-                type="text"
-                value={searchValue}
-                onChange={(e) => {
-                    setSearchValue(e.target.value);
-                }}
-            />
-            <select
-                className="drop-down"
-                onChange={(e) => {
-                    setSortBy(e.target.value);
-                }}
-                value={sortBy}
-            >
-                <option>Newest</option>
-                <option>Oldest</option>
-                <option>A-Z</option>
-                <option>Z-A</option>
-                <option># of flashcards</option>
-            </select>
+                <input
+                    className="search-input"
+                    name="search-input"
+                    type="text"
+                    value={searchValue}
+                    onChange={(e) => {
+                        setSearchValue(e.target.value);
+                    }}
+                />
+                <select
+                    className="drop-down"
+                    onChange={(e) => {
+                        setSortBy(e.target.value);
+                    }}
+                    value={sortBy}
+                >
+                    <option>Newest</option>
+                    <option>Oldest</option>
+                    <option>A-Z</option>
+                    <option>Z-A</option>
+                    <option># of flashcards</option>
+                </select>
             </div>
-
         </>
     );
 }

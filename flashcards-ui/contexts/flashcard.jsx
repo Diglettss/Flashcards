@@ -1,6 +1,8 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import apiClient from "../services/apiClient";
 import { LoremIpsum } from "lorem-ipsum";
+// import { response } from "../../flashcards-api/app";
+import { useAuthContext } from "./auth";
 
 const FlashcardContext = createContext(null);
 
@@ -17,7 +19,7 @@ export const FlashcardContextProvider = ({ children }) => {
     const [initialized, setInitialized] = useState();
     const [isProcessing, setIsProcessing] = useState(false);
     const [error, setError] = useState();
-    const [userSets, setUserSets] = useState([]);
+    const [mySets, setmySets] = useState([]);
     const lorem = new LoremIpsum({
         sentencesPerParagraph: {
             max: 8,
@@ -28,36 +30,35 @@ export const FlashcardContextProvider = ({ children }) => {
             min: 4,
         },
     });
+    const { user } = useAuthContext();
+
 
     useEffect(() => {
         // should make a `GET` request to the `/mysets` endpoint
         // If there is an error with the request, it should set a message as the `error` state variable
-        // const fetchMySets = async () => {
-        //     const {data, err} = await apiClient.fetchUserSets();
-        //     // If all goes well, should set the data as the `userSet` state variable
+        const fetchMySets = async () => {
+            const { data, err } = await apiClient.fetchUserSets();
+            // If all goes well, should set the data as the `userSet` state variable
 
-        //     if (data){
-        //         setUserSets(data.mySets);
-        //     }
-        //     // If there is an error with the request, it should set a message as the `error` state variable
-        //     if (err){
-        //         setError(err);
-        //     }
-        // }
-
-        const getPublicSet = async () => {
-            console.log(await apiClient.getAPublicSet(2));
+            if (data) {
+                console.log("data", data);
+                setmySets(data.mySets);
+            }
+            // If there is an error with the request, it should set a message as the `error` state variable
+            if (err) {
+                setError(err);
+            }
         };
 
-        getPublicSet();
+        console.log("mySets", mySets);
+        fetchMySets();
 
         setIsProcessing(false);
         setInitialized(true);
-    }, []);
+    }, [user?.email]);
 
     // user's sets are created
     async function createSet(credentials) {
-        console.log("createSet reached");
         setIsProcessing(true);
         setError((e) => ({ ...e, credentials: null }));
         const create = async () => {
@@ -72,6 +73,12 @@ export const FlashcardContextProvider = ({ children }) => {
         const valid = await create();
         setIsProcessing(false);
         return valid;
+    }
+
+    // method to fetch a user's specific public set by id
+    async function getPublicSet(setId) {
+        const response = await apiClient.getAPublicSet(setId);
+        return response;
     }
 
     function randomDate(start, end) {
@@ -112,9 +119,6 @@ export const FlashcardContextProvider = ({ children }) => {
         return set;
     };
 
-    const [mySets, setmySets] = useState(
-        randomSet(Math.floor(Math.random() * 15) + 12)
-    );
 
     console.log("mySets", mySets);
 
@@ -133,7 +137,6 @@ export const FlashcardContextProvider = ({ children }) => {
         userCreatedSet,
         setUserCreatedSet,
         setmySets,
-        userSets,
     };
 
     return (

@@ -13,8 +13,9 @@ router.get("/ping", (req, res, next) => {
 });
 
 //get a public sets
-router.get("/", async (req, res, next) => {
+router.post("/", async (req, res, next) => {
     try {
+        console.log(req.body)
         const set = await Flashcard.fetchPublicSetById(req.body);
         return res.status(201).json({ set });
     } catch (err) {
