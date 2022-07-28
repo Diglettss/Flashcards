@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useFlashcardContext } from "../../../../contexts/flashcard";
 import FlashcardRow from "../../FlashcardComponents/FlashcardRow/FlashcardRow";
@@ -7,10 +7,11 @@ export default function CreateSetBody({
     description,
     setDescription,
     setBodyView,
-    chosenSet
+    chosenSet,
+    userCreatedSet,
 }) {
-    const { mySets, userCreatedSet} = useFlashcardContext()
-    const navigate = useNavigate()
+    const { mySets, setmySets } = useFlashcardContext();
+    const navigate = useNavigate();
     return (
         <>
             <textarea
@@ -21,22 +22,24 @@ export default function CreateSetBody({
                 value={description}
                 onChange={(e) => {
                     setDescription(e.target.value);
-                    userCreatedSet.description=description
+                    userCreatedSet.description = e.target.value;
                 }}
             />
             <div className="flashcard-row-container">
-            {chosenSet.flashcard?
-            chosenSet.flashcard.map((e, idx) => (
-                <FlashcardRow
-                    key={idx}
-                    idx={idx}
-                    term={e.term}
-                    definition={e.definition}
-                    chosenSet={chosenSet}
-                />
-            )):<div className="flashcard-row-empty"/>
-        }
-        </div>
+                {chosenSet.flashcard ? (
+                    chosenSet.flashcard.map((e, idx) => (
+                        <FlashcardRow
+                            key={idx}
+                            idx={idx}
+                            term={e.term}
+                            definition={e.definition}
+                            chosenSet={chosenSet}
+                        />
+                    ))
+                ) : (
+                    <div className="flashcard-row-empty" />
+                )}
+            </div>
 
             {/* <FlashcardRow chosenSet={chosenSet} /> */}
             <div className="add-buttons">
@@ -54,14 +57,22 @@ export default function CreateSetBody({
                         setBodyView("text");
                     }}
                 >
-                    Add cards as text
+                    ADD CARDS
                 </button>
             </div>
-            <button className="middle-div save-button" onClick={()=>{
-                mySets.push(userCreatedSet)
-                navigate("/mysets")
-
-            }}>
+            <button
+                className="middle-div save-button"
+                onClick={() => {
+                    if(userCreatedSet.flashcard?.length>=2 && userCreatedSet.title){
+                        mySets.push(userCreatedSet);
+                        setmySets([...mySets]);        
+                        navigate("/mysets");    
+                    }
+                    else{
+                        console.error("The set needs a title and at least 2 flashcards")
+                    }
+                }}
+            >
                 Save
             </button>
         </>
