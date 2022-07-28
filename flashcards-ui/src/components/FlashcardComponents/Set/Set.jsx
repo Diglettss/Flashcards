@@ -17,7 +17,7 @@ export default function Set({ set }) {
             <br/>
             <div className="set-length">{set.flashcard.length} flashcards</div>
 
-            <span className="set-date"><br/>{`Created: ${set.date.toDateString()}`}</span>
+            <span className="set-date"><br/>{`Created: ${set.date}`}</span>
         </div>
     );
 }
