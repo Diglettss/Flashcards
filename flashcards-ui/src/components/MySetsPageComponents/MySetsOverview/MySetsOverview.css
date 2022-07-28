@@ -1,7 +1,6 @@
 .my-sets-page {
   margin-top: 100px;
-  padding: 10px;
-  background-color: aliceblue;
+  padding: 40px 20px;
   width: 90vw;
   margin-left: auto;
   margin-right: auto;
@@ -9,6 +8,7 @@
 
 .my-sets-page .label-search-input {
   margin-left: 5vw;
+  font-size: large;
 }
 
 .my-sets-page .filter-container {
@@ -25,13 +25,20 @@
 }
 
 .my-sets-page .filter-container .search-input {
+  padding-left: 20px;
   margin-bottom: 20px;
+  width: 448px;
+  height: 45px;
+  border-radius: 10px;
 }
 
 .my-sets-page .filter-container .drop-down {
   height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
+  width: 448px;
+  height: 45px;
+  font-size: larger;
 }
 
 .my-sets-page .set-container {
@@ -42,7 +49,8 @@
   margin-right: auto;
   border-radius: 10px;
   margin-bottom: 20px;
-  height: 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   background-color: antiquewhite;
 }
 
@@ -51,7 +59,7 @@
 }
 
 .my-sets-page .set-container .name-and-term-num {
-  width: 100px;
+  width: 200px;
 }
 
 .my-sets-page .set-container * {
@@ -60,5 +68,6 @@
 
 .my-sets-page .set-container .set-name {
   font-weight: bold;
+  font-size: 25pt;
 }
 /*# sourceMappingURL=MySetsOverview.css.map */

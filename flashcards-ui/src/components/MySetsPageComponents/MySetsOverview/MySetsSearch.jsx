@@ -69,31 +69,31 @@ export default function MySetsSearch({
                 <label htmlFor="search-input">My Sets</label>
             </div>
             <div className="filter-container">
-
-            <input
-                className="search-input"
-                name="search-input"
-                type="text"
-                value={searchValue}
-                onChange={(e) => {
-                    setSearchValue(e.target.value);
-                }}
-            />
-            <select
-                className="drop-down"
-                onChange={(e) => {
-                    setSortBy(e.target.value);
-                }}
-                value={sortBy}
-            >
-                <option>Newest</option>
-                <option>Oldest</option>
-                <option>A-Z</option>
-                <option>Z-A</option>
-                <option># of flashcards</option>
-            </select>
+                <input
+                    className="search-input"
+                    name="search-input"
+                    type="text"
+                    alt="text input, search through my sets"
+                    value={searchValue}
+                    placeholder="Search..."
+                    onChange={(e) => {
+                        setSearchValue(e.target.value);
+                    }}
+                />
+                <select
+                    className="drop-down"
+                    onChange={(e) => {
+                        setSortBy(e.target.value);
+                    }}
+                    value={sortBy}
+                >
+                    <option>Newest</option>
+                    <option>Oldest</option>
+                    <option>A-Z</option>
+                    <option>Z-A</option>
+                    <option># of flashcards</option>
+                </select>
             </div>
-
         </>
     );
 }

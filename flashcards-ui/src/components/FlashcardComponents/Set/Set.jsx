@@ -12,10 +12,12 @@ export default function Set({ set }) {
         >
             <div className="name-and-term-num">
                 <div className="set-name">{set.title}</div>
-                <div className="set-length">{set.flashcard.length}</div>
             </div>
             <span className="set-description">{set.description}</span>
-            <span className="set-date"><br/>{JSON.stringify(set.date)}</span>
+            <br/>
+            <div className="set-length">{set.flashcard.length} flashcards</div>
+
+            <span className="set-date"><br/>{`Created: ${set.date}`}</span>
         </div>
     );
 }
