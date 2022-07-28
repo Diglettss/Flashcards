@@ -8,7 +8,9 @@
     display: flex;
     
     justify-content: space-between;
-    background-color: black;
+    background-color: #9df8a8;
+    border-bottom: 3.7px double rgb(97, 97, 97);
+
 
     .links {
         height: 64px;
@@ -19,7 +21,11 @@
     a {
         margin-right: 100px;
         text-decoration: none;
-        color: white;
+        color: black;
+
+         &:hover {
+            color: rgb(108, 200, 155);
+        }
     }
 
     .text {
@@ -43,5 +49,13 @@
         margin-right: 50px;
         margin-top: auto;
         margin-bottom: auto;
+        outline: none;
+        border: none;
+        border-radius: 1.625rem;
+        input{
+            background-color: rgb(255, 255, 255);
+            padding: 0 3.5rem 0 1.5rem;
+            font-size: 1rem;
+        }
     }
 }
