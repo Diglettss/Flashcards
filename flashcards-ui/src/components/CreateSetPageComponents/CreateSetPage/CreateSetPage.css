@@ -2,7 +2,6 @@
   padding-top: 80px;
   padding-bottom: 20px;
 }
-
 .create-set .title {
   margin-left: auto;
   margin-right: auto;
@@ -11,7 +10,6 @@
   font-weight: 700;
   border: 0px;
 }
-
 .create-set .description {
   font-size: 1.17em;
   margin-top: 1em;
@@ -22,7 +20,6 @@
   width: 50vw;
   font-weight: bold;
 }
-
 .create-set .title,
 .create-set .description {
   display: block;
@@ -32,58 +29,40 @@
   border-radius: 4px;
   background: #000000;
 }
-
 .create-set .add-buttons {
   margin-top: 40px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
-
 .create-set .add-buttons button {
   display: inline-block;
 }
-
 .create-set .add-buttons .add-cards {
   background-color: blue;
 }
-
 .create-set .add-buttons .add-cards-text {
   background-color: blue;
 }
-
 .create-set .save-button {
   margin: 20px auto;
 }
-
 .create-set .flashcard-row-empty {
   min-height: 35vh;
 }
 
 .create-set .add-card-as-text .delimiter-row {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
   margin-bottom: 50px;
 }
-
 .create-set .add-card-as-text .delimiter-row .text-delimiter-input,
 .create-set .add-card-as-text .delimiter-row .flashcard-delimiter-input {
   width: 2rem;
   text-align: center;
   margin-left: 10px;
 }
-
 .create-set .add-card-as-text .card-text-input {
   display: block;
   margin: auto;
@@ -91,15 +70,8 @@
   height: 480px;
   margin-bottom: 50px;
 }
-
 .create-set .button-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-}
-/*# sourceMappingURL=CreateSetPage.css.map */
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}/*# sourceMappingURL=CreateSetPage.css.map */

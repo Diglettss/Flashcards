@@ -2,20 +2,17 @@
   padding-top: 50px;
   padding-bottom: 100px;
 }
-
 .flashcard-overview-page .title {
   margin-left: auto;
   margin-right: auto;
   margin-top: 20px;
   width: 400px;
 }
-
 .flashcard-overview-page .description {
   margin-left: auto;
   margin-right: auto;
   width: 50vw;
 }
-
 .flashcard-overview-page .title,
 .flashcard-overview-page .description {
   text-align: center;
@@ -24,19 +21,15 @@
   border-radius: 4px;
   background: #000000;
 }
-
 .flashcard-overview-page .update-button {
   z-index: 0;
   position: absolute;
   margin-left: 10px;
 }
-
 .flashcard-overview-page .start-button {
   display: block;
   position: fixed;
   bottom: 40px;
   left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-}
-/*# sourceMappingURL=FlashcardOverviewPage.css.map */
+  transform: translateX(-50%);
+}/*# sourceMappingURL=FlashcardOverviewPage.css.map */

@@ -1,11 +1,25 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import apiClient from "../services/apiClient";
 import { LoremIpsum } from "lorem-ipsum";
+// import { response } from "../../flashcards-api/app";
+import { useAuthContext } from "./auth";
 
 const FlashcardContext = createContext(null);
 
 export const FlashcardContextProvider = ({ children }) => {
     const [showSettingsModal, setShowSettingsModal] = useState(false);
+    const [userCreatedSet, setUserCreatedSet] = useState({
+        title: null,
+        description: null,
+        flashcard: null,
+    });
+    //This is to be changeable by the user
+    const [defaultFlashcardState, setDefaultFlashcardState] = useState(true);
+
+    const [initialized, setInitialized] = useState();
+    const [isProcessing, setIsProcessing] = useState(false);
+    const [error, setError] = useState();
+    const [mySets, setmySets] = useState([]);
     const lorem = new LoremIpsum({
         sentencesPerParagraph: {
             max: 8,
@@ -16,6 +30,57 @@ export const FlashcardContextProvider = ({ children }) => {
             min: 4,
         },
     });
+    const { user } = useAuthContext();
+
+
+    useEffect(() => {
+        // should make a `GET` request to the `/mysets` endpoint
+        // If there is an error with the request, it should set a message as the `error` state variable
+        const fetchMySets = async () => {
+            const { data, err } = await apiClient.fetchUserSets();
+            // If all goes well, should set the data as the `userSet` state variable
+
+            if (data) {
+                console.log("data", data);
+                setmySets(data.mySets);
+            }
+            // If there is an error with the request, it should set a message as the `error` state variable
+            if (err) {
+                setError(err);
+            }
+        };
+
+        console.log("mySets", mySets);
+        fetchMySets();
+
+        setIsProcessing(false);
+        setInitialized(true);
+    }, [user?.email]);
+
+    // user's sets are created
+    async function createSet(credentials) {
+        setIsProcessing(true);
+        setError((e) => ({ ...e, credentials: null }));
+        const create = async () => {
+            const { data, err } = await apiClient.createUserSet(credentials);
+            if (data) {
+                console.log("data recieved");
+                return true;
+            } else if (err) {
+                return false;
+            }
+        };
+        const valid = await create();
+        setIsProcessing(false);
+        return valid;
+    }
+
+    // method to fetch a user's specific public set by id
+    async function getPublicSet(setId) {
+        const response = await apiClient.getAPublicSet(setId);
+        return response;
+    }
+
     function randomDate(start, end) {
         return new Date(
             start.getTime() + Math.random() * (end.getTime() - start.getTime())
@@ -55,16 +120,8 @@ export const FlashcardContextProvider = ({ children }) => {
         return set;
     };
 
-    const [mySets, setmySets] = useState(
-        randomSet(Math.floor(Math.random() * 4) + 2)
-    );
-    
-    //This is to be changeable by the user
-    const [defaultFlashcardState, setDefaultFlashcardState] = useState(true);
 
-    const [initialized, setInitialized] = useState();
-    const [isProcessing, setIsProcessing] = useState(false);
-    const [error, setError] = useState();
+    console.log("mySets", mySets);
 
     const flashcardValue = {
         initialized,

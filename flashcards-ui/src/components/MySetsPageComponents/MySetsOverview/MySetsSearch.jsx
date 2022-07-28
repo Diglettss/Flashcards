@@ -9,6 +9,7 @@ export default function MySetsSearch({
     setSortBy,
 }) {
     const { mySets } = useFlashcardContext();
+    console.log("MySetsSearch", mySets);
 
     const sortByNewestDate = (array) => {
         array.sort((a, b) => b.date - a.date);
@@ -31,7 +32,6 @@ export default function MySetsSearch({
     };
 
     useEffect(() => {
-        //if searchValue is in the title or description set it to a variable
         const fillteredSetByTitleDescription = mySets.filter((e) => {
             if (e.title.toLowerCase().includes(searchValue.toLowerCase())) {
                 return true;

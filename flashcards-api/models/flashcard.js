@@ -156,6 +156,7 @@ class Flashcard {
     }
 
     static async fetchPublicSetById({ id }) {
+        console.log(id)
         const result = await db.query(
             `
                 SELECT 
@@ -172,6 +173,7 @@ class Flashcard {
                 `,
             [id]
         );
+        console.log(result.rows[0]);
         if (result.rows.length == 0) {
             throw new NotFoundError("The provided set is not found");
         }
