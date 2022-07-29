@@ -20,7 +20,7 @@ export default function CreateSetAddCard({ setBodyView, userCreatedSet }) {
             if (splitTexts.length % 2 !== 0) {
                 userError = true;
             }
-
+            singleFlashcardAsOBJ.visibility = true;
             splitTexts.forEach((e, idx) => {
                 if (!(idx % 2)) {
                     singleFlashcardAsOBJ.term = e;
@@ -42,6 +42,7 @@ export default function CreateSetAddCard({ setBodyView, userCreatedSet }) {
                     userError = true;
                 }
                 let singleFlashcardAsOBJ = {
+                    visibility : true,
                     term: singleFlashcard[0],
                     definition: singleFlashcard[1],
                 };
@@ -51,10 +52,10 @@ export default function CreateSetAddCard({ setBodyView, userCreatedSet }) {
         if (userError) {
             alert("You are missing a term or definition");
         } else {
-            userCreatedSet.flashcard = createdSets;
-            userCreatedSet.selected = true;
-            userCreatedSet.setId = mySets.length;
-            userCreatedSet.date = new Date().toDateString();
+            userCreatedSet.flashcards = createdSets;
+            userCreatedSet.visibility = true;
+            userCreatedSet.id = mySets.length;
+            userCreatedSet.createdAt = new Date().toDateString();
 
             setBodyView("create");
         }

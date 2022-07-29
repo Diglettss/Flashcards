@@ -26,8 +26,8 @@ export default function CreateSetBody({
                 }}
             />
             <div className="flashcard-row-container">
-                {chosenSet.flashcard ? (
-                    chosenSet.flashcard.map((e, idx) => (
+                {chosenSet.flashcards ? (
+                    chosenSet.flashcards.map((e, idx) => (
                         <FlashcardRow
                             key={idx}
                             idx={idx}
@@ -63,13 +63,18 @@ export default function CreateSetBody({
             <button
                 className="middle-div save-button"
                 onClick={() => {
-                    if(userCreatedSet.flashcard?.length>=2 && userCreatedSet.title){
+                    console.log("userCreatedSet", userCreatedSet)
+                    if (
+                        userCreatedSet.flashcards?.length >= 2 &&
+                        userCreatedSet.title
+                    ) {
                         mySets.push(userCreatedSet);
-                        setmySets([...mySets]);        
-                        navigate("/mysets");    
-                    }
-                    else{
-                        console.error("The set needs a title and at least 2 flashcards")
+                        setmySets([...mySets]);
+                        navigate("/mysets");
+                    } else {
+                        console.error(
+                            "The set needs a title and at least 2 flashcards"
+                        );
                     }
                 }}
             >

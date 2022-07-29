@@ -10,8 +10,8 @@ export default function CreateSetPage() {
     const [userCreatedSet, setUserCreatedSet] = useState({
         title: null,
         description: null,
-        flashcard: null,
-        selected: true,
+        flashcards: null,
+        visibility: true,
         selectedForTrash: false,
     });
 

@@ -20,7 +20,7 @@ function FlashcardOverviewPageContent({ chosenSet }) {
             <h1 className="title">{chosenSet.title}</h1>
             <h3 className="description">{chosenSet.description}</h3>
             <div className="flashcard-row-container">
-                {chosenSet.flashcard.map((e, idx) => (
+                {chosenSet.flashcards.map((e, idx) => (
                     <FlashcardRow
                         e={e}
                         key={idx}
@@ -36,19 +36,21 @@ function FlashcardOverviewPageContent({ chosenSet }) {
                 <button
                 className="start-button"
                     onClick={(e) => {
-                        const filteredFlashcard = chosenSet.flashcard.filter(
+                        let filteredFlashcards = chosenSet.flashcards.filter(
                             (e) => {
                                 if (e.visibility == true) {
                                     return e;
                                 }
                             }
                         );
-                        if (filteredFlashcard.length < 2) {
+                        if (filteredFlashcards.length < 2) {
+                            filteredFlashcards = chosenSet.flashcards
                             console.error(
                                 "Please have at least two flashcards"
                             );
+                            navigate(`/mysets/studymode/${chosenSet.id}`);
                         } else {
-                            navigate(`/mysets/studymode/${chosenSet.setId}`);
+                            navigate(`/mysets/studymode/${chosenSet.id}`);
                         }
                     }}
                 >
@@ -69,7 +71,7 @@ export default function FlashcardOverviewPage() {
     useEffect(() => {
         if (!chosenSet || chosenSet == undefined) {
             console.error("sending you to the shadow realm");
-            navigate("/notfound");
+            // navigate("/notfound");
         }
     }, []);
 

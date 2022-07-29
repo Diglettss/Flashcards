@@ -41,7 +41,6 @@ export const FlashcardContextProvider = ({ children }) => {
             // If all goes well, should set the data as the `userSet` state variable
 
             if (data) {
-                console.log("data", data);
                 setmySets(data.mySets);
             }
             // If there is an error with the request, it should set a message as the `error` state variable
@@ -50,7 +49,6 @@ export const FlashcardContextProvider = ({ children }) => {
             }
         };
 
-        console.log("mySets", mySets);
         fetchMySets();
 
         setIsProcessing(false);
@@ -64,7 +62,7 @@ export const FlashcardContextProvider = ({ children }) => {
         const create = async () => {
             const { data, err } = await apiClient.createUserSet(credentials);
             if (data) {
-                console.log("data recieved");
+                console.warn("data recieved");
                 return true;
             } else if (err) {
                 return false;
@@ -121,7 +119,6 @@ export const FlashcardContextProvider = ({ children }) => {
     };
 
 
-    console.log("mySets", mySets);
 
     const flashcardValue = {
         initialized,

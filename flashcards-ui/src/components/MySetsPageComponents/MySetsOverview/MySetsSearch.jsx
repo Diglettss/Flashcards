@@ -9,7 +9,6 @@ export default function MySetsSearch({
     setSortBy,
 }) {
     const { mySets } = useFlashcardContext();
-    console.log("MySetsSearch", mySets);
 
     const sortByNewestDate = (array) => {
         array.sort((a, b) => b.date - a.date);

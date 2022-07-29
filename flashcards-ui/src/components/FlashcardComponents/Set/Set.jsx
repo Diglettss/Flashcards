@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 
 export default function Set({ set }) {
     const navigate = useNavigate();
-    console.log("Set", set)
+    console.log(set)
     return (
         <div
             className="set-container"
             onClick={() => {
-                navigate(`/mysets/${set.setID}`);
+                navigate(`/mysets/${set.id}`);
             }}
         >
             <div className="name-and-term-num">
@@ -16,9 +16,9 @@ export default function Set({ set }) {
             </div>
             <span className="set-description">{set.description}</span>
             <br/>
-            <div className="set-length">{set.flashcard.length} flashcards</div>
+            <div className="set-length">{set.flashcards.length} flashcards</div>
 
-            <span className="set-date"><br/>{`Created: ${set.date}`}</span>
+            <span className="set-date"><br/>{`Created: ${set.createdAt}`}</span>
         </div>
     );
 }

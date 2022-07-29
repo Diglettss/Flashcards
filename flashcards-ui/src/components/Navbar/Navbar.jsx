@@ -30,7 +30,6 @@ function Navbar() {
                         user.email ? "profile-image" : "profile-image hidden"
                     }
                     onClick={() => {
-                        console.log("change");
                         setIsProfileOpen(!isProfileOpen);
                     }}
                 />
