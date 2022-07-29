@@ -63,7 +63,6 @@ export default function CreateSetBody({
             <button
                 className="middle-div save-button"
                 onClick={() => {
-                    console.log("userCreatedSet", userCreatedSet)
                     if (
                         userCreatedSet.flashcards?.length >= 2 &&
                         userCreatedSet.title

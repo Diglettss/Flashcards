@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 export default function Set({ set }) {
     const navigate = useNavigate();
-    console.log(set)
     return (
         <div
             className="set-container"
