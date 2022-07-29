@@ -22,12 +22,14 @@ export const AuthContextProvider = ({ children }) => {
             };
             fetchUser();
         }
+        setIsLoading(false)
     }, []);
 
     //
     useEffect(() => {
+        console.log(Boolean(user?.email))
         setIsLoggedIn(Boolean(user?.email));
-    }, [user?.email]);
+    }, [user]);
 
     // should make a request to log the user in
     async function loginUser(credentials) {

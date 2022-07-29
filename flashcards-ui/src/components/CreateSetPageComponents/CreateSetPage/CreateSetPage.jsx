@@ -22,10 +22,12 @@ export default function CreateSetPage() {
     const navigate = useNavigate();
 
     useEffect(() => {
+        console.log('isLoggedIn', isLoggedIn)
+        console.log('isLoading', isLoading)
         if (!isLoading && !isLoggedIn) {
             navigate("/");
         }
-    }, [isLoading, isLoggedIn]);
+    }, [isLoggedIn, isLoading]);
 
     return (
         <div className="create-set">
