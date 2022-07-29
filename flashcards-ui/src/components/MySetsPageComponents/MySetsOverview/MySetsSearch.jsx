@@ -28,7 +28,7 @@ export default function MySetsSearch({
         array.reverse();
     };
     const sortByNumOfFlashcards = (array) => {
-        array.sort((a, b) => b.flashcard.length - a.flashcard.length);
+        array.sort((a, b) => b.flashcards.length - a.flashcards.length);
     };
 
     useEffect(() => {
