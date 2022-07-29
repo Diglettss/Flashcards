@@ -12,10 +12,11 @@ export default function MySetsSearch({
 
     const sortByNewestDate = (array) => {
         array.sort((a, b) => b.date - a.date);
+        array.reverse();
+
     };
     const sortByOldestDate = (array) => {
         sortByNewestDate(array);
-        array.reverse();
     };
     const sortByAlphabeticalOrder = (array) => {
         array.sort((x, y) => {
