@@ -7,8 +7,8 @@ import study3 from "../../assets/study3.jpg";
 export default function Landing() {
     return (
         <div className="landing-page">
-            <div class="split left">
-                <div class="centered">
+            <div className="split left">
+                <div className="centered">
                     <img
                         className="study-img"
                         src={study1}
@@ -18,8 +18,8 @@ export default function Landing() {
                 </div>
             </div>
 
-            <div class="split right">
-                <div class="centered">
+            <div className="split right">
+                <div className="centered">
                     <h1>Flashy</h1>
                     <p>The perfect study tool for you!</p>
                 </div>

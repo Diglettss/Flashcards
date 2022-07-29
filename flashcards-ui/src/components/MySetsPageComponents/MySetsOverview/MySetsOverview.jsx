@@ -3,6 +3,8 @@ import "./MySetsOverview.css";
 import { useFlashcardContext } from "../../../../contexts/flashcard";
 import Set from "../../FlashcardComponents/Set/Set";
 import MySetsSearch from "./MySetsSearch";
+import { useAuthContext } from "../../../../contexts/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function MySetsOverview() {
     "This takes the varibale mySets fron contexts/flashcard and loops it through the Set component";
@@ -10,7 +12,7 @@ export default function MySetsOverview() {
     const [sortBy, setSortBy] = useState("Newest");
     const [searchValue, setSearchValue] = useState("");
     const [filteredMySets, setFilteredMySets] = useState([...mySets]);
-    console.log("MySetsOverview", mySets)
+
     return (
         <div className="my-sets-page">
             <MySetsSearch
@@ -20,7 +22,6 @@ export default function MySetsOverview() {
                 sortBy={sortBy}
                 setSortBy={setSortBy}
             />
-            {console.log("filteredMySets", filteredMySets)}
             {filteredMySets.map((e, idx) => (
                 <Set set={e} key={idx} />
             ))}

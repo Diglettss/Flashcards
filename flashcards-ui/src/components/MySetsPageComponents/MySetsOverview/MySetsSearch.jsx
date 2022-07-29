@@ -9,14 +9,14 @@ export default function MySetsSearch({
     setSortBy,
 }) {
     const { mySets } = useFlashcardContext();
-    console.log("MySetsSearch", mySets);
 
     const sortByNewestDate = (array) => {
         array.sort((a, b) => b.date - a.date);
+        array.reverse();
+
     };
     const sortByOldestDate = (array) => {
         sortByNewestDate(array);
-        array.reverse();
     };
     const sortByAlphabeticalOrder = (array) => {
         array.sort((x, y) => {

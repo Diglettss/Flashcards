@@ -25,7 +25,6 @@ router.post("/search", async (req, res, next) => {
 //get a public sets
 router.post("/", async (req, res, next) => {
     try {
-        console.log(req.body)
         const set = await Flashcard.fetchPublicSetById(req.body);
         return res.status(201).json({ set });
     } catch (err) {

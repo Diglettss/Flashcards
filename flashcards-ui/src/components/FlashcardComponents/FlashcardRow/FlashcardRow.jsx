@@ -17,7 +17,7 @@ export default function FlashcardRow({
                 onClick={(e) => {
                     checkBoxInput.current.checked =
                         !checkBoxInput.current.checked;
-                    chosenSet.flashcard[idx].visibility =
+                    chosenSet.flashcards[idx].visibility =
                         checkBoxInput.current.checked;
                 }}
             >
@@ -30,11 +30,11 @@ export default function FlashcardRow({
                         ? "Flashcard visibility"
                         : "Select for trash"
                 }
-                defaultChecked={chosenSet.flashcard[idx][checkBox]}
+                defaultChecked={chosenSet.flashcards[idx][checkBox]}
                 type="checkbox"
                 className={`myCheck ${checkBox || "hidden"}`}
                 onClick={(e) => {
-                    chosenSet.flashcard[idx].visibility = e.target[checkBox];
+                    chosenSet.flashcards[idx].visibility = e.target[checkBox];
                 }}
             ></input>
             <div
@@ -42,7 +42,7 @@ export default function FlashcardRow({
                 onClick={(e) => {
                     checkBoxInput.current.checked =
                         !checkBoxInput.current.checked;
-                    chosenSet.flashcard[idx].visibility =
+                    chosenSet.flashcards[idx].visibility =
                         checkBoxInput.current.checked;
                 }}
             >

@@ -14,7 +14,6 @@ export default function UserProfile() {
     email: "",
   });
 
-  console.log("userProfile", showUserProfileModal);
   //   const handleOnInputChange = (event) => {
   //     if (event.target.name === "email") {
   //       if (event.target.value.indexOf("@") === -1) {
@@ -40,7 +39,6 @@ export default function UserProfile() {
   //     document.getElementById("profile-form").style.display = "none";
   //   }
 
-  console.log("something")
 
   return (
     
@@ -48,7 +46,6 @@ export default function UserProfile() {
       <div
         className="overlay"
         onClick={() => {
-            console.log("changing")
           setShowUserProfileModal(!showUserProfileModal);
         }}
       ></div>

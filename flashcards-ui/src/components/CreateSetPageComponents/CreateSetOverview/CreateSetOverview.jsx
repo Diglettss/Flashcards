@@ -3,14 +3,15 @@ import { useNavigate } from "react-router-dom";
 import { useFlashcardContext } from "../../../../contexts/flashcard";
 import FlashcardRow from "../../FlashcardComponents/FlashcardRow/FlashcardRow";
 
-export default function CreateSetBody({
+export default function CreateSetOverview({
     description,
     setDescription,
-    setBodyView,
+    setIsCreateOverviewShown,
     chosenSet,
     userCreatedSet,
 }) {
-    const { mySets, setmySets } = useFlashcardContext();
+    
+    const { mySets, setMySets } = useFlashcardContext();
     const navigate = useNavigate();
     return (
         <>
@@ -26,8 +27,8 @@ export default function CreateSetBody({
                 }}
             />
             <div className="flashcard-row-container">
-                {chosenSet.flashcard ? (
-                    chosenSet.flashcard.map((e, idx) => (
+                {chosenSet.flashcards ? (
+                    chosenSet.flashcards.map((e, idx) => (
                         <FlashcardRow
                             key={idx}
                             idx={idx}
@@ -40,21 +41,19 @@ export default function CreateSetBody({
                     <div className="flashcard-row-empty" />
                 )}
             </div>
-
-            {/* <FlashcardRow chosenSet={chosenSet} /> */}
             <div className="add-buttons">
                 {/* <button
                     className="add-cards"
                     onClick={(e) => {
-                        setBodyView("text");
+                        setIsCreateOverviewShown(false);
                     }}
                 >
-                    Add cards
+                    Add Flashcard cards
                 </button> */}
                 <button
                     className="add-cards-text"
                     onClick={(e) => {
-                        setBodyView("text");
+                        setIsCreateOverviewShown(false);
                     }}
                 >
                     ADD CARDS
@@ -63,13 +62,17 @@ export default function CreateSetBody({
             <button
                 className="middle-div save-button"
                 onClick={() => {
-                    if(userCreatedSet.flashcard?.length>=2 && userCreatedSet.title){
+                    if (
+                        userCreatedSet.flashcards?.length >= 2 &&
+                        userCreatedSet.title
+                    ) {
                         mySets.push(userCreatedSet);
-                        setmySets([...mySets]);        
-                        navigate("/mysets");    
-                    }
-                    else{
-                        console.error("The set needs a title and at least 2 flashcards")
+                        setMySets([...mySets]);
+                        navigate("/mysets");
+                    } else {
+                        console.error(
+                            "The set needs a title and at least 2 flashcards"
+                        );
                     }
                 }}
             >

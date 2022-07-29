@@ -15,7 +15,7 @@ class Flashcard {
             id: set.id,
             owner: set.userId,
             isPublic: set.isPublic,
-            createdAt: set.createdAt,
+            createdAt: set.createdAt.toDateString(),
             title: set.title,
             description: set.description,
             flashcards: JSON.parse(set.flashcards),
@@ -156,7 +156,6 @@ class Flashcard {
     }
 
     static async fetchPublicSetById({ id }) {
-        console.log(id)
         const result = await db.query(
             `
                 SELECT 
@@ -173,7 +172,6 @@ class Flashcard {
                 `,
             [id]
         );
-        console.log(result.rows[0]);
         if (result.rows.length == 0) {
             throw new NotFoundError("The provided set is not found");
         }

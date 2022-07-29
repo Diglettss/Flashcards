@@ -13,7 +13,7 @@ export default function UpdateMySetPage() {
             <h1 className="title">{chosenSet.title}</h1>
             <h3 className="description">{chosenSet.description}</h3>
             <div className="flashcard-row-container">
-                {chosenSet.flashcard.map((e, idx) => (
+                {chosenSet.flashcards.map((e, idx) => (
                     <FlashcardRow
                         key={idx}
                         idx={idx}
@@ -28,7 +28,7 @@ export default function UpdateMySetPage() {
                 <button
                 className="start-button"
                     onClick={(e) => {
-                        const filteredFlashcard = chosenSet.flashcard.filter(
+                        const filteredFlashcard = chosenSet.flashcards.filter(
                             (e) => {
                                 if (e.visibility == true) {
                                     return e;

@@ -9,12 +9,27 @@ export const AuthContextProvider = ({ children }) => {
 
     const [initialized, setInitialized] = useState();
     const [isProcessing, setIsProcessing] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState();
 
-    //this is called every time isLoggedIn is changed
+    // should make a request to the `/auth/me` route to get the user's info
     useEffect(() => {
-        localStorage.setItem("isLoggedIn", isLoggedIn);
-    }, [isLoggedIn]);
+        if (localStorage.getItem(apiClient.tokenName)) {
+            const fetchUser = async () => {
+                apiClient.setToken(localStorage.getItem(apiClient.tokenName));
+                const data = await apiClient.fetchUserFromToken();
+                setUser(data.data.user);
+            };
+            fetchUser();
+        }
+        setIsLoading(false)
+    }, []);
+
+    //
+    useEffect(() => {
+        console.log(Boolean(user?.email))
+        setIsLoggedIn(Boolean(user?.email));
+    }, [user]);
 
     // should make a request to log the user in
     async function loginUser(credentials) {
@@ -84,22 +99,13 @@ export const AuthContextProvider = ({ children }) => {
         setIsProcessing(false);
     }
 
-    // should make a request to the `/auth/me` route to get the user's info
-    async function fetchUserFromToken() {
-        const { data } = await apiClient.fetchUserFromToken();
-        if (data) {
-            setUser(data.user);
-            setError(null);
-        }
-        setError("");
-    }
-
     // function should remove the `lifetracker_token` from local storage
     // and refresh the page so that all user data is reset
     async function logoutUser() {
         await apiClient.logoutUser();
         setUser({});
         setError(null);
+        setIsLoggedIn(false);
     }
 
     const authValue = {
@@ -113,10 +119,10 @@ export const AuthContextProvider = ({ children }) => {
         setError,
         loginUser,
         signupUser,
-        fetchUserFromToken,
         logoutUser,
         isLoggedIn,
         setIsLoggedIn,
+        isLoading,
     };
 
     return (
