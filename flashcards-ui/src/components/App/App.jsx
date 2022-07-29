@@ -27,21 +27,6 @@ function App() {
     //TODO turn index.css into a index.scss
     //TODO keep the UserCreatedSets in a query (that's in the users local storage) that will try to send the sets until successful
     //TODO improve the settings modal
-    const { user, setUser, error, setError } = useAuthContext();
-
-    useEffect(() => {
-        const fetchUser = async () => {
-            const { data, err } = await apiClient.fetchUserFromToken();
-            if (data) setUser(data.user);
-            if (err) setError(err);
-        };
-
-        const token = localStorage.getItem("flashcard_token");
-        if (token) {
-            apiClient.setToken(token);
-            fetchUser();
-        }
-    }, []);
 
     return (
         <div className="App">

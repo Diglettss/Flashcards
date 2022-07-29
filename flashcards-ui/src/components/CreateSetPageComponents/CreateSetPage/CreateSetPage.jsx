@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./CreateSetPage.css";
-
-import CreateSetBody from "../CreateSetOverview/CreateSetOverview.jsx";
+import CreateSetOverview from "../CreateSetOverview/CreateSetOverview.jsx";
 import CreateSetAddCard from "../CreateSetAddCard/CreateSetAddCard.jsx";
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../../../contexts/auth";
 export default function CreateSetPage() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [bodyView, setBodyView] = useState("create");
+
+    // This variable decides which body of the create page is shown
+    const [isCreateOverviewShown, setIsCreateOverviewShown] = useState(true);
     const [userCreatedSet, setUserCreatedSet] = useState({
         title: null,
         description: null,
@@ -14,6 +17,15 @@ export default function CreateSetPage() {
         visibility: true,
         selectedForTrash: false,
     });
+
+    const { isLoading, isLoggedIn } = useAuthContext();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!isLoading && !isLoggedIn) {
+            navigate("/");
+        }
+    }, [isLoading, isLoggedIn]);
 
     return (
         <div className="create-set">
@@ -28,17 +40,17 @@ export default function CreateSetPage() {
                     userCreatedSet.title = e.target.value;
                 }}
             />
-            {bodyView == "create" ? (
-                <CreateSetBody
+            {isCreateOverviewShown ? (
+                <CreateSetOverview
                     description={description}
                     setDescription={setDescription}
-                    setBodyView={setBodyView}
+                    setIsCreateOverviewShown={setIsCreateOverviewShown}
                     chosenSet={userCreatedSet}
                     userCreatedSet={userCreatedSet}
                 />
             ) : (
                 <CreateSetAddCard
-                    setBodyView={setBodyView}
+                    setIsCreateOverviewShown={setIsCreateOverviewShown}
                     userCreatedSet={userCreatedSet}
                 />
             )}
