@@ -12,7 +12,6 @@ export default function MySetsPage() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log(isLoading)
         if (!isLoading && !isLoggedIn) {
             navigate("/");
         }

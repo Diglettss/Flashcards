@@ -31,7 +31,6 @@ export const FlashcardContextProvider = ({ children }) => {
                 // If all goes well, should set the data as the `userSet` state variable
 
                 if (data) {
-                    console.log(data.mySets)
                     setMySets(data.mySets);
                 }
                 // If there is an error with the request, it should set a message as the `error` state variable
