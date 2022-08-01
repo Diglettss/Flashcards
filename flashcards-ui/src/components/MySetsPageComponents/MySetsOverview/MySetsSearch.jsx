@@ -1,5 +1,16 @@
 import { useEffect } from "react";
 import { useFlashcardContext } from "../../../../contexts/flashcard";
+import {
+    HStack,
+    StackDivider,
+    Box,
+    VStack,
+    useTheme,
+    Text,
+    Heading,
+    Input,
+    Select,
+} from "@chakra-ui/react";
 
 export default function MySetsSearch({
     setFilteredMySets,
@@ -13,7 +24,6 @@ export default function MySetsSearch({
     const sortByNewestDate = (array) => {
         array.sort((a, b) => b.date - a.date);
         array.reverse();
-
     };
     const sortByOldestDate = (array) => {
         sortByNewestDate(array);
@@ -65,11 +75,14 @@ export default function MySetsSearch({
 
     return (
         <>
-            <div className="label-search-input">
-                <label htmlFor="search-input">My Sets</label>
-            </div>
-            <div className="filter-container">
-                <input
+            <Heading>My Sets</Heading>
+            <HStack
+                justify={"space-between"}
+                marginTop="20px"
+                marginBottom="50px"
+            >
+                <Input
+                    w={"300px"}
                     className="search-input"
                     name="search-input"
                     type="text"
@@ -80,7 +93,8 @@ export default function MySetsSearch({
                         setSearchValue(e.target.value);
                     }}
                 />
-                <select
+                <Select
+                    w={"300px"}
                     className="drop-down"
                     onChange={(e) => {
                         setSortBy(e.target.value);
@@ -92,8 +106,8 @@ export default function MySetsSearch({
                     <option>A-Z</option>
                     <option>Z-A</option>
                     <option># of flashcards</option>
-                </select>
-            </div>
+                </Select>
+            </HStack>
         </>
     );
 }

@@ -22,6 +22,7 @@ export const AuthContextProvider = ({ children }) => {
             };
             fetchUser();
         }
+        setIsLoggedIn(Boolean(user?.email));
         setIsLoading(false)
     }, []);
 

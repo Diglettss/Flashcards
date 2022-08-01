@@ -6,16 +6,27 @@ import FlashcardOverviewPage from "./FlashcardOverviewPage/FlashcardOverviewPage
 import StudyPage from "../StudyPage/StudyPage.jsx";
 import NotFound from "../NotFound/NotFound";
 import { useAuthContext } from "../../../contexts/auth";
+import { useTheme } from "@chakra-ui/react";
 
 export default function MySetsPage() {
     const { isLoading, isLoggedIn } = useAuthContext();
     const navigate = useNavigate();
+    console.log(useTheme().colors.brand.green)
 
     useEffect(() => {
-        if (!isLoading && !isLoggedIn) {
-            navigate("/");
+        if (!isLoading) {
+            return;
+        } else {
+            if (!isLoggedIn) {
+                navigate("/");
+            }
         }
-    }, [isLoading, isLoggedIn]);
+        console.log("isLoggedIn", isLoggedIn);
+    }, [isLoggedIn]);
+
+    // console.log(
+    // useTheme()
+    // )
 
     return (
         <div className="mysets-page">
