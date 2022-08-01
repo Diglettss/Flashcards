@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import {
     Box,
     Button,
-    ButtonGroup,
-    Container,
-    Flex,
     HStack,
     IconButton,
-    useBreakpointValue,
+    Avatar,
+    AvatarBadge,
     useColorModeValue,
     Icon,
+    Input,
+    Spacer,
 } from "@chakra-ui/react";
 import { BsLightningChargeFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
@@ -17,7 +17,7 @@ import NavLinks from "../NavLinks/NavLinks.jsx";
 import Searchbar from "../Searchbar/Searchbar.jsx";
 import UserProfile from "../UserProfile/UserProfile.jsx";
 import { useNavigate } from "react-router-dom";
-// import "./Navbar.css";
+import "./Navbar.css";
 import { useAuthContext } from "../../../contexts/auth";
 
 function Navbar() {
@@ -29,16 +29,25 @@ function Navbar() {
             as="nav"
             bg="green.300"
             boxShadow={useColorModeValue("lg", "sm-dark")}
-            pt={6}
+            pt={2}
             pb={2}
         >
             <HStack spacing={20} alignItems={"center"} pl={50}>
-                <Icon
-                    as={BsLightningChargeFill}
-                    onClick={() => {
-                        navigate("/");
-                    }}
-                />
+                <HStack
+                    as={"nav"}
+                    spacing={4}
+                    display={{ base: "none", md: "flex" }}
+                >
+                    <Icon
+                        as={BsLightningChargeFill}
+                        onClick={() => {
+                            navigate("/");
+                        }}
+                        _hover={{
+                            cursor: "pointer",
+                        }}
+                    />
+                </HStack>
                 <HStack
                     as={"nav"}
                     spacing={4}
@@ -57,11 +66,39 @@ function Navbar() {
                         variant="ghost"
                         size="lg"
                         onClick={() => {
-                            navigate("/login");
+                            navigate("/register");
                         }}
                     >
                         Register
                     </Button>
+                </HStack>
+                <Spacer />
+                <HStack pr={4}>
+                    <Input
+                        type="search"
+                        placeholder="search..."
+                        variant="ghost"
+                    />
+                </HStack>
+                <HStack
+                    spacing={3}
+                    display={{ base: "none", md: "flex" }}
+                    pr={57}
+                >
+                    <Avatar
+                        // change name prop to user first & last name
+                        // change src to user submitted profile pic if available
+                        name="Segun Adebayo"
+                        src="https://bit.ly/sage-adebayo"
+                        bg="white"
+                        color="green.400"
+                    >
+                        <AvatarBadge
+                            borderColor="white"
+                            bg="green.400"
+                            boxSize="1.25em"
+                        />
+                    </Avatar>
                 </HStack>
             </HStack>
         </Box>
