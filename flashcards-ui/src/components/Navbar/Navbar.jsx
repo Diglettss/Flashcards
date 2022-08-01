@@ -1,33 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import {
     Box,
-    Button,
     HStack,
-    IconButton,
-    Avatar,
-    AvatarBadge,
     useColorModeValue,
-    Icon,
-    Input,
     Spacer,
+    useTheme,
 } from "@chakra-ui/react";
-import { BsLightningChargeFill } from "react-icons/bs";
 import Logo from "../Logo/Logo.jsx";
 import NavLinks from "../NavLinks/NavLinks.jsx";
 import Searchbar from "../Searchbar/Searchbar.jsx";
-// import UserProfile from "../UserProfile/UserProfile.jsx";
-import { useNavigate } from "react-router-dom";
-import "./Navbar.css";
-import { useAuthContext } from "../../../contexts/auth";
+import UserProfile from "../UserProfile/UserProfile.jsx";
+import { useFlashcardContext } from "../../../contexts/flashcard";
 
 function Navbar() {
-    const { user } = useAuthContext();
-    const [isProfileOpen, setIsProfileOpen] = useState(false);
-    const navigate = useNavigate();
+    const { isLoggedIn } = useFlashcardContext();
     return (
         <Box
             as="nav"
-            bg="green.300"
+            bg={useTheme().colors.brand.green}
             boxShadow={useColorModeValue("lg", "sm-dark")}
             pt={2}
             pb={2}
@@ -36,32 +26,14 @@ function Navbar() {
                 {/* App Logo */}
                 <Logo />
                 {/* Login/Register & My Sets/Create links */}
-                <NavLinks />
+                <NavLinks isLoggedIn={isLoggedIn} />
                 {/* Chakra UI Space component*/}
                 <Spacer />
                 {/* Searchbar*/}
                 <Searchbar />
                 {/* User Profile */}
-                <HStack
-                    spacing={3}
-                    display={{ base: "none", md: "flex" }}
-                    pr={57}
-                >
-                    <Avatar
-                        // change name prop to user first & last name
-                        // change src to user submitted profile pic if available
-                        name="Segun Adebayo"
-                        src="https://bit.ly/sage-adebayo"
-                        bg="white"
-                        color="green.400"
-                    >
-                        <AvatarBadge
-                            borderColor="white"
-                            bg="green.400"
-                            boxSize="1.25em"
-                        />
-                    </Avatar>
-                </HStack>
+                {/* {isLoggedIn ? <UserProfile /> : null} */}
+                <UserProfile />
             </HStack>
         </Box>
     );
