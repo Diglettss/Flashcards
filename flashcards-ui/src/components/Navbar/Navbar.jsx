@@ -12,10 +12,10 @@ import {
     Spacer,
 } from "@chakra-ui/react";
 import { BsLightningChargeFill } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import Logo from "../Logo/Logo.jsx";
 import NavLinks from "../NavLinks/NavLinks.jsx";
 import Searchbar from "../Searchbar/Searchbar.jsx";
-import UserProfile from "../UserProfile/UserProfile.jsx";
+// import UserProfile from "../UserProfile/UserProfile.jsx";
 import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import { useAuthContext } from "../../../contexts/auth";
@@ -33,53 +33,15 @@ function Navbar() {
             pb={2}
         >
             <HStack spacing={20} alignItems={"center"} pl={50}>
-                <HStack
-                    as={"nav"}
-                    spacing={4}
-                    display={{ base: "none", md: "flex" }}
-                >
-                    <Icon
-                        as={BsLightningChargeFill}
-                        onClick={() => {
-                            navigate("/");
-                        }}
-                        _hover={{
-                            cursor: "pointer",
-                        }}
-                    />
-                </HStack>
-                <HStack
-                    as={"nav"}
-                    spacing={4}
-                    display={{ base: "none", md: "flex" }}
-                >
-                    <Button
-                        variant="ghost"
-                        size="lg"
-                        onClick={() => {
-                            navigate("/login");
-                        }}
-                    >
-                        Login
-                    </Button>
-                    <Button
-                        variant="ghost"
-                        size="lg"
-                        onClick={() => {
-                            navigate("/register");
-                        }}
-                    >
-                        Register
-                    </Button>
-                </HStack>
+                {/* App Logo */}
+                <Logo />
+                {/* Login/Register & My Sets/Create links */}
+                <NavLinks />
+                {/* Chakra UI Space component*/}
                 <Spacer />
-                <HStack pr={4}>
-                    <Input
-                        type="search"
-                        placeholder="search..."
-                        variant="ghost"
-                    />
-                </HStack>
+                {/* Searchbar*/}
+                <Searchbar />
+                {/* User Profile */}
                 <HStack
                     spacing={3}
                     display={{ base: "none", md: "flex" }}

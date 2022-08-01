@@ -1,22 +1,64 @@
 import React from "react";
+import { Button, HStack } from "@chakra-ui/react";
+import { useFlashcardContext } from "../../../contexts/flashcard";
+import { useNavigate } from "react-router-dom";
 
-import { Link } from "react-router-dom";
-import { useAuthContext } from "../../../contexts/auth";
 import "./NavLinks.css";
 
-export default function NavLinks({ isLoggedIn }) {
-    const { user,} = useAuthContext();
+export default function NavLinks() {
+    const { isLoggedIn } = useFlashcardContext();
+    const navigate = useNavigate();
+
     return (
         <>
-            <Link className="text" to="/">
-                Home
-            </Link>
-            <Link className="text" to={user.email ? "/mysets" : "/login"}>
-                {user.email ? "My Sets" : "Login"}
-            </Link>
-            <Link className="text" to={user.email ? "create" : "/register"}>
-                {user.email ? "Create" : "Register"}
-            </Link>
+            <HStack
+                as={"nav"}
+                spacing={4}
+                display={{ base: "none", md: "flex" }}
+            >
+                {isLoggedIn ? (
+                    <Button
+                        variant="ghost"
+                        size="lg"
+                        onClick={() => {
+                            navigate("/mysets");
+                        }}
+                    >
+                        My Sets
+                    </Button>
+                ) : (
+                    <Button
+                        variant="ghost"
+                        size="lg"
+                        onClick={() => {
+                            navigate("/login");
+                        }}
+                    >
+                        Login
+                    </Button>
+                )}
+                {isLoggedIn ? (
+                    <Button
+                        variant="ghost"
+                        size="lg"
+                        onClick={() => {
+                            navigate("/create");
+                        }}
+                    >
+                        Create
+                    </Button>
+                ) : (
+                    <Button
+                        variant="ghost"
+                        size="lg"
+                        onClick={() => {
+                            navigate("/register");
+                        }}
+                    >
+                        Register
+                    </Button>
+                )}
+            </HStack>
         </>
     );
 }
