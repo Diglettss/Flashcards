@@ -10,10 +10,10 @@ import Logo from "../Logo/Logo.jsx";
 import NavLinks from "../NavLinks/NavLinks.jsx";
 import Searchbar from "../Searchbar/Searchbar.jsx";
 import UserProfile from "../UserProfile/UserProfile.jsx";
-import { useFlashcardContext } from "../../../contexts/flashcard";
+import { useAuthContext } from "../../../contexts/auth.jsx";
 
 function Navbar() {
-    const { isLoggedIn } = useFlashcardContext();
+    const { isLoggedIn } = useAuthContext();
 
     return (
         <Box
