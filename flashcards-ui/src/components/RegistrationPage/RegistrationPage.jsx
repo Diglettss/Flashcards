@@ -3,7 +3,6 @@ import { useAuthContext } from "../../../contexts/auth";
 import RegistrationForm from "./RegistrationForm";
 import { useEffect } from "react";
 
-
 export default function RegistrationPage() {
     const { isLoading, isLoggedIn } = useAuthContext();
     const navigate = useNavigate();

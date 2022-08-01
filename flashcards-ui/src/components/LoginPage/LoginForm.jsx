@@ -1,7 +1,21 @@
 import * as React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 import { useAuthContext } from "../../../contexts/auth";
+import {
+    Flex,
+    Box,
+    FormControl,
+    FormLabel,
+    Input,
+    Checkbox,
+    Stack,
+    Link,
+    Button,
+    Heading,
+    Text,
+    useColorModeValue,
+} from "@chakra-ui/react";
 
 export default function LoginForm(props) {
     const { error, isProcessing, loginUser } = useAuthContext();
@@ -23,62 +37,83 @@ export default function LoginForm(props) {
     };
 
     return (
-        <div className="login-form">
-            <div className="card">
-                <h2>Login</h2>
-                {Boolean(error?.form) && (
-                    <span className="error">{error?.form}</span>
-                )}
-                <br />
-                <div className="form">
-                    <div className="input-field">
-                        <label htmlFor="username">Username</label>
-                        <input
-                            className="form-input"
-                            name="username"
-                            type="text"
-                            placeholder="username"
-                            value={form.username}
-                            onChange={handleOnInputChange}
-                        />
-                        {error?.username && (
-                            <span className="error">{error?.username}</span>
-                        )}
-                    </div>
-
-                    <div className="input-field">
-                        <label htmlFor="password">Password</label>
-                        <input
-                            className="form-input"
-                            name="password"
-                            type="text"
-                            placeholder="password"
-                            value={form.password}
-                            onChange={handleOnInputChange}
-                        />
-                        {error?.password && (
-                            <span className="error">{error?.password}</span>
-                        )}
-                    </div>
-
-                    <div className="input-field">
-                        <button
-                            className="submit-login"
-                            disabled={isProcessing}
-                            onClick={handleOnSubmit}
-                        >
-                            {isProcessing ? "Loading..." : "Login"}
-                        </button>
-                    </div>
-
-                    <div className="footer">
-                        <p>
-                            Don't have an account? Sign up{" "}
-                            <Link to="/register">here</Link>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <Flex
+            minH={"100vh"}
+            align={"center"}
+            justify={"center"}
+            bg={useColorModeValue("gray.50", "gray.800")}
+        >
+            <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+                <Stack align={"center"}>
+                    <Heading fontSize={"4xl"}>Login to your account</Heading>
+                    <Text fontSize={"lg"} color={"gray.600"}>
+                        to enjoy all of our cool features ✌️
+                    </Text>
+                </Stack>
+                <Box
+                    rounded={"lg"}
+                    bg={useColorModeValue("white", "gray.700")}
+                    boxShadow={"lg"}
+                    p={8}
+                >
+                    <Stack spacing={4}>
+                        <FormControl id="username">
+                            <FormLabel>Username</FormLabel>
+                            <Input
+                                type="text"
+                                className="form-input"
+                                name="username"
+                                placeholder="username"
+                                value={form.username}
+                                onChange={handleOnInputChange}
+                            />
+                        </FormControl>
+                        <FormControl id="password">
+                            <FormLabel>Password</FormLabel>
+                            <Input
+                                type="password"
+                                className="form-input"
+                                name="password"
+                                placeholder="password"
+                                value={form.password}
+                                onChange={handleOnInputChange}
+                            />
+                        </FormControl>
+                        <Stack spacing={10}>
+                            <Stack
+                                direction={{ base: "column", sm: "row" }}
+                                align={"start"}
+                                justify={"space-between"}
+                            >
+                                <Text>
+                                    Don't have an account?{" "}
+                                    <Link
+                                        color={"blue.400"}
+                                        onClick={() => {
+                                            navigate("/register");
+                                        }}
+                                    >
+                                        Sign Up!
+                                    </Link>
+                                </Text>
+                            </Stack>
+                            <Button
+                                bg={"green.400"}
+                                color={"white"}
+                                _hover={{
+                                    bg: "gray.100",
+                                    color: "green.400",
+                                }}
+                                onClick={() => {
+                                    handleOnSubmit();
+                                }}
+                            >
+                                Sign in
+                            </Button>
+                        </Stack>
+                    </Stack>
+                </Box>
+            </Stack>
+        </Flex>
     );
 }

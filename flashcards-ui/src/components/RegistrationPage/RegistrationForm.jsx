@@ -1,11 +1,31 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import "./RegistrationForm.css";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+// import "./RegistrationForm.css";
 import { useAuthContext } from "../../../contexts/auth";
+
+import {
+    Flex,
+    Box,
+    FormControl,
+    FormLabel,
+    Input,
+    InputGroup,
+    HStack,
+    InputRightElement,
+    Stack,
+    Button,
+    Heading,
+    Text,
+    useColorModeValue,
+    Link,
+} from "@chakra-ui/react";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 export default function RegistrationForm() {
     const { signupUser, error, setError, isProcessing } = useAuthContext();
     const navigate = useNavigate();
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [form, setForm] = React.useState({
         email: "",
         username: "",
@@ -60,121 +80,209 @@ export default function RegistrationForm() {
     };
 
     return (
-        <div className="registration-form">
-            <div className="card">
-                <h2>Register</h2>
-                <br />
-                <div className="form">
-                    <div className="input-field">
-                        <label htmlFor="email">Email</label>
-                        <input
-                            className="form-input"
-                            name="email"
-                            type="email"
-                            placeholder="Enter a valid email"
-                            value={form.email}
-                            onChange={handleOnInputChange}
-                        />
-                        {error?.email && (
-                            <span className="error">{error?.email}</span>
-                        )}
-                    </div>
-                    <div className="input-field">
-                        <label htmlFor="username">Username</label>
-                        <input
-                            className="form-input"
-                            type="text"
-                            name="username"
-                            placeholder="username"
-                            value={form.username}
-                            onChange={handleOnInputChange}
-                        />
-                        {error?.username && (
-                            <span className="error">{error?.username}</span>
-                        )}
-                    </div>
-                    <div className="name-input-field">
-                        <div className="input-field">
-                            <label htmlFor="name">Name</label>
-                            <div className="split-name">
-                                <input
-                                    className="form-input first-name"
-                                    type="text"
-                                    name="firstName"
-                                    placeholder="First Name"
-                                    value={form.firstName}
-                                    onChange={handleOnInputChange}
-                                />
-                                {error?.firstName && (
+        <Flex
+            minH={"100vh"}
+            align={"center"}
+            justify={"center"}
+            bg={useColorModeValue("gray.50", "gray.800")}
+        >
+            <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
+                <Stack align={"center"}>
+                    <Heading fontSize={"4xl"} textAlign={"center"}>
+                        Register
+                    </Heading>
+                    <Text fontSize={"lg"} color={"gray.600"}>
+                        to enjoy all of our cool features ✌️
+                    </Text>
+                </Stack>
+                <Box
+                    rounded={"lg"}
+                    bg={useColorModeValue("white", "gray.700")}
+                    boxShadow={"lg"}
+                    p={8}
+                >
+                    <Stack spacing={4}>
+                        <HStack>
+                            <Box>
+                                <FormControl id="firstName" isRequired>
+                                    <FormLabel>First Name</FormLabel>
+                                    <Input
+                                        type="text"
+                                        className="form-input first-name"
+                                        name="firstName"
+                                        placeholder="First Name"
+                                        value={form.firstName}
+                                        onChange={handleOnInputChange}
+                                    />
+                                    <Text>
+                                        {error?.firstName && (
+                                            <span className="error">
+                                                {error?.firstName}
+                                            </span>
+                                        )}
+                                    </Text>
+                                </FormControl>
+                            </Box>
+                            <Box>
+                                <FormControl id="lastName" isRequired>
+                                    <FormLabel>Last Name</FormLabel>
+                                    <Input
+                                        className="form-input last-name"
+                                        type="text"
+                                        name="lastName"
+                                        placeholder="Last Name"
+                                        value={form.lastName}
+                                        onChange={handleOnInputChange}
+                                    />
+                                    <Text>
+                                        {error?.lastName && (
+                                            <span className="error">
+                                                {error?.lastName}
+                                            </span>
+                                        )}
+                                    </Text>
+                                </FormControl>
+                            </Box>
+                        </HStack>
+                        <FormControl id="username" isRequired>
+                            <FormLabel>Username</FormLabel>
+                            <Input
+                                type="text"
+                                className="form-input"
+                                name="username"
+                                placeholder="username"
+                                value={form.username}
+                                onChange={handleOnInputChange}
+                            />
+                            <Text>
+                                {error?.username && (
                                     <span className="error">
-                                        {error?.firstName}
+                                        {error?.username}
                                     </span>
                                 )}
-                                <input
-                                    className="form-input last-name"
-                                    type="text"
-                                    name="lastName"
-                                    placeholder="Last Name"
-                                    value={form.lastName}
-                                    onChange={handleOnInputChange}
-                                />
-                                {error?.lastName && (
+                            </Text>
+                        </FormControl>
+
+                        <FormControl id="email" isRequired>
+                            <FormLabel>Email address</FormLabel>
+                            <Input
+                                type="email"
+                                className="form-input"
+                                name="email"
+                                placeholder="Enter a valid email"
+                                value={form.email}
+                                onChange={handleOnInputChange}
+                            />
+                            <Text>
+                                {error?.email && (
                                     <span className="error">
-                                        {error?.lastName}
+                                        {error?.email}
                                     </span>
                                 )}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="input-field">
-                        <label htmlFor="password">Password</label>
-                        <input
-                            className="form-input"
-                            name="password"
-                            type="text"
-                            placeholder="password"
-                            value={form.password}
-                            onChange={handleOnInputChange}
-                        />
-                        {error?.password && (
-                            <span className="error">{error?.password}</span>
-                        )}
-                    </div>
-                    <div className="input-field">
-                        <label htmlFor="passwordConfirm">
-                            Confirm Password
-                        </label>
-                        <input
-                            className="form-input"
-                            name="passwordConfirm"
-                            type="text"
-                            placeholder="confirm password"
-                            value={form.passwordConfirm}
-                            onChange={handleOnInputChange}
-                        />
-                        {error?.passwordConfirm && (
-                            <span className="error">
-                                {error?.passwordConfirm}
-                            </span>
-                        )}
-                    </div>
-                    <div className="input-field">
-                        <button
-                            className="submit-registration"
-                            disabled={isProcessing}
-                            onClick={handleOnSubmit}
-                        >
-                            {isProcessing ? "Loading..." : "Register"}
-                        </button>
-                    </div>
-                    <div className="footer">
-                        <p>
-                            Already have an account? Login{" "}
-                            <Link to="/login">here</Link>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+                            </Text>
+                        </FormControl>
+                        <FormControl id="password" isRequired>
+                            <FormLabel>Password</FormLabel>
+                            <InputGroup>
+                                <Input
+                                    type={showPassword ? "text" : "password"}
+                                    className="form-input"
+                                    name="password"
+                                    placeholder="password"
+                                    value={form.password}
+                                    onChange={handleOnInputChange}
+                                />
+                                <InputRightElement h={"full"}>
+                                    <Button
+                                        variant={"ghost"}
+                                        onClick={() =>
+                                            setShowPassword(
+                                                (showPassword) => !showPassword
+                                            )
+                                        }
+                                    >
+                                        {showPassword ? (
+                                            <ViewIcon />
+                                        ) : (
+                                            <ViewOffIcon />
+                                        )}
+                                    </Button>
+                                </InputRightElement>
+                            </InputGroup>
+                        </FormControl>
+                        <FormControl id="confirm-password" isRequired>
+                            <FormLabel>Confirm Password</FormLabel>
+                            <InputGroup>
+                                <Input
+                                    type={
+                                        showConfirmPassword
+                                            ? "text"
+                                            : "password"
+                                    }
+                                    className="form-input"
+                                    name="passwordConfirm"
+                                    placeholder="confirm password"
+                                    value={form.passwordConfirm}
+                                    onChange={handleOnInputChange}
+                                />
+                                <InputRightElement h={"full"}>
+                                    <Button
+                                        variant={"ghost"}
+                                        onClick={() =>
+                                            setShowConfirmPassword(
+                                                (showConfirmPassword) =>
+                                                    !showConfirmPassword
+                                            )
+                                        }
+                                    >
+                                        {showConfirmPassword ? (
+                                            <ViewIcon />
+                                        ) : (
+                                            <ViewOffIcon />
+                                        )}
+                                    </Button>
+                                </InputRightElement>
+                            </InputGroup>
+                            {error?.passwordConfirm && (
+                                <span className="error">
+                                    {error?.passwordConfirm}
+                                </span>
+                            )}
+                        </FormControl>
+
+                        <Stack spacing={10} pt={2}>
+                            <Button
+                                loadingText="Submitting"
+                                size="lg"
+                                bg={"green.400"}
+                                color={"white"}
+                                _hover={{
+                                    bg: "gray.100",
+                                    color: "green.400",
+                                }}
+                                onClick={() => {
+                                    handleOnSubmit();
+                                }}
+                            >
+                                Register
+                            </Button>
+                        </Stack>
+                        <Stack pt={6}>
+                            <Text align={"center"}>
+                                Already a user?{" "}
+                                <Link
+                                    color={"blue.400"}
+                                    onClick={() => {
+                                        navigate("/login");
+                                    }}
+                                >
+                                    Login
+                                </Link>
+                            </Text>
+                        </Stack>
+                    </Stack>
+                </Box>
+            </Stack>
+        </Flex>
     );
 }
