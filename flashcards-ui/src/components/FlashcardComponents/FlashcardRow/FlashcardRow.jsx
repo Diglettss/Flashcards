@@ -1,5 +1,5 @@
-import { Box, HStack, Input, Checkbox, Text } from "@chakra-ui/react";
-import React, { useRef, useState } from "react";
+import { Box, HStack, Checkbox, Text } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 
 export default function FlashcardRow({
     idx, //The location of the flashcard in the set
@@ -10,48 +10,59 @@ export default function FlashcardRow({
 }) {
     ("I pass in choosenSet because this is how I got selected to work");
 
-    const checkBoxInput = useRef(null);
-    // console.log(checkBoxInput.current);
-    // console.log(chosenSet.flashcards)
-    const [checkBoxState, setCheckBoxState] = useState(chosenSet.flashcards[idx][checkBox])
+    let defaultCheckBox;
+    if (checkBox == "visibility") {
+        defaultCheckBox = true;
+    } else {
+        defaultCheckBox = false;
+    }
+
+    const [checkBoxState, setCheckBoxState] = useState(
+        chosenSet.flashcards[idx][checkBox] || defaultCheckBox
+    );
+    useEffect(() => {
+        chosenSet.flashcards[idx].visibility = checkBoxState;
+    }, [checkBoxState]);
+    
     return (
-        <HStack>
+        <HStack h={"max-content"}>
             <Box
                 background={"#a1fbfb"}
-                minH="100%"
+                h="100%"
+                display={"inline-block"}
                 w="40vw"
                 onClick={() => {
-                    checkBoxInput.current.checked = false;
+                    setCheckBoxState(!checkBoxState);
                 }}
             >
                 <Text align={"center"}>{term}</Text>
             </Box>
             <Checkbox
-                ref={checkBoxInput}
-                checked={false}
+                isChecked={checkBoxState}
                 title={
                     checkBox == "visibility"
                         ? "Flashcard visibility"
                         : "Select for trash"
                 }
-                onClick={(e) => {
-                    console.log(e)
-                    chosenSet.flashcards[idx].visibility = e.target[checkBox];
+                onChange={({ target }) => {
+                    setCheckBoxState(target.checked);
                 }}
             />
-            <Box 
-            background={"#a9f7dd"} 
-            h="100%" 
-            w="40vw">
-                <Text align={"center"}>{definition} km nrths ngrth s njrgdfthsj dfhjk,frb gsthurdgjrte hgdrfkugth rhesd tg rdsgnrdfjhrg jkrn grjhn grgjtrnb hdhrf </Text>
+            <Box
+                background={"#a9f7dd"}
+                h="100%"
+                w="40vw"
+                onClick={() => {
+                    setCheckBoxState(!checkBoxState);
+                }}
+            >
+                <Text align={"center"}>
+                    {definition} km nrths ngrth s njrgdfthsj dfhjk,frb
+                    gsthurdgjrte hgdrfkugth rhesd tg rdsgnrdfjhrg jkrn grjhn
+                    grgjtrnb hdhrf{" "}
+                </Text>
             </Box>
         </HStack>
     );
 }
 
-// onClick={(e) => {
-//     checkBoxInput.current.checked =
-//         !checkBoxInput.current.checked;
-//     chosenSet.flashcards[idx].visibility =
-//         checkBoxInput.current.checked;
-// }}

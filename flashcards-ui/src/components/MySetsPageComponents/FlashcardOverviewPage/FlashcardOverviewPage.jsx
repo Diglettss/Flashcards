@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import FlashcardRow from "../../FlashcardComponents/FlashcardRow/FlashcardRow.jsx";
-import "./FlashcardOverviewPage.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useFlashcardContext } from "../../../../contexts/flashcard.jsx";
 import {
@@ -81,10 +80,11 @@ function FlashcardOverviewPageContent({ chosenSet }) {
                 transform="translateX(-50%)"
                 left="50%"
                 onClick={startStudying}
+                zIndex="2"
             >
                 Start Studying
             </Button>
-
+            
             <Center>
                 <VStack w={"80vw"} marginTop="80px">
                 {chosenSet.flashcards.map((e, idx) => (
