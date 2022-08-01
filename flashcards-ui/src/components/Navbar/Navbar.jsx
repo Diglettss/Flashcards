@@ -21,7 +21,7 @@ import "./Navbar.css";
 import { useAuthContext } from "../../../contexts/auth";
 
 function Navbar() {
-    const { user } = useAuthContext();
+    const { isLoggedIn, logoutUser } = useAuthContext();
     const [isProfileOpen, setIsProfileOpen] = useState(false);
     const navigate = useNavigate();
     return (
@@ -53,24 +53,7 @@ function Navbar() {
                     spacing={4}
                     display={{ base: "none", md: "flex" }}
                 >
-                    <Button
-                        variant="ghost"
-                        size="lg"
-                        onClick={() => {
-                            navigate("/login");
-                        }}
-                    >
-                        Login
-                    </Button>
-                    <Button
-                        variant="ghost"
-                        size="lg"
-                        onClick={() => {
-                            navigate("/register");
-                        }}
-                    >
-                        Register
-                    </Button>
+                    <NavLinks isLoggedIn={isLoggedIn} />
                 </HStack>
                 <Spacer />
                 <HStack pr={4}>
@@ -92,6 +75,11 @@ function Navbar() {
                         src="https://bit.ly/sage-adebayo"
                         bg="white"
                         color="green.400"
+                        onClick={() => {
+                            console.warn("Please remove this function");
+                            logoutUser();
+                            navigate("/");
+                        }}
                     >
                         <AvatarBadge
                             borderColor="white"
