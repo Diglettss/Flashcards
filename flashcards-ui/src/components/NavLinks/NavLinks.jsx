@@ -1,9 +1,7 @@
 import React from "react";
 import { Button } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-
 import "./NavLinks.css";
-import { Button } from "@chakra-ui/react";
 
 export default function NavLinks({ isLoggedIn }) {
     const navigate = useNavigate();
