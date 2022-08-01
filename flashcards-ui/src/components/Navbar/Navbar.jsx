@@ -33,8 +33,7 @@ function Navbar() {
                 {/* Searchbar*/}
                 <Searchbar />
                 {/* User Profile */}
-                {/* {isLoggedIn ? <UserProfile /> : null} */}
-                <UserProfile />
+                {isLoggedIn ? <UserProfile /> : null}
 
             </HStack>
         </Box>
