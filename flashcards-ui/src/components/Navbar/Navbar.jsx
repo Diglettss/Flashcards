@@ -14,6 +14,7 @@ import { useFlashcardContext } from "../../../contexts/flashcard";
 
 function Navbar() {
     const { isLoggedIn } = useFlashcardContext();
+
     return (
         <Box
             as="nav"
@@ -34,6 +35,7 @@ function Navbar() {
                 {/* User Profile */}
                 {/* {isLoggedIn ? <UserProfile /> : null} */}
                 <UserProfile />
+
             </HStack>
         </Box>
     );

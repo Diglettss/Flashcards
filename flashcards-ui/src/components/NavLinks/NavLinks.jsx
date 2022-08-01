@@ -3,6 +3,7 @@ import { Button } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
 import "./NavLinks.css";
+import { Button } from "@chakra-ui/react";
 
 export default function NavLinks({ isLoggedIn }) {
     const navigate = useNavigate();
@@ -16,6 +17,7 @@ export default function NavLinks({ isLoggedIn }) {
                 }}
             >
                 {isLoggedIn ? "My Sets" : "Log in"}
+
             </Button>
             <Button
                 variant="ghost"

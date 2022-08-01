@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "start":  "vite",
-    "dev":  "concurrently --kill-others \"npm run dev1\" \"npm run dev2\"",
+    "start": "vite",
+    "dev": "concurrently --kill-others \"npm run dev1\" \"npm run dev2\"",
     "dev1": "vite",
     "dev2": "sass --watch src/",
     "build": "vite build",
@@ -15,6 +15,7 @@
     "axios": "^0.27.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.4.0",
     "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
