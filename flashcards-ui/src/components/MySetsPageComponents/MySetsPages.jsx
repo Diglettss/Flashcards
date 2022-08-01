@@ -12,15 +12,15 @@ export default function MySetsPage() {
     const { isLoading, isLoggedIn } = useAuthContext();
     const navigate = useNavigate();
 
-    useEffect(() => {
-        if (!isLoading) {
-            return;
-        } else {
-            if (!isLoggedIn) {
-                navigate("/");
-            }
-        }
-    }, [isLoggedIn]);
+    // useEffect(() => {
+    //     if (!isLoading) {
+    //         return;
+    //     } else {
+    //         if (!isLoggedIn) {
+    //             navigate("/");
+    //         }
+    //     }
+    // }, [isLoggedIn]);
 
     return (
         <div className="mysets-page">

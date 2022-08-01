@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import "./FlashcardRow.scss"
+import { Box, HStack, Input, Checkbox, Text } from "@chakra-ui/react";
+import React, { useRef, useState } from "react";
 
 export default function FlashcardRow({
     idx, //The location of the flashcard in the set
@@ -8,46 +8,50 @@ export default function FlashcardRow({
     chosenSet, //The set this flashcard is in
     checkBox, //Is the checkbox for selecting for trash or visibility
 }) {
-    const checkBoxInput = useRef(null);
     ("I pass in choosenSet because this is how I got selected to work");
+
+    const checkBoxInput = useRef(null);
+    // console.log(checkBoxInput.current);
+    // console.log(chosenSet.flashcards)
+    const [checkBoxState, setCheckBoxState] = useState(chosenSet.flashcards[idx][checkBox])
     return (
-        <div className="flashcard-row">
-            <div
-                className="term-card card"
-                onClick={(e) => {
-                    checkBoxInput.current.checked =
-                        !checkBoxInput.current.checked;
-                    chosenSet.flashcards[idx].visibility =
-                        checkBoxInput.current.checked;
+        <HStack>
+            <Box
+                background={"#a1fbfb"}
+                minH="100%"
+                w="40vw"
+                onClick={() => {
+                    checkBoxInput.current.checked = false;
                 }}
             >
-                <span className="term">{term}</span>
-            </div>
-            <input
+                <Text align={"center"}>{term}</Text>
+            </Box>
+            <Checkbox
                 ref={checkBoxInput}
+                checked={false}
                 title={
                     checkBox == "visibility"
                         ? "Flashcard visibility"
                         : "Select for trash"
                 }
-                defaultChecked={chosenSet.flashcards[idx][checkBox]}
-                type="checkbox"
-                className={`myCheck ${checkBox || "hidden"}`}
                 onClick={(e) => {
+                    console.log(e)
                     chosenSet.flashcards[idx].visibility = e.target[checkBox];
                 }}
-            ></input>
-            <div
-                className="definition-card card"
-                onClick={(e) => {
-                    checkBoxInput.current.checked =
-                        !checkBoxInput.current.checked;
-                    chosenSet.flashcards[idx].visibility =
-                        checkBoxInput.current.checked;
-                }}
-            >
-                <span className="definition">{definition}</span>
-            </div>
-        </div>
+            />
+            <Box 
+            background={"#a9f7dd"} 
+            h="100%" 
+            w="40vw">
+                <Text align={"center"}>{definition} km nrths ngrth s njrgdfthsj dfhjk,frb gsthurdgjrte hgdrfkugth rhesd tg rdsgnrdfjhrg jkrn grjhn grgjtrnb hdhrf </Text>
+            </Box>
+        </HStack>
     );
 }
+
+// onClick={(e) => {
+//     checkBoxInput.current.checked =
+//         !checkBoxInput.current.checked;
+//     chosenSet.flashcards[idx].visibility =
+//         checkBoxInput.current.checked;
+// }}

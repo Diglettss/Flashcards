@@ -14,7 +14,11 @@ const colors = {
     },
 };
 
-const theme = extendTheme({ colors });
+const globalTheme = {
+    rounded: "22px"
+}
+
+const theme = extendTheme({ colors, globalTheme });
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
