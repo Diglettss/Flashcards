@@ -11,7 +11,6 @@ import { useTheme } from "@chakra-ui/react";
 export default function MySetsPage() {
     const { isLoading, isLoggedIn } = useAuthContext();
     const navigate = useNavigate();
-    console.log(useTheme().colors.brand.green)
 
     useEffect(() => {
         if (!isLoading) {
@@ -21,12 +20,7 @@ export default function MySetsPage() {
                 navigate("/");
             }
         }
-        console.log("isLoggedIn", isLoggedIn);
     }, [isLoggedIn]);
-
-    // console.log(
-    // useTheme()
-    // )
 
     return (
         <div className="mysets-page">

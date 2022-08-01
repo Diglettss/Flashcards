@@ -28,7 +28,6 @@ export const AuthContextProvider = ({ children }) => {
 
     //
     useEffect(() => {
-        console.log(Boolean(user?.email))
         setIsLoggedIn(Boolean(user?.email));
     }, [user]);
 

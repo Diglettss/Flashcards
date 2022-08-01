@@ -5,8 +5,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useFlashcardContext } from "../../../../contexts/flashcard.jsx";
 
 function FlashcardOverviewPageContent({ chosenSet }) {
-    const navigate = useNavigate()
-    
+    const navigate = useNavigate();
+
     return (
         <div className="flashcard-overview-page">
             {/* <button
@@ -33,29 +33,27 @@ function FlashcardOverviewPageContent({ chosenSet }) {
                 ))}
             </div>
             {/* <div className="start-button"> */}
-                <button
+            <button
                 className="start-button"
-                    onClick={(e) => {
-                        let filteredFlashcards = chosenSet.flashcards.filter(
-                            (e) => {
-                                if (e.visibility == true) {
-                                    return e;
-                                }
+                onClick={(e) => {
+                    let filteredFlashcards = chosenSet.flashcards.filter(
+                        (e) => {
+                            if (e.visibility == true) {
+                                return e;
                             }
-                        );
-                        if (filteredFlashcards.length < 2) {
-                            filteredFlashcards = chosenSet.flashcards
-                            console.error(
-                                "Please have at least two flashcards"
-                            );
-                            navigate(`/mysets/studymode/${chosenSet.id}`);
-                        } else {
-                            navigate(`/mysets/studymode/${chosenSet.id}`);
                         }
-                    }}
-                >
-                    START STUDYING
-                </button>
+                    );
+                    if (filteredFlashcards.length < 2) {
+                        filteredFlashcards = chosenSet.flashcards;
+                        console.error("Please have at least two flashcards");
+                        navigate(`/mysets/studymode/${chosenSet.id}`);
+                    } else {
+                        navigate(`/mysets/studymode/${chosenSet.id}`);
+                    }
+                }}
+            >
+                START STUDYING
+            </button>
             {/* </div> */}
         </div>
     );
@@ -65,13 +63,15 @@ export default function FlashcardOverviewPage() {
     const navigate = useNavigate();
     const { mySets } = useFlashcardContext();
     const { setId } = useParams();
-    const chosenSet = mySets[setId];
+    const chosenSet = mySets.find((e) => (
+        e.id == setId
+    ));
 
     //if the params setId doesn't exist in mySets send the user to the shadow realm
     useEffect(() => {
         if (!chosenSet || chosenSet == undefined) {
             console.error("sending you to the shadow realm");
-            // navigate("/notfound");
+            navigate("/notfound");
         }
     }, []);
 
