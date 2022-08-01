@@ -1,22 +1,31 @@
 import React from "react";
-
-import { Link } from "react-router-dom";
-import { useAuthContext } from "../../../contexts/auth";
+import { Button } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 import "./NavLinks.css";
 
 export default function NavLinks({ isLoggedIn }) {
-    const { user,} = useAuthContext();
+    const navigate = useNavigate();
     return (
         <>
-            <Link className="text" to="/">
-                Home
-            </Link>
-            <Link className="text" to={user.email ? "/mysets" : "/login"}>
-                {user.email ? "My Sets" : "Login"}
-            </Link>
-            <Link className="text" to={user.email ? "create" : "/register"}>
-                {user.email ? "Create" : "Register"}
-            </Link>
+            <Button
+                variant="ghost"
+                size="lg"
+                onClick={() => {
+                    isLoggedIn ? navigate("/mysets") : navigate("/login");
+                }}
+            >
+                {isLoggedIn ? "My Sets" : "Log in"}
+
+            </Button>
+            <Button
+                variant="ghost"
+                size="lg"
+                onClick={() => {
+                    isLoggedIn ? navigate("/create") : navigate("/register");
+                }}
+            >
+                {isLoggedIn ? "Create" : "Register"}
+            </Button>
         </>
     );
 }

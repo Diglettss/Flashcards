@@ -50,8 +50,8 @@ export default function Landing() {
                         fontSize={{ base: "md", lg: "lg" }}
                         color={"gray.500"}
                     >
-                        Flashi's mission is to provide a free learning service
-                        for students and educators to utilize in order to gain
+                        Our mission is to provide a free study tool
+                        for students & educators to utilize in order to gain
                         mastery over their learning.
                     </Text>
                     <Stack
@@ -69,8 +69,9 @@ export default function Landing() {
                             onClick={() => {
                                 navigate("/register");
                             }}
+                            title="Register"
                         >
-                            Get started
+                            Get Started!
                         </Button>
                     </Stack>
                 </Stack>

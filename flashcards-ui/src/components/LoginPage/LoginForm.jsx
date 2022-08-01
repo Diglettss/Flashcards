@@ -45,10 +45,7 @@ export default function LoginForm(props) {
         >
             <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
                 <Stack align={"center"}>
-                    <Heading fontSize={"4xl"}>Login to your account</Heading>
-                    <Text fontSize={"lg"} color={"gray.600"}>
-                        to enjoy all of our cool features ✌️
-                    </Text>
+                    <Heading fontSize={"4xl"}>Welcome Back! 👋🏽</Heading>
                 </Stack>
                 <Box
                     rounded={"lg"}
@@ -57,26 +54,26 @@ export default function LoginForm(props) {
                     p={8}
                 >
                     <Stack spacing={4}>
-                        <FormControl id="username">
-                            <FormLabel>Username</FormLabel>
+                        <FormControl id="username" isRequired>
+                            <FormLabel textAlign={"center"}>Username</FormLabel>
                             <Input
                                 type="text"
                                 className="form-input"
                                 name="username"
-                                placeholder="username"
                                 value={form.username}
                                 onChange={handleOnInputChange}
+                                textAlign={"center"}
                             />
                         </FormControl>
-                        <FormControl id="password">
-                            <FormLabel>Password</FormLabel>
+                        <FormControl id="password" isRequired>
+                            <FormLabel textAlign={"center"}>Password</FormLabel>
                             <Input
                                 type="password"
                                 className="form-input"
                                 name="password"
-                                placeholder="password"
                                 value={form.password}
                                 onChange={handleOnInputChange}
+                                textAlign={"center"}
                             />
                         </FormControl>
                         <Stack spacing={10}>
@@ -86,14 +83,14 @@ export default function LoginForm(props) {
                                 justify={"space-between"}
                             >
                                 <Text>
-                                    Don't have an account?{" "}
+                                    Don't have an account yet? Sign up{" "}
                                     <Link
                                         color={"blue.400"}
                                         onClick={() => {
                                             navigate("/register");
                                         }}
                                     >
-                                        Sign Up!
+                                        here!
                                     </Link>
                                 </Text>
                             </Stack>
@@ -108,7 +105,7 @@ export default function LoginForm(props) {
                                     handleOnSubmit();
                                 }}
                             >
-                                Sign in
+                                Sign In
                             </Button>
                         </Stack>
                     </Stack>

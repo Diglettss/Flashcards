@@ -43,7 +43,7 @@ export default function RegistrationForm() {
             ) {
                 setError((e) => ({
                     ...e,
-                    passwordConfirm: "passwords don't match ❌",
+                    passwordConfirm: "Passwords don't match ❌",
                 }));
             } else {
                 setError((e) => ({ ...e, passwordConfirm: null }));
@@ -53,7 +53,7 @@ export default function RegistrationForm() {
             if (form.password && form.password !== event.target.value) {
                 setError((e) => ({
                     ...e,
-                    passwordConfirm: "passwords don't match ❌ ",
+                    passwordConfirm: "Passwords don't match ❌ ",
                 }));
             } else {
                 setError((e) => ({ ...e, passwordConfirm: null }));
@@ -89,7 +89,7 @@ export default function RegistrationForm() {
             <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
                 <Stack align={"center"}>
                     <Heading fontSize={"4xl"} textAlign={"center"}>
-                        Register
+                        Create Your Account 
                     </Heading>
                     <Text fontSize={"lg"} color={"gray.600"}>
                         to enjoy all of our cool features ✌️
@@ -110,7 +110,6 @@ export default function RegistrationForm() {
                                         type="text"
                                         className="form-input first-name"
                                         name="firstName"
-                                        placeholder="First Name"
                                         value={form.firstName}
                                         onChange={handleOnInputChange}
                                     />
@@ -130,7 +129,6 @@ export default function RegistrationForm() {
                                         className="form-input last-name"
                                         type="text"
                                         name="lastName"
-                                        placeholder="Last Name"
                                         value={form.lastName}
                                         onChange={handleOnInputChange}
                                     />
@@ -150,7 +148,6 @@ export default function RegistrationForm() {
                                 type="text"
                                 className="form-input"
                                 name="username"
-                                placeholder="username"
                                 value={form.username}
                                 onChange={handleOnInputChange}
                             />
@@ -164,12 +161,12 @@ export default function RegistrationForm() {
                         </FormControl>
 
                         <FormControl id="email" isRequired>
-                            <FormLabel>Email address</FormLabel>
+                            <FormLabel>Email</FormLabel>
                             <Input
                                 type="email"
                                 className="form-input"
                                 name="email"
-                                placeholder="Enter a valid email"
+                                placeholder="Enter a valid email address."
                                 value={form.email}
                                 onChange={handleOnInputChange}
                             />
@@ -188,7 +185,6 @@ export default function RegistrationForm() {
                                     type={showPassword ? "text" : "password"}
                                     className="form-input"
                                     name="password"
-                                    placeholder="password"
                                     value={form.password}
                                     onChange={handleOnInputChange}
                                 />
@@ -221,7 +217,6 @@ export default function RegistrationForm() {
                                     }
                                     className="form-input"
                                     name="passwordConfirm"
-                                    placeholder="confirm password"
                                     value={form.passwordConfirm}
                                     onChange={handleOnInputChange}
                                 />
@@ -269,14 +264,14 @@ export default function RegistrationForm() {
                         </Stack>
                         <Stack pt={6}>
                             <Text align={"center"}>
-                                Already a user?{" "}
+                                Already have an account? Log in{" "}
                                 <Link
                                     color={"blue.400"}
                                     onClick={() => {
                                         navigate("/login");
                                     }}
                                 >
-                                    Login
+                                    here!
                                 </Link>
                             </Text>
                         </Stack>
