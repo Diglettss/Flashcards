@@ -1,8 +1,24 @@
 import React, { useState } from "react";
 import "./StudyPage.css";
-import ModalSettings from "./ModalSettings/ModalSettings";
 import { useFlashcardContext } from "../../../contexts/flashcard";
 import { useNavigate, useParams } from "react-router-dom";
+import {
+    ChakraProvider,
+    extendTheme,
+    Container,
+    Heading,
+    Button,
+    VStack,
+    HStack,
+    Text,
+    Flex,
+    Tag,
+} from "@chakra-ui/react";
+import ChakraCarousel from "./Carousel/ChakraCarousel";
+import { capsFirst } from "./Carousel/utils";
+import ReactDOM from "react-dom";
+import theme from "./Carousel/theme";
+
 
 function Flashcard({ flashcard, onClick }) {
     return (
