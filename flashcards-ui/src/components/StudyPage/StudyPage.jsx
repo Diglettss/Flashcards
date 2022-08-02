@@ -36,7 +36,12 @@ export default function StudyPage() {
 
     // fake data
     const { mySets } = useFlashcardContext();
-    const chosenSet = mySets[setId];
+    const chosenSet = mySets.find((e) => e.id == setId);
+
+    console.log(mySets)
+    console.log(setId)
+    console.log(setId)
+
     let filteredFlashcard = chosenSet.flashcards.filter((e) => {
         if (e.visibility == true) {
             return e;
@@ -74,7 +79,6 @@ export default function StudyPage() {
 
     return (
         <div className="study-page">
-            <ModalSettings />
             <div className="button-container">
                 <button
                     className="settings"

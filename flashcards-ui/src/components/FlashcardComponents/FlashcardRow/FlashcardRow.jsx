@@ -1,4 +1,4 @@
-import { Box, HStack, Checkbox, Text } from "@chakra-ui/react";
+import { Box, HStack, Checkbox, Text, Flex } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 
 export default function FlashcardRow({
@@ -11,31 +11,31 @@ export default function FlashcardRow({
     ("I pass in choosenSet because this is how I got selected to work");
 
     let defaultCheckBox;
+    //This code is used for updated and Flashcard overview and the checkbox needs to be different for different occasions
     if (checkBox == "visibility") {
         defaultCheckBox = true;
     } else {
         defaultCheckBox = false;
     }
-
     const [checkBoxState, setCheckBoxState] = useState(
         chosenSet.flashcards[idx][checkBox] || defaultCheckBox
     );
     useEffect(() => {
-        chosenSet.flashcards[idx].visibility = checkBoxState;
+        chosenSet.flashcards[idx][checkBox] = checkBoxState;
     }, [checkBoxState]);
-    
+
     return (
-        <HStack h={"max-content"}>
+        <HStack h="400" paddingBottom={"80px"}>
             <Box
                 background={"#a1fbfb"}
-                h="100%"
-                display={"inline-block"}
                 w="40vw"
                 onClick={() => {
                     setCheckBoxState(!checkBoxState);
                 }}
+                h="100%"
+                align={"center"}
             >
-                <Text align={"center"}>{term}</Text>
+                {term}
             </Box>
             <Checkbox
                 isChecked={checkBoxState}
@@ -52,17 +52,16 @@ export default function FlashcardRow({
                 background={"#a9f7dd"}
                 h="100%"
                 w="40vw"
+                align={"center"}
                 onClick={() => {
                     setCheckBoxState(!checkBoxState);
                 }}
             >
-                <Text align={"center"}>
-                    {definition} km nrths ngrth s njrgdfthsj dfhjk,frb
-                    gsthurdgjrte hgdrfkugth rhesd tg rdsgnrdfjhrg jkrn grjhn
-                    grgjtrnb hdhrf{" "}
-                </Text>
+                {definition} km nrths ngrth s njrgdfthsj dfhjk,frb gsthurdgjrte
+                hgdrfkugth rhesdfgfhfg h fgh fgh fgh fgh fgh fgh fgh fg fgh fg
+                fgh f fgh fg fghh fgh fg fgh fghf ghf fg hf h fg hgf hfg fhg fgh
+                fghh fg fhgh fg tg rdsgnrdfjhrg jkrn grjhn grgjtrnb hdhrf{" "}
             </Box>
         </HStack>
     );
 }
-

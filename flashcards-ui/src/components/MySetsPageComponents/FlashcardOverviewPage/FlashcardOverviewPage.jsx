@@ -24,25 +24,25 @@ import {
 function FlashcardOverviewPageContent({ chosenSet }) {
     const navigate = useNavigate();
     const { globalTheme } = useTheme();
-    const startStudying = () => {
-        let filteredFlashcards = chosenSet.flashcards.filter(
-            (e) => {
-                if (e.visibility == true) {
-                    return e;
-                }
+
+    const minimumVisibleFlashcards = () =>{
+        let filteredFlashcards = chosenSet.flashcards.filter((e) => {
+            if (e.visibility == true) {
+                return e;
             }
-        );
+        })
         if (filteredFlashcards.length < 2) {
-            filteredFlashcards = chosenSet.flashcards;
-            console.error(
-                "Please have at least two flashcards"
-            );
-            navigate(`/mysets/studymode/${chosenSet.id}`);
+            return true
         } else {
-            navigate(`/mysets/studymode/${chosenSet.id}`);
+            return false
         }
 
     }
+
+    const startStudying = () => {
+        if (minimumVisibleFlashcards)
+            navigate(`/mysets/studymode/${chosenSet.id}`);
+    };
     return (
         <>
             <Center>
@@ -55,6 +55,7 @@ function FlashcardOverviewPageContent({ chosenSet }) {
                     paddingRight={"80px"}
                     rounded={globalTheme.rounded}
                     marginBottom="20px"
+                    marginTop="20px"
                 >
                     {chosenSet.title}
                 </Heading>
@@ -72,22 +73,10 @@ function FlashcardOverviewPageContent({ chosenSet }) {
                     {chosenSet.description}
                 </Text>
             </Center>
-            <Button
-                position="fixed"
-                margin="auto"
-                bottom={"40px"}
-                display="block"
-                transform="translateX(-50%)"
-                left="50%"
-                onClick={startStudying}
-                zIndex="2"
-            >
-                Start Studying
-            </Button>
-            
+
             <Center>
                 <VStack w={"80vw"} marginTop="80px">
-                {chosenSet.flashcards.map((e, idx) => (
+                    {chosenSet.flashcards.map((e, idx) => (
                         <FlashcardRow
                             e={e}
                             key={idx}
@@ -100,6 +89,26 @@ function FlashcardOverviewPageContent({ chosenSet }) {
                     ))}
                 </VStack>
             </Center>
+
+            <Button
+                position="fixed"
+                margin="auto"
+                bottom={"40px"}
+                display="block"
+                transform="translateX(-50%)"
+                left="50%"
+                onClick={startStudying}
+                isDisabled={
+                    chosenSet.flashcards.filter((e) => {
+                        if (e.visibility == true) {
+                            return e;
+                        }
+                    }) >= 2
+                }
+                title="Please select at least two flashcards"
+            >
+                Start Studying
+            </Button>
         </>
     );
 }
