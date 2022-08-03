@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { capsFirst } from "./utils";
-import "fontsource-inter/500.css";
 import ReactDOM from "react-dom";
 import theme from "./theme";
 
@@ -15,18 +14,31 @@ import {
     Text,
     Flex,
     Tag,
+    Image,
+    Center,
 } from "@chakra-ui/react";
 
 import ChakraCarousel from "./ChakraCarousel";
+import { useFlashcardContext } from "../../../../contexts/flashcard";
 
-function App() {
-    const [data, setData] = useState([]);
+export default function Index({ flashcards, defaultFlashcardState }) {
+    // if (defaultFlashcardState === true) {
 
-    useEffect(() => {
-        fetch("https://jsonplaceholder.typicode.com/posts/")
-            .then((res) => res.json())
-            .then((res) => setData(res));
-    }, []);
+    flashcards.forEach((e) => {
+        [e.flashcardOnTerm, e.setFlashcardOnTerm] = useState(true);
+    });
+
+    // } else if (defaultFlashcardState === false) {
+    //     flashcards.forEach((e) => {
+    //         [e.flashcardOnTerm, e.setFlashcardOnTerm] = useState(false);
+    //     });
+    // } else {
+    //     flashcards.forEach((e) => {
+    //         [e.flashcardOnTerm, e.setFlashcardOnTerm] = useState(
+    //             Math.random() < 0.5
+    //         );
+    //     });
+    // }
 
     return (
         <ChakraProvider theme={extendTheme(theme)}>
@@ -43,67 +55,66 @@ function App() {
                 }}
             >
                 <ChakraCarousel gap={32}>
-                    {data.slice(5, 15).map((post, index) => (
-                        <Flex
-                            key={index}
-                            boxShadow="rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px"
-                            justifyContent="space-between"
-                            flexDirection="column"
-                            overflow="hidden"
-                            color="gray.300"
-                            bg="base.d100"
-                            rounded={5}
-                            flex={1}
-                            p={5}
-                        >
-                            <VStack mb={6}>
-                                <Heading
-                                    fontSize={{ base: "xl", md: "2xl" }}
-                                    textAlign="left"
+                    {flashcards.map((e, index) => {
+                        return (
+                            <Flex
+                                key={index}
+                                boxShadow="rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px"
+                                justifyContent="space-between"
+                                flexDirection="column"
+                                overflow="hidden"
+                                color="gray.300"
+                                bg="base.d100"
+                                rounded={5}
+                                flex={1}
+                                p={5}
+                                minH="222px"
+                                background="black"
+                            >
+                                <Center>
+                                    <Image
+                                        src={`https://via.placeholder.com/${
+                                            Math.floor(Math.random() * 500) + 100
+                                        }x${
+                                            Math.floor(Math.random() * 500) + 100
+                                        }`}
+                                        objectFit="contain"
+                                        maxW={"50vw"}
+                                        maxH="70%"
+                                        paddingTop={"0"}
+                                    />
+                                </Center>
+                                <Text
+                                    fontSize={"2xl"}
                                     w="full"
-                                    mb={2}
+                                    align={"center"}
+                                    // mt="auto"
+                                    // mb="auto"
                                 >
-                                    {capsFirst(post.title)}
-                                </Heading>
-                                <Text w="full">{capsFirst(post.body)}</Text>
-                            </VStack>
+                                    {e.flashcardOnTerm ? e.term : e.definition}
+                                </Text>
 
-                            <Flex justifyContent="space-between">
-                                <HStack spacing={2}>
-                                    <Tag
-                                        size="sm"
-                                        variant="outline"
+                                <Flex justifyContent="right">
+                                    <Button
+                                        onClick={() => {
+                                            e.setFlashcardOnTerm(
+                                                !e.flashcardOnTerm
+                                            );
+                                        }}
                                         colorScheme="green"
-                                    >
-                                        User: {post.userId}
-                                    </Tag>
-                                    <Tag
+                                        backgroundColor={"white"}
+                                        fontWeight="bold"
+                                        color="gray.900"
                                         size="sm"
-                                        variant="outline"
-                                        colorScheme="cyan"
                                     >
-                                        Post: {post.id - 5}
-                                    </Tag>
-                                </HStack>
-                                <Button
-                                    onClick={() =>
-                                        alert(`Post ${post.id - 5} clicked`)
-                                    }
-                                    colorScheme="green"
-                                    fontWeight="bold"
-                                    color="gray.900"
-                                    size="sm"
-                                >
-                                    More
-                                </Button>
+                                        Flip
+                                    </Button>
+                                </Flex>
                             </Flex>
-                        </Flex>
-                    ))}
+                        );
+                    })}
                 </ChakraCarousel>
             </Container>
         </ChakraProvider>
     );
 }
-
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);

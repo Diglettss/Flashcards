@@ -1,63 +1,17 @@
-import React, { useState } from "react";
-import "./StudyPage.css";
+import React, { useState, useEffect } from "react";
 import { useFlashcardContext } from "../../../contexts/flashcard";
 import { useNavigate, useParams } from "react-router-dom";
+import { Heading, Button, Flex, Center } from "@chakra-ui/react";
+import Index from "./Carousel/Index";
 import {
-    ChakraProvider,
-    extendTheme,
-    Container,
-    Heading,
-    Button,
-    VStack,
-    HStack,
-    Text,
-    Flex,
-    Tag,
+    Alert,
+    AlertIcon,
+    AlertTitle,
+    AlertDescription,
 } from "@chakra-ui/react";
-import ChakraCarousel from "./Carousel/ChakraCarousel";
-import { capsFirst } from "./Carousel/utils";
-import ReactDOM from "react-dom";
-import theme from "./Carousel/theme";
+import { useAuthContext } from "../../../contexts/auth";
 
-
-function Flashcard({ flashcard, onClick }) {
-    return (
-        <div
-            className="flashcard"
-            onClick={onClick}
-            //This is for accessibility
-            //The user can use tab to navigate to this element and pressing enter mimics a click
-            tabIndex={0}
-            onKeyDown={(e) => {
-                if (e.code == "Enter") {
-                    onClick();
-                }
-            }}
-        >
-            <div>{flashcard}</div>
-        </div>
-    );
-}
-
-export default function StudyPage() {
-    const {
-        showSettingsModal,
-        setShowSettingsModal,
-        defaultFlashcardState,
-        setDefaultFlashcardState,
-    } = useFlashcardContext();
-
-    const { setId } = useParams();
-    const navigate = useNavigate();
-
-    // fake data
-    const { mySets } = useFlashcardContext();
-    const chosenSet = mySets.find((e) => e.id == setId);
-
-    console.log(mySets)
-    console.log(setId)
-    console.log(setId)
-
+function StudyPageContent({ chosenSet }) {
     let filteredFlashcard = chosenSet.flashcards.filter((e) => {
         if (e.visibility == true) {
             return e;
@@ -68,91 +22,78 @@ export default function StudyPage() {
         console.error(
             `I don't know how but less than two flashcards are inside of filteredFlashcard, all flashcards will be used`
         );
+        console.log(filteredFlashcard)
         filteredFlashcard = chosenSet.flashcards;
     }
-
-    const handleButtonClick = () => {
-        //This will allow for the settings button to configure what the default state of flashcards is i.e. if term or definition is up by default
-        if (defaultFlashcardState === true) {
-            setFlashcardOnTerm(true);
-        } else if (defaultFlashcardState === false) {
-            setFlashcardOnTerm(false);
-        } else {
-            //this will let the default state of flashcards to be random
-            //to reach this else statement set defaultFlashcardState to null
-            const randomBoolean = Math.random() < 0.5;
-            setFlashcardOnTerm(randomBoolean);
-        }
-    };
-
-    //Which side of the flashcard is facing up, if null pick randomly
-    const [flashcardOnTerm, setFlashcardOnTerm] = useState(
-        defaultFlashcardState || Math.random() < 0.5
-    );
-
-    //Which flashcard the user is on
-    const [flashcardNumber, setFlashcardNumber] = useState(0);
+    const { defaultFlashcardState } = useFlashcardContext();
 
     return (
-        <div className="study-page">
-            <div className="button-container">
-                <button
-                    className="settings"
-                    onClick={() => {
-                        setShowSettingsModal(!showSettingsModal);
-                    }}
-                >
-                    Settings
-                </button>
-                <button
-                    className="back-button"
-                    onClick={(e) => {
-                        navigate(`/mysets/${chosenSet.setId}`);
-                    }}
-                >
-                    Back
-                </button>
-            </div>
-            <div className="title">
-                <h1>{chosenSet.title}</h1>
-            </div>
-            <Flashcard
-                flashcard={
-                    filteredFlashcard[flashcardNumber][
-                        flashcardOnTerm ? "term" : "definition"
-                    ]
-                }
-                onClick={() => {
-                    setFlashcardOnTerm(!flashcardOnTerm);
-                }}
+        <>
+            <Flex justifyContent={"space-between"}>
+                <Button>Settings</Button>
+                <Button>Back</Button>
+            </Flex>
+            <Center>
+                <Heading>{chosenSet.title}</Heading>
+            </Center>
+            <Index
+                flashcards={filteredFlashcard}
+                defaultFlashcardState={defaultFlashcardState}
             />
-            <br />
-            <div className="prev-next-container">
-                <button
-                    onClick={() => {
-                        if (flashcardNumber > 0) {
-                            setFlashcardNumber(flashcardNumber - 1);
-                        } else {
-                            setFlashcardNumber(filteredFlashcard.length - 1);
-                        }
-                        handleButtonClick();
-                    }}
-                >
-                    PREV
-                </button>
-                <button
-                    onClick={() => {
-                        if (flashcardNumber == filteredFlashcard.length - 1) {
-                            setFlashcardNumber(0);
-                        } else {
-                            setFlashcardNumber(flashcardNumber + 1);
-                        }
-                        handleButtonClick();
-                    }}
-                >
-                    NEXT
-                </button>
-            </div>
-        </div>
+        </>
+    );
+}
+
+export default function StudyPage() {
+    const {
+        showSettingsModal,
+        setShowSettingsModal,
+        defaultFlashcardState,
+        setDefaultFlashcardState,
+    } = useFlashcardContext();
+    const { isLoading, isLoggedIn } = useAuthContext();
+
+    const { setId } = useParams();
+    const navigate = useNavigate();
+
+    const { mySets } = useFlashcardContext();
+    const chosenSet = mySets.find((e) => e.id == setId);
+
+
+
+    useEffect(() => {
+        if ((isLoading, isLoggedIn)) {
+            if (!chosenSet || chosenSet == undefined) {
+                console.error("sending you to the shadow realm");
+                navigate("/notfound");
+            }
+        }
+    }, []);
+
+    return (
+        <>
+            {/* <Alert
+                status="error"
+                w={"50vw"}
+                pos="fixed"
+                top="0"
+                right={"0"}
+                zIndex="9"
+                display={"none"}
+            >
+                <AlertIcon />
+                <AlertTitle>Your browser is outdated!</AlertTitle>
+                <AlertDescription>
+                    Your Chakra experience may be degraded.
+                </AlertDescription>
+            </Alert> */}
+            {chosenSet ? (
+                <StudyPageContent
+                    chosenSet={chosenSet}
+                />
+            ) : (
+                <div />
+            )}
+        </>
     );
 }

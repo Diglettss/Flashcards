@@ -31,6 +31,9 @@ function Navbar() {
             boxShadow={useColorModeValue("lg", "sm-dark")}
             pt={2}
             pb={2}
+            position="sticky"
+            top="0"
+            zIndex={"99"}
         >
             <HStack spacing={20} alignItems={"center"} pl={50}>
                 <HStack

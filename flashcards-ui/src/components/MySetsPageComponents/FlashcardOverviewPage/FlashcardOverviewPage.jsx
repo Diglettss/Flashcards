@@ -20,24 +20,24 @@ import {
     Flex,
     VStack,
 } from "@chakra-ui/react";
+import { useAuthContext } from "../../../../contexts/auth.jsx";
 
 function FlashcardOverviewPageContent({ chosenSet }) {
     const navigate = useNavigate();
     const { globalTheme } = useTheme();
 
-    const minimumVisibleFlashcards = () =>{
+    const minimumVisibleFlashcards = () => {
         let filteredFlashcards = chosenSet.flashcards.filter((e) => {
             if (e.visibility == true) {
                 return e;
             }
-        })
+        });
         if (filteredFlashcards.length < 2) {
-            return true
+            return true;
         } else {
-            return false
+            return false;
         }
-
-    }
+    };
 
     const startStudying = () => {
         if (minimumVisibleFlashcards)
@@ -118,12 +118,15 @@ export default function FlashcardOverviewPage() {
     const { mySets } = useFlashcardContext();
     const { setId } = useParams();
     const chosenSet = mySets.find((e) => e.id == setId);
+    const { isLoading, isLoggedIn } = useAuthContext();
 
     //if the params setId doesn't exist in mySets send the user to the shadow realm
     useEffect(() => {
-        if (!chosenSet || chosenSet == undefined) {
-            console.error("sending you to the shadow realm");
-            navigate("/notfound");
+        if ((isLoading, isLoggedIn)) {
+            if (!chosenSet || chosenSet == undefined) {
+                console.error("sending you to the shadow realm");
+                navigate("/notfound");
+            }
         }
     }, []);
 
