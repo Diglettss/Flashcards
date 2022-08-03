@@ -2,6 +2,12 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useFlashcardContext } from "../../../../contexts/flashcard";
 import FlashcardRow from "../../FlashcardComponents/FlashcardRow/FlashcardRow";
+import {
+    Box,
+    Button,
+    Center
+} from "@chakra-ui/react";
+
 
 export default function CreateSetOverview({
     description,
@@ -29,6 +35,7 @@ export default function CreateSetOverview({
             <div className="flashcard-row-container">
                 {chosenSet.flashcards ? (
                     chosenSet.flashcards.map((e, idx) => (
+                        <Center>
                         <FlashcardRow
                             key={idx}
                             idx={idx}
@@ -36,12 +43,14 @@ export default function CreateSetOverview({
                             definition={e.definition}
                             chosenSet={chosenSet}
                         />
+                        </Center>
                     ))
                 ) : (
                     <div className="flashcard-row-empty" />
                 )}
             </div>
-            <div className="add-buttons">
+            <Center>
+            <Button>
                 {/* <button
                     className="add-cards"
                     onClick={(e) => {
@@ -58,8 +67,10 @@ export default function CreateSetOverview({
                 >
                     ADD CARDS
                 </button>
-            </div>
-            <button
+            </Button>
+            </Center>
+            <Center>
+            <Button
                 className="middle-div save-button"
                 onClick={() => {
                     if (
@@ -77,7 +88,8 @@ export default function CreateSetOverview({
                 }}
             >
                 Save
-            </button>
+            </Button>
+            </Center>
         </>
     );
 }

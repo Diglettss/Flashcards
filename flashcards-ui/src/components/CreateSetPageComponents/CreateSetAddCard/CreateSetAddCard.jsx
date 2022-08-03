@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useFlashcardContext } from "../../../../contexts/flashcard";
+import { Box, Button, Center, Text, Textarea } from "@chakra-ui/react";
 
 export default function CreateSetAddCard({
     setIsCreateOverviewShown,
@@ -84,11 +85,20 @@ export default function CreateSetAddCard({
 
     return (
         <div className="add-card-as-text">
-            <div className="delimiter-row">
-                <div className="text-delimiter">
-                    Term and definition delimiter:
+            <Box className="delimiter-row">
+                <Box
+                    className="text-delimiter"
+                    background={"green.400"}
+                    color="white"
+                    rounded="10px"
+                    padding={"20px"}
+                >
+                    <Text display={"inline-block"}>
+                        Term and definition delimiter:
+                    </Text>
                     <input
                         type="text"
+                        style={{color: "black"}}
                         name="text delimiter input"
                         className="text-delimiter-input"
                         value={textDelimiter}
@@ -96,11 +106,21 @@ export default function CreateSetAddCard({
                             setTextDelimiter(e.target.value);
                         }}
                     />
-                </div>
-                <div className="flashcard-delimiter">
-                    Flashcard delimiter:
+                </Box>
+                <Box
+                    background={"green.400"}
+                    rounded="10px"
+                    color="white"
+
+                    padding={"20px"}
+                    className="flashcard-delimiter"
+                >
+                    <Text display={"inline-block"}>Flashcard delimiter:</Text>
+
                     <input
                         type="text"
+                        style={{color: "black"}}
+
                         name="flashcard delimiter input"
                         className="flashcard-delimiter-input"
                         value={flashcardDelimiter}
@@ -108,32 +128,33 @@ export default function CreateSetAddCard({
                             setFlashcardDelimiter(e.target.value);
                         }}
                     />
-                </div>
-            </div>
-            <textarea
+                </Box>
+            </Box>
+            <Textarea
                 className="card-text-input"
                 value={textInput}
+                backgroundColor="green.400"
                 onChange={(e) => {
                     setTextinput(e.target.value);
                 }}
-            ></textarea>
+            ></Textarea>
             <div className="button-container">
-                <button
+                <Button
                     className="cancel"
                     onClick={() => {
                         setIsCreateOverviewShown(true);
                     }}
                 >
                     Cancel
-                </button>
-                <button
+                </Button>
+                <Button
                     className="submit"
                     onClick={() => {
                         turnIntoFlashcards(textInput);
                     }}
                 >
                     Submit
-                </button>
+                </Button>
             </div>
         </div>
     );
