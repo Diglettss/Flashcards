@@ -57,10 +57,7 @@ export default function FlashcardRow({
                     setCheckBoxState(!checkBoxState);
                 }}
             >
-                {definition} km nrths ngrth s njrgdfthsj dfhjk,frb gsthurdgjrte
-                hgdrfkugth rhesdfgfhfg h fgh fgh fgh fgh fgh fgh fgh fg fgh fg
-                fgh f fgh fg fghh fgh fg fgh fghf ghf fg hf h fg hgf hfg fhg fgh
-                fghh fg fhgh fg tg rdsgnrdfjhrg jkrn grjhn grgjtrnb hdhrf{" "}
+                {definition}
             </Box>
         </HStack>
     );
