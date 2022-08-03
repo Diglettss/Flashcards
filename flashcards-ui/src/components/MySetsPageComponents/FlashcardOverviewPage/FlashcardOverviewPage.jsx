@@ -55,6 +55,16 @@ function FlashcardOverviewPageContent({ chosenSet }) {
             >
                 Update
             </Button>
+            <Button
+                pos={"fixed"}
+                top="80px"
+                right="40px"
+                onClick={() => {
+                    navigate(`/mysets`);
+                }}
+            >
+                Back
+            </Button>
             <Center>
                 <Heading
                     bgColor={"black"}

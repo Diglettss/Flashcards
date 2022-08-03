@@ -1,4 +1,12 @@
-import { Box, HStack, Checkbox, Text, Flex } from "@chakra-ui/react";
+import {
+    Box,
+    HStack,
+    Checkbox,
+    Text,
+    Flex,
+    Center,
+    useTheme,
+} from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 
 export default function FlashcardRow({
@@ -26,17 +34,19 @@ export default function FlashcardRow({
 
     return (
         <HStack h="400" paddingBottom={"80px"}>
-            <Box
-                background={"#a1fbfb"}
+            <Center
+                // background={"#a1fbfb"}
+                background={useTheme().colors.brand.green}
                 w="40vw"
                 onClick={() => {
                     setCheckBoxState(!checkBoxState);
                 }}
                 h="100%"
                 align={"center"}
+                borderRadius="7"
             >
-                {term}
-            </Box>
+                <Text fontWeight="bold" fontSize="2xl">{term}</Text>
+            </Center>
             <Checkbox
                 isChecked={checkBoxState}
                 title={
@@ -48,17 +58,19 @@ export default function FlashcardRow({
                     setCheckBoxState(target.checked);
                 }}
             />
-            <Box
-                background={"#a9f7dd"}
+            <Center
+                // background={"#a9f7dd"}
+                background={useTheme().colors.brand.green}
                 h="100%"
                 w="40vw"
                 align={"center"}
                 onClick={() => {
                     setCheckBoxState(!checkBoxState);
                 }}
+                borderRadius="7"
             >
-                {definition}
-            </Box>
+                <Text fontWeight="bold" fontSize="xl">{definition}</Text>
+            </Center>
         </HStack>
     );
 }
