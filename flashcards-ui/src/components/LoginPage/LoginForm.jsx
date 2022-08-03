@@ -45,7 +45,7 @@ export default function LoginForm(props) {
         >
             <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
                 <Stack align={"center"}>
-                    <Heading fontSize={"4xl"}>Welcome Back! 👋🏽</Heading>
+                    <Heading fontSize={"4xl"}>Welcome Back! 👋</Heading>
                 </Stack>
                 <Box
                     rounded={"lg"}
