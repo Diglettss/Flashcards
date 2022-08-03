@@ -1,3 +1,4 @@
+import { BsTrash } from "react-icons/bs";
 import React, { useEffect, useRef, useState } from "react";
 import FlashcardRow from "../../FlashcardComponents/FlashcardRow/FlashcardRow.jsx";
 import { useNavigate, useParams } from "react-router-dom";
@@ -21,8 +22,9 @@ import {
     VStack,
 } from "@chakra-ui/react";
 import { useAuthContext } from "../../../../contexts/auth.jsx";
+import e from "cors";
 
-function FlashcardOverviewPageContent({ chosenSet }) {
+function FlashcardOverviewPageContent({ chosenSet, setChosenSet }) {
     const navigate = useNavigate();
     const { globalTheme } = useTheme();
 
@@ -43,11 +45,51 @@ function FlashcardOverviewPageContent({ chosenSet }) {
         if (minimumVisibleFlashcards)
             navigate(`/mysets/studymode/${chosenSet.id}`);
     };
+
+    const [title, setTitle] = useState(chosenSet.title);
+
+    useEffect(() => {
+        chosenSet.title = title;
+    }, [title]);
+
+    const [description, setDescription] = useState(chosenSet.description);
+
+    useEffect(() => {
+        chosenSet.description = description;
+    }, [description]);
+
     return (
         <>
+            <Button
+                pos={"fixed"}
+                top="80px"
+                left="40px"
+                title="Delete selected flashcards"
+                onClick={() => {
+                    chosenSet.flashcards = chosenSet.flashcards.filter(
+                        (e) => e.selectedForTrash == false
+                    );
+                    // chosenSet.flashcards = chosenSet.flashcards.forEach(e=>{
+                    //     console.log(e)
+                    // })
+                    // console.log(t)
+
+                    // console.log(chosenSet)
+                    setChosenSet({...chosenSet})
+                }}  
+            >
+                <Icon
+                    as={BsTrash}
+                    _hover={{
+                        cursor: "pointer",
+                    }}
+                />
+            </Button>
+
             <Center>
-                <Heading
+                <Input
                     bgColor={"black"}
+                    fontSize="80px"
                     color="white"
                     paddingTop={"20px"}
                     paddingBottom={"20px"}
@@ -56,22 +98,35 @@ function FlashcardOverviewPageContent({ chosenSet }) {
                     rounded={globalTheme.rounded}
                     marginBottom="20px"
                     marginTop="20px"
-                >
-                    {chosenSet.title}
-                </Heading>
+                    textAlign="center"
+                    value={title}
+                    onChange={(e) => {
+                        setTitle(e.target.value);
+                    }}
+                    width="auto"
+                    h
+                />
             </Center>
             <Center>
-                <Text
+                <Input
                     bgColor={"black"}
+                    fontSize="40px"
                     color="white"
                     paddingTop={"20px"}
                     paddingBottom={"20px"}
                     paddingLeft={"80px"}
                     paddingRight={"80px"}
                     rounded={globalTheme.rounded}
-                >
-                    {chosenSet.description}
-                </Text>
+                    marginBottom="20px"
+                    marginTop="20px"
+                    textAlign="center"
+                    value={description}
+                    onChange={(e) => {
+                        setDescription(e.target.value);
+                    }}
+                    width="auto"
+                    h
+                />
             </Center>
 
             <Center>
@@ -90,6 +145,7 @@ function FlashcardOverviewPageContent({ chosenSet }) {
                 </VStack>
             </Center>
 
+
             <Button
                 position="fixed"
                 margin="auto"
@@ -98,16 +154,10 @@ function FlashcardOverviewPageContent({ chosenSet }) {
                 transform="translateX(-50%)"
                 left="50%"
                 onClick={startStudying}
-                isDisabled={
-                    chosenSet.flashcards.filter((e) => {
-                        if (e.selectedForTrash == true) {
-                            return e;
-                        }
-                    }) >= 2
-                }
+                isDisabled={chosenSet.flashcards.length > 2}
                 title="Please select at least two flashcards"
             >
-                Start Studying
+                Save
             </Button>
         </>
     );
@@ -117,7 +167,7 @@ export default function FlashcardOverviewPage() {
     const navigate = useNavigate();
     const { mySets } = useFlashcardContext();
     const { setId } = useParams();
-    const chosenSet = mySets.find((e) => e.id == setId);
+    const [chosenSet, setChosenSet] = useState(mySets.find((e) => e.id == setId));
     const { isLoading, isLoggedIn } = useAuthContext();
 
     //if the params setId doesn't exist in mySets send the user to the shadow realm
@@ -134,7 +184,7 @@ export default function FlashcardOverviewPage() {
     return (
         <>
             {chosenSet ? (
-                <FlashcardOverviewPageContent chosenSet={chosenSet} />
+                <FlashcardOverviewPageContent chosenSet={chosenSet} setChosenSet={setChosenSet} />
             ) : (
                 <div />
             )}

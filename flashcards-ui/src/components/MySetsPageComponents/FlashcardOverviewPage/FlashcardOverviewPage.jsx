@@ -50,6 +50,7 @@ function FlashcardOverviewPageContent({ chosenSet }) {
                 top="80px"
                 left="40px"
                 onClick={() => {
+                    navigate(`/mysets/update/${chosenSet.id}`)
                     // console.log("clicked");
                 }}
             >
