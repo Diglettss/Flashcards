@@ -21,6 +21,7 @@ export const FlashcardContextProvider = ({ children }) => {
     const [error, setError] = useState();
     const [mySets, setMySets] = useState([]);
     const { user, isLoggedIn } = useAuthContext();
+    const [searchbarValue, setSearchbarValue] = useState("Test");
 
     useEffect(() => {
         if (isLoggedIn) {
@@ -65,6 +66,12 @@ export const FlashcardContextProvider = ({ children }) => {
     // method to fetch a user's specific public set by id
     async function getPublicSet(setId) {
         const response = await apiClient.getAPublicSet(setId);
+        return response;
+    }
+
+    // method to fetch a user's specific public set by id
+    async function queryPublicSets(searchQuery) {
+        const response = await apiClient.queryPublicSets(searchQuery);
         return response;
     }
 
@@ -132,6 +139,9 @@ export const FlashcardContextProvider = ({ children }) => {
         setDefaultFlashcardState,
         mySets,
         setMySets,
+        queryPublicSets,
+        searchbarValue,
+        setSearchbarValue,
     };
 
     return (

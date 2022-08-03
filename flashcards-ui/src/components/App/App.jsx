@@ -6,6 +6,7 @@ import * as React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "../LoginPage/LoginPage";
+import PublicSetsPages from "../PublicSetsPageComponents/PublicSetsPages.jsx";
 import RegistrationPage from "../RegistrationPage/RegistrationPage";
 import NotFound from "../NotFound/NotFound";
 import apiClient from "../../../services/apiClient";
@@ -38,6 +39,7 @@ function App() {
                     <Route path="/register" element={<RegistrationPage />} />
                     <Route path="/create" element={<CreateSetPage />} />
                     <Route path="/mysets/*" element={<MySetsPage />} />
+                    <Route path="/publicsets/*" element={<PublicSetsPages />} />
                     <Route path="*" element={<NotFound />} />
                 </Routes>
             </BrowserRouter>

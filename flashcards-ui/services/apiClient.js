@@ -54,6 +54,16 @@ class ApiClient {
         });
     }
 
+
+    
+    async queryPublicSets(searchQuery) {
+        return await this.request({
+            endpoint: `flashcard/search`,
+            method: `POST`,
+            data:  { searchQuery} ,
+        });
+    }
+
     // Add a `login` method that uses the `request` method to send an
     // HTTP request to the `auth/login` endpoint
     async loginUser(credentials) {

@@ -73,11 +73,11 @@ export default function Index({ flashcards, defaultFlashcardState }) {
                             >
                                 <Center>
                                     <Image
-                                        src={`https://via.placeholder.com/${
-                                            Math.floor(Math.random() * 500) + 100
-                                        }x${
-                                            Math.floor(Math.random() * 500) + 100
-                                        }`}
+                                        // src={`https://via.placeholder.com/${
+                                        //     Math.floor(Math.random() * 500) + 100
+                                        // }x${
+                                        //     Math.floor(Math.random() * 500) + 100
+                                        // }`}
                                         objectFit="contain"
                                         maxW={"50vw"}
                                         maxH="70%"
@@ -88,6 +88,7 @@ export default function Index({ flashcards, defaultFlashcardState }) {
                                     fontSize={"2xl"}
                                     w="full"
                                     align={"center"}
+
                                     // mt="auto"
                                     // mb="auto"
                                 >
