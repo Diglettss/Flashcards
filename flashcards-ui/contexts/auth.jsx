@@ -22,12 +22,12 @@ export const AuthContextProvider = ({ children }) => {
             };
             fetchUser();
         }
+        setIsLoggedIn(Boolean(user?.email));
         setIsLoading(false)
     }, []);
 
     //
     useEffect(() => {
-        console.log(Boolean(user?.email))
         setIsLoggedIn(Boolean(user?.email));
     }, [user]);
 

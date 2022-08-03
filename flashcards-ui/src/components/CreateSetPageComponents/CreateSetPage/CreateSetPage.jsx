@@ -22,8 +22,6 @@ export default function CreateSetPage() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log('isLoggedIn', isLoggedIn)
-        console.log('isLoading', isLoading)
         if (!isLoading && !isLoggedIn) {
             navigate("/");
         }

@@ -1,5 +1,16 @@
 import { useEffect } from "react";
 import { useFlashcardContext } from "../../../../contexts/flashcard";
+import {
+    HStack,
+    StackDivider,
+    Box,
+    VStack,
+    useTheme,
+    Text,
+    Heading,
+    Input,
+    Select,
+} from "@chakra-ui/react";
 
 export default function MySetsSearch({
     setFilteredMySets,
@@ -11,12 +22,12 @@ export default function MySetsSearch({
     const { mySets } = useFlashcardContext();
 
     const sortByNewestDate = (array) => {
-        array.sort((a, b) => b.date - a.date);
-        array.reverse();
-
+        array.sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt));
     };
     const sortByOldestDate = (array) => {
         sortByNewestDate(array);
+        array.reverse();
+
     };
     const sortByAlphabeticalOrder = (array) => {
         array.sort((x, y) => {
@@ -48,6 +59,7 @@ export default function MySetsSearch({
         setFilteredMySets(fillteredSetByTitleDescription);
 
         //sorts the sets
+        if(fillteredSetByTitleDescription.length>0){
         if (sortBy == "Newest") {
             sortByNewestDate(fillteredSetByTitleDescription);
         } else if (sortBy == "Oldest") {
@@ -58,18 +70,21 @@ export default function MySetsSearch({
             sortByReverseAlphabeticalOrder(fillteredSetByTitleDescription);
         } else {
             sortByNumOfFlashcards(fillteredSetByTitleDescription);
-        }
+        }}
         //This is needed to rerender the sets, I think
         // setFilteredMySets([...fillteredSetByTitleDescription]);
     }, [sortBy, searchValue]);
 
     return (
         <>
-            <div className="label-search-input">
-                <label htmlFor="search-input">My Sets</label>
-            </div>
-            <div className="filter-container">
-                <input
+            <Heading>My Sets</Heading>
+            <HStack
+                justify={"space-between"}
+                marginTop="20px"
+                marginBottom="50px"
+            >
+                <Input
+                    w={"300px"}
                     className="search-input"
                     name="search-input"
                     type="text"
@@ -80,7 +95,8 @@ export default function MySetsSearch({
                         setSearchValue(e.target.value);
                     }}
                 />
-                <select
+                <Select
+                    w={"300px"}
                     className="drop-down"
                     onChange={(e) => {
                         setSortBy(e.target.value);
@@ -92,8 +108,8 @@ export default function MySetsSearch({
                     <option>A-Z</option>
                     <option>Z-A</option>
                     <option># of flashcards</option>
-                </select>
-            </div>
+                </Select>
+            </HStack>
         </>
     );
 }
