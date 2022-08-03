@@ -22,7 +22,7 @@ function StudyPageContent({ chosenSet }) {
         console.error(
             `I don't know how but less than two flashcards are inside of filteredFlashcard, all flashcards will be used`
         );
-        console.log(filteredFlashcard)
+        // console.log(filteredFlashcard)
         filteredFlashcard = chosenSet.flashcards;
     }
     const { defaultFlashcardState } = useFlashcardContext();

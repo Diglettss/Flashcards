@@ -23,7 +23,6 @@ export default function MySetsSearch({
 
     const sortByNewestDate = (array) => {
         array.sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt));
-        // console.log(Date.parse(array[0].createdAt)-Date.parse(array[8].createdAt))
     };
     const sortByOldestDate = (array) => {
         sortByNewestDate(array);

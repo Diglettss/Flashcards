@@ -50,7 +50,7 @@ function FlashcardOverviewPageContent({ chosenSet }) {
                 top="80px"
                 left="40px"
                 onClick={() => {
-                    console.log("clicked");
+                    // console.log("clicked");
                 }}
             >
                 Update
