@@ -7,7 +7,12 @@ export default function Searchbar() {
     return (
         <>
             <HStack pr={4}>
-                <Input type="search" placeholder="search..." variant="ghost" />
+                <Input type="search" placeholder="Search..." _placeholder={{opacity: 0.7, color: "gray", fontStyle: "italic"}}
+                    variant="ghost" textAlign={"center"} fontFamily={"serif"}
+                    border={"2px solid"} borderColor={"green.600"} borderRadius={"15px"}
+                    _hover={{backgroundColor: "green.100"}}
+                    _focus={{backgroundColor: "green.100"}}
+                />
             </HStack>
         </>
         // <div className="searchbar">

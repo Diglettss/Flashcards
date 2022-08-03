@@ -68,6 +68,7 @@ export default function UserProfile() {
                     src="https://bit.ly/sage-adebayo"
                     bg="white"
                     color="green.400"
+                    cursor="pointer"
                     onClick={onOpen}
                 >
                     <AvatarBadge
@@ -86,41 +87,41 @@ export default function UserProfile() {
                         <ModalCloseButton />
                     </ModalHeader>
                     <ModalBody>
-                        <Heading fontSize={"4xl"} pb={4}>
-                            User Profile
+                        <Heading fontSize={"4xl"} pb={4} textAlign={"center"}>
+                            Profile
                         </Heading>
                         <form>
                             <FormControl>
                                 <FormLabel>Username</FormLabel>
-                                <Input
+                                <Input fontFamily={"serif"}
                                     type="text"
                                     value={user.username}
                                     onChange={() => {}}
                                     isDisabled
                                 />
                                 <FormLabel pt={2}>First Name</FormLabel>
-                                <Input
+                                <Input fontFamily={"serif"}
                                     type="text"
                                     value={user.firstName}
                                     onChange={() => {}}
                                     isDisabled
                                 />
                                 <FormLabel pt={2}>Last Name</FormLabel>
-                                <Input
+                                <Input fontFamily={"serif"}
                                     type="text"
                                     value={user.lastName}
                                     onChange={() => {}}
                                     isDisabled
                                 />
                                 <FormLabel pt={2}>Email</FormLabel>
-                                <Input
+                                <Input fontFamily={"serif"}
                                     type="email"
                                     value={user.email}
                                     onChange={() => {}}
                                     isDisabled
                                 />
-                                <FormHelperText>
-                                    We keep your accoount data secure 🔐
+                                <FormHelperText textAlign={"center"} fontFamily={"serif"} fontWeight="bold">
+                                    We keep your account data secure 🔐
                                 </FormHelperText>
                             </FormControl>
                         </form>
@@ -136,12 +137,12 @@ export default function UserProfile() {
                             bg={useTheme().colors.brand.green}
                         />
                         <Spacer></Spacer>
-                        <Button
+                        <Button fontFamily={"serif"}
                             type="submit"
                             onClick={handleOnLogout}
                             bg={useTheme().colors.brand.green}
                         >
-                            Logout
+                            Log Out
                         </Button>
                     </ModalFooter>
                 </ModalContent>

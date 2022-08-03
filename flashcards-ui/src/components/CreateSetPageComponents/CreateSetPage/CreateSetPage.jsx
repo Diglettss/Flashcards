@@ -1,9 +1,23 @@
 import React, { useState, useEffect } from "react";
-import "./CreateSetPage.css";
+// import "./CreateSetPage.css";
 import CreateSetOverview from "../CreateSetOverview/CreateSetOverview.jsx";
 import CreateSetAddCard from "../CreateSetAddCard/CreateSetAddCard.jsx";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../../../contexts/auth";
+import {Button,
+    Flex,
+    Heading,
+    Image,
+    Input,
+    Stack,
+    Spacer,
+    Text,
+    Textarea,
+    useBreakpointValue,
+    Box
+} from "@chakra-ui/react"
+
+
 export default function CreateSetPage() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -31,11 +45,18 @@ export default function CreateSetPage() {
 
     return (
         <div className="create-set">
-            <input
+            <Input 
+                w={"35%"} h={"auto"} marginLeft={"33%"} marginTop={"5%"} marginBottom={"2%"} paddingBottom={"5px"}
+                backgroundColor={"green.100"}
+                border={"3px solid"} borderColor={"green.200"} borderRadius={"20px"}
+                textAlign={"center"} fontSize={"35px"} fontFamily={"serif"} color={"black"}
+                _hover={{backgroundColor: "green.100", borderColor: "green.300"}}
+                _focus={{backgroundColor: "green.200", border: "3px solid", borderColor: "green.400"}}
+                
                 className="title"
                 type="text"
                 name="title"
-                placeholder="enter a title"
+                placeholder="Title" _placeholder={{opacity: 0.5, color: "gray", fontStyle: "italic"}}
                 value={title}
                 onChange={(e) => {
                     setTitle(e.target.value);

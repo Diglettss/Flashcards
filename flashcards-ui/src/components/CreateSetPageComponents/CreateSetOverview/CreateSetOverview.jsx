@@ -1,7 +1,20 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import { useFlashcardContext } from "../../../../contexts/flashcard";
-import FlashcardRow from "../../FlashcardComponents/FlashcardRow/FlashcardRow";
+import React from "react"
+import {useNavigate} from "react-router-dom"
+import {useFlashcardContext} from "../../../../contexts/flashcard"
+import {Button,
+        Flex,
+        Heading,
+        Image,
+        Input,
+        Stack,
+        Spacer,
+        Text,
+        Textarea,
+        useBreakpointValue,
+        Box
+} from "@chakra-ui/react"
+import FlashcardRow from "../../FlashcardComponents/FlashcardRow/FlashcardRow"
+
 
 export default function CreateSetOverview({
     description,
@@ -15,11 +28,18 @@ export default function CreateSetOverview({
     const navigate = useNavigate();
     return (
         <>
-            <textarea
+            <Textarea variant={"filled"}
+                w={"50%"} h={"auto"} marginLeft={"26%"} marginBottom={"5%"} paddingBottom={"5px"}
+                backgroundColor={"green.200"}
+                border={"2.5px solid #97dfb5"} borderRadius={"5px"}
+                textAlign={"center"} fontSize={"20px"} fontFamily={"serif"} color={"black"}
+                _hover={{backgroundColor: "#97dfb5", border: "2.5px solid", borderColor: "green.300"}}
+                _focus={{backgroundColor: "green.300", border: "3.5px solid", borderColor: "green.500"}}
+                
                 type="text"
                 className="description"
                 name="description"
-                placeholder="enter a description"
+                placeholder="Description" _placeholder={{opacity: 0.5, color: "gray", fontStyle: "italic"}}
                 value={description}
                 onChange={(e) => {
                     setDescription(e.target.value);
@@ -50,17 +70,27 @@ export default function CreateSetOverview({
                 >
                     Add Flashcard cards
                 </button> */}
-                <button
+                <Button
+                    marginLeft={"46%"} marginBottom={"2%"} marginTop={"3%"}
+                    backgroundColor={"green.500"}
+                    borderRadius={"7px"}
+                    textAlign={"center"} fontSize={"15px"} fontFamily={"serif"} color={"black"}
+                    
                     className="add-cards-text"
                     onClick={(e) => {
                         setIsCreateOverviewShown(false);
                     }}
                 >
-                    ADD CARDS
-                </button>
+                    Add Card
+                </Button>
             </div>
-            <button
+            <Button
                 className="middle-div save-button"
+                marginLeft={"47%"}
+                backgroundColor={"black"}
+                borderRadius={"20px"}
+                textAlign={"center"} fontSize={"15px"} fontFamily={"serif"} color={"white"}
+                
                 onClick={() => {
                     if (
                         userCreatedSet.flashcards?.length >= 2 &&
@@ -77,7 +107,7 @@ export default function CreateSetOverview({
                 }}
             >
                 Save
-            </button>
+            </Button>
         </>
     );
 }
