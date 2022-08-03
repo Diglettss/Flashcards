@@ -22,11 +22,13 @@ export default function MySetsSearch({
     const { mySets } = useFlashcardContext();
 
     const sortByNewestDate = (array) => {
-        array.sort((a, b) => b.date - a.date);
-        array.reverse();
+        array.sort((a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt));
+        // console.log(Date.parse(array[0].createdAt)-Date.parse(array[8].createdAt))
     };
     const sortByOldestDate = (array) => {
         sortByNewestDate(array);
+        array.reverse();
+
     };
     const sortByAlphabeticalOrder = (array) => {
         array.sort((x, y) => {
@@ -58,6 +60,7 @@ export default function MySetsSearch({
         setFilteredMySets(fillteredSetByTitleDescription);
 
         //sorts the sets
+        if(fillteredSetByTitleDescription.length>0){
         if (sortBy == "Newest") {
             sortByNewestDate(fillteredSetByTitleDescription);
         } else if (sortBy == "Oldest") {
@@ -68,7 +71,7 @@ export default function MySetsSearch({
             sortByReverseAlphabeticalOrder(fillteredSetByTitleDescription);
         } else {
             sortByNumOfFlashcards(fillteredSetByTitleDescription);
-        }
+        }}
         //This is needed to rerender the sets, I think
         // setFilteredMySets([...fillteredSetByTitleDescription]);
     }, [sortBy, searchValue]);

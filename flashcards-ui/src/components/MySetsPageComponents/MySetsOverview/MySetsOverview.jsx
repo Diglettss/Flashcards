@@ -2,12 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useFlashcardContext } from "../../../../contexts/flashcard";
 import Set from "../../FlashcardComponents/Set/Set";
 import MySetsSearch from "./MySetsSearch";
-import {
-    StackDivider,
-    Box,
-    VStack,
-    useTheme,
-} from "@chakra-ui/react";
+import { StackDivider, Box, VStack, useTheme } from "@chakra-ui/react";
 import { Center } from "@chakra-ui/react";
 
 export default function MySetsOverview() {
@@ -15,21 +10,24 @@ export default function MySetsOverview() {
     const { mySets } = useFlashcardContext();
     const [sortBy, setSortBy] = useState("Newest");
     const [searchValue, setSearchValue] = useState("");
-    const [filteredMySets, setFilteredMySets] = useState([...mySets]);
-    useTheme();
+    const [filteredMySets, setFilteredMySets] = useState(mySets);
+
+    useEffect(() => {
+        setFilteredMySets(mySets);
+    }, [mySets]);
 
     return (
         <div className="my-sets-page">
             <Center>
-            <Box w="80vw">
-                <MySetsSearch
-                    setFilteredMySets={setFilteredMySets}
-                    searchValue={searchValue}
-                    setSearchValue={setSearchValue}
-                    sortBy={sortBy}
-                    setSortBy={setSortBy}
-                />
-            </Box>
+                <Box w="80vw">
+                    <MySetsSearch
+                        setFilteredMySets={setFilteredMySets}
+                        searchValue={searchValue}
+                        setSearchValue={setSearchValue}
+                        sortBy={sortBy}
+                        setSortBy={setSortBy}
+                    />
+                </Box>
             </Center>
             <Center>
                 <VStack

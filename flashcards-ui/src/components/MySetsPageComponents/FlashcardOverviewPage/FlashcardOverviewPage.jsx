@@ -45,6 +45,16 @@ function FlashcardOverviewPageContent({ chosenSet }) {
     };
     return (
         <>
+            <Button
+                pos={"fixed"}
+                top="80px"
+                left="40px"
+                onClick={() => {
+                    console.log("clicked");
+                }}
+            >
+                Update
+            </Button>
             <Center>
                 <Heading
                     bgColor={"black"}
