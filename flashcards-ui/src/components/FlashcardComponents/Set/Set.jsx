@@ -9,6 +9,7 @@ import {
     Text,
     Heading,
     Center,
+    transform,
 } from "@chakra-ui/react";
 
 export default function Set({ set }) {
@@ -18,8 +19,8 @@ export default function Set({ set }) {
             <HStack
                 padding="0"
                 spacing="0"
-                // color={"white"}
-                color={"black"}
+                color={"white"}
+                // color={"black"}
                 bg={useTheme().colors.brand.green}
                 rounded="20"
                 onClick={() => {
@@ -27,8 +28,8 @@ export default function Set({ set }) {
                 }}
                 divider={<StackDivider borderColor="white" />}
                 mr={5}
-                transition="margin .1s ease-in-out"
-                _hover={{ mt: "-5" }}
+                transition="transform .1s ease-in-out"
+                _hover={{transform: "scale(1.02)"}}
             >
                 <VStack
                     p="5px"
