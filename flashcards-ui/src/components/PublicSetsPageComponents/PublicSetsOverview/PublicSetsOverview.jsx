@@ -8,9 +8,6 @@ import { useNavigate, useParams } from "react-router-dom";
 function SearchResults({ filteredPublicSets }) {
     const navigate = useNavigate();
 
-    useEffect(()=>{
-
-    })
     return (
         <>
             <Center pt={"80px"}>
@@ -25,9 +22,13 @@ function SearchResults({ filteredPublicSets }) {
                     align={"stretch"}
                 >
                     {filteredPublicSets.map((e, idx) => (
-                        <Set set={e} key={idx} onclick={() => {
-                            navigate(`/publicsets/${e.id}`)
-                        }} />
+                        <Set
+                            set={e}
+                            key={idx}
+                            onclick={() => {
+                                navigate(`/publicsets/${e.id}`);
+                            }}
+                        />
                     ))}
                 </VStack>
             </Center>
@@ -45,11 +46,18 @@ export default function PublicSetsOverview() {
             if (searchData == null) {
                 searchData == "ullamco mollit Foood";
             }
-            const res = await queryPublicSets(searchData);
-            setFilteredPublicSets(res.data.set);
+            try {
+                const res = await queryPublicSets(searchData);
+                setFilteredPublicSets(res.data.set);
+        
+            } catch (error) {
+                console.warn("No sets were found")
+                setFilteredPublicSets(null);
+            }
         };
         searchPublicSets(searchValue);
-    }, []);
+    }, [searchValue]);
+
     return (
         <Center>
             <VStack
