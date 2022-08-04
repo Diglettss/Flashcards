@@ -64,7 +64,7 @@ export const FlashcardContextProvider = ({ children }) => {
     }
 
     // method to fetch a user's specific public set by id
-    async function getPublicSet(setId) {
+    async function getAPublicSet(setId) {
         const response = await apiClient.getAPublicSet(setId);
         return response;
     }
@@ -140,6 +140,7 @@ export const FlashcardContextProvider = ({ children }) => {
         mySets,
         setMySets,
         queryPublicSets,
+        getAPublicSet,
         searchbarValue,
         setSearchbarValue,
     };

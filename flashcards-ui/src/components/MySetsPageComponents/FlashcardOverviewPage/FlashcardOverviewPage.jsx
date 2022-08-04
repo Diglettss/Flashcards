@@ -60,7 +60,7 @@ function FlashcardOverviewPageContent({ chosenSet }) {
                 top="80px"
                 right="40px"
                 onClick={() => {
-                    navigate(`/mysets`);
+                    navigate(-1);
                 }}
             >
                 Back

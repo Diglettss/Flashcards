@@ -11,8 +11,7 @@ import {
     Center,
 } from "@chakra-ui/react";
 
-export default function Set({ set }) {
-    const navigate = useNavigate();
+export default function Set({ set, onclick }) {
     return (
         <>
             <HStack
@@ -22,13 +21,11 @@ export default function Set({ set }) {
                 color={"black"}
                 bg={useTheme().colors.brand.green}
                 rounded="20"
-                onClick={() => {
-                    navigate(`/mysets/${set.id}`);
-                }}
+                onClick={onclick}
                 divider={<StackDivider borderColor="white" />}
                 mr={5}
-                transition="margin .1s ease-in-out"
-                _hover={{ mt: "-5" }}
+                transition="transform .1s ease-in-out"
+                _hover={{ transform: "scale(1.02)" }}
             >
                 <VStack
                     p="5px"

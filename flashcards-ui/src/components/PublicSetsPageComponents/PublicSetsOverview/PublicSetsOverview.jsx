@@ -3,9 +3,11 @@ import { useFlashcardContext } from "../../../../contexts/flashcard";
 import { StackDivider, Box, VStack, useTheme } from "@chakra-ui/react";
 import { Center } from "@chakra-ui/react";
 import Set from "../../FlashcardComponents/Set/Set";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function SearchResults({ filteredPublicSets }) {
+    const navigate = useNavigate();
+
     useEffect(()=>{
 
     })
@@ -23,7 +25,9 @@ function SearchResults({ filteredPublicSets }) {
                     align={"stretch"}
                 >
                     {filteredPublicSets.map((e, idx) => (
-                        <Set set={e} key={idx} />
+                        <Set set={e} key={idx} onclick={() => {
+                            navigate(`/publicsets/${e.id}`)
+                        }} />
                     ))}
                 </VStack>
             </Center>

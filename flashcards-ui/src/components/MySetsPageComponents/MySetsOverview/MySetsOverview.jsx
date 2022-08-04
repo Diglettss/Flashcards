@@ -4,6 +4,7 @@ import Set from "../../FlashcardComponents/Set/Set";
 import MySetsSearch from "./MySetsSearch";
 import { StackDivider, Box, VStack, useTheme } from "@chakra-ui/react";
 import { Center } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 export default function MySetsOverview() {
     "This takes the varibale mySets fron contexts/flashcard and loops it through the Set component";
@@ -11,6 +12,8 @@ export default function MySetsOverview() {
     const [sortBy, setSortBy] = useState("Newest");
     const [searchValue, setSearchValue] = useState("");
     const [filteredMySets, setFilteredMySets] = useState(mySets);
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         setFilteredMySets(mySets);
@@ -41,7 +44,9 @@ export default function MySetsOverview() {
                     align={"stretch"}
                 >
                     {filteredMySets.map((e, idx) => (
-                        <Set set={e} key={idx} />
+                        <Set set={e} key={idx} onclick={() => {
+                            navigate(`/mysets/${e.id}`)
+                        }}/>
                     ))}
                 </VStack>
             </Center>

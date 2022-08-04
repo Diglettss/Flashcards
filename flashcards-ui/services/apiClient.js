@@ -54,8 +54,6 @@ class ApiClient {
         });
     }
 
-
-    
     async queryPublicSets(searchQuery) {
         return await this.request({
             endpoint: `flashcard/search`,
