@@ -1,16 +1,18 @@
-import React, { useState } from "react";
-import { useFlashcardContext } from "../../../../contexts/flashcard";
+import React, {useState} from "react"
+import {useFlashcardContext} from "../../../../contexts/flashcard"
+import {Box, Button, Flex, FormLabel, HStack, Input, Spacer, Stack, Text, Textarea} from "@chakra-ui/react"
+
 
 export default function CreateSetAddCard({
     setIsCreateOverviewShown,
     userCreatedSet,
 }) {
-    const [textDelimiter, setTextDelimiter] = useState(",");
-    const [flashcardDelimiter, setFlashcardDelimiter] = useState("_");
+    const [textDelimiter, setTextDelimiter] = useState(":");
+    const [flashcardDelimiter, setFlashcardDelimiter] = useState("•");
     const [flashcard, setFlashcard] = useState("");
     //This is test data
     const [textInput, setTextinput] = useState(
-        "Term1, definition1_ Term2, definition2_ term3, definition 3"
+        "Term 1: Definition 1     •     Term 2: Definition 2     •     Term 3: Definition 3"
     );
     const { mySets, setMySets } = useFlashcardContext();
 
@@ -83,58 +85,110 @@ export default function CreateSetAddCard({
     };
 
     return (
-        <div className="add-card-as-text">
-            <div className="delimiter-row">
-                <div className="text-delimiter">
-                    Term and definition delimiter:
-                    <input
-                        type="text"
-                        name="text delimiter input"
-                        className="text-delimiter-input"
-                        value={textDelimiter}
-                        onChange={(e) => {
-                            setTextDelimiter(e.target.value);
-                        }}
-                    />
-                </div>
-                <div className="flashcard-delimiter">
-                    Flashcard delimiter:
-                    <input
-                        type="text"
-                        name="flashcard delimiter input"
-                        className="flashcard-delimiter-input"
-                        value={flashcardDelimiter}
-                        onChange={(e) => {
-                            setFlashcardDelimiter(e.target.value);
-                        }}
-                    />
-                </div>
+        <Flex direction={"column"} align={"center"} justify={"center"}>
+            <div className="add-card-as-text">
+                <Box as="delimiters">
+                    <HStack className="delimiter-row" mt={"5%"} spacing={"-10"}>
+                        <Stack align={"center"}>
+                            <FormLabel fontFamily={"serif"} fontWeight={"bold"} textAlign={"center"}>
+                                Term/Definition Delimiter
+                            </FormLabel>
+                            <Input
+                                w={"75%"}
+                                color={"black"} fontFamily={"serif"} fontSize={"22px"} textAlign={"center"}
+                                border={"1px solid"} borderColor={"green.600"}
+                                _hover={{bg: "green.100", border: "1px solid", borderColor: "green.600"}}
+                                _focus={{bg: "green.100", border: "2px solid", borderColor: "green.600"}}
+
+                                type="text"
+                                name="text delimiter input"
+                                className="text-delimiter-input"
+                                title="seperates each term from its definition"
+                                value={textDelimiter}
+                                placeholder=":" _placeholder={{opacity: 0.8, color: "gray", fontStyle: "italic"}}
+                                onChange={(e) => {
+                                    setTextDelimiter(e.target.value);
+                                }}
+                            />
+                        </Stack>
+                        <Stack align={"center"}>
+                            <FormLabel fontFamily={"serif"} fontWeight={"bold"} textAlign={"center"}>
+                                Card Delimiter
+                            </FormLabel>
+                            <Input
+                                w={"75%"}
+                                border={"1px solid"} borderColor={"green.600"}
+                                color={"black"} fontFamily={"serif"} fontSize={"22px"} textAlign={"center"}
+                                _hover={{bg: "green.100", border: "1px solid", borderColor: "green.600"}}
+                                _focus={{bg: "green.100", border: "2px solid", borderColor: "green.600"}}
+
+                                type="text"
+                                name="flashcard delimiter input"
+                                className="flashcard-delimiter-input"
+                                title="seperates term/definition pairs into individual cards"
+                                value={flashcardDelimiter}
+                                placeholder="•" _placeholder={{opacity: 0.8, color: "gray", fontStyle: "italic"}}
+                                onChange={(e) => {
+                                    setFlashcardDelimiter(e.target.value);
+                                }}
+                            />
+                        </Stack>
+                    </HStack>
+                </Box>
+                <Stack mt={"6%"}>
+                    <Box as="card-text">
+                        <FormLabel fontFamily={"serif"} fontWeight={"bold"} textAlign={"center"} fontStyle={"oblique"} > 
+                            Type or paste up to 3 terms & their definitions:
+                        </FormLabel>
+                        <Textarea
+                            bg={"green.200"}
+                            border={"2px solid"} borderColor={"green.600"}
+                            color={"black"} fontFamily={"serif"} fontSize={"15px"}
+                            _hover={{bg: "green.300", border: "2px solid", borderColor: "green.600"}}
+                            _focus={{bg: "green.300", border: "3px solid", borderColor: "green.600"}}
+
+                            className="card-text-input"
+                            value={textInput}
+                            placeholder="Term 1: Definition 1     •     Term 2: Definition 2     •     Term 3: Definition 3" _placeholder={{opacity: 0.8, color: "gray", fontStyle: "italic"}}
+                            onChange={(e) => {
+                                setTextinput(e.target.value);
+                            }}
+                        />
+                    </Box>
+                </Stack>
+                <Stack mt={"6%"} mb={"15%"} align={"center"}>
+                    <HStack className="button-container" spacing={"8"}>
+                        <Button
+                            bg={"green.900"}
+                            borderRadius={"22px"}
+                            fontSize={"20px"} fontFamily={"serif"} color={"green.100"}
+                            _hover={{bg: "black", color: "green.400"}}
+
+                            className="cancel"
+                            onClick={() => {
+                                setIsCreateOverviewShown(true);
+                            }}
+                        >
+                            Back
+                        </Button>
+                        <Spacer/>
+                        <Button
+                           bg={"green.400"}
+                           borderRadius={"25px"}
+                           fontSize={"20px"} fontFamily={"serif"} color={"green.900"}
+                           _hover={{bg: "green.100"}}
+
+                            className="submit"
+                            title="Create Cards"
+                            onClick={() => {
+                                turnIntoFlashcards(textInput);
+                            }}
+                        >
+                            Save
+                        </Button>
+                    </HStack>
+                </Stack>
             </div>
-            <textarea
-                className="card-text-input"
-                value={textInput}
-                onChange={(e) => {
-                    setTextinput(e.target.value);
-                }}
-            ></textarea>
-            <div className="button-container">
-                <button
-                    className="cancel"
-                    onClick={() => {
-                        setIsCreateOverviewShown(true);
-                    }}
-                >
-                    Cancel
-                </button>
-                <button
-                    className="submit"
-                    onClick={() => {
-                        turnIntoFlashcards(textInput);
-                    }}
-                >
-                    Submit
-                </button>
-            </div>
-        </div>
+        </Flex>
     );
 }

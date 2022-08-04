@@ -3,7 +3,7 @@ import CreateSetOverview from "../CreateSetOverview/CreateSetOverview.jsx";
 import CreateSetAddCard from "../CreateSetAddCard/CreateSetAddCard.jsx";
 import {useNavigate} from "react-router-dom";
 import {useAuthContext} from "../../../../contexts/auth";
-import {Flex, Input} from "@chakra-ui/react"
+import {Flex, Input, Text, Stack} from "@chakra-ui/react"
 
 
 export default function CreateSetPage() {
@@ -33,42 +33,43 @@ export default function CreateSetPage() {
 
     
     return (
-        <Flex direction={"column"} p={3} align={"center"} justify={"center"}>
-            <div className="create-set">
+        <Flex direction={"column"} align={"center"} justify={"center"}>
+            <Stack className="create-set" align={"center"}>
                 <Input
-                    w={"100%"} h={"50%"}
-                    marginTop={"22%"} marginBottom={"1%"}
+                    w={"50%"} h={"50%"}
+                    mt={"15%"}
                     bg={"green.100"}
-                    border={"3px solid"} borderColor={"green.200"} borderRadius={"28px"}
-                    textAlign={"center"} fontSize={"45px"} fontFamily={"serif"} fontWeight={"bold"} color={"green.800"}
+                    border={"3px solid"} borderColor={"green.200"} borderRadius={"22px"}
+                    textAlign={"center"} fontSize={"50px"} fontFamily={"serif"} fontWeight={"bold"} color={"green.800"}
                     _hover={{bg: "green.100", borderColor: "green.300"}}
                     _focus={{bg: "green.200", border: "3px solid", borderColor: "green.400"}}
                     
                     className="title"
                     type="text"
                     name="title"
-                    placeholder="Set Title" _placeholder={{opacity: 0.3, color: "gray", fontStyle: "italic"}}
+                    placeholder="Add Set Title" _placeholder={{opacity: 0.3, color: "gray", fontStyle: "italic"}}
                     value={title}
                     onChange={(e) => {
                         setTitle(e.target.value);
                         userCreatedSet.title = e.target.value;
                     }}
-                />
+                /> 
+                <Text color={"green.600"} cursor={"default"}> ____________________________________________________________________________ </Text>
                 {isCreateOverviewShown ? (
-                    <CreateSetOverview
-                        description={description}
-                        setDescription={setDescription}
-                        setIsCreateOverviewShown={setIsCreateOverviewShown}
-                        chosenSet={userCreatedSet}
-                        userCreatedSet={userCreatedSet}
-                    />
-                ) : (
-                    <CreateSetAddCard
-                        setIsCreateOverviewShown={setIsCreateOverviewShown}
-                        userCreatedSet={userCreatedSet}
-                    />
-                )}
-            </div>
+                        <CreateSetOverview
+                            description={description}
+                            setDescription={setDescription}
+                            setIsCreateOverviewShown={setIsCreateOverviewShown}
+                            chosenSet={userCreatedSet}
+                            userCreatedSet={userCreatedSet}
+                        />
+                    ) : (
+                        <CreateSetAddCard
+                            setIsCreateOverviewShown={setIsCreateOverviewShown}
+                            userCreatedSet={userCreatedSet}
+                        />
+                    )}
+            </Stack>
         </Flex>
     );
 }
