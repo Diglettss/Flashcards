@@ -19,7 +19,7 @@ function Navbar() {
         <Box
             as="nav"
             bg={useTheme().colors.brand.green}
-            boxShadow={useColorModeValue("lg", "sm-dark")}
+            boxShadow={useColorModeValue("2xl", "sm-dark")}
             pt={2}
             pb={2}
             position="sticky"

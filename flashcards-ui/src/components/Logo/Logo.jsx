@@ -21,6 +21,7 @@ export default function Logo() {
                     _hover={{
                         cursor: "pointer",
                     }}
+                    w={8} h={8}
                 />
             </HStack>
         </>
