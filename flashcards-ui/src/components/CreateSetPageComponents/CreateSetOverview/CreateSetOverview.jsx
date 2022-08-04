@@ -1,18 +1,7 @@
 import React from "react"
 import {useNavigate} from "react-router-dom"
 import {useFlashcardContext} from "../../../../contexts/flashcard"
-import {Button,
-        Flex,
-        Heading,
-        Image,
-        Input,
-        Stack,
-        Spacer,
-        Text,
-        Textarea,
-        useBreakpointValue,
-        Box
-} from "@chakra-ui/react"
+import {Button, Flex, Textarea} from "@chakra-ui/react"
 import FlashcardRow from "../../FlashcardComponents/FlashcardRow/FlashcardRow"
 
 
@@ -26,20 +15,24 @@ export default function CreateSetOverview({
     
     const { mySets, setMySets } = useFlashcardContext();
     const navigate = useNavigate();
+
+    
     return (
         <>
-            <Textarea variant={"filled"}
-                w={"50%"} h={"auto"} marginLeft={"26%"} marginBottom={"5%"} paddingBottom={"5px"}
-                backgroundColor={"green.200"}
-                border={"2.5px solid #97dfb5"} borderRadius={"5px"}
-                textAlign={"center"} fontSize={"20px"} fontFamily={"serif"} color={"black"}
-                _hover={{backgroundColor: "#97dfb5", border: "2.5px solid", borderColor: "green.300"}}
-                _focus={{backgroundColor: "green.300", border: "3.5px solid", borderColor: "green.500"}}
+        <Flex direction={"column"} p={3} align={"center"} justify={"center"}>
+            <Textarea
+                w={"150%"}
+                marginBottom={"10%"}
+                variant={"filled"} bg={"green.200"}
+                border={"2.5px solid #a0e2bb"} borderRadius={"17px"}
+                textAlign={"center"} fontSize={"18px"} fontFamily={"serif"} fontStyle={"italic"} color={"green.800"}
+                _hover={{border: "3px solid", borderColor: "green.300"}}
+                _focus={{bg: "green.300", border: "3.5px solid", borderColor: "green.500"}}
                 
                 type="text"
                 className="description"
                 name="description"
-                placeholder="Description" _placeholder={{opacity: 0.5, color: "gray", fontStyle: "italic"}}
+                placeholder="Description" _placeholder={{opacity: 0.4, color: "gray", fontStyle: "italic"}}
                 value={description}
                 onChange={(e) => {
                     setDescription(e.target.value);
@@ -62,34 +55,29 @@ export default function CreateSetOverview({
                 )}
             </div>
             <div className="add-buttons">
-                {/* <button
-                    className="add-cards"
-                    onClick={(e) => {
-                        setIsCreateOverviewShown(false);
-                    }}
-                >
-                    Add Flashcard cards
-                </button> */}
                 <Button
-                    marginLeft={"46%"} marginBottom={"2%"} marginTop={"3%"}
-                    backgroundColor={"green.500"}
-                    borderRadius={"7px"}
-                    textAlign={"center"} fontSize={"15px"} fontFamily={"serif"} color={"black"}
+                    bg={"green.400"}
+                    borderRadius={"5px"}
+                    textAlign={"center"} fontSize={"18px"} fontFamily={"serif"} fontWeight={"medium"} color={"black"}
+                    _hover={{bg: "black", color: "green.400"}}
                     
                     className="add-cards-text"
                     onClick={(e) => {
                         setIsCreateOverviewShown(false);
                     }}
                 >
-                    Add Card
+                    Add Cards
                 </Button>
             </div>
             <Button
-                className="middle-div save-button"
-                marginLeft={"47%"}
-                backgroundColor={"black"}
-                borderRadius={"20px"}
-                textAlign={"center"} fontSize={"15px"} fontFamily={"serif"} color={"white"}
+                className="middle-div save-button" title="Save & Exit"
+                w={"45%"}
+                marginTop={"3%"}
+                bg={"green.900"}
+                borderRadius={"22px"}
+                textAlign={"center"} fontSize={"21px"} fontFamily={"serif"} fontWeight={"bold"} color={"green.100"}
+                _hover={{color: "green.900", bg: "green.100"}}
+                _active={{translate: ""}}
                 
                 onClick={() => {
                     if (
@@ -106,8 +94,9 @@ export default function CreateSetOverview({
                     }
                 }}
             >
-                Save
+                Save Your Work
             </Button>
+        </Flex>
         </>
     );
 }
