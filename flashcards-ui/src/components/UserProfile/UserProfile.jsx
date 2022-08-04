@@ -32,10 +32,18 @@ import "./UserProfile.css";
 import { useAuthContext } from "../../../contexts/auth";
 
 export default function UserProfile() {
-    const { user, logoutUser } = useAuthContext();
+    const { user, logoutUser, updateUserInfo, update, setUpdate, form } =
+        useAuthContext();
     const navigate = useNavigate();
     // setUpdate should be set back to false once user submits updated credentials
-    const [update, setUpdate] = useState(false);
+    // const [update, setUpdate] = useState(false);
+
+    const handleOnSubmit = async (e) => {
+        const valid = await updateUserInfo(form);
+        if (valid) {
+            navigate("/");
+        }
+    };
 
     const handleOnLogout = async (e) => {
         // e.preventDefault()
@@ -88,14 +96,32 @@ export default function UserProfile() {
                     </ModalBody>
                     <ModalFooter>
                         {/* Update Button */}
-                        <IconButton
+                        {!update ? (
+                            <IconButton
+                                colorScheme="gray"
+                                icon={<Icon as={BsFillPencilFill} />}
+                                bg={useTheme().colors.brand.green}
+                                onClick={() => {
+                                    setUpdate((update) => !update);
+                                }}
+                            />
+                        ) : (
+                            <Button
+                                type="submit"
+                                onClick={handleOnSubmit}
+                                bg={useTheme().colors.brand.green}
+                            >
+                                Save
+                            </Button>
+                        )}
+                        {/* <IconButton
                             colorScheme="gray"
                             icon={<Icon as={BsFillPencilFill} />}
                             bg={useTheme().colors.brand.green}
                             onClick={() => {
                                 setUpdate((update) => !update);
                             }}
-                        />
+                        /> */}
                         <Spacer></Spacer>
                         {/* Logout Button */}
                         <Button
@@ -152,17 +178,29 @@ export function ShowUserInfo() {
 
 // function to update User's information
 export function UpdateUserInfo() {
-    const { user, error, setError } = useAuthContext();
-    const [showPassword, setShowPassword] = useState(false);
+    const { user, error, setError, updateUserInfo, form, setForm } =
+        useAuthContext();
+    const [showOldPassword, setShowOldPassword] = useState(false);
+    const [showNewPassword, setShowNewPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-    const [form, setForm] = React.useState({
-        email: `${user.email}`,
-        username: "",
-        firstName: "",
-        lastName: "",
-        password: "",
-        confirmPassword: "",
-    });
+
+    // const [form, setForm] = React.useState({
+    //     username: "",
+    //     firstName: "",
+    //     lastName: "",
+    //     oldPassword: "",
+    //     newPassword: "",
+    //     confirmPassword: "",
+    // });
+
+    // setForm({
+    //     username: "",
+    //     firstName: "",
+    //     lastName: "",
+    //     oldPassword: "",
+    //     newPassword: "",
+    //     confirmPassword: "",
+    // });
 
     const handleOnInputChange = (event) => {
         if (event.target.name === "password") {
@@ -178,8 +216,8 @@ export function UpdateUserInfo() {
                 setError((e) => ({ ...e, confirmPassword: null }));
             }
         }
-        if (event.target.name === "confirm Password") {
-            if (form.password && form.password !== event.target.value) {
+        if (event.target.name === "confirmPassword") {
+            if (form.newPassword && form.newPassword !== event.target.value) {
                 setError((e) => ({
                     ...e,
                     confirmPassword: "Passwords don't match ❌ ",
@@ -192,7 +230,7 @@ export function UpdateUserInfo() {
     };
 
     const handleOnSubmit = async (e) => {
-        const valid = await loginUser(form);
+        const valid = await updateUserInfo(form);
         if (valid) {
             navigate("/");
         }
@@ -227,23 +265,49 @@ export function UpdateUserInfo() {
                     onChange={handleOnInputChange}
                 />
             </FormControl>
-            <FormControl id="newPassword" isRequired>
-                <FormLabel pt={2}>New Password</FormLabel>
+            <FormControl id="oldPassword" isRequired>
+                <FormLabel pt={2}>Old Password</FormLabel>
                 <InputGroup>
                     <Input
-                        type={showPassword ? "text" : "password"}
-                        name="password"
-                        value={form.password}
+                        type={showOldPassword ? "text" : "password"}
+                        name="oldPassword"
+                        value={form.oldPassword}
                         onChange={handleOnInputChange}
                     />
                     <InputRightElement h={"full"}>
                         <Button
                             variant={"ghost"}
                             onClick={() =>
-                                setShowPassword((showPassword) => !showPassword)
+                                setShowOldPassword(
+                                    (showOldPassword) => !showOldPassword
+                                )
                             }
                         >
-                            {showPassword ? <ViewIcon /> : <ViewOffIcon />}
+                            {showOldPassword ? <ViewIcon /> : <ViewOffIcon />}
+                        </Button>
+                    </InputRightElement>
+                </InputGroup>
+            </FormControl>
+
+            <FormControl id="newPassword" isRequired>
+                <FormLabel pt={2}>New Password</FormLabel>
+                <InputGroup>
+                    <Input
+                        type={showNewPassword ? "text" : "password"}
+                        name="newPassword"
+                        value={form.newPassword}
+                        onChange={handleOnInputChange}
+                    />
+                    <InputRightElement h={"full"}>
+                        <Button
+                            variant={"ghost"}
+                            onClick={() =>
+                                setShowNewPassword(
+                                    (showNewPassword) => !showNewPassword
+                                )
+                            }
+                        >
+                            {showNewPassword ? <ViewIcon /> : <ViewOffIcon />}
                         </Button>
                     </InputRightElement>
                 </InputGroup>

@@ -35,4 +35,13 @@ router.get("/me", security.requireAuthenticatedUser, async (req, res, next) => {
     }
 });
 
+router.put("/me", security.requireAuthenticatedUser, async (req, res, next) => {
+    try {
+        const user = await User.updateProfile(res.locals.user.email, req.body);
+        return res.status(200).json({ user });
+    } catch (err) {
+        next(err);
+    }
+});
+
 module.exports = router;
