@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useFlashcardContext } from "../../../../contexts/flashcard";
+import { useFlashcardContext } from "../../../../../contexts/flashcard";
 import "./ModalSettings.css";
 
 export default function ModalSettings({}) {

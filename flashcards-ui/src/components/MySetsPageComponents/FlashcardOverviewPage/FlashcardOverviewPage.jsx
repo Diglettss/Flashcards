@@ -28,7 +28,8 @@ export default function FlashcardOverviewPage() {
                 <FlashcardOverviewPageContent
                     chosenSet={chosenSet}
                     buttonText="Update"
-                    onclick={() => {
+                    startStudyingNavigation="mysets/studymode"
+                    onButtonClick={() => {
                         console.warn("set up update");
                     }}
                 />

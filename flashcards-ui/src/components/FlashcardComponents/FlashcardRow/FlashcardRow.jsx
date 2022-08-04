@@ -38,6 +38,7 @@ export default function FlashcardRow({
                 // background={"#a1fbfb"}
                 background={useTheme().colors.brand.green}
                 w="40vw"
+                color="white"
                 onClick={() => {
                     setCheckBoxState(!checkBoxState);
                 }}
@@ -63,6 +64,8 @@ export default function FlashcardRow({
                 background={useTheme().colors.brand.green}
                 h="100%"
                 w="40vw"
+                color="white"
+
                 align={"center"}
                 onClick={() => {
                     setCheckBoxState(!checkBoxState);

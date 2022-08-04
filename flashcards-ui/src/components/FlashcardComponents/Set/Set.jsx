@@ -17,8 +17,8 @@ export default function Set({ set, onclick }) {
             <HStack
                 padding="0"
                 spacing="0"
-                // color={"white"}
-                color={"black"}
+                color={"white"}
+                // color={"black"}
                 bg={useTheme().colors.brand.green}
                 rounded="20"
                 onClick={onclick}

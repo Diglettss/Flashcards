@@ -29,7 +29,8 @@ export default function PublicFlashcardOverviewPage() {
                 <FlashcardOverviewPageContent
                     chosenSet={chosenSet}
                     buttonText={"Clone"}
-                    onclick={() => {
+                    startStudyingNavigation="publicsets/studymode"
+                    onButtonClick={() => {
                         console.error("send the user to the create page");
                         console.warn(
                             "This should only be here for logged in users"

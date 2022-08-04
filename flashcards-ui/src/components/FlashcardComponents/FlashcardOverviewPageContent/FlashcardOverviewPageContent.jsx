@@ -21,7 +21,13 @@ import {
 } from "@chakra-ui/react";
 import FlashcardRow from "../../FlashcardComponents/FlashcardRow/FlashcardRow";
 
-export default function FlashcardOverviewPageContent({ chosenSet, onclick, buttonText }) {
+export default function FlashcardOverviewPageContent({
+    chosenSet,
+    onButtonClick,
+    buttonText,
+    startStudyingNavigation,
+
+}) {
     const navigate = useNavigate();
     const { globalTheme } = useTheme();
 
@@ -40,18 +46,17 @@ export default function FlashcardOverviewPageContent({ chosenSet, onclick, butto
 
     const startStudying = () => {
         if (minimumVisibleFlashcards)
-            navigate(`/mysets/studymode/${chosenSet.id}`);
+            navigate(`/${startStudyingNavigation}/${chosenSet.id}`);
     };
     return (
         <>
-            <Button
-                pos={"fixed"}
-                top="80px"
-                left="40px"
-                onClick={onclick}
-            >
-                {buttonText}
-            </Button>
+            {buttonText ? (
+                <Button pos={"fixed"} top="80px" left="40px" onClick={onButtonClick}>
+                    {buttonText}
+                </Button>
+            ) : (
+                <></>
+            )}
             <Button
                 pos={"fixed"}
                 top="80px"
