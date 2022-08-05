@@ -10,20 +10,18 @@ export default function NavLinks({ isLoggedIn }) {
             <Button
                 variant="ghost"
                 size="lg"
-                fontSize={"20px"}
-                fontFamily="serif"
+                fontSize={{ base: "2xl" }}
+
                 onClick={() => {
                     isLoggedIn ? navigate("/mysets") : navigate("/login");
                 }}
             >
-                {isLoggedIn ? "My Sets" : "Log in"}
-
+                {isLoggedIn ? "My Sets" : "Login"}
             </Button>
             <Button
                 variant="ghost"
                 size="lg"
-                fontFamily="serif"
-                fontSize={"20px"}
+                fontSize={{ base: "2xl" }}
                 onClick={() => {
                     isLoggedIn ? navigate("/create") : navigate("/register");
                 }}

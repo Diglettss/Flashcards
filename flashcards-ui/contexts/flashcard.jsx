@@ -20,7 +20,7 @@ export const FlashcardContextProvider = ({ children }) => {
     const [isProcessing, setIsProcessing] = useState(false);
     const [error, setError] = useState();
     const [mySets, setMySets] = useState([]);
-    const { user, isLoggedIn } = useAuthContext();
+    const { isLoggedIn } = useAuthContext();
     const [searchbarValue, setSearchbarValue] = useState("Test");
 
     useEffect(() => {

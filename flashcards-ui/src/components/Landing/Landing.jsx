@@ -21,7 +21,7 @@ export default function Landing() {
         <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
             <Flex p={8} flex={1} align={"center"} justify={"center"}>
                 <Stack spacing={6} w={"full"} maxW={"lg"}>
-                    <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
+                    <Heading fontSize={{ base: "4xl", md: "4xl", lg: "6xl" }}>
                         <Text
                             as={"span"}
                             position={"relative"}
@@ -42,17 +42,21 @@ export default function Landing() {
                             Flashi
                         </Text>
                         <br />{" "}
-                        <Text color={"green.400"} as={"span"}>
+                        <Text
+                            fontSize={{ base: "4xl", lg: "5xl" }}
+                            color={"green.400"}
+                            as={"span"}
+                        >
                             The study tool for you
                         </Text>{" "}
                     </Heading>
                     <Text
-                        fontSize={{ base: "md", lg: "lg" }}
+                        fontSize={{ base: "md", lg: "2xl" }}
                         color={"gray.500"}
                     >
-                        Our mission is to provide a free study tool
-                        for students & educators to utilize in order to gain
-                        mastery over their learning.
+                        Our mission is to provide a free study tool for students
+                        & educators to utilize in order to gain mastery over
+                        their learning.
                     </Text>
                     <Stack
                         direction={{ base: "column", md: "row" }}
@@ -69,7 +73,11 @@ export default function Landing() {
                             onClick={() => {
                                 navigate("/register");
                             }}
+
+                            size="lg"
+
                             title="Create An Account"
+
                         >
                             Get Started!
                         </Button>

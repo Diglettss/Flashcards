@@ -19,8 +19,9 @@ function Navbar() {
         <Box
             as="nav"
             bg={useTheme().colors.brand.green}
-            boxShadow={useColorModeValue("lg", "sm-dark")}
-            borderBottom={"3px solid"} borderBottomColor={"green.600"}
+
+            boxShadow={useColorModeValue("2xl", "sm-dark")}
+
             pt={2}
             pb={2}
             position="sticky"

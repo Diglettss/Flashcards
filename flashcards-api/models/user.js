@@ -38,7 +38,7 @@ class User {
                 credentials.password
             );
         }
-        throw new UnauthorizedError("Invalid email or password");
+        throw new UnauthorizedError("Invalid username or password");
     }
 
     static async register(credentials) {
@@ -90,6 +90,72 @@ class User {
             ]
         );
 
+        const user = result.rows[0];
+        return User.makePublicUser(user);
+    }
+
+    static async updateProfile(email, credentials) {
+        const requiredFields = [
+            "username",
+            "firstName",
+            "lastName",
+            "oldPassword",
+            "newPassword"
+        ];
+        requiredFields.forEach((field) => {
+            if (!credentials.hasOwnProperty(field)) {
+                throw new BadRequestError(`Missing ${field} in request body.`);
+            }
+        });
+
+        const selectedUser = await User.fetchUserByEmail(email);
+        // const isValid = await bcrypt.compare(
+        //     credentials.oldPassword,
+        //     selectedUser.password
+        // );
+        // console.log(selectedUser);
+        // console.log(isValid);
+        // user on file
+
+        if (!selectedUser) {
+            throw new UnauthorizedError("User does not exists");
+        }
+        // old password matches password on file
+        const isValid = await bcrypt.compare(
+            credentials.oldPassword,
+            selectedUser.password
+        );
+
+        if (!isValid) {
+            throw new UnauthorizedError(
+                "The old password provided is not correct"
+            );
+        }
+
+        const hashedPassword = await bcrypt.hash(
+            credentials.newPassword,
+            BCRYPT_WORK_FACTOR
+        );
+
+        const result = await db.query(
+            ` UPDATE users
+                    SET
+                    username=$1,
+                    first_name=$2,
+                    last_name=$3,
+                    password=$4
+                    WHERE 
+                    email = $5 
+                    RETURNING id, username, first_name, last_name, email, created_at, set_id
+                    `,
+            [
+                credentials.username,
+                credentials.firstName,
+                credentials.lastName,
+                hashedPassword,
+                email,
+            ]
+        );
         const user = result.rows[0];
         return User.makePublicUser(user);
     }

@@ -50,17 +50,15 @@ class ApiClient {
         return await this.request({
             endpoint: `flashcard/`,
             method: `POST`,
-            data:  { id: setId} ,
+            data: { id: setId },
         });
     }
 
-
-    
     async queryPublicSets(searchQuery) {
         return await this.request({
             endpoint: `flashcard/search`,
             method: `POST`,
-            data:  { searchQuery} ,
+            data: { searchQuery },
         });
     }
 
@@ -90,6 +88,15 @@ class ApiClient {
     // request to the `auth/me` endpoint
     async fetchUserFromToken() {
         return await this.request({ endpoint: `auth/me`, method: `GET` });
+    }
+
+    // method to update a user's profile
+    async updateProfile(credentials) {
+        return await this.request({
+            endpoint: `auth/me`,
+            method: `PUT`,
+            data: credentials,
+        });
     }
 
     // method to logout user

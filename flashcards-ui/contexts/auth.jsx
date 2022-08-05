@@ -11,6 +11,15 @@ export const AuthContextProvider = ({ children }) => {
     const [isProcessing, setIsProcessing] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState();
+    const [update, setUpdate] = useState(false);
+    const [form, setForm] = useState({
+        username: "",
+        firstName: "",
+        lastName: "",
+        oldPassword: "",
+        newPassword: "",
+        confirmPassword: "",
+    });
 
     // should make a request to the `/auth/me` route to get the user's info
     useEffect(() => {
@@ -23,7 +32,7 @@ export const AuthContextProvider = ({ children }) => {
             fetchUser();
         }
         setIsLoggedIn(Boolean(user?.email));
-        setIsLoading(false)
+        setIsLoading(false);
     }, []);
 
     //
@@ -108,6 +117,33 @@ export const AuthContextProvider = ({ children }) => {
         setIsLoggedIn(false);
     }
 
+    // should handle updating user's info
+    async function updateUserInfo(credentials) {
+        setIsProcessing(true);
+        setError((e) => ({ ...e, form: null }));
+
+        const { data, error } = await apiClient.updateProfile({
+            username: credentials.username,
+            firstName: credentials.firstName,
+            lastName: credentials.lastName,
+            oldPassword: credentials.oldPassword,
+            newPassword: credentials.newPassword,
+            confirmPassword: credentials.confirmPassword,
+        });
+        setUser(data.user);
+        if (error) {
+            setError((e) => ({ ...e, credentials: error }));
+            const message = error?.response?.data?.error?.message;
+            setError((e) => ({
+                ...e,
+                credentials: message ? String(message) : String(error),
+            }));
+            setIsProcessing(false);
+            return false;
+        }
+        return true;
+    }
+
     const authValue = {
         user,
         setUser,
@@ -123,6 +159,11 @@ export const AuthContextProvider = ({ children }) => {
         isLoggedIn,
         setIsLoggedIn,
         isLoading,
+        update,
+        setUpdate,
+        updateUserInfo,
+        form,
+        setForm,
     };
 
     return (
