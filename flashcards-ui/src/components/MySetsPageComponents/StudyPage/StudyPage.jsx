@@ -19,7 +19,7 @@ export default function StudyPage() {
 
     const { mySets } = useFlashcardContext();
     const chosenSet = mySets.find((e) => e.id == setId);
-    console.log(mySets);
+    // console.log(mySets);
 
     useEffect(() => {
         if ((isLoading, isLoggedIn)) {
