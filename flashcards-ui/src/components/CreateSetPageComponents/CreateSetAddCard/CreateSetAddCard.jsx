@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import {useFlashcardContext} from "../../../../contexts/flashcard"
-import {Box, Button, Flex, FormLabel, HStack, Input, Spacer, Stack, Text, Textarea} from "@chakra-ui/react"
+import {Box, Button, Flex, FormLabel, HStack, Input, Spacer, Stack, Textarea, VStack} from "@chakra-ui/react"
 
 
 export default function CreateSetAddCard({
@@ -86,109 +86,104 @@ export default function CreateSetAddCard({
 
     return (
         <Flex direction={"column"} align={"center"} justify={"center"}>
-            <div className="add-card-as-text">
-                <Box as="delimiters">
-                    <HStack className="delimiter-row" mt={"5%"} spacing={"-10"}>
-                        <Stack align={"center"}>
+            <div className="add-card">
+                <Box>
+                    <HStack className="delimiter-row">
+                        <VStack align={"center"}>
                             <FormLabel fontFamily={"serif"} fontWeight={"bold"} textAlign={"center"}>
                                 Term/Definition Delimiter
                             </FormLabel>
-                            <Input
+                            <Input type="text" className="term-definition-delimiter-input" name="term-definition-delimiter"
                                 w={"75%"}
                                 color={"black"} fontFamily={"serif"} fontSize={"22px"} textAlign={"center"}
                                 border={"1px solid"} borderColor={"green.600"}
                                 _hover={{bg: "green.100", border: "1px solid", borderColor: "green.600"}}
                                 _focus={{bg: "green.100", border: "2px solid", borderColor: "green.600"}}
 
-                                type="text"
-                                name="text delimiter input"
-                                className="text-delimiter-input"
-                                title="seperates each term from its definition"
                                 value={textDelimiter}
                                 placeholder=":" _placeholder={{opacity: 0.8, color: "gray", fontStyle: "italic"}}
+                                
                                 onChange={(e) => {
-                                    setTextDelimiter(e.target.value);
+                                    setTextDelimiter(e.target.value)
                                 }}
                             />
-                        </Stack>
-                        <Stack align={"center"}>
+                        </VStack>
+                        <VStack align={"center"}>
                             <FormLabel fontFamily={"serif"} fontWeight={"bold"} textAlign={"center"}>
                                 Card Delimiter
                             </FormLabel>
-                            <Input
+                            <Input type="text" className="card-delimiter-input" name="card-delimiter"
                                 w={"75%"}
                                 border={"1px solid"} borderColor={"green.600"}
                                 color={"black"} fontFamily={"serif"} fontSize={"22px"} textAlign={"center"}
                                 _hover={{bg: "green.100", border: "1px solid", borderColor: "green.600"}}
                                 _focus={{bg: "green.100", border: "2px solid", borderColor: "green.600"}}
 
-                                type="text"
-                                name="flashcard delimiter input"
-                                className="flashcard-delimiter-input"
-                                title="seperates term/definition pairs into individual cards"
                                 value={flashcardDelimiter}
-                                placeholder="•" _placeholder={{opacity: 0.8, color: "gray", fontStyle: "italic"}}
+                                placeholder="•"
+                                _placeholder={{opacity: 0.8, color: "gray", fontStyle: "italic"}}
+                                
                                 onChange={(e) => {
                                     setFlashcardDelimiter(e.target.value);
                                 }}
                             />
-                        </Stack>
+                        </VStack>
                     </HStack>
                 </Box>
-                <Stack mt={"6%"}>
-                    <Box as="card-text">
-                        <FormLabel fontFamily={"serif"} fontWeight={"bold"} textAlign={"center"} fontStyle={"oblique"} > 
+                <Box>
+                    <VStack mt={"5%"} align={"center"}>
+                        <FormLabel fontFamily={"serif"} fontWeight={"bold"} textAlign={"center"} fontStyle={"italic"} > 
                             Type or paste up to 3 terms & their definitions:
                         </FormLabel>
-                        <Textarea
+                        <Textarea className="card-text-input"
                             bg={"green.200"}
                             border={"2px solid"} borderColor={"green.600"}
                             color={"black"} fontFamily={"serif"} fontSize={"15px"}
                             _hover={{bg: "green.300", border: "2px solid", borderColor: "green.600"}}
                             _focus={{bg: "green.300", border: "3px solid", borderColor: "green.600"}}
 
-                            className="card-text-input"
                             value={textInput}
-                            placeholder="Term 1: Definition 1     •     Term 2: Definition 2     •     Term 3: Definition 3" _placeholder={{opacity: 0.8, color: "gray", fontStyle: "italic"}}
+                            placeholder="Term 1: Definition 1     •     Term 2: Definition 2     •     Term 3: Definition 3"
+                            _placeholder={{opacity: 0.8, color: "gray", fontStyle: "italic"}}
+
                             onChange={(e) => {
-                                setTextinput(e.target.value);
+                                setTextinput(e.target.value)
                             }}
                         />
-                    </Box>
-                </Stack>
-                <Stack mt={"6%"} mb={"15%"} align={"center"}>
-                    <HStack className="button-container" spacing={"8"}>
-                        <Button
+                    </VStack>
+                </Box>
+                <br/><br/>
+                <HStack align={"center"} justify={"center"}>
+                    <HStack className="button-container">
+                        <Button className="back-button"
                             bg={"green.900"}
                             borderRadius={"22px"}
                             fontSize={"20px"} fontFamily={"serif"} color={"green.100"}
                             _hover={{bg: "black", color: "green.400"}}
 
-                            className="cancel"
                             onClick={() => {
-                                setIsCreateOverviewShown(true);
+                                setIsCreateOverviewShown(true)
                             }}
                         >
                             Back
                         </Button>
-                        <Spacer/>
-                        <Button
+                        <Spacer/><Spacer/><Spacer/><Spacer/><Spacer/>
+                        <Button className="create-cards-button"
                            bg={"green.400"}
                            borderRadius={"25px"}
                            fontSize={"20px"} fontFamily={"serif"} color={"green.900"}
                            _hover={{bg: "green.100"}}
 
-                            className="submit"
-                            title="Create Cards"
                             onClick={() => {
-                                turnIntoFlashcards(textInput);
+                                turnIntoFlashcards(textInput)
                             }}
                         >
-                            Save
+                            Create Cards
                         </Button>
+                        <br/><br/>
                     </HStack>
-                </Stack>
+                </HStack>
             </div>
         </Flex>
-    );
+    )
 }
