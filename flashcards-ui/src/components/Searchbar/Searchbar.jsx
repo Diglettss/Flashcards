@@ -24,12 +24,12 @@ export default function Searchbar() {
                     }}
                     variant="ghost"
                     textAlign={"center"}
-                    fontFamily={"serif"}
+                    // fontFamily={"serif"}
                     border={"2px solid"}
                     borderColor={"green.600"}
                     borderRadius={"15px"}
-                    _hover={{ backgroundColor: "green.100" }}
-                    _focus={{ backgroundColor: "green.100" }}
+                    // _hover={{ backgroundColor: "green.100" }}
+                    // _focus={{ backgroundColor: "green.100" }}
                     onKeyDown={(e) => {	
                         if (e.code == "Enter") {	
                             navigate(`/publicsets/search/${searchbarValue}`)	
