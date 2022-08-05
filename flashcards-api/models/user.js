@@ -100,8 +100,7 @@ class User {
             "firstName",
             "lastName",
             "oldPassword",
-            "newPassword",
-            "confirmPassword",
+            "newPassword"
         ];
         requiredFields.forEach((field) => {
             if (!credentials.hasOwnProperty(field)) {
@@ -117,22 +116,29 @@ class User {
         // console.log(selectedUser);
         // console.log(isValid);
         // user on file
-        if (selectedUser) {
-            // old password matches password on file
-            const isValid = await bcrypt.compare(
-                credentials.oldPassword,
-                selectedUser.password
-            );
-            if (isValid) {
-                // new password and the confirm password match
-                if (credentials.newPassword == credentials.confirmPassword) {
-                    const hashedPassword = await bcrypt.hash(
-                        credentials.newPassword,
-                        BCRYPT_WORK_FACTOR
-                    );
 
-                    const result = await db.query(
-                        ` UPDATE users
+        if (!selectedUser) {
+            throw new UnauthorizedError("User does not exists");
+        }
+        // old password matches password on file
+        const isValid = await bcrypt.compare(
+            credentials.oldPassword,
+            selectedUser.password
+        );
+
+        if (!isValid) {
+            throw new UnauthorizedError(
+                "The old password provided is not correct"
+            );
+        }
+
+        const hashedPassword = await bcrypt.hash(
+            credentials.newPassword,
+            BCRYPT_WORK_FACTOR
+        );
+
+        const result = await db.query(
+            ` UPDATE users
                     SET
                     username=$1,
                     first_name=$2,
@@ -142,27 +148,16 @@ class User {
                     email = $5 
                     RETURNING id, username, first_name, last_name, email, created_at, set_id
                     `,
-                        [
-                            credentials.username,
-                            credentials.firstName,
-                            credentials.lastName,
-                            hashedPassword,
-                            email,
-                        ]
-                    );
-                    const user = result.rows[0];
-                    return User.makePublicUser(user);
-                } else {
-                    throw new UnauthorizedError("Passwords do not match");
-                }
-            } else {
-                throw new UnauthorizedError(
-                    "The old password provided is not correct"
-                );
-            }
-        } else {
-            throw new UnauthorizedError("User does not exists");
-        }
+            [
+                credentials.username,
+                credentials.firstName,
+                credentials.lastName,
+                hashedPassword,
+                email,
+            ]
+        );
+        const user = result.rows[0];
+        return User.makePublicUser(user);
     }
 
     static async fetchUserByUsername(username) {
