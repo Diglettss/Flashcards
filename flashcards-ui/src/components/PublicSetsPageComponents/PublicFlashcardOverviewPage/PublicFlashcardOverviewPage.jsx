@@ -1,5 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { useFlashcardContext } from "../../../../contexts/flashcard";
+import FlashcardOverviewPageContent from "../../FlashcardComponents/FlashcardOverviewPageContent/FlashcardOverviewPageContent";
 
 export default function PublicFlashcardOverviewPage() {
-    return <div>PublicFlashcardOverviewPage</div>;
+    const { getAPublicSet } = useFlashcardContext();
+    const { setId } = useParams();
+    const [chosenSet, setChosenSet] = useState();
+
+    useEffect(() => {
+        const searchAPublicSet = async (setId) => {
+            if (setId == null) {
+                setId == "ullamco mollit Foood";
+            }
+            try {
+                const res = await getAPublicSet(setId);
+                setChosenSet(res.data.set);
+            } catch (error) {
+                console.warn("The set is deleted or private");
+            }
+        };
+        searchAPublicSet(setId);
+    }, []);
+
+    return (
+        <>
+            {chosenSet ? (
+                <FlashcardOverviewPageContent
+                    chosenSet={chosenSet}
+                    buttonText={"Clone"}
+                    startStudyingNavigation="publicsets/studymode"
+                    onButtonClick={() => {
+                        console.error("send the user to the create page");
+                        //"This should only be here for logged in users"
+                    }}
+                />
+            ) : (
+                <div />
+            )}
+        </>
+    );
 }

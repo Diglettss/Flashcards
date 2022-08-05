@@ -3,12 +3,11 @@ import { useFlashcardContext } from "../../../../contexts/flashcard";
 import { StackDivider, Box, VStack, useTheme } from "@chakra-ui/react";
 import { Center } from "@chakra-ui/react";
 import Set from "../../FlashcardComponents/Set/Set";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function SearchResults({ filteredPublicSets }) {
-    useEffect(()=>{
+    const navigate = useNavigate();
 
-    })
     return (
         <>
             <Center pt={"80px"}>
@@ -23,7 +22,13 @@ function SearchResults({ filteredPublicSets }) {
                     align={"stretch"}
                 >
                     {filteredPublicSets.map((e, idx) => (
-                        <Set set={e} key={idx} />
+                        <Set
+                            set={e}
+                            key={idx}
+                            onclick={() => {
+                                navigate(`/publicsets/${e.id}`);
+                            }}
+                        />
                     ))}
                 </VStack>
             </Center>
@@ -41,11 +46,18 @@ export default function PublicSetsOverview() {
             if (searchData == null) {
                 searchData == "ullamco mollit Foood";
             }
-            const res = await queryPublicSets(searchData);
-            setFilteredPublicSets(res.data.set);
+            try {
+                const res = await queryPublicSets(searchData);
+                setFilteredPublicSets(res.data.set);
+        
+            } catch (error) {
+                console.warn("No sets were found")
+                setFilteredPublicSets(null);
+            }
         };
         searchPublicSets(searchValue);
-    }, []);
+    }, [searchValue]);
+
     return (
         <Center>
             <VStack

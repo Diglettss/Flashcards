@@ -86,7 +86,7 @@ VALUES (1,
 
 INSERT INTO FlashcardSets (user_id, is_public, description, title, flashcards)
 VALUES (6,
-        false,
+        true,
         'description2',
         'title2',
         '[

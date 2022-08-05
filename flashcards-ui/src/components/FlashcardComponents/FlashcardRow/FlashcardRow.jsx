@@ -1,4 +1,4 @@
-import React, {useRef} from "react"
+import React, {useEffect, useRef, useState} from "react"
 import {Checkbox, Container, HStack, Text} from "@chakra-ui/react"
 
 
@@ -11,6 +11,20 @@ export default function FlashcardRow({
 }) {
     const checkBoxInput = useRef(null);
     ("I pass in choosenSet because this is how I got selected to work");
+    let defaultCheckBox;
+
+        //This code is used for updated and Flashcard overview and the checkbox needs to be different for different occasions
+        if (checkBox == "visibility") {
+            defaultCheckBox = true;
+        } else {
+            defaultCheckBox = false;
+        }
+        const [checkBoxState, setCheckBoxState] = useState(
+            chosenSet.flashcards[idx][checkBox] || defaultCheckBox
+        );
+        useEffect(() => {
+            chosenSet.flashcards[idx][checkBox] = checkBoxState;
+        }, [checkBoxState]);
 
     return (
         <HStack className="flashcard-row" mt={"5%"} mb={"5%"}>
@@ -20,11 +34,11 @@ export default function FlashcardRow({
                 boxShadow={"md"}
                 border={"3px solid"} borderColor={"green.200"}
                 
-                onClick={(e) => {
-                    checkBoxInput.current.checked = !checkBoxInput.current.checked
-                    chosenSet.flashcards[idx].visibility = checkBoxInput.current.checked
+                onClick={() => {
+                    setCheckBoxState(!checkBoxState);
                 }}
             >
+
                 <Text className="term"
                     
                     fontFamily={"serif"} fontWeight={"bold"} textAlign={"center"}
@@ -45,11 +59,11 @@ export default function FlashcardRow({
                             ? "Flashcard Visibility"
                             : "Delete Card"
                     }
-                    defaultChecked={chosenSet.flashcards[idx][checkBox]}
-                    type="checkbox"
-                    onClick={(e) => {
-                        chosenSet.flashcards[idx].visibility = e.target[checkBox];
-                    }}
+                    onChange={({ target }) => {
+                    setCheckBoxState(target.checked);
+                }}
+                isChecked={checkBoxState}
+             
                 />
             </Container>
             <Container centerContent className="definition-card" 
@@ -58,9 +72,8 @@ export default function FlashcardRow({
                 boxShadow={"md"}
                 border={"3px solid"} borderColor={"green.200"}
 
-                onClick={(e) => {
-                    checkBoxInput.current.checked = !checkBoxInput.current.checked
-                    chosenSet.flashcards[idx].visibility = checkBoxInput.current.checked
+                onClick={() => {
+                    setCheckBoxState(!checkBoxState);
                 }}
             >
                 <Text className="definition"

@@ -7,19 +7,14 @@ import {
     ChakraProvider,
     extendTheme,
     Container,
-    Heading,
     Button,
-    VStack,
-    HStack,
     Text,
     Flex,
-    Tag,
     Image,
     Center,
 } from "@chakra-ui/react";
 
 import ChakraCarousel from "./ChakraCarousel";
-import { useFlashcardContext } from "../../../../contexts/flashcard";
 
 export default function Index({ flashcards, defaultFlashcardState }) {
     // if (defaultFlashcardState === true) {

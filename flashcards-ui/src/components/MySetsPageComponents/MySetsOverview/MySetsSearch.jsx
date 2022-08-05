@@ -42,6 +42,9 @@ export default function MySetsSearch({
         array.sort((a, b) => b.flashcards.length - a.flashcards.length);
     };
 
+    sortByNewestDate(mySets);
+
+
     useEffect(() => {
         const fillteredSetByTitleDescription = mySets.filter((e) => {
             if (e.title.toLowerCase().includes(searchValue.toLowerCase())) {
