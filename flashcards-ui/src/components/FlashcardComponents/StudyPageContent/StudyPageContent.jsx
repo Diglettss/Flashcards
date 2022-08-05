@@ -12,12 +12,9 @@ export default function StudyPageContent({ chosenSet }) {
     });
 
     if (filteredFlashcard.length < 2) {
-        console.error(
-            `I don't know how but less than two flashcards are inside of filteredFlashcard, all flashcards will be used`
-        );
-        // console.log(filteredFlashcard)
         filteredFlashcard = chosenSet.flashcards;
     }
+    
     const { defaultFlashcardState } = useFlashcardContext();
 
     return (

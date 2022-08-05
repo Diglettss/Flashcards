@@ -32,9 +32,7 @@ export default function PublicFlashcardOverviewPage() {
                     startStudyingNavigation="publicsets/studymode"
                     onButtonClick={() => {
                         console.error("send the user to the create page");
-                        console.warn(
-                            "This should only be here for logged in users"
-                        );
+                        //"This should only be here for logged in users"
                     }}
                 />
             ) : (
