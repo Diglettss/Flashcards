@@ -122,7 +122,7 @@ export const AuthContextProvider = ({ children }) => {
         setIsProcessing(true);
         setError((e) => ({ ...e, form: null }));
 
-        const { error } = await apiClient.updateProfile({
+        const { data, error } = await apiClient.updateProfile({
             username: credentials.username,
             firstName: credentials.firstName,
             lastName: credentials.lastName,
@@ -130,6 +130,7 @@ export const AuthContextProvider = ({ children }) => {
             newPassword: credentials.newPassword,
             confirmPassword: credentials.confirmPassword,
         });
+        setUser(data.user);
         if (error) {
             setError((e) => ({ ...e, credentials: error }));
             const message = error?.response?.data?.error?.message;
@@ -140,6 +141,7 @@ export const AuthContextProvider = ({ children }) => {
             setIsProcessing(false);
             return false;
         }
+        return true;
     }
 
     const authValue = {

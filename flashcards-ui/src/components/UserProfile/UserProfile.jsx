@@ -35,13 +35,13 @@ export default function UserProfile() {
     const { user, logoutUser, updateUserInfo, update, setUpdate, form } =
         useAuthContext();
     const navigate = useNavigate();
-    // setUpdate should be set back to false once user submits updated credentials
-    // const [update, setUpdate] = useState(false);
+    const { isOpen, onClose, onOpen } = useDisclosure();
 
     const handleOnSubmit = async (e) => {
         const valid = await updateUserInfo(form);
+        console.log(valid);
         if (valid) {
-            navigate("/");
+            setUpdate(false);
         }
     };
 
@@ -51,7 +51,11 @@ export default function UserProfile() {
         navigate("/");
     };
 
-    const { isOpen, onClose, onOpen } = useDisclosure();
+    React.useEffect(() => {
+        if (isOpen) {
+            setUpdate(false);
+        }
+    }, [isOpen]);
 
     return (
         <>
@@ -114,15 +118,20 @@ export default function UserProfile() {
                                 Save
                             </Button>
                         )}
-                        {/* <IconButton
-                            colorScheme="gray"
-                            icon={<Icon as={BsFillPencilFill} />}
-                            bg={useTheme().colors.brand.green}
-                            onClick={() => {
-                                setUpdate((update) => !update);
-                            }}
-                        /> */}
                         <Spacer></Spacer>
+                        {update ? (
+                            <Button
+                                type="submit"
+                                onClick={() => {
+                                    setUpdate((update) => !update);
+                                }}
+                                bg={useTheme().colors.brand.green}
+                            >
+                                Cancel
+                            </Button>
+                        ) : null}
+
+                        <ExtraSpace></ExtraSpace>
                         {/* Logout Button */}
                         <Button
                             type="submit"
@@ -178,29 +187,21 @@ export function ShowUserInfo() {
 
 // function to update User's information
 export function UpdateUserInfo() {
-    const { user, error, setError, updateUserInfo, form, setForm } =
-        useAuthContext();
+    const { user, error, setError, form, setForm } = useAuthContext();
     const [showOldPassword, setShowOldPassword] = useState(false);
     const [showNewPassword, setShowNewPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-    // const [form, setForm] = React.useState({
-    //     username: "",
-    //     firstName: "",
-    //     lastName: "",
-    //     oldPassword: "",
-    //     newPassword: "",
-    //     confirmPassword: "",
-    // });
-
-    // setForm({
-    //     username: "",
-    //     firstName: "",
-    //     lastName: "",
-    //     oldPassword: "",
-    //     newPassword: "",
-    //     confirmPassword: "",
-    // });
+    React.useEffect(() => {
+        setForm({
+            username: user.username,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            oldPassword: "",
+            newPassword: "",
+            confirmPassword: "",
+        });
+    }, []);
 
     const handleOnInputChange = (event) => {
         if (event.target.name === "password") {
@@ -227,13 +228,6 @@ export function UpdateUserInfo() {
             }
         }
         setForm((f) => ({ ...f, [event.target.name]: event.target.value }));
-    };
-
-    const handleOnSubmit = async (e) => {
-        const valid = await updateUserInfo(form);
-        if (valid) {
-            navigate("/");
-        }
     };
 
     return (
@@ -347,5 +341,18 @@ export function UpdateUserInfo() {
 
             <FormHelperText>We keep your account data secure 🔐</FormHelperText>
         </FormControl>
+    );
+}
+
+export function ExtraSpace() {
+    return (
+        <>
+            <Spacer></Spacer>
+            <Spacer></Spacer>
+            <Spacer></Spacer>
+            <Spacer></Spacer>
+            <Spacer></Spacer>
+            <Spacer></Spacer>
+        </>
     );
 }
