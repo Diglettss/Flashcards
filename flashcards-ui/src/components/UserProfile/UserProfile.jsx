@@ -65,6 +65,7 @@ export default function UserProfile() {
                     // change name prop to user first & last name
                     // change src to user submitted profile pic if available
                     name="Segun Adebayo"
+                    title="View Profile"
                     src="https://bit.ly/sage-adebayo"
                     bg="white"
                     color="green.400"

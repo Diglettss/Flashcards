@@ -28,7 +28,7 @@ export default function NavLinks({ isLoggedIn }) {
                     isLoggedIn ? navigate("/create") : navigate("/register");
                 }}
             >
-                {isLoggedIn ? "Create" : "Register"}
+                {isLoggedIn ? "Create New Set" : "Register"}
             </Button>
         </>
     );
