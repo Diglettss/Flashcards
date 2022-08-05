@@ -11,6 +11,7 @@ export default function NavLinks({ isLoggedIn }) {
                 variant="ghost"
                 size="lg"
                 fontSize={{ base: "2xl" }}
+
                 onClick={() => {
                     isLoggedIn ? navigate("/mysets") : navigate("/login");
                 }}
@@ -25,7 +26,7 @@ export default function NavLinks({ isLoggedIn }) {
                     isLoggedIn ? navigate("/create") : navigate("/register");
                 }}
             >
-                {isLoggedIn ? "Create" : "Register"}
+                {isLoggedIn ? "Create New Set" : "Register"}
             </Button>
         </>
     );

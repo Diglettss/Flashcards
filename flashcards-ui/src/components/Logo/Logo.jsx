@@ -15,6 +15,7 @@ export default function Logo() {
             >
                 <Icon
                     as={BsLightningChargeFill}
+                    title="Home"
                     onClick={() => {
                         navigate("/");
                     }}

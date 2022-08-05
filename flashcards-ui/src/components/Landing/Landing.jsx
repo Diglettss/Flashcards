@@ -73,8 +73,11 @@ export default function Landing() {
                             onClick={() => {
                                 navigate("/register");
                             }}
-                            title="Register"
+
                             size="lg"
+
+                            title="Create An Account"
+
                         >
                             Get Started!
                         </Button>
