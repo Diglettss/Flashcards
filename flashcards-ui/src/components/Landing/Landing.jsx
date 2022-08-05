@@ -69,7 +69,7 @@ export default function Landing() {
                             onClick={() => {
                                 navigate("/register");
                             }}
-                            title="Register"
+                            title="Create An Account"
                         >
                             Get Started!
                         </Button>
