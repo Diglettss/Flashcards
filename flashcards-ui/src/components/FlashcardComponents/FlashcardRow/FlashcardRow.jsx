@@ -1,6 +1,5 @@
-import React, {useEffect, useRef, useState} from "react"
-import {Checkbox, Container, HStack, Text} from "@chakra-ui/react"
-
+import React, { useEffect, useRef, useState } from "react";
+import { Checkbox, Container, HStack, Text } from "@chakra-ui/react";
 
 export default function FlashcardRow({
     idx, //The location of the flashcard in the set
@@ -13,46 +12,51 @@ export default function FlashcardRow({
     ("I pass in choosenSet because this is how I got selected to work");
     let defaultCheckBox;
 
-        //This code is used for updated and Flashcard overview and the checkbox needs to be different for different occasions
-        if (checkBox == "visibility") {
-            defaultCheckBox = true;
-        } else {
-            defaultCheckBox = false;
-        }
-        const [checkBoxState, setCheckBoxState] = useState(
-            chosenSet.flashcards[idx][checkBox] || defaultCheckBox
-        );
-        useEffect(() => {
-            chosenSet.flashcards[idx][checkBox] = checkBoxState;
-        }, [checkBoxState]);
+    //This code is used for updated and Flashcard overview and the checkbox needs to be different for different occasions
+    if (checkBox == "visibility") {
+        defaultCheckBox = true;
+    } else {
+        defaultCheckBox = false;
+    }
+    const [checkBoxState, setCheckBoxState] = useState(
+        chosenSet.flashcards[idx][checkBox] || defaultCheckBox
+    );
+    useEffect(() => {
+        chosenSet.flashcards[idx][checkBox] = checkBoxState;
+    }, [checkBoxState]);
 
     return (
-        <HStack className="flashcard-row" mt={"5%"} mb={"5%"}>
-            <Container centerContent className="term-card"
-                w={"100%"} p={"25px"}
+        <HStack className="flashcard-row" >
+            <Container
+                centerContent
+                className="term-card"
+                w={"900px"}
+                p={"25px"}
                 bg={"green.100"}
                 boxShadow={"md"}
-                border={"3px solid"} borderColor={"green.200"}
-                
+                border={"3px solid"}
+                borderColor={"green.200"}
                 onClick={() => {
                     setCheckBoxState(!checkBoxState);
                 }}
             >
-
-                <Text className="term"
-                    
-                    fontFamily={"serif"} fontWeight={"bold"} textAlign={"center"}
+                <Text
+                    className="term"
+                    fontFamily={"serif"}
+                    fontWeight={"bold"}
+                    textAlign={"center"}
                     cursor={"default"}
                 >
                     {term}
                 </Text>
             </Container>
             <Container centerContent>
-                <Checkbox className={`myCheck ${checkBox || "hidden"}`}
+                <Checkbox
+                    className={`myCheck ${checkBox || "hidden"}`}
                     colorScheme={"green"}
                     size={"lg"}
-                    border={"3px solid"} borderColor={"green.200"}
-
+                    border={"3px solid"}
+                    borderColor={"green.200"}
                     ref={checkBoxInput}
                     title={
                         checkBox == "visibility"
@@ -60,29 +64,35 @@ export default function FlashcardRow({
                             : "Delete Card"
                     }
                     onChange={({ target }) => {
-                    setCheckBoxState(target.checked);
-                }}
-                isChecked={checkBoxState}
-             
+                        setCheckBoxState(target.checked);
+                    }}
+                    isChecked={checkBoxState}
                 />
             </Container>
-            <Container centerContent className="definition-card" 
-                w={"100%"} p={"25px"}
+            <Container
+                centerContent
+                className="definition-card"
+                w={"900px"}
+                p={"25px"}
                 bg={"green.100"}
                 boxShadow={"md"}
-                border={"3px solid"} borderColor={"green.200"}
-
+                border={"3px solid"}
+                borderColor={"green.200"}
                 onClick={() => {
                     setCheckBoxState(!checkBoxState);
                 }}
             >
-                <Text className="definition"
-                    fontSize={"14px"} fontFamily={"serif"} fontWeight={"medium"} textAlign={"center"}
+                <Text
+                    className="definition"
+                    fontSize={"14px"}
+                    fontFamily={"serif"}
+                    fontWeight={"medium"}
+                    textAlign={"center"}
                     cursor={"default"}
                 >
                     {definition}
                 </Text>
             </Container>
         </HStack>
-    )
+    );
 }
