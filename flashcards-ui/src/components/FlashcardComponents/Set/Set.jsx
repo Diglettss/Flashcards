@@ -17,9 +17,9 @@ export default function Set({ set, onclick }) {
             <HStack
                 padding="0"
                 spacing="0"
-                color={"white"}
-                // color={"black"}
-                bg={useTheme().colors.brand.green}
+                color={"black"}
+                bg={"gray.100"}
+                // bg={useTheme().colors.brand.green}
                 rounded="20"
                 onClick={onclick}
                 divider={<StackDivider borderColor="white" />}
@@ -33,20 +33,22 @@ export default function Set({ set, onclick }) {
                     paddingBottom={"20px"}
                     minH="150px"
                     w="222px"
+                    alignItems={"left"}
                 >
-                    <Center
+                    <Box
                         // style={{
                         //     wordBreak: "break-all",
                         // }}
                         fontWeight="bold"
                         fontSize="3xl"
+                        
                     >
                         {set.title}
-                    </Center>
-                    <Center fontWeight="bold">
+                    </Box>
+                    <Box fontWeight="bold">
                         {set.flashcards.length} flashcards
-                    </Center>
-                    <Center fontWeight="bold">Created: {set.createdAt}</Center>
+                    </Box>
+                    <Box fontWeight="bold">Created: {set.createdAt}</Box>
                 </VStack>
 
                 <Box flex="1" p="20px" h="150px">
