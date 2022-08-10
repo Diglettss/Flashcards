@@ -11,7 +11,7 @@ export const FlashcardContextProvider = ({ children }) => {
     const [userCreatedSet, setUserCreatedSet] = useState({
         title: null,
         description: null,
-        flashcard: null,
+        flashcard: [],
     });
     //This is to be changeable by the user
     const [defaultFlashcardState, setDefaultFlashcardState] = useState(true);

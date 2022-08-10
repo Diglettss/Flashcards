@@ -25,10 +25,6 @@ export default function AppContainer() {
 }
 
 function App() {
-    //TODO turn index.css into a index.scss
-    //TODO keep the UserCreatedSets in a query (that's in the users local storage) that will try to send the sets until successful
-    //TODO improve the settings modal
-
     return (
         <div className="App">
             <BrowserRouter>

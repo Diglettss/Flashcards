@@ -3,7 +3,7 @@ import CreateSetOverview from "../CreateSetOverview/CreateSetOverview.jsx";
 import CreateSetAddCard from "../CreateSetAddCard/CreateSetAddCard.jsx";
 import {useNavigate} from "react-router-dom";
 import {useAuthContext} from "../../../../contexts/auth";
-import {Flex, Input, Text} from "@chakra-ui/react"
+import {Flex, Input, Text, Divider, Center} from "@chakra-ui/react"
 
 
 export default function CreateSetPage() {
@@ -15,9 +15,7 @@ export default function CreateSetPage() {
     const [userCreatedSet, setUserCreatedSet] = useState({
         title: null,
         description: null,
-        flashcards: null,
-        visibility: true,
-        selectedForTrash: false,
+        flashcards: [],
     });
 
     const { isLoading, isLoggedIn } = useAuthContext();
@@ -49,9 +47,14 @@ export default function CreateSetPage() {
                     userCreatedSet.title = e.target.value;
                 }}
             /> 
-            <Text color={"green.600"} cursor={"default"}> 
-                ____________________________________________________________________________
-            </Text>
+            <Divider 
+                orientation='horizontal' 
+                width={"80vw"} 
+                height="22px" 
+                // borderWidth="22px" 
+                borderColor={"green"}  
+                color={"green"} 
+            />
             <br/>
             {isCreateOverviewShown ? (
                 <CreateSetOverview
@@ -60,6 +63,7 @@ export default function CreateSetPage() {
                     setIsCreateOverviewShown={setIsCreateOverviewShown}
                     chosenSet={userCreatedSet}
                     userCreatedSet={userCreatedSet}
+                    setUserCreatedSet={setUserCreatedSet}
                 />
             ) : (
                 <CreateSetAddCard
