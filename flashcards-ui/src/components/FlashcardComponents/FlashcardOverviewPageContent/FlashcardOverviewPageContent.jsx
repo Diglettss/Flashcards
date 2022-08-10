@@ -26,7 +26,6 @@ export default function FlashcardOverviewPageContent({
     onButtonClick,
     buttonText,
     startStudyingNavigation,
-
 }) {
     const navigate = useNavigate();
     const { globalTheme } = useTheme();
@@ -51,7 +50,12 @@ export default function FlashcardOverviewPageContent({
     return (
         <>
             {buttonText ? (
-                <Button pos={"fixed"} top="80px" left="40px" onClick={onButtonClick}>
+                <Button
+                    pos={"fixed"}
+                    top="80px"
+                    left="40px"
+                    onClick={onButtonClick}
+                >
                     {buttonText}
                 </Button>
             ) : (
@@ -69,8 +73,10 @@ export default function FlashcardOverviewPageContent({
             </Button>
             <Center>
                 <Heading
-                    bgColor={"black"}
-                    color="white"
+                    // bgColor={"black"}
+                    bgColor={"gray.100"}
+                    // color="white"
+                    color="black"
                     paddingTop={"20px"}
                     paddingBottom={"20px"}
                     paddingLeft={"80px"}
@@ -84,20 +90,23 @@ export default function FlashcardOverviewPageContent({
             </Center>
             <Center>
                 <Text
-                    bgColor={"black"}
-                    color="white"
+                    // bgColor={"black"}
+                    bgColor={"gray.100"}
+                    // color="white"
+                    color="black"
                     paddingTop={"20px"}
                     paddingBottom={"20px"}
                     paddingLeft={"80px"}
                     paddingRight={"80px"}
                     rounded={globalTheme.rounded}
+                    fontSize={"xl"}
                 >
                     {chosenSet.description}
                 </Text>
             </Center>
 
             <Center>
-                <VStack w={"80vw"} marginTop="80px">
+                <VStack w={"80vw"} marginTop="80px" >
                     {chosenSet.flashcards.map((e, idx) => (
                         <FlashcardRow
                             e={e}

@@ -41,7 +41,6 @@ export default function Set({ set, onclick }) {
                         // }}
                         fontWeight="bold"
                         fontSize="3xl"
-                        
                     >
                         {set.title}
                     </Box>
@@ -52,7 +51,9 @@ export default function Set({ set, onclick }) {
                 </VStack>
 
                 <Box flex="1" p="20px" h="150px">
-                    <Text noOfLines={5}>{set.description}</Text>
+                    <Text noOfLines={5} fontSize={"2xl"}>
+                        {set.description}
+                    </Text>
                 </Box>
             </HStack>
         </>

@@ -1,5 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Checkbox, Container, HStack, Text } from "@chakra-ui/react";
+import {
+    Checkbox,
+    Container,
+    HStack,
+    Text,
+    Box,
+    Button,
+    Divider,
+    StackDivider,
+    Center,
+} from "@chakra-ui/react";
 
 export default function FlashcardRow({
     idx, //The location of the flashcard in the set
@@ -26,8 +36,80 @@ export default function FlashcardRow({
     }, [checkBoxState]);
 
     return (
-        <HStack className="flashcard-row" >
-            <Container
+        <HStack className="flashcard-row" spacing={10} pb={10}>
+            <Box>
+                <Checkbox
+                    className={`myCheck ${checkBox || "hidden"}`}
+                    colorScheme={"green"}
+                    size={"lg"}
+                    border={"3px solid"}
+                    borderColor={"green.200"}
+                    ref={checkBoxInput}
+                    title={
+                        checkBox == "visibility"
+                            ? "Flashcard Visibility"
+                            : "Delete Card"
+                    }
+                    onChange={({ target }) => {
+                        setCheckBoxState(target.checked);
+                    }}
+                    isChecked={checkBoxState}
+                />
+            </Box>
+            <HStack
+                color={"black"}
+                bg={"gray.100"}
+                rounded="10"
+                divider={<StackDivider borderColor="white" />}
+                width={"90vw"}
+                gap={10}
+                onClick={() => {
+                    setCheckBoxState(!checkBoxState);
+                }}
+            >
+                <Text
+                    className="term"
+                    fontWeight={"bold"}
+                    textAlign={"left"}
+                    cursor={"pointer"}
+                    fontSize="3xl"
+                    pl={50}
+                    pr={50}
+                    width={"20vw"}
+                >
+                    {term}
+                </Text>
+                <Box>
+                    <Text
+                        className="definition"
+                        fontWeight={"medium"}
+                        textAlign={"left"}
+                        cursor={"pointer"}
+                        fontSize="xl"
+                        mt={5}
+                        mb={5}
+                    >
+                        {definition}
+                    </Text>
+                </Box>
+                {/* <Text
+                    className="definition"
+                    fontWeight={"medium"}
+                    textAlign={"center"}
+                    cursor={"pointer"}
+                    fontSize="xl"
+                    mt={5}
+                    mb={5}
+                >
+                    {definition}
+                </Text> */}
+            </HStack>
+        </HStack>
+    );
+}
+
+{
+    /* <Box
                 centerContent
                 className="term-card"
                 w={"900px"}
@@ -42,14 +124,13 @@ export default function FlashcardRow({
             >
                 <Text
                     className="term"
-                    fontFamily={"serif"}
                     fontWeight={"bold"}
                     textAlign={"center"}
                     cursor={"default"}
                 >
                     {term}
                 </Text>
-            </Container>
+            </Box>
             <Container centerContent>
                 <Checkbox
                     className={`myCheck ${checkBox || "hidden"}`}
@@ -85,14 +166,11 @@ export default function FlashcardRow({
                 <Text
                     className="definition"
                     fontSize={"14px"}
-                    fontFamily={"serif"}
                     fontWeight={"medium"}
                     textAlign={"center"}
                     cursor={"default"}
                 >
                     {definition}
                 </Text>
-            </Container>
-        </HStack>
-    );
+            </Container> */
 }

@@ -6,7 +6,16 @@ import FlashcardOverviewPage from "./FlashcardOverviewPage/FlashcardOverviewPage
 import StudyPage from "./StudyPage/StudyPage.jsx";
 import NotFound from "../NotFound/NotFound";
 import { useAuthContext } from "../../../contexts/auth";
-import { useTheme } from "@chakra-ui/react";
+import {
+    Checkbox,
+    Container,
+    HStack,
+    Text,
+    Box,
+    Button,
+    Divider,
+    StackDivider,
+} from "@chakra-ui/react";
 
 export default function MySetsPage() {
     const { isLoading, isLoggedIn } = useAuthContext();
@@ -23,7 +32,7 @@ export default function MySetsPage() {
     // }, [isLoggedIn]);
 
     return (
-        <div className="mysets-page">
+        <Box className="mysets-page" pb={100}>
             <Routes>
                 <Route path="/" element={<MySetsOverview />} />
                 <Route path="/:setId" element={<FlashcardOverviewPage />} />
@@ -31,6 +40,6 @@ export default function MySetsPage() {
                 <Route path="/studymode/:setId" element={<StudyPage />} />
                 <Route path="*" element={<NotFound />} />
             </Routes>
-        </div>
+        </Box>
     );
 }
