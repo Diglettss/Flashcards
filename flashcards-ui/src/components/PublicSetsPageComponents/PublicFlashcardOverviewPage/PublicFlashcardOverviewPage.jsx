@@ -10,14 +10,13 @@ export default function PublicFlashcardOverviewPage() {
 
     useEffect(() => {
         const searchAPublicSet = async (setId) => {
-            if (setId == null) {
-                setId == "ullamco mollit Foood";
-            }
-            try {
-                const res = await getAPublicSet(setId);
-                setChosenSet(res.data.set);
-            } catch (error) {
-                console.warn("The set is deleted or private");
+            if (setId) {
+                try {
+                    const res = await getAPublicSet(setId);
+                    setChosenSet(res.data.set);
+                } catch (error) {
+                    console.warn("The set is deleted or private");
+                }
             }
         };
         searchAPublicSet(setId);

@@ -42,29 +42,9 @@ export const FlashcardContextProvider = ({ children }) => {
         }
     }, [isLoggedIn]);
 
+    async function updateASet(){
 
-let t = {
-	flashcards: [
-		{
-			"term": "term10",
-			"definition": "elit mollit sit ullamco consequat eu aliqua quis mollit mollit sint enim",
-			"id": 1
-		},
-				{
-			"term": "term0",
-			"definition": "elit mollit sit ullamco consequat eu aliqua quis mollit mollit sint enim",
-			"id": 3
-		},
-				{
-			"term": "term0",
-			"definition": "elit mollit sit ullamco consequat eu aliqua quis mollit mollit sint enim",
-			"id": 4
-		}
-	],
-	description: "eef",
-	title: "Title"
-}
-
+    }
 
     // user's sets are created
     async function createSet(set) {
@@ -72,19 +52,17 @@ let t = {
         setError((e) => ({ ...e, set: null }));
 
         const create = async () => {
-            const { data, err } = await apiClient.createUserSet(set);
-            if (data) {
-                console.log("data recieved", data);
-                return data;
-            } else if (err) {
-                return "error";
+            const res = await apiClient.createUserSet(set);
+            if(res?.err){
+                console.warn("This should be a toast about sever being down")
+            }else{
+                fetchMySets()
             }
         };
 
         const valid = await create();
-        fetchMySets()
         setIsProcessing(false);
-        console.log()
+
         return valid;
     }
 
