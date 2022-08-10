@@ -8,11 +8,6 @@ const FlashcardContext = createContext(null);
 
 export const FlashcardContextProvider = ({ children }) => {
     const [showSettingsModal, setShowSettingsModal] = useState(false);
-    const [userCreatedSet, setUserCreatedSet] = useState({
-        title: null,
-        description: null,
-        flashcard: [],
-    });
     //This is to be changeable by the user
     const [defaultFlashcardState, setDefaultFlashcardState] = useState(true);
 
@@ -21,47 +16,79 @@ export const FlashcardContextProvider = ({ children }) => {
     const [error, setError] = useState();
     const [mySets, setMySets] = useState([]);
     const { isLoggedIn } = useAuthContext();
-    const [searchbarValue, setSearchbarValue] = useState("Test");
+    const [searchbarValue, setSearchbarValue] = useState("");
+
+    const fetchMySets = async () => {
+        const { data, err } = await apiClient.fetchUserSets();
+        // If all goes well, should set the data as the `userSet` state variable
+
+        if (data) {
+            setMySets(data.mySets);
+        }
+        // If there is an error with the request, it should set a message as the `error` state variable
+        if (err) {
+            setError(err);
+        }
+    };
+
 
     useEffect(() => {
         if (isLoggedIn) {
             // should make a `GET` request to the `/mysets` endpoint
             // If there is an error with the request, it should set a message as the `error` state variable
-            const fetchMySets = async () => {
-                const { data, err } = await apiClient.fetchUserSets();
-                // If all goes well, should set the data as the `userSet` state variable
-
-                if (data) {
-                    setMySets(data.mySets);
-                }
-                // If there is an error with the request, it should set a message as the `error` state variable
-                if (err) {
-                    setError(err);
-                }
-            };
             fetchMySets();
             setIsProcessing(false);
             setInitialized(true);
         }
     }, [isLoggedIn]);
 
+
+let t = {
+	flashcards: [
+		{
+			"term": "term10",
+			"definition": "elit mollit sit ullamco consequat eu aliqua quis mollit mollit sint enim",
+			"id": 1
+		},
+				{
+			"term": "term0",
+			"definition": "elit mollit sit ullamco consequat eu aliqua quis mollit mollit sint enim",
+			"id": 3
+		},
+				{
+			"term": "term0",
+			"definition": "elit mollit sit ullamco consequat eu aliqua quis mollit mollit sint enim",
+			"id": 4
+		}
+	],
+	description: "eef",
+	title: "Title"
+}
+
+
     // user's sets are created
-    async function createSet(credentials) {
+    async function createSet(set) {
         setIsProcessing(true);
-        setError((e) => ({ ...e, credentials: null }));
+        setError((e) => ({ ...e, set: null }));
+
         const create = async () => {
-            const { data, err } = await apiClient.createUserSet(credentials);
+            const { data, err } = await apiClient.createUserSet(set);
             if (data) {
-                console.warn("data recieved");
-                return true;
+                console.log("data recieved", data);
+                return data;
             } else if (err) {
-                return false;
+                return "error";
             }
         };
+
         const valid = await create();
+        fetchMySets()
         setIsProcessing(false);
+        console.log()
         return valid;
     }
+
+
 
     // method to fetch a user's specific public set by id
     async function getAPublicSet(setId) {
@@ -143,6 +170,7 @@ export const FlashcardContextProvider = ({ children }) => {
         getAPublicSet,
         searchbarValue,
         setSearchbarValue,
+        createSet,
     };
 
     return (

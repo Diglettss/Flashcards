@@ -45,12 +45,9 @@ export default function MySetsSearch({
     sortByNewestDate(mySets);
     useEffect(() => {
         sortByNewestDate(mySets);
-        console.log("changing, array", mySets)
     }, [mySets]);
-
     useEffect(() => {
         sortByNewestDate(mySets);
-        console.log("changing, no array", mySets)
     });
 
     useEffect(() => {

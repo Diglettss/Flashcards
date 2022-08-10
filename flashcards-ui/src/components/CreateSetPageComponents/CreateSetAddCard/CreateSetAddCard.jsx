@@ -20,6 +20,7 @@ export default function CreateSetAddCard({
     const [textDelimiter, setTextDelimiter] = useState(":");
     const [flashcardDelimiter, setFlashcardDelimiter] = useState("•");
 
+
     //This is test data
     const [textInput, setTextinput] = useState(
         "Term 1: Definition 1     •     Term 2: Definition 2     •     Term 3: Definition 3"
@@ -90,8 +91,6 @@ export default function CreateSetAddCard({
             createdSets.forEach((e) => {
                 userCreatedSet.flashcards.push(e);
             });
-            userCreatedSet.id = mySets.length;
-            userCreatedSet.createdAt = new Date().toDateString();
             setIsCreateOverviewShown(true);
         }
     };

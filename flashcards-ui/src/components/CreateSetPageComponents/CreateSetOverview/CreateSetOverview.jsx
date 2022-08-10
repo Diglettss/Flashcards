@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFlashcardContext } from "../../../../contexts/flashcard";
 import { Box, Button, Textarea, VStack, HStack } from "@chakra-ui/react";
@@ -12,7 +12,7 @@ export default function CreateSetOverview({
     userCreatedSet,
     setUserCreatedSet,
 }) {
-    const { mySets, setMySets } = useFlashcardContext();
+    const { mySets, setMySets, createSet } = useFlashcardContext();
     const navigate = useNavigate();
 
     return (
@@ -105,7 +105,7 @@ export default function CreateSetOverview({
                                     userCreatedSet.flashcards.filter(
                                         (e) => !e.selectedForTrash
                                     );
-                                setUserCreatedSet({...userCreatedSet});
+                                setUserCreatedSet({ ...userCreatedSet });
                             }}
                         >
                             Delete Selected
@@ -125,11 +125,14 @@ export default function CreateSetOverview({
                         onClick={() => {
                             if (
                                 userCreatedSet.flashcards?.length >= 2 &&
-                                userCreatedSet.title && userCreatedSet.description
+                                userCreatedSet.title &&
+                                userCreatedSet.description
                             ) {
-                                // 
+                                //
+                                console.log("userCreatedSet", userCreatedSet);
                                 mySets.push(userCreatedSet);
                                 setMySets([...mySets]);
+                                createSet(userCreatedSet);
                                 navigate("/mysets");
                             } else {
                                 console.error(
