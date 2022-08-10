@@ -11,8 +11,6 @@ import {
 } from "@chakra-ui/react";
 // import "./Landing.css";
 import study1 from "../../assets/study1.jpg";
-import study2 from "../../assets/study2.jpg";
-import study3 from "../../assets/study3.jpg";
 
 export default function Landing() {
     const navigate = useNavigate();
