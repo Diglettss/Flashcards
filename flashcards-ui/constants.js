@@ -1,7 +1,7 @@
 export const PRODUCTION_API_BASE_URL = "https://flashi-api.herokuapp.com/";
 export const DEVELOPMENT_API_BASE_URL = "http://localhost:3001";
 
-let isDev = null;
+let isDev;
 if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
     isDev = true;
     // dev code
