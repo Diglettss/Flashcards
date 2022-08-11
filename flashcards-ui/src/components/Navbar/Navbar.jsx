@@ -13,15 +13,13 @@ import UserProfile from "../UserProfile/UserProfile.jsx";
 import { useAuthContext } from "../../../contexts/auth.jsx";
 
 function Navbar() {
-    const { isLoggedIn } = useAuthContext();
+    const { isLoggedIn, isLoading } = useAuthContext();
 
     return (
         <Box
             as="nav"
             bg={useTheme().colors.brand.green}
-
             boxShadow={useColorModeValue("2xl", "sm-dark")}
-
             pt={2}
             pb={2}
             position="sticky"
@@ -32,14 +30,14 @@ function Navbar() {
                 {/* App Logo */}
                 <Logo />
                 {/* Login/Register & My Sets/Create links */}
-                <NavLinks isLoggedIn={isLoggedIn} />
+                {isLoading ? <></> :<NavLinks isLoggedIn={isLoggedIn} />}
+
                 {/* Chakra UI Space component*/}
                 <Spacer />
                 {/* Searchbar*/}
                 <Searchbar />
                 {/* User Profile */}
                 {isLoggedIn ? <UserProfile /> : null}
-
             </HStack>
         </Box>
     );
