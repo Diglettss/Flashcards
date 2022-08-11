@@ -12,29 +12,28 @@ export default function Searchbar() {
             <HStack pr={4}>
                 <Input
                     type="search"
-                    onChange={(e)=>{	
-                        setSearchbarValue(e.target.value)	
-                    }}	
-                    value={searchbarValue}	
+                    onChange={(e) => {
+                        setSearchbarValue(e.target.value);
+                    }}
+                    value={searchbarValue}
                     placeholder="Search..."
                     _placeholder={{
                         opacity: 0.7,
                         color: "gray",
-                        fontStyle: "italic",
                     }}
                     variant="ghost"
                     textAlign={"center"}
                     // fontFamily={"serif"}
                     border={"2px solid"}
-                    borderColor={"green.600"}
+                    borderColor={"black"}
                     borderRadius={"15px"}
                     // _hover={{ backgroundColor: "green.100" }}
                     // _focus={{ backgroundColor: "green.100" }}
-                    onKeyDown={(e) => {	
-                        if (e.code == "Enter" && searchbarValue!="") {	
-                            navigate(`/publicsets/search/${searchbarValue}`)	
-                        }	
-                    }}	
+                    onKeyDown={(e) => {
+                        if (e.code == "Enter" && searchbarValue != "") {
+                            navigate(`/publicsets/search/${searchbarValue}`);
+                        }
+                    }}
                 />
             </HStack>
         </>
