@@ -22,12 +22,12 @@ Users will be able to sign up, create a profile, & create sets of digital flashc
 
 
 ## **Project Code Repository Links**
-* [insert front-end repo link here]()
-* [insert back-end repo link here]()
+* [front-end repo link](https://github.com/Diglettss/Flashcards/tree/main/flashcards-ui)
+* [back-end repo link](https://github.com/Diglettss/Flashcards/tree/main/flashcards-api)
 
 
 ## **Deployment Website**
-[insert deployed project link here]()
+[deployed project link](flashicards.surge.sh)
 
 
 ### **Open-Source Libraries Used**
