@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFlashcardContext } from "../../../../contexts/flashcard";
 import { Box, Button, Textarea, VStack, HStack } from "@chakra-ui/react";
+import { useToast } from "@chakra-ui/react";
 import FlashcardRow from "../../FlashcardComponents/FlashcardRow/FlashcardRow";
 
 export default function CreateSetOverview({
@@ -14,6 +15,7 @@ export default function CreateSetOverview({
 }) {
     const { mySets, setMySets, createSet } = useFlashcardContext();
     const navigate = useNavigate();
+    const toast = useToast();
 
     return (
         <>
@@ -79,12 +81,12 @@ export default function CreateSetOverview({
                             Add Cards
                         </Button>
                         <Button
-                           bg={"gray.100"}
-                           borderRadius={"22px"}
-                           fontSize={"2xl"}
-                           fontWeight={"medium"}
-                           color={"black"}
-                           _hover={{ bg: "green.100" }}
+                            bg={"gray.100"}
+                            borderRadius={"22px"}
+                            fontSize={"2xl"}
+                            fontWeight={"medium"}
+                            color={"black"}
+                            _hover={{ bg: "green.100" }}
                             onClick={() => {
                                 userCreatedSet.flashcards =
                                     userCreatedSet.flashcards.filter(
@@ -117,9 +119,14 @@ export default function CreateSetOverview({
                                 createSet(userCreatedSet);
                                 navigate("/mysets");
                             } else {
-                                console.error(
-                                    "The set needs a title and at least 2 flashcards"
-                                );
+                                toast({
+                                    title: "Missing Fields",
+                                    description:
+                                        "Please provide at least 2 flashcards and a title.",
+                                    status: "error",
+                                    duration: 9000,
+                                    isClosable: true,
+                                });
                             }
                         }}
                     >

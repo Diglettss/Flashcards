@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 import { useAuthContext } from "../../../contexts/auth";
+import { useToast } from "@chakra-ui/react";
+
 import {
     Flex,
     Box,
@@ -24,6 +26,7 @@ export default function LoginForm(props) {
     const { error, isProcessing, loginUser } = useAuthContext();
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
+    const toast = useToast();
 
     const [form, setForm] = React.useState({
         username: "",
@@ -38,6 +41,12 @@ export default function LoginForm(props) {
         const valid = await loginUser(form);
         if (valid) {
             navigate("/");
+            toast({
+                title: "Logged In successfully.",
+                status: "success",
+                duration: 9000,
+                isClosable: true,
+            });
         }
     };
 

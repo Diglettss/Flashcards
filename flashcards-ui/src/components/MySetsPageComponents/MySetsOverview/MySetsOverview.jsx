@@ -5,6 +5,7 @@ import MySetsSearch from "./MySetsSearch";
 import { StackDivider, Box, VStack, useTheme } from "@chakra-ui/react";
 import { Center } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import NotFound from "../../NotFound/NotFound"
 
 export default function MySetsOverview() {
     "This takes the varibale mySets fron contexts/flashcard and loops it through the Set component";
@@ -43,11 +44,15 @@ export default function MySetsOverview() {
                     w="80vw"
                     align={"stretch"}
                 >
-                    {filteredMySets.map((e, idx) => (
+                    
+                    {
+                        filteredMySets.length>0?
+                    filteredMySets.map((e, idx) => (
                         <Set set={e} key={idx} onclick={() => {
                             navigate(`/mysets/${e.id}`)
                         }}/>
-                    ))}
+                    )):<NotFound/>
+                    }
                 </VStack>
             </Center>
         </div>

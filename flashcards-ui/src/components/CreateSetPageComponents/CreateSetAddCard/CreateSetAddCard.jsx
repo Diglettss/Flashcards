@@ -11,6 +11,7 @@ import {
     Stack,
     Textarea,
     VStack,
+    useToast,
 } from "@chakra-ui/react";
 
 export default function CreateSetAddCard({
@@ -19,6 +20,8 @@ export default function CreateSetAddCard({
 }) {
     const [textDelimiter, setTextDelimiter] = useState(":");
     const [flashcardDelimiter, setFlashcardDelimiter] = useState(",");
+
+    const toast = useToast();
 
     //This is test data
     const [textInput, setTextinput] = useState(
@@ -84,7 +87,12 @@ export default function CreateSetAddCard({
 
         //If the flashcards are not formatted correctly make an alert
         if (userError) {
-            alert("You are missing a term or definition");
+            toast({
+                title: "You are missing a term or definition.",
+                status: "success",
+                duration: 9000,
+                isClosable: true,
+            });
         } else {
             //pass the info the userCreatedSet so the CreateSetOverview can access it
             createdSets.forEach((e) => {
@@ -104,7 +112,6 @@ export default function CreateSetAddCard({
                                 fontWeight={"bold"}
                                 textAlign={"center"}
                                 fontSize={"2xl"}
-
                             >
                                 Term/Definition Delimiter
                             </FormLabel>
@@ -138,7 +145,6 @@ export default function CreateSetAddCard({
                                 fontWeight={"bold"}
                                 textAlign={"center"}
                                 fontSize={"2xl"}
-
                             >
                                 Card Delimiter
                             </FormLabel>
@@ -161,7 +167,6 @@ export default function CreateSetAddCard({
                                 _placeholder={{
                                     opacity: 0.8,
                                     color: "gray",
-
                                 }}
                                 onChange={(e) => {
                                     setFlashcardDelimiter(e.target.value);
@@ -188,7 +193,6 @@ export default function CreateSetAddCard({
                             fontSize={"l"}
                             _hover={{
                                 borderColor: "green.300",
-
                             }}
                             value={textInput}
                             placeholder="Term 1: Definition 1     ,     Term 2: Definition 2     ,     Term 3: Definition 3"
@@ -212,7 +216,6 @@ export default function CreateSetAddCard({
                             borderRadius={"22px"}
                             fontSize={"xl"}
                             color={"black"}
-
                             _hover={{ bg: "black", color: "green.400" }}
                             onClick={() => {
                                 setIsCreateOverviewShown(true);
@@ -232,7 +235,6 @@ export default function CreateSetAddCard({
                             fontSize={"xl"}
                             color={"black"}
                             _hover={{ bg: "black", color: "green.400" }}
-
                             onClick={() => {
                                 turnIntoFlashcards(textInput);
                             }}

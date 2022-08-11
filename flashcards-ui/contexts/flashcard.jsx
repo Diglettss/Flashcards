@@ -3,6 +3,8 @@ import apiClient from "../services/apiClient";
 import { LoremIpsum } from "lorem-ipsum";
 // import { response } from "../../flashcards-api/app";
 import { useAuthContext } from "./auth";
+import { useToast } from '@chakra-ui/react'
+
 
 const FlashcardContext = createContext(null);
 
@@ -10,6 +12,8 @@ export const FlashcardContextProvider = ({ children }) => {
     const [showSettingsModal, setShowSettingsModal] = useState(false);
     //This is to be changeable by the user
     const [defaultFlashcardState, setDefaultFlashcardState] = useState(true);
+    const toast = useToast()
+
 
     const [initialized, setInitialized] = useState();
     const [isProcessing, setIsProcessing] = useState(false);
@@ -55,7 +59,12 @@ export const FlashcardContextProvider = ({ children }) => {
         const create = async () => {
             const res = await apiClient.createUserSet(set);
             if(res?.err){
-                console.warn("This should be a toast about sever being down")
+                toast({
+                    title: "An error occurred.",
+                    status: "success",
+                    duration: 9000,
+                    isClosable: true,
+                });
             }else{
                 fetchMySets()
             }

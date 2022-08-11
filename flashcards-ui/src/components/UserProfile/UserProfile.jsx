@@ -24,6 +24,7 @@ import {
     InputRightElement,
     InputGroup,
     Text,
+    useToast,
 } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import { BsFillPencilFill } from "react-icons/bs";
@@ -35,13 +36,36 @@ export default function UserProfile() {
     const { user, logoutUser, updateUserInfo, update, setUpdate, form } =
         useAuthContext();
     const navigate = useNavigate();
+    const toast = useToast();
     const { isOpen, onClose, onOpen } = useDisclosure();
 
     const handleOnSubmit = async (e) => {
-        const valid = await updateUserInfo(form);
-        console.log(valid);
-        if (valid) {
-            setUpdate(false);
+        try {
+            const valid = await updateUserInfo(form);
+            console.log(valid);
+            if (valid) {
+                setUpdate(false);
+                toast({
+                    title: "Profile Updated.",
+                    status: "success",
+                    duration: 9000,
+                    isClosable: true,
+                });
+            } else {
+                toast({
+                    title: "An error occurred.",
+                    status: "error",
+                    duration: 9000,
+                    isClosable: true,
+                });
+            }
+        } catch (error) {
+            toast({
+                title: "An error occurred.",
+                status: "error",
+                duration: 9000,
+                isClosable: true,
+            });
         }
     };
 

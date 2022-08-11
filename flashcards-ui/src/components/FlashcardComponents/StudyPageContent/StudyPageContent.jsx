@@ -21,16 +21,17 @@ export default function StudyPageContent({ chosenSet }) {
 
     return (
         <>
-            <Flex justifyContent={"space-between"}>
-                <Button>Settings</Button>
-                <Button
-                    onClick={() => {
-                        navigate(-1);
-                    }}
-                >
-                    Back
-                </Button>
-            </Flex>
+            {/* <Button>Settings</Button> */}
+            <Button
+                pos={"fixed"}
+                top="80px"
+                right="40px"
+                onClick={() => {
+                    navigate(-1);
+                }}
+            >
+                Back
+            </Button>
             <Center>
                 <Heading>{chosenSet.title}</Heading>
             </Center>
