@@ -9,11 +9,12 @@ import {
     Text,
     useBreakpointValue,
 } from "@chakra-ui/react";
-// import "./Landing.css";
+import { useAuthContext } from "../../../contexts/auth.jsx";
 import study1 from "../../assets/study1.jpg";
 
 export default function Landing() {
     const navigate = useNavigate();
+    const { isLoggedIn } = useAuthContext();
 
     return (
         <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
@@ -69,13 +70,14 @@ export default function Landing() {
                                 color: "green.400",
                             }}
                             onClick={() => {
-                                navigate("/register");
+                                {
+                                    isLoggedIn
+                                        ? navigate("/create")
+                                        : navigate("/register");
+                                }
                             }}
-
                             size="lg"
-
                             title="Create An Account"
-
                         >
                             Get Started!
                         </Button>

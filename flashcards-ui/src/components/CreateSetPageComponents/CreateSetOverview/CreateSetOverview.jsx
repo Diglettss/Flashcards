@@ -23,30 +23,19 @@ export default function CreateSetOverview({
                         type="text"
                         className="description"
                         name="description"
-                        bg={"green.200"}
-                        border={"3px solid"}
-                        borderColor={"green.300"}
-                        borderRadius={"10px"}
-                        color={"green.800"}
-                        textAlign={"center"}
-                        fontSize={"20px"}
-                        fontFamily={"serif"}
-                        fontStyle={"italic"}
+                        bg={"gray.100"}
                         _hover={{
                             border: "3px solid",
-                            borderColor: "green.500",
+                            borderColor: "green.300",
                         }}
-                        _focus={{
-                            bg: "green.300",
-                            border: "3.5px solid",
-                            borderColor: "green.600",
-                        }}
+                        color={"black"}
+                        textAlign={"center"}
+                        fontSize={"20px"}
                         value={description}
                         placeholder="Add Description"
                         _placeholder={{
                             opacity: 0.6,
-                            color: "gray",
-                            fontStyle: "italic",
+                            color: "black",
                         }}
                         onChange={(e) => {
                             setDescription(e.target.value);
@@ -55,7 +44,6 @@ export default function CreateSetOverview({
                     />
                 </VStack>
             </Box>
-            <br />
             <Box className="flashcard-row-container">
                 {chosenSet.flashcards ? (
                     chosenSet.flashcards.map((e, idx) => (
@@ -72,20 +60,18 @@ export default function CreateSetOverview({
                     <Box className="empty-flashcard-row" />
                 )}
             </Box>
-            <br />
-            <br />
+
             <Box>
                 <VStack align={"center"} justify={"center"}>
                     <HStack>
                         <Button
                             className="add-cards-button"
-                            bg={"green.900"}
+                            bg={"gray.100"}
                             borderRadius={"22px"}
-                            fontSize={"16px"}
-                            fontFamily={"serif"}
+                            fontSize={"2xl"}
                             fontWeight={"medium"}
-                            color={"green.100"}
-                            _hover={{ bg: "black", color: "green.400" }}
+                            color={"black"}
+                            _hover={{ bg: "green.100" }}
                             onClick={(e) => {
                                 setIsCreateOverviewShown(false);
                             }}
@@ -93,13 +79,12 @@ export default function CreateSetOverview({
                             Add Cards
                         </Button>
                         <Button
-                            bg={"green.900"}
-                            borderRadius={"22px"}
-                            fontSize={"16px"}
-                            fontFamily={"serif"}
-                            fontWeight={"medium"}
-                            color={"green.100"}
-                            _hover={{ bg: "black", color: "green.400" }}
+                           bg={"gray.100"}
+                           borderRadius={"22px"}
+                           fontSize={"2xl"}
+                           fontWeight={"medium"}
+                           color={"black"}
+                           _hover={{ bg: "green.100" }}
                             onClick={() => {
                                 userCreatedSet.flashcards =
                                     userCreatedSet.flashcards.filter(
@@ -108,18 +93,15 @@ export default function CreateSetOverview({
                                 setUserCreatedSet({ ...userCreatedSet });
                             }}
                         >
-                            Delete Selected
+                            Delete Cards
                         </Button>
                     </HStack>
-                    <br />
                     <Button
                         className="save-button"
-                        bg={"green.400"}
+                        bg={"gray.100"}
                         borderRadius={"25px"}
-                        fontSize={"20px"}
-                        fontFamily={"serif"}
-                        fontWeight={"bold"}
-                        color={"green.900"}
+                        fontSize={"2xl"}
+                        color={"black"}
                         _hover={{ bg: "green.100" }}
                         title="Add to My Sets"
                         onClick={() => {
@@ -141,12 +123,10 @@ export default function CreateSetOverview({
                             }
                         }}
                     >
-                        Save This Set
+                        Save Set
                     </Button>
                 </VStack>
             </Box>
-            <br />
-            <br />
         </>
     );
 }

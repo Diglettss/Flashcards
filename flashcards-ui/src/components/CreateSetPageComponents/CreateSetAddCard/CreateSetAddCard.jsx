@@ -18,12 +18,11 @@ export default function CreateSetAddCard({
     userCreatedSet,
 }) {
     const [textDelimiter, setTextDelimiter] = useState(":");
-    const [flashcardDelimiter, setFlashcardDelimiter] = useState("•");
-
+    const [flashcardDelimiter, setFlashcardDelimiter] = useState(",");
 
     //This is test data
     const [textInput, setTextinput] = useState(
-        "Term 1: Definition 1     •     Term 2: Definition 2     •     Term 3: Definition 3"
+        "Term 1: Definition 1     ,     Term 2: Definition 2     ,     Term 3: Definition 3"
     );
     const { mySets, setMySets } = useFlashcardContext();
 
@@ -102,9 +101,10 @@ export default function CreateSetAddCard({
                     <HStack className="delimiter-row">
                         <VStack align={"center"}>
                             <FormLabel
-                                fontFamily={"serif"}
                                 fontWeight={"bold"}
                                 textAlign={"center"}
+                                fontSize={"2xl"}
+
                             >
                                 Term/Definition Delimiter
                             </FormLabel>
@@ -114,27 +114,19 @@ export default function CreateSetAddCard({
                                 name="term-definition-delimiter"
                                 w={"75%"}
                                 color={"black"}
-                                fontFamily={"serif"}
+                                bg={"gray.100"}
                                 fontSize={"22px"}
                                 textAlign={"center"}
-                                border={"1px solid"}
-                                borderColor={"green.600"}
+                                border={"2px solid"}
+                                borderColor={"black"}
                                 _hover={{
-                                    bg: "green.100",
-                                    border: "1px solid",
-                                    borderColor: "green.600",
-                                }}
-                                _focus={{
-                                    bg: "green.100",
-                                    border: "2px solid",
-                                    borderColor: "green.600",
+                                    borderColor: "green.300",
                                 }}
                                 value={textDelimiter}
-                                placeholder=":"
+                                placeholder={textDelimiter}
                                 _placeholder={{
                                     opacity: 0.8,
                                     color: "gray",
-                                    fontStyle: "italic",
                                 }}
                                 onChange={(e) => {
                                     setTextDelimiter(e.target.value);
@@ -143,9 +135,10 @@ export default function CreateSetAddCard({
                         </VStack>
                         <VStack align={"center"}>
                             <FormLabel
-                                fontFamily={"serif"}
                                 fontWeight={"bold"}
                                 textAlign={"center"}
+                                fontSize={"2xl"}
+
                             >
                                 Card Delimiter
                             </FormLabel>
@@ -154,28 +147,21 @@ export default function CreateSetAddCard({
                                 className="card-delimiter-input"
                                 name="card-delimiter"
                                 w={"75%"}
-                                border={"1px solid"}
-                                borderColor={"green.600"}
+                                bg={"gray.100"}
+                                border={"2px solid"}
+                                borderColor={"black"}
                                 color={"black"}
-                                fontFamily={"serif"}
                                 fontSize={"22px"}
                                 textAlign={"center"}
                                 _hover={{
-                                    bg: "green.100",
-                                    border: "1px solid",
-                                    borderColor: "green.600",
-                                }}
-                                _focus={{
-                                    bg: "green.100",
-                                    border: "2px solid",
-                                    borderColor: "green.600",
+                                    borderColor: "green.300",
                                 }}
                                 value={flashcardDelimiter}
-                                placeholder="•"
+                                placeholder={flashcardDelimiter}
                                 _placeholder={{
                                     opacity: 0.8,
                                     color: "gray",
-                                    fontStyle: "italic",
+
                                 }}
                                 onChange={(e) => {
                                     setFlashcardDelimiter(e.target.value);
@@ -187,37 +173,28 @@ export default function CreateSetAddCard({
                 <Box>
                     <VStack mt={"5%"} align={"center"}>
                         <FormLabel
-                            fontFamily={"serif"}
                             fontWeight={"bold"}
                             textAlign={"center"}
-                            fontStyle={"italic"}
+                            fontSize={"xl"}
                         >
-                            Type or paste up to 3 terms & their definitions:
+                            Type/paste your terms & their definitions:
                         </FormLabel>
                         <Textarea
                             className="card-text-input"
-                            bg={"green.200"}
+                            bg={"gray.100"}
                             border={"2px solid"}
-                            borderColor={"green.600"}
+                            borderColor={"black"}
                             color={"black"}
-                            fontFamily={"serif"}
-                            fontSize={"15px"}
+                            fontSize={"l"}
                             _hover={{
-                                bg: "green.300",
-                                border: "2px solid",
-                                borderColor: "green.600",
-                            }}
-                            _focus={{
-                                bg: "green.300",
-                                border: "3px solid",
-                                borderColor: "green.600",
+                                borderColor: "green.300",
+
                             }}
                             value={textInput}
-                            placeholder="Term 1: Definition 1     •     Term 2: Definition 2     •     Term 3: Definition 3"
+                            placeholder="Term 1: Definition 1     ,     Term 2: Definition 2     ,     Term 3: Definition 3"
                             _placeholder={{
                                 opacity: 0.8,
                                 color: "gray",
-                                fontStyle: "italic",
                             }}
                             onChange={(e) => {
                                 setTextinput(e.target.value);
@@ -231,11 +208,11 @@ export default function CreateSetAddCard({
                     <HStack className="button-container">
                         <Button
                             className="back-button"
-                            bg={"green.900"}
+                            bg={"gray.100"}
                             borderRadius={"22px"}
-                            fontSize={"20px"}
-                            fontFamily={"serif"}
-                            color={"green.100"}
+                            fontSize={"xl"}
+                            color={"black"}
+
                             _hover={{ bg: "black", color: "green.400" }}
                             onClick={() => {
                                 setIsCreateOverviewShown(true);
@@ -250,12 +227,12 @@ export default function CreateSetAddCard({
                         <Spacer />
                         <Button
                             className="create-cards-button"
-                            bg={"green.400"}
-                            borderRadius={"25px"}
-                            fontSize={"20px"}
-                            fontFamily={"serif"}
-                            color={"green.900"}
-                            _hover={{ bg: "green.100" }}
+                            bg={"gray.100"}
+                            borderRadius={"22px"}
+                            fontSize={"xl"}
+                            color={"black"}
+                            _hover={{ bg: "black", color: "green.400" }}
+
                             onClick={() => {
                                 turnIntoFlashcards(textInput);
                             }}

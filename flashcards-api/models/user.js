@@ -69,6 +69,7 @@ class User {
             credentials.password,
             BCRYPT_WORK_FACTOR
         );
+        console.log(hashedPassword)
 
         const result = await db.query(
             ` INSERT INTO users (
