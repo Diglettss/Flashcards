@@ -27,7 +27,7 @@ Users will be able to sign up, create a profile, & create sets of digital flashc
 
 
 ## **Deployment Website**
-[deployed project link](flashicards.surge.sh)
+[deployed project link](https://flashicards.com/)
 
 
 ### **Open-Source Libraries Used**
