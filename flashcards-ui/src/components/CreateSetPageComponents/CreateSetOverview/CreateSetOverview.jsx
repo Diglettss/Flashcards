@@ -12,8 +12,6 @@ export default function CreateSetOverview({
     userCreatedSet,
     setUserCreatedSet,
 }) {
-    const { mySets, setMySets } = useFlashcardContext();
-
     const { mySets, setMySets, createSet } = useFlashcardContext();
     const navigate = useNavigate();
 
@@ -38,7 +36,6 @@ export default function CreateSetOverview({
                         _placeholder={{
                             opacity: 0.6,
                             color: "black",
-
                         }}
                         onChange={(e) => {
                             setDescription(e.target.value);
@@ -68,26 +65,26 @@ export default function CreateSetOverview({
                 <VStack align={"center"} justify={"center"}>
                     <HStack>
                         <Button
-         className="add-cards-button"
-                        bg={"gray.100"}
-                        borderRadius={"22px"}
-                        fontSize={"2xl"}
-                        fontWeight={"medium"}
-                        color={"black"}
-                        _hover={{ bg: "green.100" }}
-                        onClick={(e) => {
-                            setIsCreateOverviewShown(false);
-                        }}                        >
+                            className="add-cards-button"
+                            bg={"gray.100"}
+                            borderRadius={"22px"}
+                            fontSize={"2xl"}
+                            fontWeight={"medium"}
+                            color={"black"}
+                            _hover={{ bg: "green.100" }}
+                            onClick={(e) => {
+                                setIsCreateOverviewShown(false);
+                            }}
+                        >
                             Add Cards
                         </Button>
                         <Button
-                            bg={"green.900"}
-                            borderRadius={"22px"}
-                            fontSize={"16px"}
-                            fontFamily={"serif"}
-                            fontWeight={"medium"}
-                            color={"green.100"}
-                            _hover={{ bg: "black", color: "green.400" }}
+                           bg={"gray.100"}
+                           borderRadius={"22px"}
+                           fontSize={"2xl"}
+                           fontWeight={"medium"}
+                           color={"black"}
+                           _hover={{ bg: "green.100" }}
                             onClick={() => {
                                 userCreatedSet.flashcards =
                                     userCreatedSet.flashcards.filter(
@@ -96,10 +93,9 @@ export default function CreateSetOverview({
                                 setUserCreatedSet({ ...userCreatedSet });
                             }}
                         >
-                            Delete Selected
+                            Delete Cards
                         </Button>
                     </HStack>
-                    <br />
                     <Button
                         className="save-button"
                         bg={"gray.100"}
@@ -127,7 +123,7 @@ export default function CreateSetOverview({
                             }
                         }}
                     >
-                        Save This Set
+                        Save Set
                     </Button>
                 </VStack>
             </Box>

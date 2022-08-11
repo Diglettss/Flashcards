@@ -22,7 +22,7 @@ export default function CreateSetAddCard({
 
     //This is test data
     const [textInput, setTextinput] = useState(
-        "Term 1: Definition 1     •     Term 2: Definition 2     •     Term 3: Definition 3"
+        "Term 1: Definition 1     ,     Term 2: Definition 2     ,     Term 3: Definition 3"
     );
     const { mySets, setMySets } = useFlashcardContext();
 
@@ -191,7 +191,7 @@ export default function CreateSetAddCard({
 
                             }}
                             value={textInput}
-                            placeholder="Term 1: Definition 1     •     Term 2: Definition 2     •     Term 3: Definition 3"
+                            placeholder="Term 1: Definition 1     ,     Term 2: Definition 2     ,     Term 3: Definition 3"
                             _placeholder={{
                                 opacity: 0.8,
                                 color: "gray",

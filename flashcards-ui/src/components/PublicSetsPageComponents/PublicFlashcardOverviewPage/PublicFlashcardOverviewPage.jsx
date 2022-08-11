@@ -27,7 +27,7 @@ export default function PublicFlashcardOverviewPage() {
             {chosenSet ? (
                 <FlashcardOverviewPageContent
                     chosenSet={chosenSet}
-                    buttonText={"Clone"}
+                    buttonText={""}
                     startStudyingNavigation="publicsets/studymode"
                     onButtonClick={() => {
                         console.error("send the user to the create page");
