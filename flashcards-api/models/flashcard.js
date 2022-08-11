@@ -196,6 +196,16 @@ class Flashcard {
     }
 
     static async fetchPublicSetsBySearch({ searchQuery }) {
+        if (
+            searchQuery == "" ||
+            searchQuery === null ||
+            searchQuery === undefined        ) {
+            throw new BadRequestError(`Missing searchQuery is request body`);
+        }
+        if(typeof searchQuery!=="string"){
+            throw new BadRequestError(`searchQuery needs to be a string`);
+        }
+
         //This somehow takes the words in a string and turns them into an array of those words
         const searchQueryArray = searchQuery.match(/[-\w]+/g);
 

@@ -16,7 +16,7 @@ router.get("/ping", (req, res, next) => {
 router.post("/search", async (req, res, next) => {
     try {
         const set = await Flashcard.fetchPublicSetsBySearch(req.body);
-        return res.status(201).json({ set });
+        return res.status(200).json({ set });
     } catch (err) {
         next(err);
     }
@@ -26,7 +26,7 @@ router.post("/search", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
     try {
         const set = await Flashcard.fetchPublicSetById(req.body);
-        return res.status(201).json({ set });
+        return res.status(200).json({ set });
     } catch (err) {
         next(err);
     }
@@ -75,7 +75,7 @@ router.put(
                 res.locals.user.email,
                 req.body
             );
-            return res.status(201).json({ mySet });
+            return res.status(200).json({ mySet });
         } catch (err) {
             next(err);
         }
