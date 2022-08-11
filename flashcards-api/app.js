@@ -25,7 +25,7 @@ app.get("/", function (req, res) {
 
 /* Handle all 404 errors that weren't matched by a route */
 app.use((req, res, next) => {
-    return next(new NotFoundError());
+    return next(new NotFoundError("Route Not Found"));
 });
 
 /* Generic error handler - anything that is unhandled will be handled here */
