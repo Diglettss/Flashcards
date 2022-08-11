@@ -51,8 +51,8 @@ VALUES ('6@',
 INSERT INTO FlashcardSets (user_id, is_public, description, title, flashcards)
 VALUES (1,
         true,
-        'Algebra formulas for Mrs.Smiths class',
-        'Algebra Formulas',
+        'Algebra Notes for Mrs.Smiths class',
+        'Algebra Notes',
         '[
         {"term":"Absolute Value","definition":"Distance of a number from 0","id":0},
         {"term":"Slope Intercept Form","definition":"y = mx+b","id":1},

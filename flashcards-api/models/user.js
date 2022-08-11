@@ -7,7 +7,6 @@ class User {
     static async makePublicUser(user) {
         return {
             id: user.id,
-            set_id: user.set_id,
             username: user.username,
             firstName: user.first_name,
             lastName: user.last_name,
@@ -80,7 +79,7 @@ class User {
                 last_name
                 )
             VALUES ($1, $2, $3, $4, $5)
-            RETURNING id, username, first_name, last_name, email, created_at, set_id
+            RETURNING id, username, first_name, last_name, email, created_at
             `,
             [
                 lowercasedEmail,
@@ -147,7 +146,7 @@ class User {
                     password=$4
                     WHERE 
                     email = $5 
-                    RETURNING id, username, first_name, last_name, email, created_at, set_id
+                    RETURNING id, username, first_name, last_name, email, created_at
                     `,
             [
                 credentials.username,
