@@ -12,7 +12,9 @@ import {
     useTheme,
     VStack,
     Textarea,
+    Divider,
 } from "@chakra-ui/react";
+import { useFlashcardContext } from "../../../../contexts/flashcard.jsx";
 
 export default function CreateSetPage() {
     const [title, setTitle] = useState("");
@@ -23,10 +25,10 @@ export default function CreateSetPage() {
     const [userCreatedSet, setUserCreatedSet] = useState({
         title: null,
         description: null,
-        flashcards: null,
-        visibility: true,
-        selectedForTrash: false,
+        flashcards: [],
+        isPublic: true
     });
+
 
     const { isLoading, isLoggedIn } = useAuthContext();
     const navigate = useNavigate();
@@ -63,6 +65,7 @@ export default function CreateSetPage() {
                 />
             </Center>
 
+
             {isCreateOverviewShown ? (
                 <CreateSetOverview
                     description={description}
@@ -70,6 +73,7 @@ export default function CreateSetPage() {
                     setIsCreateOverviewShown={setIsCreateOverviewShown}
                     chosenSet={userCreatedSet}
                     userCreatedSet={userCreatedSet}
+                    setUserCreatedSet={setUserCreatedSet}
                 />
             ) : (
                 <CreateSetAddCard

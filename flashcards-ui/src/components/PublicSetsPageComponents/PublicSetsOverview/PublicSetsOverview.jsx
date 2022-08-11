@@ -4,6 +4,7 @@ import { StackDivider, Box, VStack, useTheme } from "@chakra-ui/react";
 import { Center } from "@chakra-ui/react";
 import Set from "../../FlashcardComponents/Set/Set";
 import { useNavigate, useParams } from "react-router-dom";
+import NotFound from "../../NotFound/NotFound";
 
 function SearchResults({ filteredPublicSets }) {
     const navigate = useNavigate();
@@ -43,15 +44,14 @@ export default function PublicSetsOverview() {
 
     useEffect(() => {
         const searchPublicSets = async (searchData) => {
-            if (searchData == null) {
-                searchData == "ullamco mollit Foood";
+            if (searchData === null || searchData == "" || searchData === undefined) {
+                searchData == "abkdakdbadskjabdkjbd";
             }
             try {
                 const res = await queryPublicSets(searchData);
                 setFilteredPublicSets(res.data.set);
-        
             } catch (error) {
-                console.warn("No sets were found")
+                console.warn("No sets were found");
                 setFilteredPublicSets(null);
             }
         };
@@ -59,19 +59,29 @@ export default function PublicSetsOverview() {
     }, [searchValue]);
 
     return (
-        <Center>
-            <VStack
-                divider={
-                    <StackDivider borderColor={useTheme().colors.brand.green} />
-                }
-                spacing={4}
-                w="80vw"
-                align={"stretch"}
-            >
-                {filteredPublicSets !== null ? (
-                    <SearchResults filteredPublicSets={filteredPublicSets} />
-                ) : null}
-            </VStack>
-        </Center>
+        <>
+            {filteredPublicSets ? (
+                <Center>
+                    <VStack
+                        divider={
+                            <StackDivider
+                                borderColor={useTheme().colors.brand.green}
+                            />
+                        }
+                        spacing={4}
+                        w="80vw"
+                        align={"stretch"}
+                    >
+                        {filteredPublicSets !== null ? (
+                            <SearchResults
+                                filteredPublicSets={filteredPublicSets}
+                            />
+                        ) : null}
+                    </VStack>
+                </Center>
+            ) : (
+                <NotFound />
+            )}
+        </>
     );
 }

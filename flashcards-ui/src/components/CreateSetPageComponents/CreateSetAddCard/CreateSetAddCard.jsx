@@ -19,7 +19,7 @@ export default function CreateSetAddCard({
 }) {
     const [textDelimiter, setTextDelimiter] = useState(":");
     const [flashcardDelimiter, setFlashcardDelimiter] = useState(",");
-    const [flashcard, setFlashcard] = useState("");
+
     //This is test data
     const [textInput, setTextinput] = useState(
         "Term 1: Definition 1     •     Term 2: Definition 2     •     Term 3: Definition 3"
@@ -87,9 +87,9 @@ export default function CreateSetAddCard({
             alert("You are missing a term or definition");
         } else {
             //pass the info the userCreatedSet so the CreateSetOverview can access it
-            userCreatedSet.flashcards = createdSets;
-            userCreatedSet.id = mySets.length;
-            userCreatedSet.createdAt = new Date().toDateString();
+            createdSets.forEach((e) => {
+                userCreatedSet.flashcards.push(e);
+            });
             setIsCreateOverviewShown(true);
         }
     };
@@ -104,6 +104,7 @@ export default function CreateSetAddCard({
                                 fontWeight={"bold"}
                                 textAlign={"center"}
                                 fontSize={"2xl"}
+
                             >
                                 Term/Definition Delimiter
                             </FormLabel>
@@ -137,6 +138,7 @@ export default function CreateSetAddCard({
                                 fontWeight={"bold"}
                                 textAlign={"center"}
                                 fontSize={"2xl"}
+
                             >
                                 Card Delimiter
                             </FormLabel>
@@ -159,6 +161,7 @@ export default function CreateSetAddCard({
                                 _placeholder={{
                                     opacity: 0.8,
                                     color: "gray",
+
                                 }}
                                 onChange={(e) => {
                                     setFlashcardDelimiter(e.target.value);
@@ -185,6 +188,7 @@ export default function CreateSetAddCard({
                             fontSize={"l"}
                             _hover={{
                                 borderColor: "green.300",
+
                             }}
                             value={textInput}
                             placeholder="Term 1: Definition 1     •     Term 2: Definition 2     •     Term 3: Definition 3"
@@ -208,6 +212,7 @@ export default function CreateSetAddCard({
                             borderRadius={"22px"}
                             fontSize={"xl"}
                             color={"black"}
+
                             _hover={{ bg: "black", color: "green.400" }}
                             onClick={() => {
                                 setIsCreateOverviewShown(true);
@@ -227,6 +232,7 @@ export default function CreateSetAddCard({
                             fontSize={"xl"}
                             color={"black"}
                             _hover={{ bg: "black", color: "green.400" }}
+
                             onClick={() => {
                                 turnIntoFlashcards(textInput);
                             }}

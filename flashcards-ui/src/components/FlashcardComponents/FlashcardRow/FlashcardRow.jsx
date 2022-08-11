@@ -31,9 +31,10 @@ export default function FlashcardRow({
     const [checkBoxState, setCheckBoxState] = useState(
         chosenSet.flashcards[idx][checkBox] || defaultCheckBox
     );
+
     useEffect(() => {
         chosenSet.flashcards[idx][checkBox] = checkBoxState;
-    }, [checkBoxState]);
+    }, [checkBoxState, chosenSet]);
 
     return (
         <HStack className="flashcard-row" spacing={10} pb={10}>

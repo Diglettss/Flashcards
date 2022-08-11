@@ -199,7 +199,7 @@ class Flashcard {
         //This somehow takes the words in a string and turns them into an array of those words
         const searchQueryArray = searchQuery.match(/[-\w]+/g);
 
-        const searchQueryString = searchQueryArray.join(" & ");
+        const searchQueryString = searchQueryArray.join(":* & ") + ":*";
 
         const result = await db.query(
             `

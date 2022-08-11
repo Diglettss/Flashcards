@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFlashcardContext } from "../../../../contexts/flashcard";
-import { Box, Button, Textarea, VStack } from "@chakra-ui/react";
+import { Box, Button, Textarea, VStack, HStack } from "@chakra-ui/react";
 import FlashcardRow from "../../FlashcardComponents/FlashcardRow/FlashcardRow";
 
 export default function CreateSetOverview({
@@ -10,8 +10,11 @@ export default function CreateSetOverview({
     setIsCreateOverviewShown,
     chosenSet,
     userCreatedSet,
+    setUserCreatedSet,
 }) {
     const { mySets, setMySets } = useFlashcardContext();
+
+    const { mySets, setMySets, createSet } = useFlashcardContext();
     const navigate = useNavigate();
 
     return (
@@ -35,6 +38,7 @@ export default function CreateSetOverview({
                         _placeholder={{
                             opacity: 0.6,
                             color: "black",
+
                         }}
                         onChange={(e) => {
                             setDescription(e.target.value);
@@ -52,16 +56,19 @@ export default function CreateSetOverview({
                             term={e.term}
                             definition={e.definition}
                             chosenSet={chosenSet}
+                            checkBox={"selectedForTrash"}
                         />
                     ))
                 ) : (
                     <Box className="empty-flashcard-row" />
                 )}
             </Box>
+
             <Box>
                 <VStack align={"center"} justify={"center"}>
-                    <Button
-                        className="add-cards-button"
+                    <HStack>
+                        <Button
+         className="add-cards-button"
                         bg={"gray.100"}
                         borderRadius={"22px"}
                         fontSize={"2xl"}
@@ -70,10 +77,29 @@ export default function CreateSetOverview({
                         _hover={{ bg: "green.100" }}
                         onClick={(e) => {
                             setIsCreateOverviewShown(false);
-                        }}
-                    >
-                        Add Cards
-                    </Button>
+                        }}                        >
+                            Add Cards
+                        </Button>
+                        <Button
+                            bg={"green.900"}
+                            borderRadius={"22px"}
+                            fontSize={"16px"}
+                            fontFamily={"serif"}
+                            fontWeight={"medium"}
+                            color={"green.100"}
+                            _hover={{ bg: "black", color: "green.400" }}
+                            onClick={() => {
+                                userCreatedSet.flashcards =
+                                    userCreatedSet.flashcards.filter(
+                                        (e) => !e.selectedForTrash
+                                    );
+                                setUserCreatedSet({ ...userCreatedSet });
+                            }}
+                        >
+                            Delete Selected
+                        </Button>
+                    </HStack>
+                    <br />
                     <Button
                         className="save-button"
                         bg={"gray.100"}
@@ -85,10 +111,14 @@ export default function CreateSetOverview({
                         onClick={() => {
                             if (
                                 userCreatedSet.flashcards?.length >= 2 &&
-                                userCreatedSet.title
+                                userCreatedSet.title &&
+                                userCreatedSet.description
                             ) {
+                                //
+                                console.log("userCreatedSet", userCreatedSet);
                                 mySets.push(userCreatedSet);
                                 setMySets([...mySets]);
+                                createSet(userCreatedSet);
                                 navigate("/mysets");
                             } else {
                                 console.error(
