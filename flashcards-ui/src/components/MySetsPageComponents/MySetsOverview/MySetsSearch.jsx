@@ -27,7 +27,6 @@ export default function MySetsSearch({
     const sortByOldestDate = (array) => {
         sortByNewestDate(array);
         array.reverse();
-
     };
     const sortByAlphabeticalOrder = (array) => {
         array.sort((x, y) => {
@@ -42,8 +41,14 @@ export default function MySetsSearch({
         array.sort((a, b) => b.flashcards.length - a.flashcards.length);
     };
 
-    sortByNewestDate(mySets);
 
+    sortByNewestDate(mySets);
+    useEffect(() => {
+        sortByNewestDate(mySets);
+    }, [mySets]);
+    useEffect(() => {
+        sortByNewestDate(mySets);
+    });
 
     useEffect(() => {
         const fillteredSetByTitleDescription = mySets.filter((e) => {
@@ -62,18 +67,19 @@ export default function MySetsSearch({
         setFilteredMySets(fillteredSetByTitleDescription);
 
         //sorts the sets
-        if(fillteredSetByTitleDescription.length>0){
-        if (sortBy == "Newest") {
-            sortByNewestDate(fillteredSetByTitleDescription);
-        } else if (sortBy == "Oldest") {
-            sortByOldestDate(fillteredSetByTitleDescription);
-        } else if (sortBy == "A-Z") {
-            sortByAlphabeticalOrder(fillteredSetByTitleDescription);
-        } else if (sortBy == "Z-A") {
-            sortByReverseAlphabeticalOrder(fillteredSetByTitleDescription);
-        } else {
-            sortByNumOfFlashcards(fillteredSetByTitleDescription);
-        }}
+        if (fillteredSetByTitleDescription.length > 0) {
+            if (sortBy == "Newest") {
+                sortByNewestDate(fillteredSetByTitleDescription);
+            } else if (sortBy == "Oldest") {
+                sortByOldestDate(fillteredSetByTitleDescription);
+            } else if (sortBy == "A-Z") {
+                sortByAlphabeticalOrder(fillteredSetByTitleDescription);
+            } else if (sortBy == "Z-A") {
+                sortByReverseAlphabeticalOrder(fillteredSetByTitleDescription);
+            } else {
+                sortByNumOfFlashcards(fillteredSetByTitleDescription);
+            }
+        }
         //This is needed to rerender the sets, I think
         // setFilteredMySets([...fillteredSetByTitleDescription]);
     }, [sortBy, searchValue]);

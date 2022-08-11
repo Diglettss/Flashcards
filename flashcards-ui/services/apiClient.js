@@ -106,11 +106,11 @@ class ApiClient {
     }
 
     // method to create a user's set
-    async createUserSet(credentials) {
+    async createUserSet(set) {
         return await this.request({
             endpoint: `flashcard/mysets`,
             method: `POST`,
-            data: credentials,
+            data: {...set},
         });
     }
 

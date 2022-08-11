@@ -64,8 +64,7 @@ export default function UserProfile() {
                 <Avatar
                     // change name prop to user first & last name
                     // change src to user submitted profile pic if available
-                    name="Segun Adebayo"
-                    src="https://bit.ly/sage-adebayo"
+                    name={user.username}
                     bg="white"
                     color="green.400"
                     onClick={onOpen}

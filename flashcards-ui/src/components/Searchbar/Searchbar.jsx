@@ -31,7 +31,7 @@ export default function Searchbar() {
                     // _hover={{ backgroundColor: "green.100" }}
                     // _focus={{ backgroundColor: "green.100" }}
                     onKeyDown={(e) => {	
-                        if (e.code == "Enter") {	
+                        if (e.code == "Enter" && searchbarValue!="") {	
                             navigate(`/publicsets/search/${searchbarValue}`)	
                         }	
                     }}	

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 import { useAuthContext } from "../../../contexts/auth";
@@ -8,6 +8,8 @@ import {
     FormControl,
     FormLabel,
     Input,
+    InputGroup,
+    InputRightElement,
     Checkbox,
     Stack,
     Link,
@@ -16,10 +18,13 @@ import {
     Text,
     useColorModeValue,
 } from "@chakra-ui/react";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 export default function LoginForm(props) {
     const { error, isProcessing, loginUser } = useAuthContext();
     const navigate = useNavigate();
+    const [showPassword, setShowPassword] = useState(false);
+
     const [form, setForm] = React.useState({
         username: "",
         password: "",
@@ -55,45 +60,51 @@ export default function LoginForm(props) {
                 >
                     <Stack spacing={4}>
                         <FormControl id="username" isRequired>
-                            <FormLabel textAlign={"center"}>Username</FormLabel>
+                            <FormLabel textAlign={"left"}>Username</FormLabel>
                             <Input
                                 type="text"
                                 className="form-input"
                                 name="username"
                                 value={form.username}
                                 onChange={handleOnInputChange}
-                                textAlign={"center"}
+                                textAlign={"left"}
                             />
                         </FormControl>
                         <FormControl id="password" isRequired>
-                            <FormLabel textAlign={"center"}>Password</FormLabel>
-                            <Input
-                                type="password"
-                                className="form-input"
-                                name="password"
-                                value={form.password}
-                                onChange={handleOnInputChange}
-                                textAlign={"center"}
-                            />
+                            <FormLabel textAlign={"left"}>Password</FormLabel>
+                            <InputGroup>
+                                <Input
+                                    type={showPassword ? "text" : "password"}
+                                    className="form-input"
+                                    name="password"
+                                    value={form.password}
+                                    onChange={handleOnInputChange}
+                                    textAlign={"left"}
+                                />
+                                <InputRightElement h={"full"}>
+                                    <Button
+                                        variant={"ghost"}
+                                        onClick={() =>
+                                            setShowPassword(
+                                                (showPassword) => !showPassword
+                                            )
+                                        }
+                                    >
+                                        {showPassword ? (
+                                            <ViewIcon />
+                                        ) : (
+                                            <ViewOffIcon />
+                                        )}
+                                    </Button>
+                                </InputRightElement>
+                            </InputGroup>
                         </FormControl>
-                        <Stack spacing={10}>
+                        <Stack spacing={5}>
                             <Stack
                                 direction={{ base: "column", sm: "row" }}
                                 align={"start"}
                                 justify={"space-between"}
-                            >
-                                <Text>
-                                    Don't have an account yet? Sign up{" "}
-                                    <Link
-                                        color={"blue.400"}
-                                        onClick={() => {
-                                            navigate("/register");
-                                        }}
-                                    >
-                                        here!
-                                    </Link>
-                                </Text>
-                            </Stack>
+                            ></Stack>
                             <Button
                                 bg={"green.400"}
                                 color={"white"}
@@ -107,6 +118,17 @@ export default function LoginForm(props) {
                             >
                                 Sign In
                             </Button>
+                            <Text>
+                                Don't have an account yet? Sign up{" "}
+                                <Link
+                                    color={"blue.400"}
+                                    onClick={() => {
+                                        navigate("/register");
+                                    }}
+                                >
+                                    here!
+                                </Link>
+                            </Text>
                         </Stack>
                     </Stack>
                 </Box>
