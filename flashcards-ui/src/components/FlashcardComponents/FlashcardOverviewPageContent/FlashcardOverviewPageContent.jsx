@@ -73,9 +73,7 @@ export default function FlashcardOverviewPageContent({
             </Button>
             <Center>
                 <Heading
-                    // bgColor={"black"}
                     bgColor={"gray.100"}
-                    // color="white"
                     color="black"
                     paddingTop={"20px"}
                     paddingBottom={"20px"}
@@ -90,9 +88,7 @@ export default function FlashcardOverviewPageContent({
             </Center>
             <Center>
                 <Text
-                    // bgColor={"black"}
                     bgColor={"gray.100"}
-                    // color="white"
                     color="black"
                     paddingTop={"20px"}
                     paddingBottom={"20px"}
@@ -106,7 +102,7 @@ export default function FlashcardOverviewPageContent({
             </Center>
 
             <Center>
-                <VStack w={"80vw"} marginTop="80px" >
+                <VStack w={"80vw"} marginTop="80px">
                     {chosenSet.flashcards.map((e, idx) => (
                         <FlashcardRow
                             e={e}

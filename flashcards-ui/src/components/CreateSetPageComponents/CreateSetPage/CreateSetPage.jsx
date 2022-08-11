@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from "react";
 import CreateSetOverview from "../CreateSetOverview/CreateSetOverview.jsx";
 import CreateSetAddCard from "../CreateSetAddCard/CreateSetAddCard.jsx";
-import {useNavigate} from "react-router-dom";
-import {useAuthContext} from "../../../../contexts/auth";
-import {Flex, Input, Text} from "@chakra-ui/react"
-
+import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../../../contexts/auth";
+import {
+    Flex,
+    Input,
+    Text,
+    Center,
+    Box,
+    useTheme,
+    VStack,
+    Textarea,
+} from "@chakra-ui/react";
 
 export default function CreateSetPage() {
     const [title, setTitle] = useState("");
@@ -22,6 +30,7 @@ export default function CreateSetPage() {
 
     const { isLoading, isLoggedIn } = useAuthContext();
     const navigate = useNavigate();
+    const { globalTheme } = useTheme();
 
     useEffect(() => {
         if (!isLoading && !isLoggedIn) {
@@ -29,30 +38,31 @@ export default function CreateSetPage() {
         }
     }, [isLoggedIn, isLoading]);
 
-    
     return (
-        <Flex direction={"column"} align={"center"} justify={"center"}>
-            <Input type="text" className="title" name="title"
-                w={"30%"} mt={"5%"} pt={"2%"} pb={"2%"}
-                bg={"green.200"}
-                border={"3px solid"} borderColor={"green.300"} borderRadius={"35px"}
-                color={"green.800"} textAlign={"center"} fontSize={"45px"} fontFamily={"serif"} fontWeight={"bold"}
-                _hover={{border: "3px solid", borderColor: "green.500"}}
-                _focus={{bg: "green.300", border: "3.5px solid", borderColor: "green.600"}}
-                
-                value={title}
-                placeholder="Add Set Title"
-                _placeholder={{opacity: 0.4, color: "gray", fontStyle: "italic"}}
-                
-                onChange={(e) => {
-                    setTitle(e.target.value);
-                    userCreatedSet.title = e.target.value;
-                }}
-            /> 
-            <Text color={"green.600"} cursor={"default"}> 
-                ____________________________________________________________________________
-            </Text>
-            <br/>
+        <VStack>
+            <Center>
+                <Textarea
+                    bgColor={"gray.100"}
+                    color="black"
+                    paddingTop={"20px"}
+                    paddingBottom={"20px"}
+                    paddingLeft={"80px"}
+                    paddingRight={"80px"}
+                    textAlign={"center"}
+                    rounded={globalTheme.rounded}
+                    marginBottom="20px"
+                    marginTop="20px"
+                    fontSize={"4xl"}
+                    _hover={{ border: "3px solid", borderColor: "green.300" }}
+                    placeholder="Add Set Title"
+                    onChange={(e) => {
+                        setTitle(e.target.value);
+                        userCreatedSet.title = e.target.value;
+                    }}
+                    width={"50vw"}
+                />
+            </Center>
+
             {isCreateOverviewShown ? (
                 <CreateSetOverview
                     description={description}
@@ -67,6 +77,6 @@ export default function CreateSetPage() {
                     userCreatedSet={userCreatedSet}
                 />
             )}
-        </Flex>
-    )
+        </VStack>
+    );
 }

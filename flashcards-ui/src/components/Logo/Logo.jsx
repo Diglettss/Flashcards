@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Icon, HStack } from "@chakra-ui/react";
 import { BsLightningChargeFill } from "react-icons/bs";
+import { HiOutlineLightningBolt } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 
 export default function Logo() {
@@ -14,7 +15,7 @@ export default function Logo() {
                 display={{ base: "none", md: "flex" }}
             >
                 <Icon
-                    as={BsLightningChargeFill}
+                    as={HiOutlineLightningBolt}
                     title="Home"
                     onClick={() => {
                         navigate("/");
