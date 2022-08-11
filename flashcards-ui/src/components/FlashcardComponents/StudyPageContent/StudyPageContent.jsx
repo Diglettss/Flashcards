@@ -1,5 +1,5 @@
 import React from "react";
-import { Heading, Button, Flex, Center } from "@chakra-ui/react";
+import { Heading, Button, Flex, Center, Spacer } from "@chakra-ui/react";
 import Index from "./Carousel/Index";
 import { useNavigate, useParams } from "react-router-dom";
 import { useFlashcardContext } from "../../../../contexts/flashcard";
@@ -21,12 +21,14 @@ export default function StudyPageContent({ chosenSet }) {
 
     return (
         <>
-            <Flex justifyContent={"space-between"}>
-                <Button>Settings</Button>
+            <Flex >
+                {/* <Button>Settings</Button> */}
+                <Spacer></Spacer>
                 <Button
                     onClick={() => {
                         navigate(-1);
                     }}
+                    mr={5}
                 >
                     Back
                 </Button>
