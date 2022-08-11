@@ -1,4 +1,4 @@
-export const PRODUCTION_API_BASE_URL = "https://flashi-api.herokuapp.com/";
+export const PRODUCTION_API_BASE_URL = "https://flashi-w11.herokuapp.com";
 export const DEVELOPMENT_API_BASE_URL = "http://localhost:3001";
 
 let isDev;
