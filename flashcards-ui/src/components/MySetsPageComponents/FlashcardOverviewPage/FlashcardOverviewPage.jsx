@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useFlashcardContext } from "../../../../contexts/flashcard.jsx";
 import { useAuthContext } from "../../../../contexts/auth.jsx";
 import FlashcardOverviewPageContent from "../../FlashcardComponents/FlashcardOverviewPageContent/FlashcardOverviewPageContent.jsx";
+import { Switch, Box, FormLabel, HStack } from "@chakra-ui/react";
 
 export default function FlashcardOverviewPage() {
     const navigate = useNavigate();
@@ -25,14 +26,37 @@ export default function FlashcardOverviewPage() {
     return (
         <>
             {chosenSet ? (
-                <FlashcardOverviewPageContent
-                    chosenSet={chosenSet}
-                    buttonText="Settings"
-                    startStudyingNavigation="mysets/studymode"
-                    onButtonClick={() => {
-                        console.warn("set up update");
-                    }}
-                />
+                <Box>
+                    <FlashcardOverviewPageContent
+                        chosenSet={chosenSet}
+                        buttonText=""
+                        startStudyingNavigation="mysets/studymode"
+                        onButtonClick={() => {
+                            console.warn("set up update");
+                        }}
+                    />
+                    <HStack>
+                        <FormLabel
+                            htmlFor="email-alerts"
+                            mb="0"
+                            pos={"fixed"}
+                            top="80px"
+                            left="110px"
+                            fontSize={"lg"}
+                        >
+                            Public
+                        </FormLabel>
+                        <Switch
+                            pos={"fixed"}
+                            top="80px"
+                            left="40px"
+                            size="lg"
+                            colorScheme='green'
+                            id="email-alerts"
+                            isChecked
+                        />
+                    </HStack>
+                </Box>
             ) : (
                 <div />
             )}
