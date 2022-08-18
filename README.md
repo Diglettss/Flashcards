@@ -1,18 +1,12 @@
-# **Flashi: SITE Capstone Project**
+# Capstone Project
 
 SITE Course Year: **2022**
 
 Cohort: **Workday**
 
-Team Members: 
-* **Osaru Elaiho**
-* **Daniel Jonas**
-* **Hayley Simmons**
+Team Members:  **Osaru Elaiho**  •  **Daniel Jonas**  •  **Hayley Simmons**
 
-Mentors: 
-* **Coren Burton** (Osaru)
-* **Jenny Tang** (Daniel)
-* **Michael Walsh** (Hayley)
+Mentors:  **Coren Burton**  •  **Jenny Tang**  •  **Michael Walsh**
 
 
 ## **Project Overview**
@@ -25,10 +19,10 @@ The 3 main goals of our project are to:
 Users will be able to sign up, create a profile, & create sets of digital flashcards based on any subject they choose. The flashcards can be then reviewed based on the mode the user chooses. The website will be searchable for other sets of flashcards or other user profiles.
 
 
-## **Project Code Repository Links**
+## **Code Repository Links**
 * [Front-End Repo](https://github.com/Diglettss/Flashcards/tree/main/flashcards-ui)
 * [Back-End Repo](https://github.com/Diglettss/Flashcards/tree/main/flashcards-api)
 
 
-## **Deployment Website**
+## **Deployed Website**
 [flashicards.com](https://flashicards.com/)
