@@ -81,7 +81,7 @@ Users will be able to sign up, create a profile, & create sets of digital flashc
     - Do the above tasks
     - Create sets
         - *Can hide the cards while in the creation process (adds the convenience of less scrolling when there's many cards)*
-        - *Can import notes from other platforms (ex. Google Docs) into a set
+        - *Can import notes from other platforms (ex. Google Docs) into a set*
     - Highlight items in their finished sets
     - Customize their sets:
         - *Card colors*
@@ -95,7 +95,8 @@ Users will be able to sign up, create a profile, & create sets of digital flashc
 
 
 ## **Related Work**
-[Quizlet](https://quizlet.com/latest) is the main inspiration for this project. We want ours to stand out by: 
+
+**[Quizlet](https://quizlet.com/latest)** is our main inspiration (& competition) for this project. We want Flashi to stand out by: 
   - Offering every single feature for free (Quizlet wants users to pay for the card-customizing & highlighting features);
   - Making the user set a time limit between flipping the cards (Quizlet doesn't have this feature);
   - & having a simpler UI for things like:
@@ -106,4 +107,4 @@ Users will be able to sign up, create a profile, & create sets of digital flashc
 
 ## **Open Questions**
 
-We will need to research many things, such as: how to save the user's progress if they need to finish their flashcards later, & how to create folders for organizing. For the stretch features, we will need to research how to implement timers, the customizing options, & basically everything else there.
+We will need to research many things, such as how to save the user's progress if they need to finish their flashcards later, & how to create folders for organizing. For the stretch features, we will need to research how to implement timers, the customizing options, & basically everything else there.
