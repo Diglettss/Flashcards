@@ -3,8 +3,22 @@
 Pod Members: **Osaru Elaiho, Daniel Jones, Hayley Simmons**
 
 
+
 ## **Problem Statement**
-One of the biggest difficulties for education in the past two years has been the COIVD-19 pandemic which saw many teaching institutions struggle to navigate balancing campus safety and choosing whether or not to hold in-person classes. As a direct result of this disruption, many studies have shown a significant drop in lecture material retention and overall assessment scores for students. Essentially, the pandemic has created a large influx of students who are unable to perform at their highest level largely due to their inability to properly study and retain information [(source)](https://www.washingtonpost.com/lifestyle/2019/04/15/many-students-dont-know-how-study-heres-how-parents-can-help/).
+
+Despite being taught that studying leads to academic success, students are instead spoon-fed information that reflects on our tests & quizzes. Consequently, many students adopt the habit of learning the material without dedicating any outside hours, with the goal of just getting by.
+
+In short, ***students don't know how to learn/study.***
+
+According to an article from *[The Washington Post](https://www.washingtonpost.com/lifestyle/2019/04/15/many-students-dont-know-how-study-heres-how-parents-can-help/)*:
+
+*"Researchers and experienced educators have found that often **students don’t have good study habits and skills**, or that **they rely on strategies that don’t work...**"*
+
+*[Education World](https://www.washingtonpost.com/lifestyle/2019/04/15/many-students-dont-know-how-study-heres-how-parents-can-help/)* adds on to this statement:
+
+*"…some approaches that teachers and parents recommend for studying such as **re-reading**, **highlighting** or **summarizing material**, might **not actually be effective**, especially over time."*
+
+
 
 ## **Description**
 The purpose of this project is to provide a simple learning tool that is completely free to use, while helping to provide one of the best methods of studying: information retrieval.
@@ -15,6 +29,7 @@ This project will help users practice their information retrieval by making the 
 
 
 ## **About the Users**
+
 ##### Roles
 The "Student" 
   * *a user who plans to use the app as an additional study tool to reinforce learning*
@@ -47,6 +62,8 @@ Our "Instructors":
    16. As a ***student***, I want to customize my flashcard sets so I can add a personal touch to my notes.
    17. As a ***student***, I want a study mode that lets me match the correct term to its corresponding definition under a time limit.
 
+
+
 ## **Pages/Screens**
 ***reminder: need to insert at least 3 wireframes***
 * Landing *(not logged in)*
@@ -59,7 +76,9 @@ Our "Instructors":
 * Set View Page *(current + other users (if made public))*
 
 
+
 ## **Data Models**
+
 #### User table
 | column name     | type          | description                       |
 | ---             | ----          | ---                               |
@@ -103,6 +122,3 @@ Our "Instructors":
 | Update      | PUT           | update a set              | 7            |
 | Create      | POST          | create a set              | 5            |
 | Create      | POST          | submit an issue                   | 8            |
-
-
-***Don't forget to set up your Issues, Milestones, and Project Board!***
