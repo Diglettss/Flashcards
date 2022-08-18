@@ -1,6 +1,6 @@
 # **Project Proposal**
 
-Pod Members: **Osaru Elaiho, Daniel Jonas, & Hayley Simmons**
+Team Members:   **Osaru Elaiho**  •  **Daniel Jonas**  •  **Hayley Simmons**
 
 
 
