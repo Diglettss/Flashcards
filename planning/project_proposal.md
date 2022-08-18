@@ -3,8 +3,21 @@
 Pod Members: **Osaru Elaiho, Daniel Jonas, & Hayley Simmons**
 
 
+
 ## **Problem Statement**
-According to an article from [The Washington Post](https://www.washingtonpost.com/lifestyle/2019/04/15/many-students-dont-know-how-study-heres-how-parents-can-help/), there are many students in high school & college who don't know how to study; they either lack good study habits/skills, or rely on strategies that don't work.
+
+Despite being taught that studying leads to academic success, students are instead spoon-fed information that reflects on our tests & quizzes. Consequently, many students adopt the habit of learning the material without dedicating any outside hours, with the goal of just getting by.
+
+In short, **students don't know how to learn/study.**
+
+According to an article from *[The Washington Post](https://www.washingtonpost.com/lifestyle/2019/04/15/many-students-dont-know-how-study-heres-how-parents-can-help/)*:
+
+*"Researchers and experienced educators have found that often **students don’t have good study habits and skills**, or that **they rely on strategies that don’t work...**"*
+
+*[Education World](https://www.washingtonpost.com/lifestyle/2019/04/15/many-students-dont-know-how-study-heres-how-parents-can-help/)* adds on to this statement:
+
+*"…some approaches that teachers and parents recommend for studying such as **re-reading**, **highlighting** or **summarizing material**, might **not actually be effective**, especially over time."*
+
 
 
 ## **Description**
