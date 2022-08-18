@@ -1,6 +1,6 @@
 # **Project Plan**
 
-Pod Members: **Osaru Elaiho, Daniel Jones, Hayley Simmons**
+Team Members:  **Osaru Elaiho**  •  **Daniel Jonas**  •  **Hayley Simmons**
 
 
 
@@ -72,15 +72,14 @@ Our "Instructors":
 
 
 ## **Pages/Screens**
-***reminder: need to insert at least 3 wireframes***
-* Landing *(not logged in)*
-* Login
-* Register
-* Home *(logged in)*
-* Search Results
-* User Profile *(current + other users)*
-* Set Creation *(while currently creating a set of flashcards)*
-* Set View Page *(current + other users (if made public))*
+* Landing page
+* Login page
+* Register page
+* Search Results screen
+* User Profile page
+* Flashcard Set Creation page
+* Flashcard Set Overview page
+* Flashcard Set Study page
 
 
 
@@ -97,7 +96,7 @@ Our "Instructors":
 | email           | Text          | email address                     |
 | password        | Text          | hashed password                   |
 
-#### Set table
+#### Flashcard Set table
 | column name   | type          | description                     |
 | ---           | ----          | ---                             |
 | id            | integer       | primary key                     |
@@ -108,7 +107,7 @@ Our "Instructors":
 | folder        | text          | which folder the set belongs to |
 
 
-#### Flashcard table
+#### (Individual) Flashcard table
 | column name | type    | description             |
 | ---         | ----    | ---                     |
 | id          | integer | primary key             |
