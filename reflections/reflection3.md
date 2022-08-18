@@ -20,8 +20,8 @@ Team Members:  **Osaru Elaiho**  •  **Daniel Jonas**  •  **Hayley Simmons**
 
 ##### Did the resources provided to you help prepare you in planning and executing your capstone project sprint this week? Be specific, what resources did you find particularly helpful or which tasks did you need more support on?
 
-  * 
+  * ChakraUI has been a godsend in building the interface.
 
 ##### Which features and user stories would you consider “at risk”? How will you change your plan if those items remain “at risk”?
 
-  * Most (if not all) of our stretch features are at risk.
+  * Most (if not all) of our stretch features are at risk. All of our key features are pretty much finished, with the exception of a few bugs.
