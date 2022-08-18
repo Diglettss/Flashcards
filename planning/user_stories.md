@@ -1,6 +1,6 @@
 # **Project Proposal**
 
-Pod Members: **Osaru Elaiho, Daniel Jonas, & Hayley Simmons**
+Team Members:  **Osaru Elaiho**  •  **Daniel Jonas**  •  **Hayley Simmons**
 
 
 ## **Problem Statement**
@@ -41,9 +41,9 @@ According to an article from *[The Washington Post](https://www.washingtonpost.c
    6. As a ***student***, I want to customize my flashcard sets so I can add a personal touch to my notes.
    7. As a ***student***, I want to search for other flashcards so that I won't have to create my own if one already exists.
    8. As a ***student***, I want to highlight items in my cards so as to point out key items. 
-   9. As an ***instructor***, I want to organize my flashcards into folders so that my cards are organized by class.
+   9. As an ***instructor***, I want to organize my flashcards into folders so that my cards are sorted by class.
    10. As an ***instructor***, I want to be able to make my flashcard sets publicly available so that my students can search for them & study on their own.
 
 
 ## **Wireframe**
-[coming soon]
+[Figma](https://www.figma.com/file/wGHQ1Cismdq8eOGyJW2ZUY/Capstone-Project-Wireframe?node-id=50%3A1962)
