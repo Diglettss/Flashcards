@@ -8,7 +8,7 @@ Pod Members: **Osaru Elaiho, Daniel Jonas, & Hayley Simmons**
 
 Despite being taught that studying leads to academic success, students are instead spoon-fed information that reflects on our tests & quizzes. Consequently, many students adopt the habit of learning the material without dedicating any outside hours, with the goal of just getting by.
 
-In short, **students don't know how to learn/study.**
+In short, ***students don't know how to learn/study.***
 
 According to an article from *[The Washington Post](https://www.washingtonpost.com/lifestyle/2019/04/15/many-students-dont-know-how-study-heres-how-parents-can-help/)*:
 
@@ -21,14 +21,22 @@ According to an article from *[The Washington Post](https://www.washingtonpost.c
 
 
 ## **Description**
-The purpose of this project is to provide a simple learning tool that is completely free to use, while helping to provide one of the best methods of studying: information retrieval.
 
-Information retrieval, as described by [Cornell University](https://lsc.cornell.edu/how-to-study/studying-for-and-taking-exams/effective-study-strategies/), means to actively recall information from memory: an effective practice for long-term learning. It's considered one of the best methods of study because it helps identify what someone does or doesn't understand.
+The 3 main goals of our project are to:
+1.  Create a ***free*** study tool, with a simple & straightforward UI;
+2.  Provide a way for users to self-test their knowledge;
+3.  & aid in the use of the **retrieval practice** method so that users memorize, retain & retrieve information more efficiently.
 
-This project will help users practice their information retrieval by making the user take their time in recalling the information before flipping a card over. Users will be able to sign up, create a profile, & create sets of digital flashcards based on any subject they choose. The flashcards can be then reviewed based on the mode the user chooses. The website will be searchable by anyone for other sets of flashcards or other user profiles.
+**Retrieval practice** means ***to actively recall information from memory***.
+
+It's one of the most efficient study methods, according to sources such as *[Education Corner](https://www.educationcorner.com/retrieval-practice/)*, but it can also be one of the most challenging; it requires a deep level of focus/concentration. However, it's efficient because it encourages long-term learning, & there are many ways to practice retrieving information: *practice tests*, *quizzes*, *flashcards*, etc.
+
+Users will be able to sign up, create a profile, & create sets of digital flashcards based on any subject they choose. The flashcards can be then reviewed based on the mode the user chooses. The website will be searchable for other sets of flashcards or other user profiles.
+
 
 
 ## **Expected Features List**
+
 ##### Terms Used:
 - **Inverse View (Included in all modes by default)**
     - *term --> **flip** --> definition*
